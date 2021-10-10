@@ -59,6 +59,9 @@
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\Entities\BaseEntity.cs" />
     <Compile Include="Data\Entities\ITrackable.cs" />
+    <Compile Include="Data\Entities\Client.cs" />
+    <Compile Include="Data\Entities\LegalPersonType.cs" />
+    <Compile Include="Data\Enums\LegalPersonTypeId.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
