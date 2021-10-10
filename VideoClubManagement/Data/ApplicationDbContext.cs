@@ -28,7 +28,7 @@ namespace VideoClubManagement.Data
 
         private void UpdateEntriesEntities()
         {
-            var changeSet = ChangeTracker.Entries<BaseEntity>();
+            var changeSet = ChangeTracker.Entries<ITrackable>();
 
             if (changeSet != null)
             {

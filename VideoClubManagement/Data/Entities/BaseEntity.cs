@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VideoClubManagement.Data.Entities
 {
-    public abstract class BaseEntity<T>
+    public abstract class BaseEntity<T> : ITrackable
     {
         public T Id { get; set; }
         public bool IsActive { get; set; }

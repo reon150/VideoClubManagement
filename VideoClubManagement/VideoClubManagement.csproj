@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\Entities\BaseEntity.cs" />
+    <Compile Include="Data\Entities\ITrackable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
