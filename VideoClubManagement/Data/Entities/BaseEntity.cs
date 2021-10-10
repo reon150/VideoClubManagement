@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace VideoClubManagement.Data.Entities
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity<T>
     {
-        public int Id { get; set; }
+        public T Id { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime LastUpdatedDate { get; set; }
