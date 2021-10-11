@@ -1,4 +1,4 @@
-﻿namespace VideoClubManagement.Data.Entities
+﻿    namespace VideoClubManagement.Data.Entities
 {
     public class Client : BaseEntity<int>
     {
