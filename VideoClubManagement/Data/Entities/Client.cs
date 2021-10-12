@@ -1,4 +1,6 @@
-﻿namespace VideoClubManagement.Data.Entities
+﻿using System.Collections.Generic;
+
+namespace VideoClubManagement.Data.Entities
 {
     public class Client : BaseEntity<int>
     {
@@ -7,5 +9,10 @@
         public string TaxpayerIdentificationNumber { get; set; }
         public string CreditCardNumber { get; set; }
         public decimal CreditLimit { get; set; }
+
+        public int LegalPersonTypeId { get; set; }
+        public LegalPersonType LegalPersonType { get; set; }
+
+        public List<ArticleLending> ArticleLendings { get; set; }
     }
 }

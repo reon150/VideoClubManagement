@@ -16,5 +16,6 @@ namespace VideoClubManagement.Data.Entities
 
         public List<Genre> Genres { get; set; }
         public List<ArticleCast> ArticleCasts { get; set; }
+        public List<ArticleLending> ArticleLendings { get; set; }
     }
 }
