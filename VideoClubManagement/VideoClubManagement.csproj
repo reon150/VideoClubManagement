@@ -57,9 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\Entities\Article.cs" />
+    <Compile Include="Data\Entities\ArticleType.cs" />
     <Compile Include="Data\Entities\BaseEntity.cs" />
     <Compile Include="Data\Entities\Cast.cs" />
     <Compile Include="Data\Entities\Employee.cs" />
+    <Compile Include="Data\Entities\Genre.cs" />
     <Compile Include="Data\Entities\ITrackable.cs" />
     <Compile Include="Data\Entities\Client.cs" />
     <Compile Include="Data\Entities\Language.cs" />
