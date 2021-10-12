@@ -1,7 +1,9 @@
-﻿namespace VideoClubManagement.Data.Entities {
+﻿namespace VideoClubManagement.Data.Entities 
+{
 
 	public class Cast : BaseEntity<int>
 	{
-		public string Description { get; set; }
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
 	}
 }
