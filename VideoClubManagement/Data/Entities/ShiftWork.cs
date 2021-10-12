@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VideoClubManagement.Data.Entities
 { 
@@ -7,5 +8,6 @@ namespace VideoClubManagement.Data.Entities
 		public string Description { get; set; }
 		public TimeSpan StartHour { get; set; }
 		public TimeSpan FinishHour { get; set; }
+		public List<Employee> Employee { get; set; }
 	}
 }
