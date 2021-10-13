@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using VideoClubManagement.Data.Entities;
 
@@ -8,9 +9,25 @@ namespace VideoClubManagement.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext()
-            : base()
+        public ApplicationDbContext() : base("name=VideoClubManagement") { }
+
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleCast> ArticleCasts { get; set; }
+        public DbSet<ArticleLending> ArticleLendings { get; set; }
+        public DbSet<ArticleType> ArticleTypes { get; set; }
+        public DbSet<Cast> Casts { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<LegalPersonType> LegalPersonTypes { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<ShiftWork> ShiftWorks { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+            builder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
 
         public override int SaveChanges()

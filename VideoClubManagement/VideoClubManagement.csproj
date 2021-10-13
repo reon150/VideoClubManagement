@@ -57,6 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\Config\ArticleLendingConfiguration.cs" />
+    <Compile Include="Data\Config\ArticleTypeConfiguration.cs" />
+    <Compile Include="Data\Config\CastConfiguration.cs" />
+    <Compile Include="Data\Config\LanguageConfiguration.cs" />
+    <Compile Include="Data\Config\LegalPersonTypeConfiguration.cs" />
+    <Compile Include="Data\Config\RoleConfiguration.cs" />
+    <Compile Include="Data\Config\EmployeeConfiguration.cs" />
+    <Compile Include="Data\Config\GenreConfiguration.cs" />
+    <Compile Include="Data\Config\ClientConfiguration.cs" />
+    <Compile Include="Data\Config\ArticleCastConfiguration.cs" />
+    <Compile Include="Data\Config\ArticleConfiguration.cs" />
+    <Compile Include="Data\Config\ShiftWorkConfiguration.cs" />
     <Compile Include="Data\Entities\Article.cs" />
     <Compile Include="Data\Entities\ArticleCast.cs" />
     <Compile Include="Data\Entities\ArticleLending.cs" />
@@ -72,8 +84,16 @@
     <Compile Include="Data\Entities\Role.cs" />
     <Compile Include="Data\Entities\ShiftWork.cs" />
     <Compile Include="Data\Enums\LegalPersonTypeId.cs" />
+    <Compile Include="Data\Migrations\202110130218190_InitialMigration.cs" />
+    <Compile Include="Data\Migrations\202110130218190_InitialMigration.designer.cs">
+      <DependentUpon>202110130218190_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Data\Migrations\202110130218190_InitialMigration.resx">
+      <DependentUpon>202110130218190_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
