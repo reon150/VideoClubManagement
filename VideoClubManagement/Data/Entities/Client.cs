@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using VideoClubManagement.Data.Enums;
 
 namespace VideoClubManagement.Data.Entities
 {
@@ -10,7 +11,7 @@ namespace VideoClubManagement.Data.Entities
         public string CreditCardNumber { get; set; }
         public decimal CreditLimit { get; set; }
 
-        public int LegalPersonTypeId { get; set; }
+        public LegalPersonTypeId LegalPersonTypeId { get; set; }
         public LegalPersonType LegalPersonType { get; set; }
 
         public List<ArticleLending> ArticleLendings { get; set; }

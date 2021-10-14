@@ -7,7 +7,7 @@ namespace VideoClubManagement.Data.Config
     {
         public EmployeeConfiguration()
         {
-            Property(e => e.FisrtName).IsRequired().HasMaxLength(100);
+            Property(e => e.FirstName).IsRequired().HasMaxLength(100);
 
             Property(e => e.LastName).IsRequired().HasMaxLength(100);
 

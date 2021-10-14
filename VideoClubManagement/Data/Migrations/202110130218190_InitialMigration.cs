@@ -110,7 +110,7 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        FisrtName = c.String(nullable: false, maxLength: 100),
+                        FirstName = c.String(nullable: false, maxLength: 100),
                         LastName = c.String(nullable: false, maxLength: 100),
                         IdentificationNumber = c.String(nullable: false, maxLength: 11, fixedLength: true),
                         CommissionPercentage = c.Decimal(nullable: false, precision: 10, scale: 4),

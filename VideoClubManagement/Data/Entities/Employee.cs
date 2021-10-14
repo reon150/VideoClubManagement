@@ -5,7 +5,7 @@ namespace VideoClubManagement.Data.Entities
 {
 	public class Employee : BaseEntity<int>
 	{
-		public string FisrtName { get; set; }
+		public string FirstName { get; set; }
 		public string LastName { get; set; }
 		public string IdentificationNumber { get; set; }	
 		public decimal CommissionPercentage { get; set; }
