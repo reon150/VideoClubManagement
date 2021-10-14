@@ -82,15 +82,14 @@
                         TaxpayerIdentificationNumber = c.String(nullable: false, maxLength: 11, fixedLength: true),
                         CreditCardNumber = c.String(nullable: false, maxLength: 16, fixedLength: true),
                         CreditLimit = c.Decimal(nullable: false, precision: 10, scale: 4),
-                        LegalPersonTypeId = c.Int(nullable: false),
+                        LegalPersonTypeId = c.Byte(nullable: false),
                         IsActive = c.Boolean(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
                         LastUpdatedDate = c.DateTime(nullable: false),
-                        LegalPersonType_Id = c.Byte(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.LegalPersonTypes", t => t.LegalPersonType_Id)
-                .Index(t => t.LegalPersonType_Id);
+                .ForeignKey("dbo.LegalPersonTypes", t => t.LegalPersonTypeId, cascadeDelete: true)
+                .Index(t => t.LegalPersonTypeId);
             
             CreateTable(
                 "dbo.LegalPersonTypes",
@@ -233,7 +232,7 @@
             DropForeignKey("dbo.Articles", "ArticleTypeId", "dbo.ArticleTypes");
             DropForeignKey("dbo.Employees", "ShiftWorkId", "dbo.ShiftWorks");
             DropForeignKey("dbo.ArticleLendings", "EmployeeId", "dbo.Employees");
-            DropForeignKey("dbo.Clients", "LegalPersonType_Id", "dbo.LegalPersonTypes");
+            DropForeignKey("dbo.Clients", "LegalPersonTypeId", "dbo.LegalPersonTypes");
             DropForeignKey("dbo.ArticleLendings", "ClientId", "dbo.Clients");
             DropForeignKey("dbo.ArticleLendings", "ArticleId", "dbo.Articles");
             DropForeignKey("dbo.ArticleCasts", "ArticleId", "dbo.Articles");
@@ -242,7 +241,7 @@
             DropIndex("dbo.Languages", new[] { "ISOCode" });
             DropIndex("dbo.Genres", new[] { "ParentId" });
             DropIndex("dbo.Employees", new[] { "ShiftWorkId" });
-            DropIndex("dbo.Clients", new[] { "LegalPersonType_Id" });
+            DropIndex("dbo.Clients", new[] { "LegalPersonTypeId" });
             DropIndex("dbo.ArticleLendings", new[] { "ClientId" });
             DropIndex("dbo.ArticleLendings", new[] { "ArticleId" });
             DropIndex("dbo.ArticleLendings", new[] { "EmployeeId" });

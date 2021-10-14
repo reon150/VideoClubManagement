@@ -13,7 +13,7 @@ namespace VideoClubManagement.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202110130218190_InitialMigration"; }
+            get { return "202110140048423_Initial-Migration"; }
         }
         
         string IMigrationMetadata.Source

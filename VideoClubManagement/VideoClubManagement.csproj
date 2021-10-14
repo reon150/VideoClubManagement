@@ -84,15 +84,21 @@
     <Compile Include="Data\Entities\Role.cs" />
     <Compile Include="Data\Entities\ShiftWork.cs" />
     <Compile Include="Data\Enums\LegalPersonTypeId.cs" />
-    <Compile Include="Data\Migrations\202110130218190_InitialMigration.cs" />
-    <Compile Include="Data\Migrations\202110130218190_InitialMigration.designer.cs">
-      <DependentUpon>202110130218190_InitialMigration.cs</DependentUpon>
+    <Compile Include="Data\Migrations\202110140048423_Initial-Migration.cs" />
+    <Compile Include="Data\Migrations\202110140048423_Initial-Migration.designer.cs">
+      <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Data\Migrations\202110130218190_InitialMigration.resx">
-      <DependentUpon>202110130218190_InitialMigration.cs</DependentUpon>
+    <Compile Include="UI\Client\ClientIndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Client\ClientIndexForm.Designer.cs">
+      <DependentUpon>ClientIndexForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
+      <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -103,6 +109,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\Client\ClientIndexForm.resx">
+      <DependentUpon>ClientIndexForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -117,9 +126,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
