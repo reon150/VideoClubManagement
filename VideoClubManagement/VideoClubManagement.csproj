@@ -91,12 +91,6 @@
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Client\ClientIndexForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Client\ClientIndexForm.Designer.cs">
-      <DependentUpon>ClientIndexForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,9 +103,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Client\ClientIndexForm.resx">
-      <DependentUpon>ClientIndexForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
