@@ -137,6 +137,8 @@ namespace VideoClubManagement.UI.ArticleLendings
                         break;
                     case "detailsButton":
                         Hide();
+                        var articleLendingDetailsForm = new ArticleLendingDetailsForm(this, articleLendingId);
+                        articleLendingDetailsForm.Show();
                         break;
                     case "editButton":
                         Hide();
