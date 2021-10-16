@@ -1,5 +1,5 @@
 ﻿
-namespace VideoClubManagement.UI.Client
+namespace VideoClubManagement.UI.Clients
 {
     partial class ClientIndexForm
     {
@@ -389,7 +389,7 @@ namespace VideoClubManagement.UI.Client
             this.MaximizeBox = false;
             this.Name = "ClientIndexForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ClientIndexForm";
+            this.Text = "Clientes";
             this.Load += new System.EventHandler(this.ClientIndexForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.clientListDataGridView)).EndInit();
             this.ResumeLayout(false);

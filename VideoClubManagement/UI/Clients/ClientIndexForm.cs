@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Data.Entities;
 
-namespace VideoClubManagement.UI.Client
+namespace VideoClubManagement.UI.Clients
 {
     public partial class ClientIndexForm : Form
     {
         private readonly ApplicationDbContext _applicationDbContext = new ApplicationDbContext();
-        private IQueryable<Data.Entities.Client> _clientsQuery; 
+        private IQueryable<Client> _clientsQuery; 
         private int _pageSize = 15;
         private int _currentPage = 1;
 
@@ -24,7 +26,7 @@ namespace VideoClubManagement.UI.Client
         private void FillClientListDataGridView(int pageNumber)
         {
             int startIndex = _pageSize * (pageNumber - 1);
-            var clients = _clientsQuery.OrderBy(c => c.Id).Skip((pageNumber - 1) * _pageSize).Take(_pageSize).ToList();
+            var clients = _clientsQuery.OrderByDescending(c => c.CreatedDate).Skip((pageNumber - 1) * _pageSize).Take(_pageSize).AsNoTracking().AsEnumerable();
 
             clientListDataGridView.Rows.Clear();
 
@@ -104,13 +106,22 @@ namespace VideoClubManagement.UI.Client
 
         private void clientListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (clientListDataGridView.Columns[e.ColumnIndex].Name)
+            if (e.ColumnIndex >= 0)
             {
-                case "deleteButton":
-                    DeleteClient((int) clientListDataGridView[0, e.RowIndex].Value);
-                    break;
-                default:
-                    break;
+                int clientId = (int)clientListDataGridView[0, e.RowIndex].Value;
+                switch (clientListDataGridView.Columns[e.ColumnIndex].Name)
+                {
+                    case "deleteButton":
+                        DeleteClient(clientId);
+                        break;
+                    case "detailsButton":
+                        Hide();
+                        var clientDetailsForm = new ClientDetailsForm(this, clientId);
+                        clientDetailsForm.Show();
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
