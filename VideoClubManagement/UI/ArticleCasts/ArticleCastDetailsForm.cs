@@ -27,6 +27,7 @@ namespace VideoClubManagement.UI.ArticleCasts
                 .FirstOrDefault();
 
             idValueLabel.Text = articleCast.Id.ToString();
+            roleValueLabel.Text = articleCast.Role.Name;
             articleTypeValueLabel.Text = articleCast.Article.ArticleType.Name;
             articleValueLabel.Text = articleCast.Article.Title;
             isActiveCheckBox.CheckState = articleCast.IsActive ? CheckState.Checked : CheckState.Unchecked;

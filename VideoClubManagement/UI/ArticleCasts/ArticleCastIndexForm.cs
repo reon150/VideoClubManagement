@@ -120,6 +120,8 @@ namespace VideoClubManagement.UI.ArticleCasts
                         break;
                     case "editButton":
                         Hide();
+                        var articleCastEditForm = new ArticleCastEditForm(this, articleCastId);
+                        articleCastEditForm.Show();
                         break;
                     default:
                         break;

@@ -45,6 +45,8 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.createdDateLabel = new System.Windows.Forms.Label();
             this.personValueLabel = new System.Windows.Forms.Label();
             this.personLabel = new System.Windows.Forms.Label();
+            this.roleValueLabel = new System.Windows.Forms.Label();
+            this.roleLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // backToListButton
@@ -52,7 +54,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.backToListButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backToListButton.Image = global::VideoClubManagement.Properties.Resources.baseline_list_black_24dp;
             this.backToListButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.backToListButton.Location = new System.Drawing.Point(380, 378);
+            this.backToListButton.Location = new System.Drawing.Point(380, 418);
             this.backToListButton.Name = "backToListButton";
             this.backToListButton.Size = new System.Drawing.Size(192, 58);
             this.backToListButton.TabIndex = 41;
@@ -76,7 +78,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.isActiveCheckBox.AutoSize = true;
             this.isActiveCheckBox.Enabled = false;
             this.isActiveCheckBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isActiveCheckBox.Location = new System.Drawing.Point(781, 101);
+            this.isActiveCheckBox.Location = new System.Drawing.Point(600, 96);
             this.isActiveCheckBox.Name = "isActiveCheckBox";
             this.isActiveCheckBox.Size = new System.Drawing.Size(15, 14);
             this.isActiveCheckBox.TabIndex = 37;
@@ -86,7 +88,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.idLabel.AutoSize = true;
             this.idLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idLabel.Location = new System.Drawing.Point(28, 95);
+            this.idLabel.Location = new System.Drawing.Point(28, 90);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(30, 25);
             this.idLabel.TabIndex = 32;
@@ -96,7 +98,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.articleTypeValueLabel.AutoSize = true;
             this.articleTypeValueLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.articleTypeValueLabel.Location = new System.Drawing.Point(650, 181);
+            this.articleTypeValueLabel.Location = new System.Drawing.Point(650, 244);
             this.articleTypeValueLabel.Name = "articleTypeValueLabel";
             this.articleTypeValueLabel.Size = new System.Drawing.Size(0, 25);
             this.articleTypeValueLabel.TabIndex = 29;
@@ -105,7 +107,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.articleValueLabel.AutoSize = true;
             this.articleValueLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.articleValueLabel.Location = new System.Drawing.Point(118, 181);
+            this.articleValueLabel.Location = new System.Drawing.Point(118, 244);
             this.articleValueLabel.Name = "articleValueLabel";
             this.articleValueLabel.Size = new System.Drawing.Size(0, 25);
             this.articleValueLabel.TabIndex = 28;
@@ -114,7 +116,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.isActiveLabel.AutoSize = true;
             this.isActiveLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isActiveLabel.Location = new System.Drawing.Point(670, 95);
+            this.isActiveLabel.Location = new System.Drawing.Point(489, 90);
             this.isActiveLabel.Name = "isActiveLabel";
             this.isActiveLabel.Size = new System.Drawing.Size(105, 25);
             this.isActiveLabel.TabIndex = 27;
@@ -124,7 +126,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.articleTypeLabel.AutoSize = true;
             this.articleTypeLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.articleTypeLabel.Location = new System.Drawing.Point(489, 181);
+            this.articleTypeLabel.Location = new System.Drawing.Point(489, 244);
             this.articleTypeLabel.Name = "articleTypeLabel";
             this.articleTypeLabel.Size = new System.Drawing.Size(156, 25);
             this.articleTypeLabel.TabIndex = 24;
@@ -134,7 +136,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.idValueLabel.AutoSize = true;
             this.idValueLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idValueLabel.Location = new System.Drawing.Point(64, 95);
+            this.idValueLabel.Location = new System.Drawing.Point(64, 90);
             this.idValueLabel.Name = "idValueLabel";
             this.idValueLabel.Size = new System.Drawing.Size(0, 25);
             this.idValueLabel.TabIndex = 23;
@@ -143,7 +145,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.articleLabel.AutoSize = true;
             this.articleLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.articleLabel.Location = new System.Drawing.Point(28, 181);
+            this.articleLabel.Location = new System.Drawing.Point(28, 244);
             this.articleLabel.Name = "articleLabel";
             this.articleLabel.Size = new System.Drawing.Size(84, 25);
             this.articleLabel.TabIndex = 22;
@@ -153,7 +155,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.lastUpdatedValueDateLabel.AutoSize = true;
             this.lastUpdatedValueDateLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastUpdatedValueDateLabel.Location = new System.Drawing.Point(707, 267);
+            this.lastUpdatedValueDateLabel.Location = new System.Drawing.Point(707, 322);
             this.lastUpdatedValueDateLabel.Name = "lastUpdatedValueDateLabel";
             this.lastUpdatedValueDateLabel.Size = new System.Drawing.Size(0, 25);
             this.lastUpdatedValueDateLabel.TabIndex = 45;
@@ -162,7 +164,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.lastUpdatedDateLabel.AutoSize = true;
             this.lastUpdatedDateLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastUpdatedDateLabel.Location = new System.Drawing.Point(489, 267);
+            this.lastUpdatedDateLabel.Location = new System.Drawing.Point(489, 322);
             this.lastUpdatedDateLabel.Name = "lastUpdatedDateLabel";
             this.lastUpdatedDateLabel.Size = new System.Drawing.Size(212, 25);
             this.lastUpdatedDateLabel.TabIndex = 44;
@@ -172,7 +174,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.createdDateValueLabel.AutoSize = true;
             this.createdDateValueLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createdDateValueLabel.Location = new System.Drawing.Point(200, 267);
+            this.createdDateValueLabel.Location = new System.Drawing.Point(200, 322);
             this.createdDateValueLabel.Name = "createdDateValueLabel";
             this.createdDateValueLabel.Size = new System.Drawing.Size(0, 25);
             this.createdDateValueLabel.TabIndex = 43;
@@ -181,7 +183,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.createdDateLabel.AutoSize = true;
             this.createdDateLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createdDateLabel.Location = new System.Drawing.Point(28, 267);
+            this.createdDateLabel.Location = new System.Drawing.Point(28, 321);
             this.createdDateLabel.Name = "createdDateLabel";
             this.createdDateLabel.Size = new System.Drawing.Size(172, 25);
             this.createdDateLabel.TabIndex = 42;
@@ -191,7 +193,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.personValueLabel.AutoSize = true;
             this.personValueLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.personValueLabel.Location = new System.Drawing.Point(296, 95);
+            this.personValueLabel.Location = new System.Drawing.Point(117, 167);
             this.personValueLabel.Name = "personValueLabel";
             this.personValueLabel.Size = new System.Drawing.Size(0, 25);
             this.personValueLabel.TabIndex = 47;
@@ -200,17 +202,38 @@ namespace VideoClubManagement.UI.ArticleCasts
             // 
             this.personLabel.AutoSize = true;
             this.personLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.personLabel.Location = new System.Drawing.Point(200, 95);
+            this.personLabel.Location = new System.Drawing.Point(28, 167);
             this.personLabel.Name = "personLabel";
             this.personLabel.Size = new System.Drawing.Size(83, 25);
             this.personLabel.TabIndex = 46;
             this.personLabel.Text = "Persona";
             // 
+            // roleValueLabel
+            // 
+            this.roleValueLabel.AutoSize = true;
+            this.roleValueLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roleValueLabel.Location = new System.Drawing.Point(536, 167);
+            this.roleValueLabel.Name = "roleValueLabel";
+            this.roleValueLabel.Size = new System.Drawing.Size(0, 25);
+            this.roleValueLabel.TabIndex = 49;
+            // 
+            // roleLabel
+            // 
+            this.roleLabel.AutoSize = true;
+            this.roleLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roleLabel.Location = new System.Drawing.Point(489, 167);
+            this.roleLabel.Name = "roleLabel";
+            this.roleLabel.Size = new System.Drawing.Size(41, 25);
+            this.roleLabel.TabIndex = 48;
+            this.roleLabel.Text = "Rol";
+            // 
             // ArticleCastDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 456);
+            this.ClientSize = new System.Drawing.Size(952, 501);
+            this.Controls.Add(this.roleValueLabel);
+            this.Controls.Add(this.roleLabel);
             this.Controls.Add(this.personValueLabel);
             this.Controls.Add(this.personLabel);
             this.Controls.Add(this.lastUpdatedValueDateLabel);
@@ -255,5 +278,7 @@ namespace VideoClubManagement.UI.ArticleCasts
         private System.Windows.Forms.Label createdDateLabel;
         private System.Windows.Forms.Label personValueLabel;
         private System.Windows.Forms.Label personLabel;
+        private System.Windows.Forms.Label roleValueLabel;
+        private System.Windows.Forms.Label roleLabel;
     }
 }
