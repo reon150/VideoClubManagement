@@ -119,6 +119,11 @@ namespace VideoClubManagement.UI.Clients
                         var clientDetailsForm = new ClientDetailsForm(this, clientId);
                         clientDetailsForm.Show();
                         break;
+                    case "editButton":
+                        Hide();
+                        var clientEditForm = new ClientEditForm(this, clientId);
+                        clientEditForm.Show();
+                        break;
                     default:
                         break;
                 }

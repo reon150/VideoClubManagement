@@ -48,7 +48,6 @@ namespace VideoClubManagement.UI.Clients
             this.idLabel = new System.Windows.Forms.Label();
             this.creditLimitLabel = new System.Windows.Forms.Label();
             this.creditLimitValueLabel = new System.Windows.Forms.Label();
-            this.editClientButton = new System.Windows.Forms.Button();
             this.backToListButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -170,7 +169,7 @@ namespace VideoClubManagement.UI.Clients
             // 
             this.lastUpdatedValueDateLabel.AutoSize = true;
             this.lastUpdatedValueDateLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastUpdatedValueDateLabel.Location = new System.Drawing.Point(729, 282);
+            this.lastUpdatedValueDateLabel.Location = new System.Drawing.Point(729, 280);
             this.lastUpdatedValueDateLabel.Name = "lastUpdatedValueDateLabel";
             this.lastUpdatedValueDateLabel.Size = new System.Drawing.Size(0, 25);
             this.lastUpdatedValueDateLabel.TabIndex = 16;
@@ -235,25 +234,12 @@ namespace VideoClubManagement.UI.Clients
             this.creditLimitValueLabel.Size = new System.Drawing.Size(0, 25);
             this.creditLimitValueLabel.TabIndex = 20;
             // 
-            // editClientButton
-            // 
-            this.editClientButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editClientButton.Image = global::VideoClubManagement.Properties.Resources.edit_black_24dp;
-            this.editClientButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.editClientButton.Location = new System.Drawing.Point(749, 377);
-            this.editClientButton.Name = "editClientButton";
-            this.editClientButton.Size = new System.Drawing.Size(170, 58);
-            this.editClientButton.TabIndex = 22;
-            this.editClientButton.Text = "Editar cliente";
-            this.editClientButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editClientButton.UseVisualStyleBackColor = true;
-            // 
             // backToListButton
             // 
             this.backToListButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backToListButton.Image = global::VideoClubManagement.Properties.Resources.baseline_list_black_24dp;
             this.backToListButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.backToListButton.Location = new System.Drawing.Point(12, 377);
+            this.backToListButton.Location = new System.Drawing.Point(373, 386);
             this.backToListButton.Name = "backToListButton";
             this.backToListButton.Size = new System.Drawing.Size(192, 58);
             this.backToListButton.TabIndex = 21;
@@ -266,8 +252,7 @@ namespace VideoClubManagement.UI.Clients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 456);
-            this.Controls.Add(this.editClientButton);
+            this.ClientSize = new System.Drawing.Size(952, 456);
             this.Controls.Add(this.backToListButton);
             this.Controls.Add(this.creditLimitValueLabel);
             this.Controls.Add(this.creditLimitLabel);
@@ -320,6 +305,5 @@ namespace VideoClubManagement.UI.Clients
         private System.Windows.Forms.Label creditLimitLabel;
         private System.Windows.Forms.Label creditLimitValueLabel;
         private System.Windows.Forms.Button backToListButton;
-        private System.Windows.Forms.Button editClientButton;
     }
 }
