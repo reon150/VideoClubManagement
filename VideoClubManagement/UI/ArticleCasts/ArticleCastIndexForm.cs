@@ -194,5 +194,12 @@ namespace VideoClubManagement.UI.ArticleCasts
             if (Visible)
                 FillArticleCastDataGridView(1);
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var articleCastCreateForm = new ArticleCastCreateForm(this);
+            articleCastCreateForm.Show();
+        }
     }
 }
