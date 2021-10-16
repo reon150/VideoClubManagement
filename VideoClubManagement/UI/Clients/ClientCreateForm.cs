@@ -45,6 +45,7 @@ namespace VideoClubManagement.UI.Clients
 
         private void createClientButton_Click(object sender, EventArgs e)
         {
+
             var legalPersonTypeComboBoxSelectedItem = legalPersonTypeComboBox.SelectedItem;
             
             Enum.TryParse(legalPersonTypeComboBoxSelectedItem
@@ -57,7 +58,7 @@ namespace VideoClubManagement.UI.Clients
                 LastName = lastNameTextBox.Text,
                 TaxpayerIdentificationNumber = taxpayerIdentificationNumberTextBox.Text,
                 CreditCardNumber = creditCardNumberTextBox.Text,
-                CreditLimit = decimal.Parse(creditCardNumberTextBox.Text),
+                CreditLimit = decimal.Parse(creditLimitTextBox.Text),
                 LegalPersonTypeId = legalPersonTypeId,
                 IsActive = isActiveCheckBox.Checked
             };

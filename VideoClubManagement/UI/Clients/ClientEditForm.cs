@@ -77,12 +77,13 @@ namespace VideoClubManagement.UI.Clients
             var clientId = int.Parse(idValueLabel.Text);
             var client = _applicationDbContext.Clients.Where(c => c.Id == clientId).FirstOrDefault();
 
+
             client.Id = clientId;
             client.FirstName = firstNameTextBox.Text;
             client.LastName = lastNameTextBox.Text;
             client.TaxpayerIdentificationNumber = taxpayerIdentificationNumberTextBox.Text;
             client.CreditCardNumber = creditCardNumberTextBox.Text;
-            client.CreditLimit = decimal.Parse(creditCardNumberTextBox.Text);
+            client.CreditLimit = decimal.Parse(creditLimitTextBox.Text);
             client.LegalPersonTypeId = legalPersonTypeId;
             client.IsActive = isActiveCheckBox.Checked;
             

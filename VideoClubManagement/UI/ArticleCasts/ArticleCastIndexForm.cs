@@ -6,35 +6,36 @@ using System.Windows.Forms;
 using VideoClubManagement.Data;
 using VideoClubManagement.Data.Entities;
 
-namespace VideoClubManagement.UI.Clients
+namespace VideoClubManagement.UI.ArticleCasts
 {
-    public partial class ClientIndexForm : Form
+    public partial class ArticleCastIndexForm : Form
     {
         private readonly ApplicationDbContext _applicationDbContext = new ApplicationDbContext();
-        private IQueryable<Client> _clientsQuery; 
+        private IQueryable<ArticleCast> _articleCastQuery;
         private const int _pageSize = 15;
         private int _currentPage = 1;
 
-        public ClientIndexForm() => InitializeComponent();
+        public ArticleCastIndexForm() => InitializeComponent();
 
-        private void ClientIndexForm_Load(object sender, EventArgs e) =>
-            _clientsQuery = _applicationDbContext.Clients.AsQueryable();
-        
-        private void FillClientListDataGridView(int pageNumber)
+        private void ArticleCastIndexForm_Load(object sender, EventArgs e) => 
+            _articleCastQuery = _applicationDbContext.ArticleCasts.AsQueryable();
+
+        private void FillArticleCastDataGridView(int pageNumber)
         {
             int startIndex = _pageSize * (pageNumber - 1);
-            var clients = _clientsQuery.OrderByDescending(c => c.CreatedDate).Skip((pageNumber - 1) * _pageSize)
-                .Take(_pageSize).AsNoTracking().AsEnumerable();
+            var articleCasts = _articleCastQuery.OrderByDescending(c => c.CreatedDate).Skip((pageNumber - 1) * _pageSize).Take(_pageSize)
+                .Include(ac => ac.Article).Include(ac => ac.Cast).Include(ac => ac.Role)
+                .AsNoTracking().AsEnumerable();
 
-            clientListDataGridView.Rows.Clear();
+            articleCastsDataGridView.Rows.Clear();
 
-            foreach (var client in clients)
+            foreach (var articleCast in articleCasts)
             {
-                clientListDataGridView.Rows.Add(client.Id,
-                    client.FirstName,
-                    client.LastName,
-                    client.TaxpayerIdentificationNumber,
-                    client.IsActive);
+                articleCastsDataGridView.Rows.Add(articleCast.Id,
+                    articleCast.Article.Title,
+                    $"{articleCast.Cast.FirstName} {articleCast.Cast.LastName}",
+                    articleCast.Role.Name,
+                    articleCast.IsActive);
             }
 
             currentPageTextBox.Text = pageNumber.ToString();
@@ -50,7 +51,7 @@ namespace VideoClubManagement.UI.Clients
             else
             {
                 _currentPage = 1;
-                FillClientListDataGridView(_currentPage);
+                FillArticleCastDataGridView(_currentPage);
             }
         }
 
@@ -64,7 +65,7 @@ namespace VideoClubManagement.UI.Clients
             else
             {
                 _currentPage += 1;
-                FillClientListDataGridView(_currentPage);
+                FillArticleCastDataGridView(_currentPage);
             }
         }
 
@@ -77,7 +78,7 @@ namespace VideoClubManagement.UI.Clients
             else
             {
                 _currentPage -= 1;
-                FillClientListDataGridView(_currentPage);
+                FillArticleCastDataGridView(_currentPage);
             }
         }
 
@@ -89,38 +90,34 @@ namespace VideoClubManagement.UI.Clients
             if (previousPage == _currentPage)
                 MessageBox.Show("Ya se encuentra en la ultima página.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                FillClientListDataGridView(_currentPage);
+                FillArticleCastDataGridView(_currentPage);
         }
 
         private int TotalNumberOfPages()
         {
-            int totalNumberOfClients = _clientsQuery.Count();
-            int totalNumberOfPages = totalNumberOfClients / _pageSize;
+            int totalNumberOfArticleCasts = _articleCastQuery.Count();
+            int totalNumberOfPages = totalNumberOfArticleCasts / _pageSize;
 
-            if (totalNumberOfClients % _pageSize != 0)
+            if (totalNumberOfArticleCasts % _pageSize != 0)
                 totalNumberOfPages++;
             return totalNumberOfPages;
         }
 
-        private void clientListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void articleCastsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex >= 0)
             {
-                int clientId = (int)clientListDataGridView[0, e.RowIndex].Value;
-                switch (clientListDataGridView.Columns[e.ColumnIndex].Name)
+                int articleCastId = (int)articleCastsDataGridView[0, e.RowIndex].Value;
+                switch (articleCastsDataGridView.Columns[e.ColumnIndex].Name)
                 {
                     case "deleteButton":
-                        DeleteClient(clientId);
+                        DeleteArticleCast(articleCastId);
                         break;
                     case "detailsButton":
                         Hide();
-                        var clientDetailsForm = new ClientDetailsForm(this, clientId);
-                        clientDetailsForm.Show();
                         break;
                     case "editButton":
                         Hide();
-                        var clientEditForm = new ClientEditForm(this, clientId);
-                        clientEditForm.Show();
                         break;
                     default:
                         break;
@@ -130,29 +127,31 @@ namespace VideoClubManagement.UI.Clients
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            _clientsQuery = _applicationDbContext.Clients.Where(c => c.Id.ToString().Contains(searchTextBox.Text)
-                || c.FirstName.Contains(searchTextBox.Text)
-                || c.LastName.Contains(searchTextBox.Text)
-                || c.TaxpayerIdentificationNumber.Contains(searchTextBox.Text));
+            _articleCastQuery = _applicationDbContext.ArticleCasts.Where(c => c.Id.ToString().Contains(searchTextBox.Text)
+                || c.Article.Title.Contains(searchTextBox.Text)
+                || c.Cast.FirstName.Contains(searchTextBox.Text)
+                || c.Cast.LastName.Contains(searchTextBox.Text)
+                || c.Role.Name.Contains(searchTextBox.Text));
 
-            if (onlyShowActivesCheckBox.Checked) _clientsQuery = _clientsQuery.Where(c => c.IsActive);
-            FillClientListDataGridView(1);
+            if (onlyShowActivesCheckBox.Checked) _articleCastQuery = _articleCastQuery.Where(c => c.IsActive);
+            FillArticleCastDataGridView(1);
         }
 
-        private void DeleteClient(int id)
+        private void DeleteArticleCast(int id)
         {
-            var client = _applicationDbContext.Clients.SingleOrDefault(x => x.Id == id);
-            var delete = MessageBox.Show($"¿Estas seguro que deseas eliminar cliente { client.FirstName } { client.LastName }?", 
+            
+            var delete = MessageBox.Show($"¿Estas seguro que deseas eliminar este registro?",
                 "Adventencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
 
             if (delete)
             {
-                _applicationDbContext.Clients.Remove(client);
+                var articleCast = _applicationDbContext.ArticleCasts.SingleOrDefault(x => x.Id == id);
+                _applicationDbContext.ArticleCasts.Remove(articleCast);
                 _applicationDbContext.SaveChanges();
                 onlyShowActivesCheckBox.Checked = false;
                 searchTextBox.Text = "";
                 _currentPage = 1;
-                FillClientListDataGridView(_currentPage);
+                FillArticleCastDataGridView(_currentPage);
             }
         }
 
@@ -182,23 +181,16 @@ namespace VideoClubManagement.UI.Clients
                 }
                 else
                 {
-                    FillClientListDataGridView(_currentPage = page);
-                }  
+                    FillArticleCastDataGridView(_currentPage = page);
+                }
             }
-        }
-
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            Hide();
-            var clientCreateForm = new ClientCreateForm(this);
-            clientCreateForm.Show();
         }
 
         protected override void OnVisibleChanged(EventArgs e)
         {
             base.OnVisibleChanged(e);
             if (Visible)
-                FillClientListDataGridView(1);
+                FillArticleCastDataGridView(1);
         }
     }
 }
