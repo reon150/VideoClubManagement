@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
 using VideoClubManagement.Data.Entities;
 
-namespace VideoClubManagement.UI.ArticleCasts
+namespace VideoClubManagement.UI.ArticleLendings
 {
-    public partial class ArticleCastCreateForm : Form
+    public partial class ArticleLendingCreateForm : Form
     {
         private readonly ApplicationDbContext _applicationDbContext = new ApplicationDbContext();
         private System.Timers.Timer _timer = new System.Timers.Timer(1000);
@@ -16,7 +21,7 @@ namespace VideoClubManagement.UI.ArticleCasts
         private bool _backToList = false;
         private bool _changesSaved = false;
 
-        public ArticleCastCreateForm(Form parent)
+        public ArticleLendingCreateForm(Form parent)
         {
             _parent = parent;
             InitializeComponent();
@@ -35,29 +40,29 @@ namespace VideoClubManagement.UI.ArticleCasts
 
         private void SetComboBoxes()
         {
-            SetCastComboBox();
-            SetRoleComboBox();
+            SetEmployeeComboBox();
+            SetClientComboBox();
             SetArticleComboBox();
         }
 
-        private void SetCastComboBox()
+        private void SetEmployeeComboBox()
         {
-            var casts = _applicationDbContext.Casts.AsEnumerable();
-            castComboBox.DisplayMember = "Name";
-            castComboBox.ValueMember = "Id";
-            foreach (var cast in casts)
-                castComboBox.Items.Add(new { Id = cast.Id, Name = $"{ cast.FirstName } { cast.LastName }" });
-            castComboBox.SelectedIndex = 0;
+            var employees = _applicationDbContext.Employees.AsEnumerable();
+            employeeComboBox.DisplayMember = "Name";
+            employeeComboBox.ValueMember = "Id";
+            foreach (var employee in employees)
+                employeeComboBox.Items.Add(new { Id = employee.Id, Name = $"{ employee.FirstName } { employee.LastName }" });
+            employeeComboBox.SelectedIndex = 0;
         }
 
-        private void SetRoleComboBox()
+        private void SetClientComboBox()
         {
-            var roles = _applicationDbContext.Roles.AsEnumerable();
-            roleComboBox.DisplayMember = "Name";
-            roleComboBox.ValueMember = "Id";
-            foreach (var role in roles)
-                roleComboBox.Items.Add(new { Id = role.Id, Name = $"{ role.Name }" });
-            roleComboBox.SelectedIndex = 0;
+            var clients = _applicationDbContext.Clients.AsEnumerable();
+            clientComboBox.DisplayMember = "Name";
+            employeeComboBox.ValueMember = "Id";
+            foreach (var client in clients)
+                clientComboBox.Items.Add(new { Id = client.Id, Name = $"{ client.FirstName } { client.LastName }" });
+            clientComboBox.SelectedIndex = 0;
         }
 
         private void SetArticleComboBox()
@@ -70,20 +75,25 @@ namespace VideoClubManagement.UI.ArticleCasts
             articleComboBox.SelectedIndex = 0;
         }
 
-        private void createArticleCastButton_Click(object sender, EventArgs e)
+        private void createClientButton_Click(object sender, EventArgs e)
         {
-            var castComboBoxSelectedItem = castComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(castComboBox.SelectedItem, null);
-            var roleComboBoxSelectedItem = roleComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(roleComboBox.SelectedItem, null);
+            var employeeComboBoxSelectedItem = employeeComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(employeeComboBox.SelectedItem, null);
+            var clientComboBoxSelectedItem = clientComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(clientComboBox.SelectedItem, null);
             var articleComboBoxSelectedItem = articleComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(articleComboBox.SelectedItem, null);
 
-            var articleCast = new ArticleCast
+            var articleLending = new ArticleLending
             {
-                CastId = int.Parse(castComboBoxSelectedItem.ToString()),
-                RoleId = int.Parse(roleComboBoxSelectedItem.ToString()),
+                EmployeeId = int.Parse(employeeComboBoxSelectedItem.ToString()),
+                ClientId = int.Parse(clientComboBoxSelectedItem.ToString()),
                 ArticleId = int.Parse(articleComboBoxSelectedItem.ToString()),
-                IsActive = isActiveCheckBox.Checked
+                AmountPerDay = decimal.Parse(amountPerDayTextBox.Text),
+                DueDate = dueDateDateTimePicker.Value.Date,
+                Comment = commentTextBox.Text,
+                IsActive = isActiveCheckBox.Checked,
+                ReturnDate = null
             };
-            _applicationDbContext.ArticleCasts.Add(articleCast);
+
+            _applicationDbContext.ArticleLendings.Add(articleLending);
             _applicationDbContext.SaveChanges();
 
             _changesSaved = true;

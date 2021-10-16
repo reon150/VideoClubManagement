@@ -120,6 +120,12 @@
     <Compile Include="UI\ArticleCasts\ArticleCastIndexForm.Designer.cs">
       <DependentUpon>ArticleCastIndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingCreateForm.Designer.cs">
+      <DependentUpon>ArticleLendingCreateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ArticleLendings\ArticleLendingDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ArticleCasts\ArticleCastIndexForm.resx">
       <DependentUpon>ArticleCastIndexForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleLendings\ArticleLendingCreateForm.resx">
+      <DependentUpon>ArticleLendingCreateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ArticleLendings\ArticleLendingDetailsForm.resx">
       <DependentUpon>ArticleLendingDetailsForm.cs</DependentUpon>

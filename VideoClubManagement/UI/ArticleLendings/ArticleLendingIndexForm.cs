@@ -46,11 +46,6 @@ namespace VideoClubManagement.UI.ArticleLendings
             lastPageTextBox.Text = TotalNumberOfPages().ToString();
         }
 
-        private void addButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void searchButton_Click(object sender, EventArgs e)
         {
             _articleLendingQuery = _applicationDbContext.ArticleLendings.Where(c => c.Id.ToString().Contains(searchTextBox.Text)
@@ -202,6 +197,13 @@ namespace VideoClubManagement.UI.ArticleLendings
             base.OnVisibleChanged(e);
             if (Visible)
                 FillArticleLendingDataGridView(1);
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var articleLendingCreateForm = new ArticleLendingCreateForm(this);
+            articleLendingCreateForm.Show();
         }
     }
 }
