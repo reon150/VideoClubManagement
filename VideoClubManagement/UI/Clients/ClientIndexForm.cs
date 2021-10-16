@@ -37,7 +37,11 @@ namespace VideoClubManagement.UI.Clients
                     client.IsActive);
             }
 
-            currentPageTextBox.Text = pageNumber.ToString();
+            if (clients.Count() > 0)
+                currentPageTextBox.Text = pageNumber.ToString();
+            else
+                currentPageTextBox.Text = "";
+
             lastPageTextBox.Text = TotalNumberOfPages().ToString();
         }
 

@@ -38,7 +38,11 @@ namespace VideoClubManagement.UI.ArticleCasts
                     articleCast.IsActive);
             }
 
-            currentPageTextBox.Text = pageNumber.ToString();
+            if (articleCasts.Count() > 0)
+                currentPageTextBox.Text = pageNumber.ToString();
+            else
+                currentPageTextBox.Text = "";
+
             lastPageTextBox.Text = TotalNumberOfPages().ToString();
         }
 
