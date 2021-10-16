@@ -200,6 +200,7 @@ namespace VideoClubManagement.UI.Clients
             this.addButton.TabIndex = 3;
             this.addButton.Text = "Agregar nuevo cliente";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // previousButton
             // 
@@ -386,6 +387,7 @@ namespace VideoClubManagement.UI.Clients
             this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.clientsLabel);
             this.Controls.Add(this.clientListDataGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ClientIndexForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -187,5 +187,12 @@ namespace VideoClubManagement.UI.Clients
                 }  
             }
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var clientCreateForm = new ClientCreateForm(this);
+            clientCreateForm.Show();
+        }
     }
 }

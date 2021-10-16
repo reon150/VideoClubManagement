@@ -9,7 +9,7 @@ namespace VideoClubManagement.UI.Clients
 {
     public partial class ClientDetailsForm : Form
     {
-        Form _parent;
+        private readonly Form _parent;
         private readonly ApplicationDbContext _applicationDbContext = new ApplicationDbContext();
         private bool _backToList = false;
 
@@ -33,8 +33,8 @@ namespace VideoClubManagement.UI.Clients
             taxpayerIdentificationNumberValueLabel.Text = client.TaxpayerIdentificationNumber;
             creditCardNumberValueLabel.Text = client.CreditCardNumber;
             creditLimitValueLabel.Text = client.CreditLimit.ToString();
-            createdDateValueLabel.Text = client.CreatedDate.ToString("dd/MM/yyyy hh:mm:ss");
-            lastUpdatedValueDateLabel.Text = client.LastUpdatedDate.ToString("dd/MM/yyyy hh:mm:ss");
+            createdDateValueLabel.Text = client.CreatedDate.ToString("dd/MM/yyyy hh:mm:ss tt");
+            lastUpdatedValueDateLabel.Text = client.LastUpdatedDate.ToString("dd/MM/yyyy hh:mm:ss tt");
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

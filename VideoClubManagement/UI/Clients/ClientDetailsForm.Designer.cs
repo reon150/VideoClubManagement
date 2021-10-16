@@ -188,6 +188,7 @@ namespace VideoClubManagement.UI.Clients
             // isActiveCheckBox
             // 
             this.isActiveCheckBox.AutoSize = true;
+            this.isActiveCheckBox.Enabled = false;
             this.isActiveCheckBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.isActiveCheckBox.Location = new System.Drawing.Point(780, 109);
             this.isActiveCheckBox.Name = "isActiveCheckBox";
@@ -287,6 +288,8 @@ namespace VideoClubManagement.UI.Clients
             this.Controls.Add(this.taxpayerIdentificationNumberLabel);
             this.Controls.Add(this.idValueLabel);
             this.Controls.Add(this.fullNameLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ClientDetailsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalles de cliente";

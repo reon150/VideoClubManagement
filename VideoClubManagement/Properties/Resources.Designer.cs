@@ -59,20 +59,27 @@ namespace VideoClubManagement.Properties {
                 resourceCulture = value;
             }
         }
-
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap baseline_list_black_24dp
-        {
-            get
-            {
+        internal static System.Drawing.Bitmap baseline_add_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_add_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap baseline_list_black_24dp {
+            get {
                 object obj = ResourceManager.GetObject("baseline_list_black_24dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
