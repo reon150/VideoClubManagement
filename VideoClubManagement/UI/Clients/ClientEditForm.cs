@@ -5,7 +5,6 @@ using System.Linq;
 using System.Timers;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.Data.Entities;
 using VideoClubManagement.Data.Enums;
 
 namespace VideoClubManagement.UI.Clients

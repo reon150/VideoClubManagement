@@ -115,6 +115,8 @@ namespace VideoClubManagement.UI.ArticleCasts
                         break;
                     case "detailsButton":
                         Hide();
+                        var articleCastDetailsForm = new ArticleCastDetailsForm(this, articleCastId);
+                        articleCastDetailsForm.Show();
                         break;
                     case "editButton":
                         Hide();
