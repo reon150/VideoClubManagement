@@ -30,6 +30,7 @@ namespace VideoClubManagement.UI.Employee
         private void InitializeComponent()
         {
             this.insertPanel = new System.Windows.Forms.Panel();
+            this.employeeLabel = new System.Windows.Forms.Label();
             this.shiftworkComboBox = new System.Windows.Forms.ComboBox();
             this.enteringDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.shiftworkLabel = new System.Windows.Forms.Label();
@@ -43,21 +44,21 @@ namespace VideoClubManagement.UI.Employee
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.dataPanel = new System.Windows.Forms.Panel();
+            this.employeeDataGridView = new System.Windows.Forms.DataGridView();
             this.actionPanel = new System.Windows.Forms.Panel();
-            this.searchPanel = new System.Windows.Forms.Panel();
-            this.addButton = new System.Windows.Forms.Button();
-            this.updateButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.searchButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
+            this.searchPanel = new System.Windows.Forms.Panel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.employeeLabel = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             this.insertPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commissionNumericUpDown)).BeginInit();
             this.dataPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).BeginInit();
             this.actionPanel.SuspendLayout();
             this.searchPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // insertPanel
@@ -79,6 +80,15 @@ namespace VideoClubManagement.UI.Employee
             this.insertPanel.Name = "insertPanel";
             this.insertPanel.Size = new System.Drawing.Size(366, 296);
             this.insertPanel.TabIndex = 0;
+            // 
+            // employeeLabel
+            // 
+            this.employeeLabel.AutoSize = true;
+            this.employeeLabel.Location = new System.Drawing.Point(118, 14);
+            this.employeeLabel.Name = "employeeLabel";
+            this.employeeLabel.Size = new System.Drawing.Size(112, 13);
+            this.employeeLabel.TabIndex = 18;
+            this.employeeLabel.Text = "Gestión de empleados";
             // 
             // shiftworkComboBox
             // 
@@ -180,11 +190,21 @@ namespace VideoClubManagement.UI.Employee
             // 
             // dataPanel
             // 
-            this.dataPanel.Controls.Add(this.dataGridView1);
+            this.dataPanel.Controls.Add(this.employeeDataGridView);
             this.dataPanel.Location = new System.Drawing.Point(392, 109);
             this.dataPanel.Name = "dataPanel";
             this.dataPanel.Size = new System.Drawing.Size(546, 296);
             this.dataPanel.TabIndex = 1;
+            // 
+            // employeeDataGridView
+            // 
+            this.employeeDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employeeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employeeDataGridView.Location = new System.Drawing.Point(5, 0);
+            this.employeeDataGridView.Name = "employeeDataGridView";
+            this.employeeDataGridView.Size = new System.Drawing.Size(538, 293);
+            this.employeeDataGridView.TabIndex = 0;
+            this.employeeDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.employeeDataGridView_CellMouseClick);
             // 
             // actionPanel
             // 
@@ -196,14 +216,25 @@ namespace VideoClubManagement.UI.Employee
             this.actionPanel.Size = new System.Drawing.Size(366, 66);
             this.actionPanel.TabIndex = 2;
             // 
-            // searchPanel
+            // deleteButton
             // 
-            this.searchPanel.Controls.Add(this.searchTextBox);
-            this.searchPanel.Controls.Add(this.searchButton);
-            this.searchPanel.Location = new System.Drawing.Point(392, 37);
-            this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(546, 66);
-            this.searchPanel.TabIndex = 3;
+            this.deleteButton.Location = new System.Drawing.Point(226, 0);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 2;
+            this.deleteButton.Text = "Eliminar";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // updateButton
+            // 
+            this.updateButton.Location = new System.Drawing.Point(145, 0);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.TabIndex = 1;
+            this.updateButton.Text = "Actualizar";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // addButton
             // 
@@ -216,25 +247,21 @@ namespace VideoClubManagement.UI.Employee
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // updateButton
+            // searchPanel
             // 
-            this.updateButton.Location = new System.Drawing.Point(145, 0);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(75, 23);
-            this.updateButton.TabIndex = 1;
-            this.updateButton.Text = "Actualizar";
-            this.updateButton.UseVisualStyleBackColor = true;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            this.searchPanel.Controls.Add(this.searchTextBox);
+            this.searchPanel.Controls.Add(this.searchButton);
+            this.searchPanel.Location = new System.Drawing.Point(392, 37);
+            this.searchPanel.Name = "searchPanel";
+            this.searchPanel.Size = new System.Drawing.Size(546, 66);
+            this.searchPanel.TabIndex = 3;
             // 
-            // deleteButton
+            // searchTextBox
             // 
-            this.deleteButton.Location = new System.Drawing.Point(226, 0);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteButton.TabIndex = 2;
-            this.deleteButton.Text = "Eliminar";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.searchTextBox.Location = new System.Drawing.Point(70, 27);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(236, 20);
+            this.searchTextBox.TabIndex = 19;
             // 
             // searchButton
             // 
@@ -244,51 +271,39 @@ namespace VideoClubManagement.UI.Employee
             this.searchButton.TabIndex = 3;
             this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // searchTextBox
+            // idTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(70, 27);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(236, 20);
-            this.searchTextBox.TabIndex = 19;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(538, 293);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // employeeLabel
-            // 
-            this.employeeLabel.AutoSize = true;
-            this.employeeLabel.Location = new System.Drawing.Point(118, 14);
-            this.employeeLabel.Name = "employeeLabel";
-            this.employeeLabel.Size = new System.Drawing.Size(112, 13);
-            this.employeeLabel.TabIndex = 18;
-            this.employeeLabel.Text = "Gestión de empleados";
+            this.idTextBox.Location = new System.Drawing.Point(3, 11);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(236, 20);
+            this.idTextBox.TabIndex = 19;
+            this.idTextBox.Visible = false;
             // 
             // employeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(928, 450);
+            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.searchPanel);
             this.Controls.Add(this.actionPanel);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.insertPanel);
             this.Name = "employeeForm";
             this.Text = "Gestión de empleados";
+            this.Load += new System.EventHandler(this.employeeForm_Load);
             this.insertPanel.ResumeLayout(false);
             this.insertPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commissionNumericUpDown)).EndInit();
             this.dataPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).EndInit();
             this.actionPanel.ResumeLayout(false);
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -313,9 +328,10 @@ namespace VideoClubManagement.UI.Employee
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView employeeDataGridView;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label employeeLabel;
+        private System.Windows.Forms.TextBox idTextBox;
     }
 }
