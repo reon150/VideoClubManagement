@@ -44,6 +44,7 @@ namespace VideoClubManagement.UI.Language
             this.lastnameLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             this.searchPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -62,19 +63,20 @@ namespace VideoClubManagement.UI.Language
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(5, 28);
+            this.searchTextBox.Location = new System.Drawing.Point(27, 29);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(236, 20);
             this.searchTextBox.TabIndex = 19;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(247, 26);
+            this.searchButton.Location = new System.Drawing.Point(269, 27);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 3;
             this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // actionPanel
             // 
@@ -88,48 +90,56 @@ namespace VideoClubManagement.UI.Language
             // 
             // deleteButton
             // 
+            this.deleteButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.deleteButton.Location = new System.Drawing.Point(226, 0);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Eliminar";
-            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // updateButton
             // 
+            this.updateButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.updateButton.Location = new System.Drawing.Point(145, 0);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 1;
             this.updateButton.Text = "Actualizar";
-            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.UseVisualStyleBackColor = false;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // addButton
             // 
+            this.addButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addButton.Location = new System.Drawing.Point(64, 0);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
             this.addButton.TabIndex = 0;
             this.addButton.Text = "Agregar";
-            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // dataPanel
             // 
             this.dataPanel.Controls.Add(this.languageDataGridView);
-            this.dataPanel.Location = new System.Drawing.Point(391, 84);
+            this.dataPanel.Location = new System.Drawing.Point(391, 67);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(372, 155);
+            this.dataPanel.Size = new System.Drawing.Size(372, 172);
             this.dataPanel.TabIndex = 5;
             // 
             // languageDataGridView
             // 
+            this.languageDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.languageDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.languageDataGridView.ColumnHeadersVisible = false;
-            this.languageDataGridView.Location = new System.Drawing.Point(5, 3);
+            this.languageDataGridView.Location = new System.Drawing.Point(5, 16);
             this.languageDataGridView.Name = "languageDataGridView";
-            this.languageDataGridView.Size = new System.Drawing.Size(360, 149);
+            this.languageDataGridView.Size = new System.Drawing.Size(360, 156);
             this.languageDataGridView.TabIndex = 0;
+            this.languageDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.languageDataGridView_CellMouseClick);
             // 
             // insertPanel
             // 
@@ -186,17 +196,27 @@ namespace VideoClubManagement.UI.Language
             this.nameLabel.TabIndex = 4;
             this.nameLabel.Text = "Nombre: ";
             // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(12, -1);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(10, 20);
+            this.idTextBox.TabIndex = 19;
+            this.idTextBox.Visible = false;
+            // 
             // languageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 259);
+            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.searchPanel);
             this.Controls.Add(this.actionPanel);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.insertPanel);
             this.Name = "languageForm";
             this.Text = "Gestión de idiomas";
+            this.Load += new System.EventHandler(this.languageForm_Load);
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();
             this.actionPanel.ResumeLayout(false);
@@ -205,6 +225,7 @@ namespace VideoClubManagement.UI.Language
             this.insertPanel.ResumeLayout(false);
             this.insertPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -225,5 +246,6 @@ namespace VideoClubManagement.UI.Language
         private System.Windows.Forms.Label lastnameLabel;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.TextBox idTextBox;
     }
 }
