@@ -315,7 +315,7 @@ namespace VideoClubManagement.UI.Article
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "MantenimientoArticulo";
-            this.Text = "MantenimientoArticulo";
+            this.Text = "articleMaintenance";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
