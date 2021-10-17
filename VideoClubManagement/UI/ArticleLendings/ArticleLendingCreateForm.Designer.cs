@@ -31,8 +31,6 @@ namespace VideoClubManagement.UI.ArticleLendings
         {
             this.currentDateTimeLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.createClientButton = new System.Windows.Forms.Button();
-            this.backToListButton = new System.Windows.Forms.Button();
             this.isActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.isActiveLabel = new System.Windows.Forms.Label();
             this.employeeComboBox = new System.Windows.Forms.ComboBox();
@@ -47,6 +45,8 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.dueDateLabel = new System.Windows.Forms.Label();
             this.commentLabel = new System.Windows.Forms.Label();
             this.commentTextBox = new System.Windows.Forms.TextBox();
+            this.createClientButton = new System.Windows.Forms.Button();
+            this.backToListButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // currentDateTimeLabel
@@ -67,34 +67,6 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.label1.Size = new System.Drawing.Size(251, 32);
             this.label1.TabIndex = 47;
             this.label1.Text = "Agregar nueva renta";
-            // 
-            // createClientButton
-            // 
-            this.createClientButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createClientButton.Image = global::VideoClubManagement.Properties.Resources.baseline_add_black_24dp;
-            this.createClientButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.createClientButton.Location = new System.Drawing.Point(578, 583);
-            this.createClientButton.Name = "createClientButton";
-            this.createClientButton.Size = new System.Drawing.Size(177, 58);
-            this.createClientButton.TabIndex = 53;
-            this.createClientButton.Text = "Agregar renta";
-            this.createClientButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.createClientButton.UseVisualStyleBackColor = true;
-            this.createClientButton.Click += new System.EventHandler(this.createClientButton_Click);
-            // 
-            // backToListButton
-            // 
-            this.backToListButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backToListButton.Image = global::VideoClubManagement.Properties.Resources.baseline_list_black_24dp;
-            this.backToListButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.backToListButton.Location = new System.Drawing.Point(28, 583);
-            this.backToListButton.Name = "backToListButton";
-            this.backToListButton.Size = new System.Drawing.Size(192, 58);
-            this.backToListButton.TabIndex = 52;
-            this.backToListButton.Text = "Volver a la lista";
-            this.backToListButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.backToListButton.UseVisualStyleBackColor = true;
-            this.backToListButton.Click += new System.EventHandler(this.backToListButton_Click);
             // 
             // isActiveCheckBox
             // 
@@ -184,7 +156,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.amountPerDayTextBox.Location = new System.Drawing.Point(585, 179);
             this.amountPerDayTextBox.Multiline = true;
             this.amountPerDayTextBox.Name = "amountPerDayTextBox";
-            this.amountPerDayTextBox.Size = new System.Drawing.Size(186, 33);
+            this.amountPerDayTextBox.Size = new System.Drawing.Size(203, 33);
             this.amountPerDayTextBox.TabIndex = 61;
             // 
             // amountPerDayLabel
@@ -235,6 +207,34 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.commentTextBox.Name = "commentTextBox";
             this.commentTextBox.Size = new System.Drawing.Size(590, 184);
             this.commentTextBox.TabIndex = 65;
+            // 
+            // createClientButton
+            // 
+            this.createClientButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createClientButton.Image = global::VideoClubManagement.Properties.Resources.baseline_add_black_24dp;
+            this.createClientButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.createClientButton.Location = new System.Drawing.Point(578, 583);
+            this.createClientButton.Name = "createClientButton";
+            this.createClientButton.Size = new System.Drawing.Size(177, 58);
+            this.createClientButton.TabIndex = 53;
+            this.createClientButton.Text = "Agregar renta";
+            this.createClientButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.createClientButton.UseVisualStyleBackColor = true;
+            this.createClientButton.Click += new System.EventHandler(this.createClientButton_Click);
+            // 
+            // backToListButton
+            // 
+            this.backToListButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backToListButton.Image = global::VideoClubManagement.Properties.Resources.baseline_list_black_24dp;
+            this.backToListButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.backToListButton.Location = new System.Drawing.Point(28, 583);
+            this.backToListButton.Name = "backToListButton";
+            this.backToListButton.Size = new System.Drawing.Size(192, 58);
+            this.backToListButton.TabIndex = 52;
+            this.backToListButton.Text = "Volver a la lista";
+            this.backToListButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.backToListButton.UseVisualStyleBackColor = true;
+            this.backToListButton.Click += new System.EventHandler(this.backToListButton_Click);
             // 
             // ArticleLendingCreateForm
             // 

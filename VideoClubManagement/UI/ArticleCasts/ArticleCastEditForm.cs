@@ -84,9 +84,7 @@ namespace VideoClubManagement.UI.ArticleCasts
 
         public void FillData(int id)
         {
-            var articleCast = _applicationDbContext.ArticleCasts.Where(c => c.Id == id)
-                .Include(ac => ac.Article).Include(ac => ac.Article.ArticleType).Include(ac => ac.Cast).Include(ac => ac.Role)
-                .FirstOrDefault();
+            var articleCast = _applicationDbContext.ArticleCasts.Where(c => c.Id == id).FirstOrDefault();
 
             SetComboBoxes(articleCast.CastId, articleCast.RoleId, articleCast.ArticleId);
 
