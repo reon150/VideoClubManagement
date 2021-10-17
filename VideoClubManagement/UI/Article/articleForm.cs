@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Article
 {
@@ -52,6 +53,12 @@ namespace VideoClubManagement.UI.Article
         private void addButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new MenuForm().Show();
         }
     }
 }

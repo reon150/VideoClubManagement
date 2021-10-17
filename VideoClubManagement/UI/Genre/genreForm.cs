@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Genre
 {
@@ -94,6 +95,12 @@ namespace VideoClubManagement.UI.Genre
             {
                 MessageBox.Show("Ha ocurrido un error al actualizar " + ex);
             }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new MenuForm().Show();
         }
     }
 }
