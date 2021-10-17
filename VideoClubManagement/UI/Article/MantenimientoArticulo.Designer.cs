@@ -30,31 +30,31 @@ namespace VideoClubManagement.UI.Article
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.languageTxt = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.genreTxt = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.typeTxt = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lateReturnFeeTxt = new System.Windows.Forms.TextBox();
+            this.rentPerDayTxt = new System.Windows.Forms.TextBox();
+            this.descriptionTxt = new System.Windows.Forms.TextBox();
+            this.nameTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.idLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.statusCheckBox = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.createdDateLabel = new System.Windows.Forms.Label();
+            this.lastUpdateDateLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -62,24 +62,24 @@ namespace VideoClubManagement.UI.Article
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.lastUpdateDateLabel);
+            this.panel1.Controls.Add(this.createdDateLabel);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.statusCheckBox);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.idLabel);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.comboBox3);
+            this.panel1.Controls.Add(this.languageTxt);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.genreTxt);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.typeTxt);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.lateReturnFeeTxt);
+            this.panel1.Controls.Add(this.rentPerDayTxt);
+            this.panel1.Controls.Add(this.descriptionTxt);
+            this.panel1.Controls.Add(this.nameTxt);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -89,13 +89,13 @@ namespace VideoClubManagement.UI.Article
             this.panel1.Size = new System.Drawing.Size(453, 500);
             this.panel1.TabIndex = 0;
             // 
-            // comboBox3
+            // languageTxt
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(190, 195);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(136, 21);
-            this.comboBox3.TabIndex = 13;
+            this.languageTxt.FormattingEnabled = true;
+            this.languageTxt.Location = new System.Drawing.Point(190, 195);
+            this.languageTxt.Name = "languageTxt";
+            this.languageTxt.Size = new System.Drawing.Size(136, 21);
+            this.languageTxt.TabIndex = 13;
             // 
             // label7
             // 
@@ -106,13 +106,13 @@ namespace VideoClubManagement.UI.Article
             this.label7.TabIndex = 12;
             this.label7.Text = "Idioma";
             // 
-            // comboBox2
+            // genreTxt
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(190, 146);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(136, 21);
-            this.comboBox2.TabIndex = 11;
+            this.genreTxt.FormattingEnabled = true;
+            this.genreTxt.Location = new System.Drawing.Point(190, 146);
+            this.genreTxt.Name = "genreTxt";
+            this.genreTxt.Size = new System.Drawing.Size(136, 21);
+            this.genreTxt.TabIndex = 11;
             // 
             // label6
             // 
@@ -123,13 +123,13 @@ namespace VideoClubManagement.UI.Article
             this.label6.TabIndex = 10;
             this.label6.Text = "Género";
             // 
-            // comboBox1
+            // typeTxt
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(190, 105);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(136, 21);
-            this.comboBox1.TabIndex = 9;
+            this.typeTxt.FormattingEnabled = true;
+            this.typeTxt.Location = new System.Drawing.Point(190, 105);
+            this.typeTxt.Name = "typeTxt";
+            this.typeTxt.Size = new System.Drawing.Size(136, 21);
+            this.typeTxt.TabIndex = 9;
             // 
             // label5
             // 
@@ -140,33 +140,33 @@ namespace VideoClubManagement.UI.Article
             this.label5.TabIndex = 8;
             this.label5.Text = "Tipo ";
             // 
-            // textBox4
+            // lateReturnFeeTxt
             // 
-            this.textBox4.Location = new System.Drawing.Point(190, 291);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(136, 20);
-            this.textBox4.TabIndex = 7;
+            this.lateReturnFeeTxt.Location = new System.Drawing.Point(190, 291);
+            this.lateReturnFeeTxt.Name = "lateReturnFeeTxt";
+            this.lateReturnFeeTxt.Size = new System.Drawing.Size(136, 20);
+            this.lateReturnFeeTxt.TabIndex = 7;
             // 
-            // textBox3
+            // rentPerDayTxt
             // 
-            this.textBox3.Location = new System.Drawing.Point(190, 248);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(136, 20);
-            this.textBox3.TabIndex = 6;
+            this.rentPerDayTxt.Location = new System.Drawing.Point(190, 248);
+            this.rentPerDayTxt.Name = "rentPerDayTxt";
+            this.rentPerDayTxt.Size = new System.Drawing.Size(136, 20);
+            this.rentPerDayTxt.TabIndex = 6;
             // 
-            // textBox2
+            // descriptionTxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(190, 69);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(246, 20);
-            this.textBox2.TabIndex = 5;
+            this.descriptionTxt.Location = new System.Drawing.Point(190, 69);
+            this.descriptionTxt.Name = "descriptionTxt";
+            this.descriptionTxt.Size = new System.Drawing.Size(246, 20);
+            this.descriptionTxt.TabIndex = 5;
             // 
-            // textBox1
+            // nameTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(190, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 20);
-            this.textBox1.TabIndex = 4;
+            this.nameTxt.Location = new System.Drawing.Point(190, 30);
+            this.nameTxt.Name = "nameTxt";
+            this.nameTxt.Size = new System.Drawing.Size(190, 20);
+            this.nameTxt.TabIndex = 4;
             // 
             // label4
             // 
@@ -207,32 +207,32 @@ namespace VideoClubManagement.UI.Article
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.cancelButton);
+            this.panel2.Controls.Add(this.addButton);
             this.panel2.Location = new System.Drawing.Point(12, 518);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(453, 79);
             this.panel2.TabIndex = 1;
             // 
-            // button2
+            // cancelButton
             // 
-            this.button2.BackgroundImage = global::VideoClubManagement.Properties.Resources.close_black_24dp;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(344, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(77, 50);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = true;
+            this.cancelButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.close_black_24dp;
+            this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cancelButton.Location = new System.Drawing.Point(344, 12);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(77, 50);
+            this.cancelButton.TabIndex = 1;
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // addButton
             // 
-            this.button1.BackgroundImage = global::VideoClubManagement.Properties.Resources.add_black_24dp;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(16, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 50);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
+            this.addButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.add_black_24dp;
+            this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addButton.Location = new System.Drawing.Point(16, 12);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(77, 50);
+            this.addButton.TabIndex = 0;
+            this.addButton.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -243,14 +243,14 @@ namespace VideoClubManagement.UI.Article
             this.label8.TabIndex = 14;
             this.label8.Text = "Id";
             // 
-            // label9
+            // idLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(187, 329);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "label9";
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(187, 329);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(35, 13);
+            this.idLabel.TabIndex = 15;
+            this.idLabel.Text = "label9";
             // 
             // label10
             // 
@@ -261,15 +261,15 @@ namespace VideoClubManagement.UI.Article
             this.label10.TabIndex = 16;
             this.label10.Text = "Estado";
             // 
-            // checkBox1
+            // statusCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(190, 365);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Esta Activo";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.statusCheckBox.AutoSize = true;
+            this.statusCheckBox.Location = new System.Drawing.Point(190, 365);
+            this.statusCheckBox.Name = "statusCheckBox";
+            this.statusCheckBox.Size = new System.Drawing.Size(80, 17);
+            this.statusCheckBox.TabIndex = 17;
+            this.statusCheckBox.Text = "Esta Activo";
+            this.statusCheckBox.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -289,23 +289,23 @@ namespace VideoClubManagement.UI.Article
             this.label12.TabIndex = 19;
             this.label12.Text = "Ultima modificación";
             // 
-            // label13
+            // createdDateLabel
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(187, 414);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 13);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "label13";
+            this.createdDateLabel.AutoSize = true;
+            this.createdDateLabel.Location = new System.Drawing.Point(187, 414);
+            this.createdDateLabel.Name = "createdDateLabel";
+            this.createdDateLabel.Size = new System.Drawing.Size(41, 13);
+            this.createdDateLabel.TabIndex = 20;
+            this.createdDateLabel.Text = "label13";
             // 
-            // label14
+            // lastUpdateDateLabel
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(187, 462);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
-            this.label14.TabIndex = 21;
-            this.label14.Text = "label14";
+            this.lastUpdateDateLabel.AutoSize = true;
+            this.lastUpdateDateLabel.Location = new System.Drawing.Point(187, 462);
+            this.lastUpdateDateLabel.Name = "lastUpdateDateLabel";
+            this.lastUpdateDateLabel.Size = new System.Drawing.Size(41, 13);
+            this.lastUpdateDateLabel.TabIndex = 21;
+            this.lastUpdateDateLabel.Text = "label14";
             // 
             // MantenimientoArticulo
             // 
@@ -330,26 +330,26 @@ namespace VideoClubManagement.UI.Article
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox languageTxt;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox genreTxt;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox typeTxt;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox lateReturnFeeTxt;
+        private System.Windows.Forms.TextBox rentPerDayTxt;
+        private System.Windows.Forms.TextBox descriptionTxt;
+        private System.Windows.Forms.TextBox nameTxt;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox statusCheckBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lastUpdateDateLabel;
+        private System.Windows.Forms.Label createdDateLabel;
     }
 }
