@@ -51,6 +51,7 @@ namespace VideoClubManagement.UI.ArticleType
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleTypeDataGridView)).BeginInit();
             this.panel3.SuspendLayout();
@@ -60,11 +61,12 @@ namespace VideoClubManagement.UI.ArticleType
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.backButton);
             this.panel1.Controls.Add(this.searchTxt);
             this.panel1.Controls.Add(this.searchButton);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(340, 82);
+            this.panel1.Size = new System.Drawing.Size(414, 82);
             this.panel1.TabIndex = 1;
             // 
             // searchTxt
@@ -76,12 +78,12 @@ namespace VideoClubManagement.UI.ArticleType
             // 
             // searchButton
             // 
-            this.searchButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_search_black_24dp;
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.searchButton.Location = new System.Drawing.Point(266, 11);
+            this.searchButton.Location = new System.Drawing.Point(252, 11);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(52, 50);
             this.searchButton.TabIndex = 0;
+            this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
@@ -244,12 +246,12 @@ namespace VideoClubManagement.UI.ArticleType
             // 
             // deleteButton
             // 
-            this.deleteButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.delete_black_24dp;
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.deleteButton.Location = new System.Drawing.Point(252, 14);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(66, 50);
             this.deleteButton.TabIndex = 2;
+            this.deleteButton.Text = "Retornar";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
@@ -266,26 +268,35 @@ namespace VideoClubManagement.UI.ArticleType
             // 
             // addButton
             // 
-            this.addButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.add_black_24dp;
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addButton.Location = new System.Drawing.Point(21, 14);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(66, 50);
             this.addButton.TabIndex = 0;
+            this.addButton.Text = "Agregar";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(328, 11);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(63, 50);
+            this.backButton.TabIndex = 2;
+            this.backButton.Text = "Retornar";
+            this.backButton.UseVisualStyleBackColor = true;
             // 
             // articleTypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 752);
+            this.ClientSize = new System.Drawing.Size(438, 745);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.articleTypeDataGridView);
             this.Controls.Add(this.panel1);
             this.Name = "articleTypeForm";
-            this.Text = "articletTypeForm";
+            this.Text = "articleTypeForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleTypeDataGridView)).EndInit();
@@ -320,5 +331,6 @@ namespace VideoClubManagement.UI.ArticleType
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lastUpdateDateLabel;
         private System.Windows.Forms.Label createdDateLabel;
+        private System.Windows.Forms.Button backButton;
     }
 }

@@ -52,6 +52,7 @@ namespace VideoClubManagement.UI.Genre
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.genreDataGridView)).BeginInit();
@@ -78,12 +79,12 @@ namespace VideoClubManagement.UI.Genre
             // 
             // searchButton
             // 
-            this.searchButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_search_black_24dp;
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.searchButton.Location = new System.Drawing.Point(320, 11);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(52, 50);
             this.searchButton.TabIndex = 0;
+            this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
@@ -245,22 +246,23 @@ namespace VideoClubManagement.UI.Genre
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.backButton);
             this.panel4.Controls.Add(this.deleteButton);
             this.panel4.Controls.Add(this.updateButton);
             this.panel4.Controls.Add(this.addButton);
             this.panel4.Location = new System.Drawing.Point(46, 716);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(340, 82);
+            this.panel4.Size = new System.Drawing.Size(430, 82);
             this.panel4.TabIndex = 2;
             // 
             // deleteButton
             // 
-            this.deleteButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.delete_black_24dp;
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deleteButton.Location = new System.Drawing.Point(252, 14);
+            this.deleteButton.Location = new System.Drawing.Point(247, 14);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(66, 50);
             this.deleteButton.TabIndex = 2;
+            this.deleteButton.Text = "Elimar";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
@@ -277,20 +279,29 @@ namespace VideoClubManagement.UI.Genre
             // 
             // addButton
             // 
-            this.addButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.add_black_24dp;
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addButton.Location = new System.Drawing.Point(21, 14);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(66, 50);
             this.addButton.TabIndex = 0;
+            this.addButton.Text = "Agregar";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(350, 14);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(63, 50);
+            this.backButton.TabIndex = 3;
+            this.backButton.Text = "Retornar";
+            this.backButton.UseVisualStyleBackColor = true;
             // 
             // genreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 820);
+            this.ClientSize = new System.Drawing.Size(498, 820);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -334,5 +345,6 @@ namespace VideoClubManagement.UI.Genre
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.CheckBox statusCheckbox;
+        private System.Windows.Forms.Button backButton;
     }
 }

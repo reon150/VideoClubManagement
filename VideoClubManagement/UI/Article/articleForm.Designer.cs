@@ -36,6 +36,7 @@ namespace VideoClubManagement.UI.Article
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.articleDataGridView = new System.Windows.Forms.DataGridView();
+            this.backButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleDataGridView)).BeginInit();
@@ -44,23 +45,24 @@ namespace VideoClubManagement.UI.Article
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.backButton);
             this.panel1.Controls.Add(this.addButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.searchButton);
             this.panel1.Controls.Add(this.searchTxt);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(556, 103);
+            this.panel1.Size = new System.Drawing.Size(642, 103);
             this.panel1.TabIndex = 0;
             // 
             // addButton
             // 
-            this.addButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.add_black_24dp;
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addButton.Location = new System.Drawing.Point(465, 20);
+            this.addButton.Location = new System.Drawing.Point(458, 20);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(63, 56);
             this.addButton.TabIndex = 3;
+            this.addButton.Text = "Agregar";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -75,12 +77,12 @@ namespace VideoClubManagement.UI.Article
             // 
             // searchButton
             // 
-            this.searchButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_search_black_24dp;
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.searchButton.Location = new System.Drawing.Point(355, 20);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(63, 56);
             this.searchButton.TabIndex = 2;
+            this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
@@ -98,7 +100,7 @@ namespace VideoClubManagement.UI.Article
             this.panel2.Controls.Add(this.articleDataGridView);
             this.panel2.Location = new System.Drawing.Point(12, 136);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(556, 392);
+            this.panel2.Size = new System.Drawing.Size(642, 392);
             this.panel2.TabIndex = 1;
             // 
             // articleDataGridView
@@ -109,14 +111,23 @@ namespace VideoClubManagement.UI.Article
             this.articleDataGridView.Location = new System.Drawing.Point(4, 4);
             this.articleDataGridView.Name = "articleDataGridView";
             this.articleDataGridView.ReadOnly = true;
-            this.articleDataGridView.Size = new System.Drawing.Size(545, 381);
+            this.articleDataGridView.Size = new System.Drawing.Size(631, 381);
             this.articleDataGridView.TabIndex = 0;
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(560, 20);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(63, 56);
+            this.backButton.TabIndex = 4;
+            this.backButton.Text = "Retornar";
+            this.backButton.UseVisualStyleBackColor = true;
             // 
             // articleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 535);
+            this.ClientSize = new System.Drawing.Size(666, 535);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "articleForm";
@@ -139,5 +150,6 @@ namespace VideoClubManagement.UI.Article
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView articleDataGridView;
+        private System.Windows.Forms.Button backButton;
     }
 }

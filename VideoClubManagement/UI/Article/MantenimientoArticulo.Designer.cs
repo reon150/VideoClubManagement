@@ -30,6 +30,14 @@ namespace VideoClubManagement.UI.Article
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lastUpdateDateLabel = new System.Windows.Forms.Label();
+            this.createdDateLabel = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.statusCheckBox = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.languageTxt = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.genreTxt = new System.Windows.Forms.ComboBox();
@@ -43,17 +51,10 @@ namespace VideoClubManagement.UI.Article
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.updateButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.idLabel = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.statusCheckBox = new System.Windows.Forms.CheckBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.createdDateLabel = new System.Windows.Forms.Label();
-            this.lastUpdateDateLabel = new System.Windows.Forms.Label();
-            this.updateButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +86,79 @@ namespace VideoClubManagement.UI.Article
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(453, 457);
             this.panel1.TabIndex = 0;
+            // 
+            // lastUpdateDateLabel
+            // 
+            this.lastUpdateDateLabel.AutoSize = true;
+            this.lastUpdateDateLabel.Location = new System.Drawing.Point(187, 427);
+            this.lastUpdateDateLabel.Name = "lastUpdateDateLabel";
+            this.lastUpdateDateLabel.Size = new System.Drawing.Size(41, 13);
+            this.lastUpdateDateLabel.TabIndex = 21;
+            this.lastUpdateDateLabel.Text = "label14";
+            // 
+            // createdDateLabel
+            // 
+            this.createdDateLabel.AutoSize = true;
+            this.createdDateLabel.Location = new System.Drawing.Point(187, 387);
+            this.createdDateLabel.Name = "createdDateLabel";
+            this.createdDateLabel.Size = new System.Drawing.Size(41, 13);
+            this.createdDateLabel.TabIndex = 20;
+            this.createdDateLabel.Text = "label13";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 427);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(98, 13);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Ultima modificación";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(13, 387);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(96, 13);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Fecha de creación";
+            // 
+            // statusCheckBox
+            // 
+            this.statusCheckBox.AutoSize = true;
+            this.statusCheckBox.Location = new System.Drawing.Point(190, 346);
+            this.statusCheckBox.Name = "statusCheckBox";
+            this.statusCheckBox.Size = new System.Drawing.Size(80, 17);
+            this.statusCheckBox.TabIndex = 17;
+            this.statusCheckBox.Text = "Esta Activo";
+            this.statusCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 346);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Estado";
+            // 
+            // idLabel
+            // 
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(187, 300);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(35, 13);
+            this.idLabel.TabIndex = 15;
+            this.idLabel.Text = "label9";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 300);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(16, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Id";
             // 
             // languageTxt
             // 
@@ -188,122 +262,59 @@ namespace VideoClubManagement.UI.Article
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.backButton);
             this.panel2.Controls.Add(this.updateButton);
             this.panel2.Controls.Add(this.deleteButton);
             this.panel2.Controls.Add(this.addButton);
             this.panel2.Location = new System.Drawing.Point(12, 475);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(453, 79);
+            this.panel2.Size = new System.Drawing.Size(535, 79);
             this.panel2.TabIndex = 1;
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.delete_black_24dp;
-            this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deleteButton.Location = new System.Drawing.Point(344, 12);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(77, 50);
-            this.deleteButton.TabIndex = 1;
-            this.deleteButton.UseVisualStyleBackColor = true;
-            // 
-            // addButton
-            // 
-            this.addButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.add_black_24dp;
-            this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addButton.Location = new System.Drawing.Point(16, 12);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(77, 50);
-            this.addButton.TabIndex = 0;
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(15, 300);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(16, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Id";
-            // 
-            // idLabel
-            // 
-            this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(187, 300);
-            this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(35, 13);
-            this.idLabel.TabIndex = 15;
-            this.idLabel.Text = "label9";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 346);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 13);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Estado";
-            // 
-            // statusCheckBox
-            // 
-            this.statusCheckBox.AutoSize = true;
-            this.statusCheckBox.Location = new System.Drawing.Point(190, 346);
-            this.statusCheckBox.Name = "statusCheckBox";
-            this.statusCheckBox.Size = new System.Drawing.Size(80, 17);
-            this.statusCheckBox.TabIndex = 17;
-            this.statusCheckBox.Text = "Esta Activo";
-            this.statusCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 387);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(96, 13);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Fecha de creación";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 427);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(98, 13);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "Ultima modificación";
-            // 
-            // createdDateLabel
-            // 
-            this.createdDateLabel.AutoSize = true;
-            this.createdDateLabel.Location = new System.Drawing.Point(187, 387);
-            this.createdDateLabel.Name = "createdDateLabel";
-            this.createdDateLabel.Size = new System.Drawing.Size(41, 13);
-            this.createdDateLabel.TabIndex = 20;
-            this.createdDateLabel.Text = "label13";
-            // 
-            // lastUpdateDateLabel
-            // 
-            this.lastUpdateDateLabel.AutoSize = true;
-            this.lastUpdateDateLabel.Location = new System.Drawing.Point(187, 427);
-            this.lastUpdateDateLabel.Name = "lastUpdateDateLabel";
-            this.lastUpdateDateLabel.Size = new System.Drawing.Size(41, 13);
-            this.lastUpdateDateLabel.TabIndex = 21;
-            this.lastUpdateDateLabel.Text = "label14";
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(173, 12);
+            this.updateButton.Location = new System.Drawing.Point(153, 12);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 50);
             this.updateButton.TabIndex = 2;
             this.updateButton.Text = "Actualizar";
             this.updateButton.UseVisualStyleBackColor = true;
             // 
+            // deleteButton
+            // 
+            this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.deleteButton.Location = new System.Drawing.Point(288, 12);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(77, 50);
+            this.deleteButton.TabIndex = 1;
+            this.deleteButton.Text = "Eliminar";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            // 
+            // addButton
+            // 
+            this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addButton.Location = new System.Drawing.Point(16, 12);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(77, 50);
+            this.addButton.TabIndex = 0;
+            this.addButton.Text = "Agregar";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(423, 12);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(77, 50);
+            this.backButton.TabIndex = 3;
+            this.backButton.Text = "Retornar";
+            this.backButton.UseVisualStyleBackColor = true;
+            // 
             // MantenimientoArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 557);
+            this.ClientSize = new System.Drawing.Size(559, 557);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "MantenimientoArticulo";
@@ -343,5 +354,6 @@ namespace VideoClubManagement.UI.Article
         private System.Windows.Forms.Label lastUpdateDateLabel;
         private System.Windows.Forms.Label createdDateLabel;
         private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.Button backButton;
     }
 }
