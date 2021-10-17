@@ -191,6 +191,11 @@
     </Compile>
     <Compile Include="UI\ShiftWork\shiftworkForm.Designer.cs">
       <DependentUpon>shiftworkForm.cs</DependentUpon>
+    <Compile Include="UI\General\MenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\General\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
@@ -248,6 +253,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ShiftWork\shiftworkForm.resx">
       <DependentUpon>shiftworkForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\General\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

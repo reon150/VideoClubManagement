@@ -189,6 +189,7 @@ namespace VideoClubManagement.UI.Clients
             this.backToMenuButton.TabIndex = 2;
             this.backToMenuButton.Text = "Regresar al menu";
             this.backToMenuButton.UseVisualStyleBackColor = true;
+            this.backToMenuButton.Click += new System.EventHandler(this.backToMenuButton_Click);
             // 
             // addButton
             // 

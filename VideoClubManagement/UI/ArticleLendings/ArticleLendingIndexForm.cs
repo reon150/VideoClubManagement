@@ -14,8 +14,14 @@ namespace VideoClubManagement.UI.ArticleLendings
         private IQueryable<ArticleLending> _articleLendingQuery;
         private const int _pageSize = 15;
         private int _currentPage = 1;
+        private readonly Form _parent;
+        private bool _backToList = false;
 
-        public ArticleLendingIndexForm() => InitializeComponent();
+        public ArticleLendingIndexForm(Form parent)
+        {
+            InitializeComponent();
+            _parent = parent;
+        }
 
         private void ArticleLendingIndexForm_Load(object sender, EventArgs e) =>
             _articleLendingQuery = _applicationDbContext.ArticleLendings.AsQueryable();
@@ -206,6 +212,29 @@ namespace VideoClubManagement.UI.ArticleLendings
             Hide();
             var articleLendingCreateForm = new ArticleLendingCreateForm(this);
             articleLendingCreateForm.Show();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+
+            if (_backToList)
+            {
+                _parent.Show();
+            }
+            else
+            {
+                _parent.Close();
+            }
+        }
+
+        private void backToMenuButton_Click(object sender, EventArgs e)
+        {
+            _backToList = true;
+            Close();
         }
     }
 }

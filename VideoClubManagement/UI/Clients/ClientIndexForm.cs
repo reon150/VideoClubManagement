@@ -14,8 +14,14 @@ namespace VideoClubManagement.UI.Clients
         private IQueryable<Client> _clientsQuery; 
         private const int _pageSize = 15;
         private int _currentPage = 1;
+        private readonly Form _parent;
+        private bool _backToList = false;
 
-        public ClientIndexForm() => InitializeComponent();
+        public ClientIndexForm(Form parent)
+        {
+            InitializeComponent();
+            _parent = parent;
+        }
 
         private void ClientIndexForm_Load(object sender, EventArgs e) =>
             _clientsQuery = _applicationDbContext.Clients.AsQueryable();
@@ -203,6 +209,29 @@ namespace VideoClubManagement.UI.Clients
             base.OnVisibleChanged(e);
             if (Visible)
                 FillClientListDataGridView(1);
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+
+            if (_backToList)
+            {
+                _parent.Show();
+            }
+            else
+            {
+                _parent.Close();
+            }
+        }
+
+        private void backToMenuButton_Click(object sender, EventArgs e)
+        {
+            _backToList = true;
+            Close();
         }
     }
 }
