@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VideoClubManagement.UI.ArticleType
 {
-    public partial class articletTypeForm : Form
+    public partial class articleTypeForm : Form
     {
-        public articletTypeForm()
+        public articleTypeForm()
         {
             InitializeComponent();
         }

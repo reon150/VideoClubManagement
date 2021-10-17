@@ -1,7 +1,7 @@
 ﻿
 namespace VideoClubManagement.UI.ArticleType
 {
-    partial class articletTypeForm
+    partial class articleTypeForm
     {
         /// <summary>
         /// Required designer variable.
