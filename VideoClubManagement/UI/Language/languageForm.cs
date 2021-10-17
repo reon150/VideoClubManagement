@@ -24,8 +24,13 @@ namespace VideoClubManagement.UI.Language
         {
             languageDataGridView.DataSource = applicationDbContext.Languages.ToList();
         }
-         
-         private void generalSearch() {
+        private void clear()
+        {
+            nameTextBox.Clear();
+            langCodeTextBox.Clear();
+            idTextBox.Clear();
+        }
+        private void generalSearch() {
             var Languages = from sh in applicationDbContext.Languages
                              where (sh.Description.ToString().StartsWith(searchTextBox.Text)
                                  || sh.ISOCode.ToString().StartsWith(searchTextBox.Text))
@@ -41,6 +46,7 @@ namespace VideoClubManagement.UI.Language
 
         private void languageForm_Load(object sender, EventArgs e)
         {
+            clear();
             refreshData();
         }
 
@@ -54,10 +60,12 @@ namespace VideoClubManagement.UI.Language
             try
             {
                 
-                applicationDbContext.Languages.Add(new Data.Entities.Language { Description = nameTextBox.Text, ISOCode = langCodeTextBox.Text });
+                applicationDbContext.Languages.Add (new Data.Entities.Language { ISOCode = langCodeTextBox.Text,Description = nameTextBox.Text });
                 applicationDbContext.SaveChanges();
                 MessageBox.Show("El registro se guardo con exito");
                 refreshData();
+                clear();
+
 
             }
             catch (Exception ex)
@@ -84,14 +92,12 @@ namespace VideoClubManagement.UI.Language
                 Data.Entities.Language language = applicationDbContext.Languages.Find(Int32.Parse(idTextBox.Text));
                 if (language != null)
                 {
-                    
                     language.Description = nameTextBox.Text;
                     language.ISOCode = langCodeTextBox.Text;
-                   
-
                 }
                 MessageBox.Show("Registro actualizado con exito.");
                 refreshData();
+                clear();
             }
             catch (Exception ex)
             {
@@ -114,6 +120,7 @@ namespace VideoClubManagement.UI.Language
                 }
                 MessageBox.Show("Registro eliminado con exito.");
                 refreshData();
+                clear();
             }
             catch (Exception ex)
             {
@@ -126,6 +133,11 @@ namespace VideoClubManagement.UI.Language
         {
             Hide();
             new MenuForm().Show();
+        }
+
+        private void langCodeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

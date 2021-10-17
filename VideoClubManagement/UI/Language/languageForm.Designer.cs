@@ -136,7 +136,6 @@ namespace VideoClubManagement.UI.Language
             // 
             this.languageDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.languageDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.languageDataGridView.ColumnHeadersVisible = false;
             this.languageDataGridView.Location = new System.Drawing.Point(5, 16);
             this.languageDataGridView.Name = "languageDataGridView";
             this.languageDataGridView.Size = new System.Drawing.Size(360, 156);
@@ -170,6 +169,7 @@ namespace VideoClubManagement.UI.Language
             this.langCodeTextBox.Name = "langCodeTextBox";
             this.langCodeTextBox.Size = new System.Drawing.Size(236, 20);
             this.langCodeTextBox.TabIndex = 7;
+            this.langCodeTextBox.TextChanged += new System.EventHandler(this.langCodeTextBox_TextChanged);
             // 
             // lastnameLabel
             // 
