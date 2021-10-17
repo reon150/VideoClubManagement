@@ -96,6 +96,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Cast\castForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Cast\castForm.Designer.cs">
+      <DependentUpon>castForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Employee\employeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Employee\employeeForm.Designer.cs">
+      <DependentUpon>employeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Language\languageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Language\languageForm.Designer.cs">
+      <DependentUpon>languageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Shiftwork\shiftworkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Shiftwork\shiftworkForm.Designer.cs">
+      <DependentUpon>shiftworkForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +127,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Cast\castForm.resx">
+      <DependentUpon>castForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Employee\employeeForm.resx">
+      <DependentUpon>employeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Language\languageForm.resx">
+      <DependentUpon>languageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Shiftwork\shiftworkForm.resx">
+      <DependentUpon>shiftworkForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
