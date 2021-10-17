@@ -191,6 +191,7 @@
     </Compile>
     <Compile Include="UI\ShiftWork\shiftworkForm.Designer.cs">
       <DependentUpon>shiftworkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\General\MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +254,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ShiftWork\shiftworkForm.resx">
       <DependentUpon>shiftworkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\General\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
