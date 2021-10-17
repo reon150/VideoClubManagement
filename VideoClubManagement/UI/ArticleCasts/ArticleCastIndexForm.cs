@@ -14,8 +14,14 @@ namespace VideoClubManagement.UI.ArticleCasts
         private IQueryable<ArticleCast> _articleCastQuery;
         private const int _pageSize = 15;
         private int _currentPage = 1;
+        private readonly Form _parent;
+        private bool _backToList = false;
 
-        public ArticleCastIndexForm() => InitializeComponent();
+        public ArticleCastIndexForm(Form parent)
+        {
+            InitializeComponent();
+            _parent = parent;
+        }
 
         private void ArticleCastIndexForm_Load(object sender, EventArgs e) => 
             _articleCastQuery = _applicationDbContext.ArticleCasts.AsQueryable();
@@ -201,11 +207,34 @@ namespace VideoClubManagement.UI.ArticleCasts
                 FillArticleCastDataGridView(1);
         }
 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+
+            if (_backToList)
+            {
+                _parent.Show();
+            }
+            else
+            {
+                _parent.Close();
+            }
+        }
+
         private void addButton_Click(object sender, EventArgs e)
         {
             Hide();
             var articleCastCreateForm = new ArticleCastCreateForm(this);
             articleCastCreateForm.Show();
+        }
+
+        private void backToMenuButton_Click(object sender, EventArgs e)
+        {
+            _backToList = true;
+            Close();
         }
     }
 }
