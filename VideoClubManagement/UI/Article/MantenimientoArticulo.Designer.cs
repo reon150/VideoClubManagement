@@ -51,10 +51,10 @@ namespace VideoClubManagement.UI.Article
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.backButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.backButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -271,6 +271,16 @@ namespace VideoClubManagement.UI.Article
             this.panel2.Size = new System.Drawing.Size(535, 79);
             this.panel2.TabIndex = 1;
             // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(423, 12);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(77, 50);
+            this.backButton.TabIndex = 3;
+            this.backButton.Text = "Retornar";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // updateButton
             // 
             this.updateButton.Location = new System.Drawing.Point(153, 12);
@@ -300,15 +310,6 @@ namespace VideoClubManagement.UI.Article
             this.addButton.Text = "Agregar";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(423, 12);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(77, 50);
-            this.backButton.TabIndex = 3;
-            this.backButton.Text = "Retornar";
-            this.backButton.UseVisualStyleBackColor = true;
             // 
             // MantenimientoArticulo
             // 

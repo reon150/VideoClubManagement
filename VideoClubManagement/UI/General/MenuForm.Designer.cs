@@ -51,6 +51,7 @@ namespace VideoClubManagement.UI.General
             this.articleButton.TabIndex = 0;
             this.articleButton.Text = "Artículo";
             this.articleButton.UseVisualStyleBackColor = true;
+            this.articleButton.Click += new System.EventHandler(this.articleButton_Click);
             // 
             // menuLabel
             // 
@@ -115,6 +116,7 @@ namespace VideoClubManagement.UI.General
             this.articleTypeButton.TabIndex = 6;
             this.articleTypeButton.Text = "Tipo de Artículo";
             this.articleTypeButton.UseVisualStyleBackColor = true;
+            this.articleTypeButton.Click += new System.EventHandler(this.articleTypeButton_Click);
             // 
             // clientButton
             // 
@@ -136,6 +138,7 @@ namespace VideoClubManagement.UI.General
             this.button8.TabIndex = 8;
             this.button8.Text = "Genero";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // languageButton
             // 

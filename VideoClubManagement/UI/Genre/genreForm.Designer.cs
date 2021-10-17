@@ -49,10 +49,10 @@ namespace VideoClubManagement.UI.Genre
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.backButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.backButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.genreDataGridView)).BeginInit();
@@ -255,6 +255,16 @@ namespace VideoClubManagement.UI.Genre
             this.panel4.Size = new System.Drawing.Size(430, 82);
             this.panel4.TabIndex = 2;
             // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(350, 14);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(63, 50);
+            this.backButton.TabIndex = 3;
+            this.backButton.Text = "Retornar";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // deleteButton
             // 
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -287,15 +297,6 @@ namespace VideoClubManagement.UI.Genre
             this.addButton.Text = "Agregar";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(350, 14);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(63, 50);
-            this.backButton.TabIndex = 3;
-            this.backButton.Text = "Retornar";
-            this.backButton.UseVisualStyleBackColor = true;
             // 
             // genreForm
             // 

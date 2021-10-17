@@ -30,13 +30,13 @@ namespace VideoClubManagement.UI.Article
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.backButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.articleDataGridView = new System.Windows.Forms.DataGridView();
-            this.backButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleDataGridView)).BeginInit();
@@ -54,6 +54,16 @@ namespace VideoClubManagement.UI.Article
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(642, 103);
             this.panel1.TabIndex = 0;
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(560, 20);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(63, 56);
+            this.backButton.TabIndex = 4;
+            this.backButton.Text = "Retornar";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // addButton
             // 
@@ -113,15 +123,6 @@ namespace VideoClubManagement.UI.Article
             this.articleDataGridView.ReadOnly = true;
             this.articleDataGridView.Size = new System.Drawing.Size(631, 381);
             this.articleDataGridView.TabIndex = 0;
-            // 
-            // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(560, 20);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(63, 56);
-            this.backButton.TabIndex = 4;
-            this.backButton.Text = "Retornar";
-            this.backButton.UseVisualStyleBackColor = true;
             // 
             // articleForm
             // 

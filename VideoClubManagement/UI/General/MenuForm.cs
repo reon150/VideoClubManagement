@@ -14,6 +14,9 @@ using VideoClubManagement.UI.Cast;
 using VideoClubManagement.UI.Language;
 using VideoClubManagement.UI.Employee;
 using VideoClubManagement.UI.Shiftwork;
+using VideoClubManagement.UI.Article;
+using VideoClubManagement.UI.Genre;
+using VideoClubManagement.UI.ArticleType;
 
 namespace VideoClubManagement.UI.General
 {
@@ -64,6 +67,24 @@ namespace VideoClubManagement.UI.General
         {
             Hide();
             new employeeForm().Show();
+        }
+
+        private void articleButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new articleForm().Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new genreForm().Show();
+        }
+
+        private void articleTypeButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new articleTypeForm().Show();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace VideoClubManagement.UI.ArticleType
         public articleTypeForm()
         {
             InitializeComponent();
+            refreshData();
         }
 
         private void refreshData()

@@ -30,6 +30,7 @@ namespace VideoClubManagement.UI.ArticleType
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.backButton = new System.Windows.Forms.Button();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.articleTypeDataGridView = new System.Windows.Forms.DataGridView();
@@ -51,7 +52,6 @@ namespace VideoClubManagement.UI.ArticleType
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.backButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleTypeDataGridView)).BeginInit();
             this.panel3.SuspendLayout();
@@ -68,6 +68,16 @@ namespace VideoClubManagement.UI.ArticleType
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(414, 82);
             this.panel1.TabIndex = 1;
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(328, 11);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(63, 50);
+            this.backButton.TabIndex = 2;
+            this.backButton.Text = "Retornar";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // searchTxt
             // 
@@ -251,7 +261,7 @@ namespace VideoClubManagement.UI.ArticleType
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(66, 50);
             this.deleteButton.TabIndex = 2;
-            this.deleteButton.Text = "Retornar";
+            this.deleteButton.Text = "Eliminar";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
@@ -276,15 +286,6 @@ namespace VideoClubManagement.UI.ArticleType
             this.addButton.Text = "Agregar";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(328, 11);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(63, 50);
-            this.backButton.TabIndex = 2;
-            this.backButton.Text = "Retornar";
-            this.backButton.UseVisualStyleBackColor = true;
             // 
             // articleTypeForm
             // 

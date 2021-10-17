@@ -52,8 +52,9 @@ namespace VideoClubManagement.UI.Article
 
         private void addButton_Click(object sender, EventArgs e)
         {
-
+            new MantenimientoArticulo().Show();
         }
+
 
         private void backButton_Click(object sender, EventArgs e)
         {
