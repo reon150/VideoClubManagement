@@ -30,28 +30,28 @@ namespace VideoClubManagement.UI.Genre
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.searchBoxTxt = new System.Windows.Forms.TextBox();
+            this.searchTxt = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.genreDataGridView = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.statusCheckbox = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lastUpdateDateLabel = new System.Windows.Forms.Label();
+            this.createdDateLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.descriptionTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nameTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.updateButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.createdDateLabel = new System.Windows.Forms.Label();
-            this.lastUpdateDateLabel = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.statusCheckbox = new System.Windows.Forms.CheckBox();
-            this.idLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.genreDataGridView)).BeginInit();
@@ -62,19 +62,30 @@ namespace VideoClubManagement.UI.Genre
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.searchBoxTxt);
+            this.panel1.Controls.Add(this.searchTxt);
             this.panel1.Controls.Add(this.searchButton);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(399, 82);
             this.panel1.TabIndex = 0;
             // 
-            // searchBoxTxt
+            // searchTxt
             // 
-            this.searchBoxTxt.Location = new System.Drawing.Point(21, 27);
-            this.searchBoxTxt.Name = "searchBoxTxt";
-            this.searchBoxTxt.Size = new System.Drawing.Size(271, 20);
-            this.searchBoxTxt.TabIndex = 1;
+            this.searchTxt.Location = new System.Drawing.Point(21, 27);
+            this.searchTxt.Name = "searchTxt";
+            this.searchTxt.Size = new System.Drawing.Size(271, 20);
+            this.searchTxt.TabIndex = 1;
+            // 
+            // searchButton
+            // 
+            this.searchButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_search_black_24dp;
+            this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.searchButton.Location = new System.Drawing.Point(320, 11);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(52, 50);
+            this.searchButton.TabIndex = 0;
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // panel2
             // 
@@ -116,6 +127,79 @@ namespace VideoClubManagement.UI.Genre
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(403, 347);
             this.panel3.TabIndex = 2;
+            // 
+            // idLabel
+            // 
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(158, 160);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(41, 13);
+            this.idLabel.TabIndex = 15;
+            this.idLabel.Text = "label10";
+            // 
+            // statusCheckbox
+            // 
+            this.statusCheckbox.AutoSize = true;
+            this.statusCheckbox.Location = new System.Drawing.Point(158, 201);
+            this.statusCheckbox.Name = "statusCheckbox";
+            this.statusCheckbox.Size = new System.Drawing.Size(80, 17);
+            this.statusCheckbox.TabIndex = 14;
+            this.statusCheckbox.Text = "Esta Activo";
+            this.statusCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 205);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Estado";
+            // 
+            // lastUpdateDateLabel
+            // 
+            this.lastUpdateDateLabel.AutoSize = true;
+            this.lastUpdateDateLabel.Location = new System.Drawing.Point(158, 298);
+            this.lastUpdateDateLabel.Name = "lastUpdateDateLabel";
+            this.lastUpdateDateLabel.Size = new System.Drawing.Size(35, 13);
+            this.lastUpdateDateLabel.TabIndex = 11;
+            this.lastUpdateDateLabel.Text = "label8";
+            // 
+            // createdDateLabel
+            // 
+            this.createdDateLabel.AutoSize = true;
+            this.createdDateLabel.Location = new System.Drawing.Point(158, 250);
+            this.createdDateLabel.Name = "createdDateLabel";
+            this.createdDateLabel.Size = new System.Drawing.Size(35, 13);
+            this.createdDateLabel.TabIndex = 10;
+            this.createdDateLabel.Text = "label7";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 298);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Ultima modificación";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 250);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Fecha de creación";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 160);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Id";
             // 
             // descriptionTxt
             // 
@@ -169,16 +253,6 @@ namespace VideoClubManagement.UI.Genre
             this.panel4.Size = new System.Drawing.Size(340, 82);
             this.panel4.TabIndex = 2;
             // 
-            // updateButton
-            // 
-            this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.updateButton.Location = new System.Drawing.Point(137, 14);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(66, 50);
-            this.updateButton.TabIndex = 1;
-            this.updateButton.Text = "Actualizar";
-            this.updateButton.UseVisualStyleBackColor = true;
-            // 
             // deleteButton
             // 
             this.deleteButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.delete_black_24dp;
@@ -188,6 +262,18 @@ namespace VideoClubManagement.UI.Genre
             this.deleteButton.Size = new System.Drawing.Size(66, 50);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // updateButton
+            // 
+            this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.updateButton.Location = new System.Drawing.Point(137, 14);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(66, 50);
+            this.updateButton.TabIndex = 1;
+            this.updateButton.Text = "Actualizar";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // addButton
             // 
@@ -198,89 +284,7 @@ namespace VideoClubManagement.UI.Genre
             this.addButton.Size = new System.Drawing.Size(66, 50);
             this.addButton.TabIndex = 0;
             this.addButton.UseVisualStyleBackColor = true;
-            // 
-            // searchButton
-            // 
-            this.searchButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_search_black_24dp;
-            this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.searchButton.Location = new System.Drawing.Point(320, 11);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(52, 50);
-            this.searchButton.TabIndex = 0;
-            this.searchButton.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 160);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Id";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 250);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Fecha de creación";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 298);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Ultima modificación";
-            // 
-            // createdDateLabel
-            // 
-            this.createdDateLabel.AutoSize = true;
-            this.createdDateLabel.Location = new System.Drawing.Point(158, 250);
-            this.createdDateLabel.Name = "createdDateLabel";
-            this.createdDateLabel.Size = new System.Drawing.Size(35, 13);
-            this.createdDateLabel.TabIndex = 10;
-            this.createdDateLabel.Text = "label7";
-            // 
-            // lastUpdateDateLabel
-            // 
-            this.lastUpdateDateLabel.AutoSize = true;
-            this.lastUpdateDateLabel.Location = new System.Drawing.Point(158, 298);
-            this.lastUpdateDateLabel.Name = "lastUpdateDateLabel";
-            this.lastUpdateDateLabel.Size = new System.Drawing.Size(35, 13);
-            this.lastUpdateDateLabel.TabIndex = 11;
-            this.lastUpdateDateLabel.Text = "label8";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 205);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Estado";
-            // 
-            // statusCheckbox
-            // 
-            this.statusCheckbox.AutoSize = true;
-            this.statusCheckbox.Location = new System.Drawing.Point(158, 201);
-            this.statusCheckbox.Name = "statusCheckbox";
-            this.statusCheckbox.Size = new System.Drawing.Size(80, 17);
-            this.statusCheckbox.TabIndex = 14;
-            this.statusCheckbox.Text = "Esta Activo";
-            this.statusCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // idLabel
-            // 
-            this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(158, 160);
-            this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(41, 13);
-            this.idLabel.TabIndex = 15;
-            this.idLabel.Text = "label10";
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // genreForm
             // 
@@ -310,7 +314,7 @@ namespace VideoClubManagement.UI.Genre
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox searchBoxTxt;
+        private System.Windows.Forms.TextBox searchTxt;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView genreDataGridView;
         private System.Windows.Forms.Label label2;
