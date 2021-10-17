@@ -293,6 +293,7 @@ namespace VideoClubManagement.UI.Genre
             this.Controls.Add(this.panel1);
             this.Name = "genreForm";
             this.Text = "genreForm";
+            this.Load += new System.EventHandler(this.genreForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

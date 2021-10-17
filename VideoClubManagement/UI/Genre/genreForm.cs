@@ -16,5 +16,10 @@ namespace VideoClubManagement.UI.Genre
         {
             InitializeComponent();
         }
+
+        private void genreForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
