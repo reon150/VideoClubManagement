@@ -96,6 +96,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\ArticleType\articleTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleType\articleTypeForm.Designer.cs">
+      <DependentUpon>articleTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Article\articleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Article\articleForm.Designer.cs">
+      <DependentUpon>articleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Article\MantenimientoArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Article\MantenimientoArticulo.Designer.cs">
+      <DependentUpon>MantenimientoArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Genre\genreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Genre\genreForm.Designer.cs">
+      <DependentUpon>genreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ArticleCasts\ArticleCastCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +230,18 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleType\articleTypeForm.resx">
+      <DependentUpon>articleTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Article\articleForm.resx">
+      <DependentUpon>articleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Article\MantenimientoArticulo.resx">
+      <DependentUpon>MantenimientoArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Genre\genreForm.resx">
+      <DependentUpon>genreForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ArticleCasts\ArticleCastCreateForm.resx">
       <DependentUpon>ArticleCastCreateForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,6 +309,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\add_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\view_black_24dp.png" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +324,7 @@
     <None Include="Resources\baseline_search_black_24dp.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\close_black_24dp.png" />
     <None Include="Resources\baseline_list_black_24dp.png" />
   </ItemGroup>
   <ItemGroup>
