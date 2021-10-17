@@ -53,6 +53,7 @@ namespace VideoClubManagement.UI.Employee
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.idTextBox = new System.Windows.Forms.TextBox();
+            this.backButton = new System.Windows.Forms.Button();
             this.insertPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commissionNumericUpDown)).BeginInit();
             this.dataPanel.SuspendLayout();
@@ -208,6 +209,7 @@ namespace VideoClubManagement.UI.Employee
             // 
             // actionPanel
             // 
+            this.actionPanel.Controls.Add(this.backButton);
             this.actionPanel.Controls.Add(this.deleteButton);
             this.actionPanel.Controls.Add(this.updateButton);
             this.actionPanel.Controls.Add(this.addButton);
@@ -281,6 +283,18 @@ namespace VideoClubManagement.UI.Employee
             this.idTextBox.TabIndex = 19;
             this.idTextBox.Visible = false;
             // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.backButton.Location = new System.Drawing.Point(145, 29);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 4;
+            this.backButton.Text = "Regresar";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // employeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,5 +347,6 @@ namespace VideoClubManagement.UI.Employee
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label employeeLabel;
         private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.Button backButton;
     }
 }

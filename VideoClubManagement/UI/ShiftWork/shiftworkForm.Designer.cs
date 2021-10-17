@@ -39,6 +39,7 @@ namespace VideoClubManagement.UI.Shiftwork
             this.dataPanel = new System.Windows.Forms.Panel();
             this.shiftworkDataGridView = new System.Windows.Forms.DataGridView();
             this.insertPanel = new System.Windows.Forms.Panel();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             this.startHourDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.shiftworkiniLabel = new System.Windows.Forms.Label();
             this.finishHourDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -46,7 +47,7 @@ namespace VideoClubManagement.UI.Shiftwork
             this.lastnameLabel = new System.Windows.Forms.Label();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.backButton = new System.Windows.Forms.Button();
             this.searchPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -82,6 +83,7 @@ namespace VideoClubManagement.UI.Shiftwork
             // 
             // actionPanel
             // 
+            this.actionPanel.Controls.Add(this.backButton);
             this.actionPanel.Controls.Add(this.deleteButton);
             this.actionPanel.Controls.Add(this.updateButton);
             this.actionPanel.Controls.Add(this.addButton);
@@ -131,6 +133,7 @@ namespace VideoClubManagement.UI.Shiftwork
             // 
             // shiftworkDataGridView
             // 
+            this.shiftworkDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.shiftworkDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.shiftworkDataGridView.Location = new System.Drawing.Point(5, 0);
             this.shiftworkDataGridView.Name = "shiftworkDataGridView";
@@ -153,6 +156,14 @@ namespace VideoClubManagement.UI.Shiftwork
             this.insertPanel.Name = "insertPanel";
             this.insertPanel.Size = new System.Drawing.Size(366, 186);
             this.insertPanel.TabIndex = 4;
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(0, 0);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(100, 20);
+            this.idTextBox.TabIndex = 20;
+            this.idTextBox.Visible = false;
             // 
             // startHourDateTimePicker
             // 
@@ -216,13 +227,17 @@ namespace VideoClubManagement.UI.Shiftwork
             this.nameLabel.TabIndex = 4;
             this.nameLabel.Text = "Nombre: ";
             // 
-            // idTextBox
+            // backButton
             // 
-            this.idTextBox.Location = new System.Drawing.Point(0, 0);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idTextBox.TabIndex = 20;
-            this.idTextBox.Visible = false;
+            this.backButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.backButton.Location = new System.Drawing.Point(145, 29);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 4;
+            this.backButton.Text = "Regresar";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // shiftworkForm
             // 
@@ -267,5 +282,6 @@ namespace VideoClubManagement.UI.Shiftwork
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.DateTimePicker startHourDateTimePicker;
         private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.Button backButton;
     }
 }

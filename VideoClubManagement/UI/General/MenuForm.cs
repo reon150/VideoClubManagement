@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using VideoClubManagement.UI.ArticleCasts;
 using VideoClubManagement.UI.ArticleLendings;
 using VideoClubManagement.UI.Clients;
+using VideoClubManagement.UI.Cast;
+using VideoClubManagement.UI.Language;
+using VideoClubManagement.UI.Employee;
+using VideoClubManagement.UI.Shiftwork;
 
 namespace VideoClubManagement.UI.General
 {
@@ -36,6 +40,30 @@ namespace VideoClubManagement.UI.General
         {
             Hide();
             new ClientIndexForm(this).Show();
+        }
+
+        private void languageButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new languageForm().Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new castForm().Show();
+        }
+
+        private void shiftworkButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new shiftworkForm().Show();
+        }
+
+        private void employeeButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new employeeForm().Show();
         }
     }
 }

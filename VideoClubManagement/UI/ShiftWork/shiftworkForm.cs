@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Shiftwork
 {
@@ -131,6 +132,11 @@ namespace VideoClubManagement.UI.Shiftwork
             }
 
         }
-        
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new MenuForm().Show();
+        }
     }
 }

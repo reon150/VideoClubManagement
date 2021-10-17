@@ -45,6 +45,7 @@ namespace VideoClubManagement.UI.Cast
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
+            this.backButton = new System.Windows.Forms.Button();
             this.searchPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -80,6 +81,7 @@ namespace VideoClubManagement.UI.Cast
             // 
             // actionPanel
             // 
+            this.actionPanel.Controls.Add(this.backButton);
             this.actionPanel.Controls.Add(this.deleteButton);
             this.actionPanel.Controls.Add(this.updateButton);
             this.actionPanel.Controls.Add(this.addButton);
@@ -201,6 +203,18 @@ namespace VideoClubManagement.UI.Cast
             this.idTextBox.TabIndex = 19;
             this.idTextBox.Visible = false;
             // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.backButton.Location = new System.Drawing.Point(145, 29);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 4;
+            this.backButton.Text = "Regresar";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // castForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,5 +258,6 @@ namespace VideoClubManagement.UI.Cast
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.Button backButton;
     }
 }

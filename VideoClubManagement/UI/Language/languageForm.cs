@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Language
 {
@@ -119,6 +120,12 @@ namespace VideoClubManagement.UI.Language
 
                 MessageBox.Show("Ha ocurrido un error al eliminar " + ex);
             }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new MenuForm().Show();
         }
     }
 }

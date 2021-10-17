@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Employee
 {
@@ -141,6 +142,12 @@ namespace VideoClubManagement.UI.Employee
                    enteringDateTimePicker.Text= employeeDataGridView.CurrentRow.Cells[4].Value.ToString();
                    shiftworkComboBox.SelectedValue = Int32.Parse(employeeDataGridView.CurrentRow.Cells[5].Value.ToString());
                    idTextBox.Text = employeeDataGridView.CurrentRow.Cells[5].Value.ToString();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new MenuForm().Show();
         }
     }
 }
