@@ -32,14 +32,14 @@ namespace VideoClubManagement.UI.General
             this.articleButton = new System.Windows.Forms.Button();
             this.menuLabel = new System.Windows.Forms.Label();
             this.articleLendingButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.castButton = new System.Windows.Forms.Button();
+            this.employeeButton = new System.Windows.Forms.Button();
             this.articleCastButton = new System.Windows.Forms.Button();
             this.articleTypeButton = new System.Windows.Forms.Button();
             this.clientButton = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.languageButton = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.shiftworkButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // articleButton
@@ -73,25 +73,27 @@ namespace VideoClubManagement.UI.General
             this.articleLendingButton.UseVisualStyleBackColor = true;
             this.articleLendingButton.Click += new System.EventHandler(this.articleLendingButton_Click);
             // 
-            // button3
+            // castButton
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(64, 347);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(241, 50);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Elenco";
-            this.button3.UseVisualStyleBackColor = true;
+            this.castButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.castButton.Location = new System.Drawing.Point(64, 347);
+            this.castButton.Name = "castButton";
+            this.castButton.Size = new System.Drawing.Size(241, 50);
+            this.castButton.TabIndex = 3;
+            this.castButton.Text = "Elenco";
+            this.castButton.UseVisualStyleBackColor = true;
+            this.castButton.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // employeeButton
             // 
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(64, 450);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(241, 50);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Empleado";
-            this.button4.UseVisualStyleBackColor = true;
+            this.employeeButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeButton.Location = new System.Drawing.Point(64, 450);
+            this.employeeButton.Name = "employeeButton";
+            this.employeeButton.Size = new System.Drawing.Size(241, 50);
+            this.employeeButton.TabIndex = 4;
+            this.employeeButton.Text = "Empleado";
+            this.employeeButton.UseVisualStyleBackColor = true;
+            this.employeeButton.Click += new System.EventHandler(this.employeeButton_Click);
             // 
             // articleCastButton
             // 
@@ -144,30 +146,32 @@ namespace VideoClubManagement.UI.General
             this.languageButton.TabIndex = 9;
             this.languageButton.Text = "Lenguaje";
             this.languageButton.UseVisualStyleBackColor = true;
+            this.languageButton.Click += new System.EventHandler(this.languageButton_Click);
             // 
-            // button10
+            // shiftworkButton
             // 
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(558, 244);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(241, 50);
-            this.button10.TabIndex = 10;
-            this.button10.Text = "Turnos de trabajo";
-            this.button10.UseVisualStyleBackColor = true;
+            this.shiftworkButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shiftworkButton.Location = new System.Drawing.Point(558, 244);
+            this.shiftworkButton.Name = "shiftworkButton";
+            this.shiftworkButton.Size = new System.Drawing.Size(241, 50);
+            this.shiftworkButton.TabIndex = 10;
+            this.shiftworkButton.Text = "Turnos de trabajo";
+            this.shiftworkButton.UseVisualStyleBackColor = true;
+            this.shiftworkButton.Click += new System.EventHandler(this.shiftworkButton_Click);
             // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 583);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.shiftworkButton);
             this.Controls.Add(this.languageButton);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.clientButton);
             this.Controls.Add(this.articleTypeButton);
             this.Controls.Add(this.articleCastButton);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.employeeButton);
+            this.Controls.Add(this.castButton);
             this.Controls.Add(this.articleLendingButton);
             this.Controls.Add(this.menuLabel);
             this.Controls.Add(this.articleButton);
@@ -186,13 +190,13 @@ namespace VideoClubManagement.UI.General
         private System.Windows.Forms.Button articleButton;
         private System.Windows.Forms.Label menuLabel;
         private System.Windows.Forms.Button articleLendingButton;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button castButton;
+        private System.Windows.Forms.Button employeeButton;
         private System.Windows.Forms.Button articleCastButton;
         private System.Windows.Forms.Button articleTypeButton;
         private System.Windows.Forms.Button clientButton;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button languageButton;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button shiftworkButton;
     }
 }

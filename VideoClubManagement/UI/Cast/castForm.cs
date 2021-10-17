@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Cast
 {
@@ -118,6 +119,12 @@ namespace VideoClubManagement.UI.Cast
             nameTextBox.Text = castDataGridView.CurrentRow.Cells[0].Value.ToString();
             lastnameTextBox.Text = castDataGridView.CurrentRow.Cells[1].Value.ToString();
             idTextBox.Text = castDataGridView.CurrentRow.Cells[2].Value.ToString();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new MenuForm().Show();
         }
     }
     
