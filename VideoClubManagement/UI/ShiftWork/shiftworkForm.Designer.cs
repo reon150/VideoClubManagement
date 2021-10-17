@@ -1,7 +1,7 @@
 ﻿
-namespace VideoClubManagement.UI.Language
+namespace VideoClubManagement.UI.Shiftwork
 {
-    partial class languageForm
+    partial class shiftworkForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,18 +37,20 @@ namespace VideoClubManagement.UI.Language
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.dataPanel = new System.Windows.Forms.Panel();
-            this.languageDataGridView = new System.Windows.Forms.DataGridView();
+            this.shiftworkDataGridView = new System.Windows.Forms.DataGridView();
             this.insertPanel = new System.Windows.Forms.Panel();
-            this.languageLabel = new System.Windows.Forms.Label();
-            this.langCodeTextBox = new System.Windows.Forms.TextBox();
+            this.startHourDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.shiftworkiniLabel = new System.Windows.Forms.Label();
+            this.finishHourDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.idnumberLabel = new System.Windows.Forms.Label();
             this.lastnameLabel = new System.Windows.Forms.Label();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.searchPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.languageDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftworkDataGridView)).BeginInit();
             this.insertPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,21 +58,21 @@ namespace VideoClubManagement.UI.Language
             // 
             this.searchPanel.Controls.Add(this.searchTextBox);
             this.searchPanel.Controls.Add(this.searchButton);
-            this.searchPanel.Location = new System.Drawing.Point(391, 12);
+            this.searchPanel.Location = new System.Drawing.Point(389, 12);
             this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(372, 66);
+            this.searchPanel.Size = new System.Drawing.Size(442, 66);
             this.searchPanel.TabIndex = 7;
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(27, 29);
+            this.searchTextBox.Location = new System.Drawing.Point(70, 27);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(236, 20);
             this.searchTextBox.TabIndex = 19;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(269, 27);
+            this.searchButton.Location = new System.Drawing.Point(312, 25);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 3;
@@ -83,109 +85,127 @@ namespace VideoClubManagement.UI.Language
             this.actionPanel.Controls.Add(this.deleteButton);
             this.actionPanel.Controls.Add(this.updateButton);
             this.actionPanel.Controls.Add(this.addButton);
-            this.actionPanel.Location = new System.Drawing.Point(12, 169);
+            this.actionPanel.Location = new System.Drawing.Point(6, 204);
             this.actionPanel.Name = "actionPanel";
             this.actionPanel.Size = new System.Drawing.Size(366, 66);
             this.actionPanel.TabIndex = 6;
             // 
             // deleteButton
             // 
-            this.deleteButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.deleteButton.Location = new System.Drawing.Point(226, 0);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Eliminar";
-            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // updateButton
             // 
-            this.updateButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.updateButton.Location = new System.Drawing.Point(145, 0);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 1;
             this.updateButton.Text = "Actualizar";
-            this.updateButton.UseVisualStyleBackColor = false;
+            this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // addButton
             // 
-            this.addButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addButton.Location = new System.Drawing.Point(64, 0);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
             this.addButton.TabIndex = 0;
             this.addButton.Text = "Agregar";
-            this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // dataPanel
             // 
-            this.dataPanel.Controls.Add(this.languageDataGridView);
-            this.dataPanel.Location = new System.Drawing.Point(391, 67);
+            this.dataPanel.Controls.Add(this.shiftworkDataGridView);
+            this.dataPanel.Location = new System.Drawing.Point(389, 84);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(372, 172);
+            this.dataPanel.Size = new System.Drawing.Size(442, 186);
             this.dataPanel.TabIndex = 5;
             // 
-            // languageDataGridView
+            // shiftworkDataGridView
             // 
-            this.languageDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.languageDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.languageDataGridView.ColumnHeadersVisible = false;
-            this.languageDataGridView.Location = new System.Drawing.Point(5, 16);
-            this.languageDataGridView.Name = "languageDataGridView";
-            this.languageDataGridView.Size = new System.Drawing.Size(360, 156);
-            this.languageDataGridView.TabIndex = 0;
-            this.languageDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.languageDataGridView_CellMouseClick);
+            this.shiftworkDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.shiftworkDataGridView.Location = new System.Drawing.Point(5, 0);
+            this.shiftworkDataGridView.Name = "shiftworkDataGridView";
+            this.shiftworkDataGridView.Size = new System.Drawing.Size(428, 176);
+            this.shiftworkDataGridView.TabIndex = 0;
+            this.shiftworkDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shiftworkDataGridView_CellContentClick);
+            this.shiftworkDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.shiftworkDataGridView_CellMouseClick);
             // 
             // insertPanel
             // 
-            this.insertPanel.Controls.Add(this.languageLabel);
-            this.insertPanel.Controls.Add(this.langCodeTextBox);
+            this.insertPanel.Controls.Add(this.idTextBox);
+            this.insertPanel.Controls.Add(this.startHourDateTimePicker);
+            this.insertPanel.Controls.Add(this.shiftworkiniLabel);
+            this.insertPanel.Controls.Add(this.finishHourDateTimePicker);
+            this.insertPanel.Controls.Add(this.idnumberLabel);
             this.insertPanel.Controls.Add(this.lastnameLabel);
-            this.insertPanel.Controls.Add(this.nameTextBox);
+            this.insertPanel.Controls.Add(this.descriptionTextBox);
             this.insertPanel.Controls.Add(this.nameLabel);
-            this.insertPanel.Location = new System.Drawing.Point(12, 25);
+            this.insertPanel.Location = new System.Drawing.Point(6, 12);
             this.insertPanel.Name = "insertPanel";
-            this.insertPanel.Size = new System.Drawing.Size(366, 138);
+            this.insertPanel.Size = new System.Drawing.Size(366, 186);
             this.insertPanel.TabIndex = 4;
             // 
-            // languageLabel
+            // startHourDateTimePicker
             // 
-            this.languageLabel.AutoSize = true;
-            this.languageLabel.Location = new System.Drawing.Point(118, 14);
-            this.languageLabel.Name = "languageLabel";
-            this.languageLabel.Size = new System.Drawing.Size(96, 13);
-            this.languageLabel.TabIndex = 18;
-            this.languageLabel.Text = "Gestión de idiomas";
+            this.startHourDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.startHourDateTimePicker.Location = new System.Drawing.Point(99, 90);
+            this.startHourDateTimePicker.Name = "startHourDateTimePicker";
+            this.startHourDateTimePicker.Size = new System.Drawing.Size(235, 20);
+            this.startHourDateTimePicker.TabIndex = 19;
             // 
-            // langCodeTextBox
+            // shiftworkiniLabel
             // 
-            this.langCodeTextBox.Location = new System.Drawing.Point(99, 90);
-            this.langCodeTextBox.Name = "langCodeTextBox";
-            this.langCodeTextBox.Size = new System.Drawing.Size(236, 20);
-            this.langCodeTextBox.TabIndex = 7;
+            this.shiftworkiniLabel.AutoSize = true;
+            this.shiftworkiniLabel.Location = new System.Drawing.Point(118, 14);
+            this.shiftworkiniLabel.Name = "shiftworkiniLabel";
+            this.shiftworkiniLabel.Size = new System.Drawing.Size(138, 13);
+            this.shiftworkiniLabel.TabIndex = 18;
+            this.shiftworkiniLabel.Text = "Gestión de tandas laborales";
+            this.shiftworkiniLabel.Click += new System.EventHandler(this.employeeLabel_Click);
+            // 
+            // finishHourDateTimePicker
+            // 
+            this.finishHourDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.finishHourDateTimePicker.Location = new System.Drawing.Point(99, 127);
+            this.finishHourDateTimePicker.Name = "finishHourDateTimePicker";
+            this.finishHourDateTimePicker.Size = new System.Drawing.Size(235, 20);
+            this.finishHourDateTimePicker.TabIndex = 16;
+            // 
+            // idnumberLabel
+            // 
+            this.idnumberLabel.AutoSize = true;
+            this.idnumberLabel.Location = new System.Drawing.Point(43, 130);
+            this.idnumberLabel.Name = "idnumberLabel";
+            this.idnumberLabel.Size = new System.Drawing.Size(50, 13);
+            this.idnumberLabel.TabIndex = 8;
+            this.idnumberLabel.Text = "Hora fin: ";
             // 
             // lastnameLabel
             // 
             this.lastnameLabel.AutoSize = true;
-            this.lastnameLabel.Location = new System.Drawing.Point(20, 93);
+            this.lastnameLabel.Location = new System.Drawing.Point(30, 93);
             this.lastnameLabel.Name = "lastnameLabel";
             this.lastnameLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lastnameLabel.Size = new System.Drawing.Size(73, 13);
+            this.lastnameLabel.Size = new System.Drawing.Size(63, 13);
             this.lastnameLabel.TabIndex = 6;
-            this.lastnameLabel.Text = "Código idioma";
+            this.lastnameLabel.Text = "Hora inicio: ";
             this.lastnameLabel.Click += new System.EventHandler(this.lastnameLabel_Click);
             // 
-            // nameTextBox
+            // descriptionTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(99, 55);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(236, 20);
-            this.nameTextBox.TabIndex = 5;
+            this.descriptionTextBox.Location = new System.Drawing.Point(99, 55);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(236, 20);
+            this.descriptionTextBox.TabIndex = 5;
             // 
             // nameLabel
             // 
@@ -198,34 +218,32 @@ namespace VideoClubManagement.UI.Language
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(12, -1);
+            this.idTextBox.Location = new System.Drawing.Point(0, 0);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(10, 20);
-            this.idTextBox.TabIndex = 19;
+            this.idTextBox.Size = new System.Drawing.Size(100, 20);
+            this.idTextBox.TabIndex = 20;
             this.idTextBox.Visible = false;
             // 
-            // languageForm
+            // shiftworkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 259);
-            this.Controls.Add(this.idTextBox);
+            this.ClientSize = new System.Drawing.Size(833, 274);
             this.Controls.Add(this.searchPanel);
             this.Controls.Add(this.actionPanel);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.insertPanel);
-            this.Name = "languageForm";
-            this.Text = "Gestión de idiomas";
-            this.Load += new System.EventHandler(this.languageForm_Load);
+            this.Name = "shiftworkForm";
+            this.Text = "Gestión de tandas laborales";
+            this.Load += new System.EventHandler(this.shiftworkForm_Load);
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();
             this.actionPanel.ResumeLayout(false);
             this.dataPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.languageDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftworkDataGridView)).EndInit();
             this.insertPanel.ResumeLayout(false);
             this.insertPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -239,13 +257,15 @@ namespace VideoClubManagement.UI.Language
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Panel dataPanel;
-        private System.Windows.Forms.DataGridView languageDataGridView;
+        private System.Windows.Forms.DataGridView shiftworkDataGridView;
         private System.Windows.Forms.Panel insertPanel;
-        private System.Windows.Forms.Label languageLabel;
-        private System.Windows.Forms.TextBox langCodeTextBox;
+        private System.Windows.Forms.Label shiftworkiniLabel;
+        private System.Windows.Forms.DateTimePicker finishHourDateTimePicker;
+        private System.Windows.Forms.Label idnumberLabel;
         private System.Windows.Forms.Label lastnameLabel;
-        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.DateTimePicker startHourDateTimePicker;
         private System.Windows.Forms.TextBox idTextBox;
     }
 }

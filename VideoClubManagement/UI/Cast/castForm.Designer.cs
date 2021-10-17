@@ -44,6 +44,7 @@ namespace VideoClubManagement.UI.Cast
             this.lastnameLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             this.searchPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -75,6 +76,7 @@ namespace VideoClubManagement.UI.Cast
             this.searchButton.TabIndex = 3;
             this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // actionPanel
             // 
@@ -94,6 +96,7 @@ namespace VideoClubManagement.UI.Cast
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Eliminar";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // updateButton
             // 
@@ -103,6 +106,7 @@ namespace VideoClubManagement.UI.Cast
             this.updateButton.TabIndex = 1;
             this.updateButton.Text = "Actualizar";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // addButton
             // 
@@ -113,6 +117,7 @@ namespace VideoClubManagement.UI.Cast
             this.addButton.TabIndex = 0;
             this.addButton.Text = "Agregar";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // dataPanel
             // 
@@ -124,12 +129,15 @@ namespace VideoClubManagement.UI.Cast
             // 
             // castDataGridView
             // 
+            this.castDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.castDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.castDataGridView.ColumnHeadersVisible = false;
             this.castDataGridView.Location = new System.Drawing.Point(5, 3);
             this.castDataGridView.Name = "castDataGridView";
             this.castDataGridView.Size = new System.Drawing.Size(360, 149);
             this.castDataGridView.TabIndex = 0;
+            this.castDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.castDataGridView_CellContentClick);
+            this.castDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.castDataGridView_CellMouseClick);
             // 
             // insertPanel
             // 
@@ -185,17 +193,27 @@ namespace VideoClubManagement.UI.Cast
             this.nameLabel.TabIndex = 4;
             this.nameLabel.Text = "Nombre: ";
             // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(9, -1);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(35, 20);
+            this.idTextBox.TabIndex = 19;
+            this.idTextBox.Visible = false;
+            // 
             // castForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 256);
+            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.searchPanel);
             this.Controls.Add(this.actionPanel);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.insertPanel);
             this.Name = "castForm";
             this.Text = "Gestión de elenco";
+            this.Load += new System.EventHandler(this.castForm_Load);
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();
             this.actionPanel.ResumeLayout(false);
@@ -204,6 +222,7 @@ namespace VideoClubManagement.UI.Cast
             this.insertPanel.ResumeLayout(false);
             this.insertPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -224,5 +243,6 @@ namespace VideoClubManagement.UI.Cast
         private System.Windows.Forms.Label lastnameLabel;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.TextBox idTextBox;
     }
 }

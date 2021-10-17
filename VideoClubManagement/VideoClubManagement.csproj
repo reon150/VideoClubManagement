@@ -144,6 +144,12 @@
     <Compile Include="UI\ArticleLendings\ArticleLendingIndexForm.Designer.cs">
       <DependentUpon>ArticleLendingIndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Cast\castForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Cast\castForm.Designer.cs">
+      <DependentUpon>castForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Clients\ClientCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,23 @@
     <Compile Include="UI\Clients\ClientIndexForm.Designer.cs">
       <DependentUpon>ClientIndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Employee\employeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Employee\employeeForm.Designer.cs">
+      <DependentUpon>employeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Language\languageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Language\languageForm.Designer.cs">
+      <DependentUpon>languageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ShiftWork\shiftworkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ShiftWork\shiftworkForm.Designer.cs">
+      <DependentUpon>shiftworkForm.cs</DependentUpon>
     <Compile Include="UI\General\MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +229,9 @@
     <EmbeddedResource Include="UI\ArticleLendings\ArticleLendingIndexForm.resx">
       <DependentUpon>ArticleLendingIndexForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Cast\castForm.resx">
+      <DependentUpon>castForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Clients\ClientCreateForm.resx">
       <DependentUpon>ClientCreateForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +245,14 @@
       <DependentUpon>ClientIndexForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Employee\employeeForm.resx">
+      <DependentUpon>employeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Language\languageForm.resx">
+      <DependentUpon>languageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ShiftWork\shiftworkForm.resx">
+      <DependentUpon>shiftworkForm.cs</DependentUpon>
     <EmbeddedResource Include="UI\General\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
