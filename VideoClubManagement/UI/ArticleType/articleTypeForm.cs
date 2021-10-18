@@ -12,12 +12,12 @@ using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.ArticleType
 {
-    public partial class articleTypeForm : Form
+    public partial class ArticleTypeForm : Form
     {
         public Data.Entities.ArticleType articleType { get; set; }
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
 
-        public articleTypeForm()
+        public ArticleTypeForm()
         {
             InitializeComponent();
             refreshData();
@@ -31,8 +31,8 @@ namespace VideoClubManagement.UI.ArticleType
         private void generalSearch()
         {
             var ArticleTypes = from sh in applicatioDbContext.ArticleTypes
-                               where (sh.Name.ToString().StartsWith(searchTxt.Text)
-                               || sh.Description.ToString().StartsWith(searchTxt.Text))
+                               where (sh.Name.ToString().StartsWith(searchTextBox.Text)
+                               || sh.Description.ToString().StartsWith(searchTextBox.Text))
                                select sh;
             articleTypeDataGridView.DataSource = ArticleTypes.ToList();
             articleTypeDataGridView.Refresh();
@@ -52,7 +52,7 @@ namespace VideoClubManagement.UI.ArticleType
         {
             try
             {
-                applicatioDbContext.ArticleTypes.Add(new Data.Entities.ArticleType { Name = nameTxt.Text, Description = descriptionTxt.Text });
+                applicatioDbContext.ArticleTypes.Add(new Data.Entities.ArticleType { Name = nameTextBox.Text, Description = descriptionTextBox.Text });
                 applicatioDbContext.SaveChanges();
                 MessageBox.Show("El registro se guardo con éxito");
                 refreshData();
@@ -63,11 +63,13 @@ namespace VideoClubManagement.UI.ArticleType
             }
         }
 
-        private void articleTypeDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void articleTypeDataGridView_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            nameTxt.Text = articleTypeDataGridView.CurrentRow.Cells[1].Value.ToString();
-            descriptionTxt.Text = articleTypeDataGridView.CurrentRow.Cells[0].Value.ToString();
+            nameTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[0].Value.ToString();
+            descriptionTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[1].Value.ToString();
             idLabel.Text = articleTypeDataGridView.CurrentRow.Cells[2].Value.ToString();
+            createdDateLabel.Text = articleTypeDataGridView.CurrentRow.Cells[4].Value.ToString();
+            lastUpdateDateLabel.Text = articleTypeDataGridView.CurrentRow.Cells[5].Value.ToString();
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -77,9 +79,12 @@ namespace VideoClubManagement.UI.ArticleType
                 Data.Entities.ArticleType articleType= applicatioDbContext.ArticleTypes.Find(Int32.Parse(idLabel.Text));
                 if (articleType != null)
                 {
-                    articleType.Name = nameTxt.Text;
-                    articleType.Description = descriptionTxt.Text;
+                    articleType.Name = nameTextBox.Text;
+                    articleType.Description = descriptionTextBox.Text;
+                    applicatioDbContext.SaveChanges();
                 }
+                MessageBox.Show("Registro actualizado con exito.");
+                refreshData();
             }
             catch (Exception ex)
             {
@@ -92,6 +97,14 @@ namespace VideoClubManagement.UI.ArticleType
             try
             {
                 Data.Entities.ArticleType articleType = applicatioDbContext.ArticleTypes.Find(Int32.Parse(idLabel.Text));
+                if (articleType != null)
+                {
+                    applicatioDbContext.ArticleTypes.Remove(articleType);
+                    applicatioDbContext.SaveChanges();
+
+                }
+                MessageBox.Show("Registro eliminado con exito.");
+                refreshData();
             }
             catch (Exception ex)
             {

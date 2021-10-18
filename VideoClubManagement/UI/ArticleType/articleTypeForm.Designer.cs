@@ -1,7 +1,7 @@
 ﻿
 namespace VideoClubManagement.UI.ArticleType
 {
-    partial class articleTypeForm
+    partial class ArticleTypeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,73 +29,72 @@ namespace VideoClubManagement.UI.ArticleType
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.backButton = new System.Windows.Forms.Button();
-            this.searchTxt = new System.Windows.Forms.TextBox();
+            this.searchPanel = new System.Windows.Forms.Panel();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.articleTypeDataGridView = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.articleTypeManagementPanel = new System.Windows.Forms.Panel();
             this.lastUpdateDateLabel = new System.Windows.Forms.Label();
             this.createdDateLabel = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.articleTypeLastUpateDate = new System.Windows.Forms.Label();
+            this.articleTypeCreateDateLabel = new System.Windows.Forms.Label();
             this.statusCheckBox = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.descriptionTxt = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nameTxt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.articleTypeIdLabel = new System.Windows.Forms.Label();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionLabel = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.articleTypeManagementLabel = new System.Windows.Forms.Label();
+            this.actionPanel = new System.Windows.Forms.Panel();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleTypeDataGridView)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.articleTypeManagementPanel.SuspendLayout();
+            this.actionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // searchPanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.backButton);
-            this.panel1.Controls.Add(this.searchTxt);
-            this.panel1.Controls.Add(this.searchButton);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(414, 82);
-            this.panel1.TabIndex = 1;
+            this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.searchPanel.Controls.Add(this.searchTextBox);
+            this.searchPanel.Controls.Add(this.searchButton);
+            this.searchPanel.Location = new System.Drawing.Point(12, 12);
+            this.searchPanel.Name = "searchPanel";
+            this.searchPanel.Size = new System.Drawing.Size(414, 82);
+            this.searchPanel.TabIndex = 1;
             // 
-            // backButton
+            // searchTextBox
             // 
-            this.backButton.Location = new System.Drawing.Point(328, 11);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(63, 50);
-            this.backButton.TabIndex = 2;
-            this.backButton.Text = "Retornar";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
-            // searchTxt
-            // 
-            this.searchTxt.Location = new System.Drawing.Point(21, 27);
-            this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(202, 20);
-            this.searchTxt.TabIndex = 1;
+            this.searchTextBox.Location = new System.Drawing.Point(21, 27);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(287, 20);
+            this.searchTextBox.TabIndex = 1;
             // 
             // searchButton
             // 
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.searchButton.Location = new System.Drawing.Point(252, 11);
+            this.searchButton.Location = new System.Drawing.Point(332, 11);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(52, 50);
             this.searchButton.TabIndex = 0;
             this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(332, 14);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(63, 50);
+            this.backButton.TabIndex = 2;
+            this.backButton.Text = "Regresar";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // articleTypeDataGridView
             // 
@@ -105,65 +104,66 @@ namespace VideoClubManagement.UI.ArticleType
             this.articleTypeDataGridView.Location = new System.Drawing.Point(12, 100);
             this.articleTypeDataGridView.Name = "articleTypeDataGridView";
             this.articleTypeDataGridView.ReadOnly = true;
-            this.articleTypeDataGridView.Size = new System.Drawing.Size(340, 200);
+            this.articleTypeDataGridView.Size = new System.Drawing.Size(414, 200);
             this.articleTypeDataGridView.TabIndex = 2;
+            this.articleTypeDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.articleTypeDataGridView_CellMouseClick_1);
             // 
-            // panel3
+            // articleTypeManagementPanel
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.lastUpdateDateLabel);
-            this.panel3.Controls.Add(this.createdDateLabel);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.statusCheckBox);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.idLabel);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.descriptionTxt);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.nameTxt);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(12, 306);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(340, 346);
-            this.panel3.TabIndex = 3;
+            this.articleTypeManagementPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.articleTypeManagementPanel.Controls.Add(this.lastUpdateDateLabel);
+            this.articleTypeManagementPanel.Controls.Add(this.createdDateLabel);
+            this.articleTypeManagementPanel.Controls.Add(this.articleTypeLastUpateDate);
+            this.articleTypeManagementPanel.Controls.Add(this.articleTypeCreateDateLabel);
+            this.articleTypeManagementPanel.Controls.Add(this.statusCheckBox);
+            this.articleTypeManagementPanel.Controls.Add(this.statusLabel);
+            this.articleTypeManagementPanel.Controls.Add(this.idLabel);
+            this.articleTypeManagementPanel.Controls.Add(this.articleTypeIdLabel);
+            this.articleTypeManagementPanel.Controls.Add(this.descriptionTextBox);
+            this.articleTypeManagementPanel.Controls.Add(this.descriptionLabel);
+            this.articleTypeManagementPanel.Controls.Add(this.nameTextBox);
+            this.articleTypeManagementPanel.Controls.Add(this.nameLabel);
+            this.articleTypeManagementPanel.Controls.Add(this.articleTypeManagementLabel);
+            this.articleTypeManagementPanel.Location = new System.Drawing.Point(12, 306);
+            this.articleTypeManagementPanel.Name = "articleTypeManagementPanel";
+            this.articleTypeManagementPanel.Size = new System.Drawing.Size(414, 346);
+            this.articleTypeManagementPanel.TabIndex = 3;
             // 
             // lastUpdateDateLabel
             // 
             this.lastUpdateDateLabel.AutoSize = true;
             this.lastUpdateDateLabel.Location = new System.Drawing.Point(148, 296);
             this.lastUpdateDateLabel.Name = "lastUpdateDateLabel";
-            this.lastUpdateDateLabel.Size = new System.Drawing.Size(35, 13);
+            this.lastUpdateDateLabel.Size = new System.Drawing.Size(10, 13);
             this.lastUpdateDateLabel.TabIndex = 12;
-            this.lastUpdateDateLabel.Text = "label5";
+            this.lastUpdateDateLabel.Text = "-";
             // 
             // createdDateLabel
             // 
             this.createdDateLabel.AutoSize = true;
             this.createdDateLabel.Location = new System.Drawing.Point(148, 253);
             this.createdDateLabel.Name = "createdDateLabel";
-            this.createdDateLabel.Size = new System.Drawing.Size(35, 13);
+            this.createdDateLabel.Size = new System.Drawing.Size(10, 13);
             this.createdDateLabel.TabIndex = 11;
-            this.createdDateLabel.Text = "label5";
+            this.createdDateLabel.Text = "-";
             // 
-            // label7
+            // articleTypeLastUpateDate
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 296);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Ultima Modificación";
+            this.articleTypeLastUpateDate.AutoSize = true;
+            this.articleTypeLastUpateDate.Location = new System.Drawing.Point(14, 296);
+            this.articleTypeLastUpateDate.Name = "articleTypeLastUpateDate";
+            this.articleTypeLastUpateDate.Size = new System.Drawing.Size(99, 13);
+            this.articleTypeLastUpateDate.TabIndex = 10;
+            this.articleTypeLastUpateDate.Text = "Ultima Modificación";
             // 
-            // label6
+            // articleTypeCreateDateLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 253);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Fecha de creación";
+            this.articleTypeCreateDateLabel.AutoSize = true;
+            this.articleTypeCreateDateLabel.Location = new System.Drawing.Point(17, 253);
+            this.articleTypeCreateDateLabel.Name = "articleTypeCreateDateLabel";
+            this.articleTypeCreateDateLabel.Size = new System.Drawing.Size(96, 13);
+            this.articleTypeCreateDateLabel.TabIndex = 9;
+            this.articleTypeCreateDateLabel.Text = "Fecha de creación";
             // 
             // statusCheckBox
             // 
@@ -175,89 +175,90 @@ namespace VideoClubManagement.UI.ArticleType
             this.statusCheckBox.Text = "Esta Activo";
             this.statusCheckBox.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // statusLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 203);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Estado";
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(18, 202);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(40, 13);
+            this.statusLabel.TabIndex = 7;
+            this.statusLabel.Text = "Estado";
             // 
             // idLabel
             // 
             this.idLabel.AutoSize = true;
             this.idLabel.Location = new System.Drawing.Point(86, 154);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(35, 13);
+            this.idLabel.Size = new System.Drawing.Size(10, 13);
             this.idLabel.TabIndex = 6;
-            this.idLabel.Text = "label5";
+            this.idLabel.Text = "-";
             // 
-            // label4
+            // articleTypeIdLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 154);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Id";
+            this.articleTypeIdLabel.AutoSize = true;
+            this.articleTypeIdLabel.Location = new System.Drawing.Point(21, 154);
+            this.articleTypeIdLabel.Name = "articleTypeIdLabel";
+            this.articleTypeIdLabel.Size = new System.Drawing.Size(16, 13);
+            this.articleTypeIdLabel.TabIndex = 5;
+            this.articleTypeIdLabel.Text = "Id";
             // 
-            // descriptionTxt
+            // descriptionTextBox
             // 
-            this.descriptionTxt.Location = new System.Drawing.Point(89, 106);
-            this.descriptionTxt.Name = "descriptionTxt";
-            this.descriptionTxt.Size = new System.Drawing.Size(219, 20);
-            this.descriptionTxt.TabIndex = 4;
+            this.descriptionTextBox.Location = new System.Drawing.Point(89, 103);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(219, 20);
+            this.descriptionTextBox.TabIndex = 4;
             // 
-            // label3
+            // descriptionLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 106);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Descripción";
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Location = new System.Drawing.Point(17, 106);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(63, 13);
+            this.descriptionLabel.TabIndex = 3;
+            this.descriptionLabel.Text = "Descripción";
             // 
-            // nameTxt
+            // nameTextBox
             // 
-            this.nameTxt.Location = new System.Drawing.Point(89, 55);
-            this.nameTxt.Name = "nameTxt";
-            this.nameTxt.Size = new System.Drawing.Size(133, 20);
-            this.nameTxt.TabIndex = 2;
+            this.nameTextBox.Location = new System.Drawing.Point(89, 55);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(133, 20);
+            this.nameTextBox.TabIndex = 2;
             // 
-            // label2
+            // nameLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(17, 58);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(44, 13);
+            this.nameLabel.TabIndex = 1;
+            this.nameLabel.Text = "Nombre";
             // 
-            // label1
+            // articleTypeManagementLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(86, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Gestión de tipos de artículos";
+            this.articleTypeManagementLabel.AutoSize = true;
+            this.articleTypeManagementLabel.Location = new System.Drawing.Point(134, 16);
+            this.articleTypeManagementLabel.Name = "articleTypeManagementLabel";
+            this.articleTypeManagementLabel.Size = new System.Drawing.Size(142, 13);
+            this.articleTypeManagementLabel.TabIndex = 0;
+            this.articleTypeManagementLabel.Text = "Gestión de tipos de artículos";
             // 
-            // panel4
+            // actionPanel
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.deleteButton);
-            this.panel4.Controls.Add(this.updateButton);
-            this.panel4.Controls.Add(this.addButton);
-            this.panel4.Location = new System.Drawing.Point(12, 658);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(340, 82);
-            this.panel4.TabIndex = 5;
+            this.actionPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.actionPanel.Controls.Add(this.backButton);
+            this.actionPanel.Controls.Add(this.deleteButton);
+            this.actionPanel.Controls.Add(this.updateButton);
+            this.actionPanel.Controls.Add(this.addButton);
+            this.actionPanel.Location = new System.Drawing.Point(12, 658);
+            this.actionPanel.Name = "actionPanel";
+            this.actionPanel.Size = new System.Drawing.Size(414, 82);
+            this.actionPanel.TabIndex = 5;
             // 
             // deleteButton
             // 
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deleteButton.Location = new System.Drawing.Point(252, 14);
+            this.deleteButton.Location = new System.Drawing.Point(230, 14);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(66, 50);
             this.deleteButton.TabIndex = 2;
@@ -268,7 +269,7 @@ namespace VideoClubManagement.UI.ArticleType
             // updateButton
             // 
             this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.updateButton.Location = new System.Drawing.Point(137, 14);
+            this.updateButton.Location = new System.Drawing.Point(122, 14);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(66, 50);
             this.updateButton.TabIndex = 1;
@@ -279,7 +280,7 @@ namespace VideoClubManagement.UI.ArticleType
             // addButton
             // 
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addButton.Location = new System.Drawing.Point(21, 14);
+            this.addButton.Location = new System.Drawing.Point(14, 14);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(66, 50);
             this.addButton.TabIndex = 0;
@@ -287,49 +288,50 @@ namespace VideoClubManagement.UI.ArticleType
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // articleTypeForm
+            // ArticleTypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 745);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.actionPanel);
+            this.Controls.Add(this.articleTypeManagementPanel);
             this.Controls.Add(this.articleTypeDataGridView);
-            this.Controls.Add(this.panel1);
-            this.Name = "articleTypeForm";
-            this.Text = "articleTypeForm";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Controls.Add(this.searchPanel);
+            this.Name = "ArticleTypeForm";
+            this.Text = "Vista y mantenimiento del tipo de artículo";
+
+            this.searchPanel.ResumeLayout(false);
+            this.searchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleTypeDataGridView)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
+            this.articleTypeManagementPanel.ResumeLayout(false);
+            this.articleTypeManagementPanel.PerformLayout();
+            this.actionPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox searchTxt;
+        private System.Windows.Forms.Panel searchPanel;
+        private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView articleTypeDataGridView;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox descriptionTxt;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox nameTxt;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel articleTypeManagementPanel;
+        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.Label descriptionLabel;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label articleTypeManagementLabel;
+        private System.Windows.Forms.Panel actionPanel;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label articleTypeIdLabel;
         private System.Windows.Forms.Label idLabel;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.CheckBox statusCheckBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label articleTypeLastUpateDate;
+        private System.Windows.Forms.Label articleTypeCreateDateLabel;
         private System.Windows.Forms.Label lastUpdateDateLabel;
         private System.Windows.Forms.Label createdDateLabel;
         private System.Windows.Forms.Button backButton;

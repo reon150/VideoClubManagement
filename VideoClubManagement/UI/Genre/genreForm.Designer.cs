@@ -1,7 +1,7 @@
 ﻿
 namespace VideoClubManagement.UI.Genre
 {
-    partial class genreForm
+    partial class GenreForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,58 +29,58 @@ namespace VideoClubManagement.UI.Genre
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.searchTxt = new System.Windows.Forms.TextBox();
+            this.searchPanel = new System.Windows.Forms.Panel();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.genreDataGridViewPanel = new System.Windows.Forms.Panel();
             this.genreDataGridView = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.genreManagementPanel = new System.Windows.Forms.Panel();
             this.idLabel = new System.Windows.Forms.Label();
             this.statusCheckbox = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.lastUpdateDateLabel = new System.Windows.Forms.Label();
             this.createdDateLabel = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.descriptionTxt = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nameTxt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.genreLastUpdateDate = new System.Windows.Forms.Label();
+            this.genreCreatedDateLabel = new System.Windows.Forms.Label();
+            this.genreIdLabel = new System.Windows.Forms.Label();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.genreDescriptionLabel = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.genreNameLabel = new System.Windows.Forms.Label();
+            this.genreManagementLabel = new System.Windows.Forms.Label();
+            this.actionPanel = new System.Windows.Forms.Panel();
             this.backButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.searchPanel.SuspendLayout();
+            this.genreDataGridViewPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.genreDataGridView)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.genreManagementPanel.SuspendLayout();
+            this.actionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // searchPanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.searchTxt);
-            this.panel1.Controls.Add(this.searchButton);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(399, 82);
-            this.panel1.TabIndex = 0;
+            this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.searchPanel.Controls.Add(this.searchTextBox);
+            this.searchPanel.Controls.Add(this.searchButton);
+            this.searchPanel.Location = new System.Drawing.Point(12, 12);
+            this.searchPanel.Name = "searchPanel";
+            this.searchPanel.Size = new System.Drawing.Size(464, 82);
+            this.searchPanel.TabIndex = 0;
             // 
-            // searchTxt
+            // searchTextBox
             // 
-            this.searchTxt.Location = new System.Drawing.Point(21, 27);
-            this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(271, 20);
-            this.searchTxt.TabIndex = 1;
+            this.searchTextBox.Location = new System.Drawing.Point(21, 27);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(326, 20);
+            this.searchTextBox.TabIndex = 1;
             // 
             // searchButton
             // 
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.searchButton.Location = new System.Drawing.Point(320, 11);
+            this.searchButton.Location = new System.Drawing.Point(384, 11);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(52, 50);
             this.searchButton.TabIndex = 0;
@@ -88,55 +88,56 @@ namespace VideoClubManagement.UI.Genre
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // panel2
+            // genreDataGridViewPanel
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.genreDataGridView);
-            this.panel2.Location = new System.Drawing.Point(12, 115);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(404, 211);
-            this.panel2.TabIndex = 1;
+            this.genreDataGridViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.genreDataGridViewPanel.Controls.Add(this.genreDataGridView);
+            this.genreDataGridViewPanel.Location = new System.Drawing.Point(12, 115);
+            this.genreDataGridViewPanel.Name = "genreDataGridViewPanel";
+            this.genreDataGridViewPanel.Size = new System.Drawing.Size(464, 233);
+            this.genreDataGridViewPanel.TabIndex = 1;
             // 
             // genreDataGridView
             // 
             this.genreDataGridView.AllowUserToAddRows = false;
             this.genreDataGridView.AllowUserToDeleteRows = false;
             this.genreDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.genreDataGridView.Location = new System.Drawing.Point(4, 4);
+            this.genreDataGridView.Location = new System.Drawing.Point(3, 3);
             this.genreDataGridView.Name = "genreDataGridView";
             this.genreDataGridView.ReadOnly = true;
-            this.genreDataGridView.Size = new System.Drawing.Size(393, 200);
+            this.genreDataGridView.Size = new System.Drawing.Size(454, 223);
             this.genreDataGridView.TabIndex = 0;
+            this.genreDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.genreDataGridView_CellMouseClick_1);
             // 
-            // panel3
+            // genreManagementPanel
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.idLabel);
-            this.panel3.Controls.Add(this.statusCheckbox);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.lastUpdateDateLabel);
-            this.panel3.Controls.Add(this.createdDateLabel);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.descriptionTxt);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.nameTxt);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(13, 345);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(403, 347);
-            this.panel3.TabIndex = 2;
+            this.genreManagementPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.genreManagementPanel.Controls.Add(this.idLabel);
+            this.genreManagementPanel.Controls.Add(this.statusCheckbox);
+            this.genreManagementPanel.Controls.Add(this.statusLabel);
+            this.genreManagementPanel.Controls.Add(this.lastUpdateDateLabel);
+            this.genreManagementPanel.Controls.Add(this.createdDateLabel);
+            this.genreManagementPanel.Controls.Add(this.genreLastUpdateDate);
+            this.genreManagementPanel.Controls.Add(this.genreCreatedDateLabel);
+            this.genreManagementPanel.Controls.Add(this.genreIdLabel);
+            this.genreManagementPanel.Controls.Add(this.descriptionTextBox);
+            this.genreManagementPanel.Controls.Add(this.genreDescriptionLabel);
+            this.genreManagementPanel.Controls.Add(this.nameTextBox);
+            this.genreManagementPanel.Controls.Add(this.genreNameLabel);
+            this.genreManagementPanel.Controls.Add(this.genreManagementLabel);
+            this.genreManagementPanel.Location = new System.Drawing.Point(13, 366);
+            this.genreManagementPanel.Name = "genreManagementPanel";
+            this.genreManagementPanel.Size = new System.Drawing.Size(458, 326);
+            this.genreManagementPanel.TabIndex = 2;
             // 
             // idLabel
             // 
             this.idLabel.AutoSize = true;
             this.idLabel.Location = new System.Drawing.Point(158, 160);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(41, 13);
+            this.idLabel.Size = new System.Drawing.Size(10, 13);
             this.idLabel.TabIndex = 15;
-            this.idLabel.Text = "label10";
+            this.idLabel.Text = "-";
             // 
             // statusCheckbox
             // 
@@ -148,131 +149,131 @@ namespace VideoClubManagement.UI.Genre
             this.statusCheckbox.Text = "Esta Activo";
             this.statusCheckbox.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // statusLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 205);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Estado";
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(17, 205);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(40, 13);
+            this.statusLabel.TabIndex = 12;
+            this.statusLabel.Text = "Estado";
             // 
             // lastUpdateDateLabel
             // 
             this.lastUpdateDateLabel.AutoSize = true;
             this.lastUpdateDateLabel.Location = new System.Drawing.Point(158, 298);
             this.lastUpdateDateLabel.Name = "lastUpdateDateLabel";
-            this.lastUpdateDateLabel.Size = new System.Drawing.Size(35, 13);
+            this.lastUpdateDateLabel.Size = new System.Drawing.Size(10, 13);
             this.lastUpdateDateLabel.TabIndex = 11;
-            this.lastUpdateDateLabel.Text = "label8";
+            this.lastUpdateDateLabel.Text = "-";
             // 
             // createdDateLabel
             // 
             this.createdDateLabel.AutoSize = true;
             this.createdDateLabel.Location = new System.Drawing.Point(158, 250);
             this.createdDateLabel.Name = "createdDateLabel";
-            this.createdDateLabel.Size = new System.Drawing.Size(35, 13);
+            this.createdDateLabel.Size = new System.Drawing.Size(10, 13);
             this.createdDateLabel.TabIndex = 10;
-            this.createdDateLabel.Text = "label7";
+            this.createdDateLabel.Text = "-";
             // 
-            // label6
+            // genreLastUpdateDate
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 298);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Ultima modificación";
+            this.genreLastUpdateDate.AutoSize = true;
+            this.genreLastUpdateDate.Location = new System.Drawing.Point(17, 298);
+            this.genreLastUpdateDate.Name = "genreLastUpdateDate";
+            this.genreLastUpdateDate.Size = new System.Drawing.Size(98, 13);
+            this.genreLastUpdateDate.TabIndex = 9;
+            this.genreLastUpdateDate.Text = "Ultima modificación";
             // 
-            // label5
+            // genreCreatedDateLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 250);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Fecha de creación";
+            this.genreCreatedDateLabel.AutoSize = true;
+            this.genreCreatedDateLabel.Location = new System.Drawing.Point(17, 250);
+            this.genreCreatedDateLabel.Name = "genreCreatedDateLabel";
+            this.genreCreatedDateLabel.Size = new System.Drawing.Size(96, 13);
+            this.genreCreatedDateLabel.TabIndex = 7;
+            this.genreCreatedDateLabel.Text = "Fecha de creación";
             // 
-            // label4
+            // genreIdLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 160);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Id";
+            this.genreIdLabel.AutoSize = true;
+            this.genreIdLabel.Location = new System.Drawing.Point(17, 160);
+            this.genreIdLabel.Name = "genreIdLabel";
+            this.genreIdLabel.Size = new System.Drawing.Size(16, 13);
+            this.genreIdLabel.TabIndex = 5;
+            this.genreIdLabel.Text = "Id";
             // 
-            // descriptionTxt
+            // descriptionTextBox
             // 
-            this.descriptionTxt.Location = new System.Drawing.Point(161, 106);
-            this.descriptionTxt.Name = "descriptionTxt";
-            this.descriptionTxt.Size = new System.Drawing.Size(219, 20);
-            this.descriptionTxt.TabIndex = 4;
+            this.descriptionTextBox.Location = new System.Drawing.Point(158, 109);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(219, 20);
+            this.descriptionTextBox.TabIndex = 4;
             // 
-            // label3
+            // genreDescriptionLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 109);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Descripción";
+            this.genreDescriptionLabel.AutoSize = true;
+            this.genreDescriptionLabel.Location = new System.Drawing.Point(17, 109);
+            this.genreDescriptionLabel.Name = "genreDescriptionLabel";
+            this.genreDescriptionLabel.Size = new System.Drawing.Size(63, 13);
+            this.genreDescriptionLabel.TabIndex = 3;
+            this.genreDescriptionLabel.Text = "Descripción";
             // 
-            // nameTxt
+            // nameTextBox
             // 
-            this.nameTxt.Location = new System.Drawing.Point(158, 55);
-            this.nameTxt.Name = "nameTxt";
-            this.nameTxt.Size = new System.Drawing.Size(133, 20);
-            this.nameTxt.TabIndex = 2;
+            this.nameTextBox.Location = new System.Drawing.Point(158, 55);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(133, 20);
+            this.nameTextBox.TabIndex = 2;
             // 
-            // label2
+            // genreNameLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre";
+            this.genreNameLabel.AutoSize = true;
+            this.genreNameLabel.Location = new System.Drawing.Point(17, 58);
+            this.genreNameLabel.Name = "genreNameLabel";
+            this.genreNameLabel.Size = new System.Drawing.Size(44, 13);
+            this.genreNameLabel.TabIndex = 1;
+            this.genreNameLabel.Text = "Nombre";
             // 
-            // label1
+            // genreManagementLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(158, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Gestión de géneros";
+            this.genreManagementLabel.AutoSize = true;
+            this.genreManagementLabel.Location = new System.Drawing.Point(158, 15);
+            this.genreManagementLabel.Name = "genreManagementLabel";
+            this.genreManagementLabel.Size = new System.Drawing.Size(99, 13);
+            this.genreManagementLabel.TabIndex = 0;
+            this.genreManagementLabel.Text = "Gestión de géneros";
             // 
-            // panel4
+            // actionPanel
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.backButton);
-            this.panel4.Controls.Add(this.deleteButton);
-            this.panel4.Controls.Add(this.updateButton);
-            this.panel4.Controls.Add(this.addButton);
-            this.panel4.Location = new System.Drawing.Point(46, 716);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(430, 82);
-            this.panel4.TabIndex = 2;
+            this.actionPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.actionPanel.Controls.Add(this.backButton);
+            this.actionPanel.Controls.Add(this.deleteButton);
+            this.actionPanel.Controls.Add(this.updateButton);
+            this.actionPanel.Controls.Add(this.addButton);
+            this.actionPanel.Location = new System.Drawing.Point(12, 712);
+            this.actionPanel.Name = "actionPanel";
+            this.actionPanel.Size = new System.Drawing.Size(459, 82);
+            this.actionPanel.TabIndex = 2;
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(350, 14);
+            this.backButton.Location = new System.Drawing.Point(373, 14);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(63, 50);
             this.backButton.TabIndex = 3;
-            this.backButton.Text = "Retornar";
+            this.backButton.Text = "Regresar";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // deleteButton
             // 
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deleteButton.Location = new System.Drawing.Point(247, 14);
+            this.deleteButton.Location = new System.Drawing.Point(258, 14);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(66, 50);
             this.deleteButton.TabIndex = 2;
-            this.deleteButton.Text = "Elimar";
+            this.deleteButton.Text = "Eliminar";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
@@ -298,52 +299,52 @@ namespace VideoClubManagement.UI.Genre
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // genreForm
+            // GenreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 820);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Name = "genreForm";
-            this.Text = "genreForm";
+            this.Controls.Add(this.actionPanel);
+            this.Controls.Add(this.genreManagementPanel);
+            this.Controls.Add(this.genreDataGridViewPanel);
+            this.Controls.Add(this.searchPanel);
+            this.Name = "GenreForm";
+            this.Text = "Vista y mantenimiento de género";
             this.Load += new System.EventHandler(this.genreForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.searchPanel.ResumeLayout(false);
+            this.searchPanel.PerformLayout();
+            this.genreDataGridViewPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.genreDataGridView)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
+            this.genreManagementPanel.ResumeLayout(false);
+            this.genreManagementPanel.PerformLayout();
+            this.actionPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox searchTxt;
+        private System.Windows.Forms.Panel searchPanel;
+        private System.Windows.Forms.Panel genreDataGridViewPanel;
+        private System.Windows.Forms.Panel genreManagementPanel;
+        private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView genreDataGridView;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox descriptionTxt;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox nameTxt;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label genreNameLabel;
+        private System.Windows.Forms.Label genreManagementLabel;
+        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.Label genreDescriptionLabel;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Panel actionPanel;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Label lastUpdateDateLabel;
         private System.Windows.Forms.Label createdDateLabel;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label genreLastUpdateDate;
+        private System.Windows.Forms.Label genreCreatedDateLabel;
+        private System.Windows.Forms.Label genreIdLabel;
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.CheckBox statusCheckbox;
         private System.Windows.Forms.Button backButton;

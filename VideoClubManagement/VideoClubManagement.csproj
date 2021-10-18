@@ -96,29 +96,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\ArticleType\articleTypeForm.cs">
+    <Compile Include="UI\ArticleType\ArticleTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ArticleType\articleTypeForm.Designer.cs">
-      <DependentUpon>articleTypeForm.cs</DependentUpon>
+    <Compile Include="UI\ArticleType\ArticleTypeForm.Designer.cs">
+      <DependentUpon>ArticleTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Article\articleForm.cs">
+    <Compile Include="UI\Article\ArticleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Article\articleForm.Designer.cs">
-      <DependentUpon>articleForm.cs</DependentUpon>
+    <Compile Include="UI\Article\ArticleForm.Designer.cs">
+      <DependentUpon>ArticleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Article\MantenimientoArticulo.cs">
+    <Compile Include="UI\Genre\GenreForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Article\MantenimientoArticulo.Designer.cs">
-      <DependentUpon>MantenimientoArticulo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Genre\genreForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Genre\genreForm.Designer.cs">
-      <DependentUpon>genreForm.cs</DependentUpon>
+    <Compile Include="UI\Genre\GenreForm.Designer.cs">
+      <DependentUpon>GenreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ArticleCasts\ArticleCastCreateForm.cs">
       <SubType>Form</SubType>
@@ -230,17 +224,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ArticleType\articleTypeForm.resx">
-      <DependentUpon>articleTypeForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ArticleType\ArticleTypeForm.resx">
+      <DependentUpon>ArticleTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Article\articleForm.resx">
-      <DependentUpon>articleForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Article\ArticleForm.resx">
+      <DependentUpon>ArticleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Article\MantenimientoArticulo.resx">
-      <DependentUpon>MantenimientoArticulo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Genre\genreForm.resx">
-      <DependentUpon>genreForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Genre\GenreForm.resx">
+      <DependentUpon>GenreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ArticleCasts\ArticleCastCreateForm.resx">
       <DependentUpon>ArticleCastCreateForm.cs</DependentUpon>
