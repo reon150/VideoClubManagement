@@ -85,7 +85,7 @@
     <Compile Include="Data\Entities\ShiftWork.cs" />
     <Compile Include="Data\Enums\LegalPersonTypeId.cs" />
     <Compile Include="Data\Migrations\202110140048423_Initial-Migration.cs" />
-    <Compile Include="Data\Migrations\202110140048423_Initial-Migration.designer.cs">
+    <Compile Include="Data\Migrations\202110140048423_Initial-Migration.Designer.cs">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
@@ -96,23 +96,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\ArticleType\ArticleTypeForm.cs">
+    <Compile Include="UI\ArticleType\articleTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ArticleType\ArticleTypeForm.Designer.cs">
-      <DependentUpon>ArticleTypeForm.cs</DependentUpon>
+    <Compile Include="UI\ArticleType\articleTypeForm.Designer.cs">
+      <DependentUpon>articleTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Article\ArticleForm.cs">
+    <Compile Include="UI\Article\articleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Article\ArticleForm.Designer.cs">
-      <DependentUpon>ArticleForm.cs</DependentUpon>
+    <Compile Include="UI\Article\articleForm.Designer.cs">
+      <DependentUpon>articleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Genre\GenreForm.cs">
+    <Compile Include="UI\Genre\genreForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Genre\GenreForm.Designer.cs">
-      <DependentUpon>GenreForm.cs</DependentUpon>
+    <Compile Include="UI\Genre\genreForm.Designer.cs">
+      <DependentUpon>genreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ArticleCasts\ArticleCastCreateForm.cs">
       <SubType>Form</SubType>
@@ -224,14 +224,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ArticleType\ArticleTypeForm.resx">
-      <DependentUpon>ArticleTypeForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ArticleType\articleTypeForm.resx">
+      <DependentUpon>articleTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Article\ArticleForm.resx">
-      <DependentUpon>ArticleForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Article\articleForm.resx">
+      <DependentUpon>articleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Genre\GenreForm.resx">
-      <DependentUpon>GenreForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Genre\genreForm.resx">
+      <DependentUpon>genreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ArticleCasts\ArticleCastCreateForm.resx">
       <DependentUpon>ArticleCastCreateForm.cs</DependentUpon>
