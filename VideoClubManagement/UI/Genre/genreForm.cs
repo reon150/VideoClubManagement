@@ -12,11 +12,11 @@ using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Genre
 {
-    public partial class genreForm : Form
+    public partial class GenreForm : Form
     {
         public Data.Entities.Genre Genre { get; set; }
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
-        public genreForm()
+        public GenreForm()
         {
             InitializeComponent();
         }
@@ -28,8 +28,8 @@ namespace VideoClubManagement.UI.Genre
         private void generalSearch()
         {
             var Genres = from sh in applicatioDbContext.Genres
-                         where (sh.Name.ToString().StartsWith(searchTxt.Text)
-                         || sh.Description.ToString().StartsWith(searchTxt.Text))
+                         where (sh.Name.ToString().StartsWith(searchTextBox.Text)
+                         || sh.Description.ToString().StartsWith(searchTextBox.Text))
                          select sh;
             genreDataGridView.DataSource = Genres.ToList();
             genreDataGridView.Refresh();
@@ -49,7 +49,7 @@ namespace VideoClubManagement.UI.Genre
         {
             try
             {
-                applicatioDbContext.Genres.Add(new Data.Entities.Genre { Name = nameTxt.Text, Description = descriptionTxt.Text});
+                applicatioDbContext.Genres.Add(new Data.Entities.Genre { Name = nameTextBox.Text, Description = descriptionTextBox.Text });
                 applicatioDbContext.SaveChanges();
                 MessageBox.Show("El registro se guardo con éxito");
                 refreshData();
@@ -60,11 +60,13 @@ namespace VideoClubManagement.UI.Genre
             }
         }
 
-        private void genreDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void genreDataGridView_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            nameTxt.Text = genreDataGridView.CurrentRow.Cells[1].Value.ToString();
-            descriptionTxt.Text = genreDataGridView.CurrentRow.Cells[0].Value.ToString();
-            idLabel.Text = genreDataGridView.CurrentRow.Cells[2].Value.ToString();
+            nameTextBox.Text = genreDataGridView.CurrentRow.Cells[0].Value.ToString();
+            descriptionTextBox.Text = genreDataGridView.CurrentRow.Cells[1].Value.ToString();
+            idLabel.Text = genreDataGridView.CurrentRow.Cells[4].Value.ToString();
+            createdDateLabel.Text = genreDataGridView.CurrentRow.Cells[6].Value.ToString();
+            lastUpdateDateLabel.Text = genreDataGridView.CurrentRow.Cells[7].Value.ToString();
         }
 
 
@@ -75,9 +77,12 @@ namespace VideoClubManagement.UI.Genre
                 Data.Entities.Genre genre = applicatioDbContext.Genres.Find(Int32.Parse(idLabel.Text));
                 if (genre != null)
                 {
-                    genre.Name = nameTxt.Text;
-                    genre.Description = descriptionTxt.Text;
+                    genre.Name = nameTextBox.Text;
+                    genre.Description = descriptionTextBox.Text;
+                    applicatioDbContext.SaveChanges();
                 }
+                MessageBox.Show("Registro actualizado con exito.");
+                refreshData();
             }
             catch (Exception ex)
             {
@@ -90,6 +95,13 @@ namespace VideoClubManagement.UI.Genre
             try
             {
                 Data.Entities.Genre genre = applicatioDbContext.Genres.Find(Int32.Parse(idLabel.Text));
+                if (genre != null)
+                {
+                    applicatioDbContext.Genres.Remove(genre);
+                    applicatioDbContext.SaveChanges();
+                }
+                MessageBox.Show("Registro eliminado con exito.");
+                refreshData();
             }
             catch (Exception ex)
             {
