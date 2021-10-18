@@ -57,18 +57,234 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\Config\ArticleLendingConfiguration.cs" />
+    <Compile Include="Data\Config\ArticleTypeConfiguration.cs" />
+    <Compile Include="Data\Config\CastConfiguration.cs" />
+    <Compile Include="Data\Config\LanguageConfiguration.cs" />
+    <Compile Include="Data\Config\LegalPersonTypeConfiguration.cs" />
+    <Compile Include="Data\Config\RoleConfiguration.cs" />
+    <Compile Include="Data\Config\EmployeeConfiguration.cs" />
+    <Compile Include="Data\Config\GenreConfiguration.cs" />
+    <Compile Include="Data\Config\ClientConfiguration.cs" />
+    <Compile Include="Data\Config\ArticleCastConfiguration.cs" />
+    <Compile Include="Data\Config\ArticleConfiguration.cs" />
+    <Compile Include="Data\Config\ShiftWorkConfiguration.cs" />
+    <Compile Include="Data\Entities\Article.cs" />
+    <Compile Include="Data\Entities\ArticleCast.cs" />
+    <Compile Include="Data\Entities\ArticleLending.cs" />
+    <Compile Include="Data\Entities\ArticleType.cs" />
     <Compile Include="Data\Entities\BaseEntity.cs" />
+    <Compile Include="Data\Entities\Cast.cs" />
+    <Compile Include="Data\Entities\Employee.cs" />
+    <Compile Include="Data\Entities\Genre.cs" />
+    <Compile Include="Data\Entities\ITrackable.cs" />
+    <Compile Include="Data\Entities\Client.cs" />
+    <Compile Include="Data\Entities\Language.cs" />
+    <Compile Include="Data\Entities\LegalPersonType.cs" />
+    <Compile Include="Data\Entities\Role.cs" />
+    <Compile Include="Data\Entities\ShiftWork.cs" />
+    <Compile Include="Data\Enums\LegalPersonTypeId.cs" />
+    <Compile Include="Data\Migrations\202110140048423_Initial-Migration.cs" />
+    <Compile Include="Data\Migrations\202110140048423_Initial-Migration.Designer.cs">
+      <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\ArticleType\articleTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleType\articleTypeForm.Designer.cs">
+      <DependentUpon>articleTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Article\articleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Article\articleForm.Designer.cs">
+      <DependentUpon>articleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Genre\genreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Genre\genreForm.Designer.cs">
+      <DependentUpon>genreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ArticleCasts\ArticleCastCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleCasts\ArticleCastCreateForm.Designer.cs">
+      <DependentUpon>ArticleCastCreateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ArticleCasts\ArticleCastDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleCasts\ArticleCastDetailsForm.Designer.cs">
+      <DependentUpon>ArticleCastDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ArticleCasts\ArticleCastEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleCasts\ArticleCastEditForm.Designer.cs">
+      <DependentUpon>ArticleCastEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ArticleCasts\ArticleCastIndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleCasts\ArticleCastIndexForm.Designer.cs">
+      <DependentUpon>ArticleCastIndexForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingCreateForm.Designer.cs">
+      <DependentUpon>ArticleLendingCreateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingDetailsForm.Designer.cs">
+      <DependentUpon>ArticleLendingDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingEditForm.Designer.cs">
+      <DependentUpon>ArticleLendingEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingIndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ArticleLendings\ArticleLendingIndexForm.Designer.cs">
+      <DependentUpon>ArticleLendingIndexForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Cast\castForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Cast\castForm.Designer.cs">
+      <DependentUpon>castForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Clients\ClientCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Clients\ClientCreateForm.Designer.cs">
+      <DependentUpon>ClientCreateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Clients\ClientDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Clients\ClientDetailsForm.Designer.cs">
+      <DependentUpon>ClientDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Clients\ClientEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Clients\ClientEditForm.Designer.cs">
+      <DependentUpon>ClientEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Clients\ClientIndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Clients\ClientIndexForm.Designer.cs">
+      <DependentUpon>ClientIndexForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Employee\employeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Employee\employeeForm.Designer.cs">
+      <DependentUpon>employeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Language\languageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Language\languageForm.Designer.cs">
+      <DependentUpon>languageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ShiftWork\shiftworkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ShiftWork\shiftworkForm.Designer.cs">
+      <DependentUpon>shiftworkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\General\MenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\General\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
+      <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleType\articleTypeForm.resx">
+      <DependentUpon>articleTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Article\articleForm.resx">
+      <DependentUpon>articleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Genre\genreForm.resx">
+      <DependentUpon>genreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleCasts\ArticleCastCreateForm.resx">
+      <DependentUpon>ArticleCastCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleCasts\ArticleCastDetailsForm.resx">
+      <DependentUpon>ArticleCastDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleCasts\ArticleCastEditForm.resx">
+      <DependentUpon>ArticleCastEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleCasts\ArticleCastIndexForm.resx">
+      <DependentUpon>ArticleCastIndexForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleLendings\ArticleLendingCreateForm.resx">
+      <DependentUpon>ArticleLendingCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleLendings\ArticleLendingDetailsForm.resx">
+      <DependentUpon>ArticleLendingDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleLendings\ArticleLendingEditForm.resx">
+      <DependentUpon>ArticleLendingEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ArticleLendings\ArticleLendingIndexForm.resx">
+      <DependentUpon>ArticleLendingIndexForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Cast\castForm.resx">
+      <DependentUpon>castForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Clients\ClientCreateForm.resx">
+      <DependentUpon>ClientCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Clients\ClientDetailsForm.resx">
+      <DependentUpon>ClientDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Clients\ClientEditForm.resx">
+      <DependentUpon>ClientEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Clients\ClientIndexForm.resx">
+      <DependentUpon>ClientIndexForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Employee\employeeForm.resx">
+      <DependentUpon>employeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Language\languageForm.resx">
+      <DependentUpon>languageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ShiftWork\shiftworkForm.resx">
+      <DependentUpon>shiftworkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\General\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -84,7 +300,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UI\" />
+    <None Include="Resources\add_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_search_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_black_24dp.png" />
+    <None Include="Resources\baseline_list_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_add_black_24dp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
