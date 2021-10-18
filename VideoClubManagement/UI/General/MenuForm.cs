@@ -72,19 +72,19 @@ namespace VideoClubManagement.UI.General
         private void articleButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new articleForm().Show();
+            new ArticleForm().Show();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             Hide();
-            new genreForm().Show();
+            new GenreForm().Show();
         }
 
         private void articleTypeButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new articleTypeForm().Show();
+            new ArticleTypeForm().Show();
         }
     }
 }
