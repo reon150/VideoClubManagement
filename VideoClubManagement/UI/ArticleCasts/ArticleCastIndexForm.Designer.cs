@@ -396,7 +396,6 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.Name = "ArticleCastIndexForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Artículos y elenco:";
-            this.Load += new System.EventHandler(this.ArticleCastIndexForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.articleCastsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

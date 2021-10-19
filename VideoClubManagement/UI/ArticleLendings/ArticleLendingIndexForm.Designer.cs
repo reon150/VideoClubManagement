@@ -383,7 +383,6 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.Name = "ArticleLendingIndexForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Renta y Devolución";
-            this.Load += new System.EventHandler(this.ArticleLendingIndexForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.articleLendingListDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

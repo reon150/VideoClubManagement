@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
 using VideoClubManagement.Data.Entities;
+using VideoClubManagement.Helpers;
 
 namespace VideoClubManagement.UI.ArticleCasts
 {
@@ -12,8 +14,8 @@ namespace VideoClubManagement.UI.ArticleCasts
     {
         private readonly ApplicationDbContext _applicationDbContext = new ApplicationDbContext();
         private IQueryable<ArticleCast> _articleCastQuery;
+        private readonly FormPaginationHelper<ArticleCast, int> _paginationHelper;
         private const int _pageSize = 15;
-        private int _currentPage = 1;
         private readonly Form _parent;
         private bool _backToList = false;
 
@@ -21,18 +23,12 @@ namespace VideoClubManagement.UI.ArticleCasts
         {
             InitializeComponent();
             _parent = parent;
+            _articleCastQuery = _applicationDbContext.ArticleCasts.AsQueryable().Include(ac => ac.Article).Include(ac => ac.Cast).Include(ac => ac.Role);
+            _paginationHelper = new FormPaginationHelper<ArticleCast, int>(_articleCastQuery, _pageSize, currentPageTextBox, lastPageTextBox);
         }
 
-        private void ArticleCastIndexForm_Load(object sender, EventArgs e) => 
-            _articleCastQuery = _applicationDbContext.ArticleCasts.AsQueryable();
-
-        private void FillArticleCastDataGridView(int pageNumber)
+        private void FillArticleCastDataGridView(IEnumerable<ArticleCast> articleCasts)
         {
-            int startIndex = _pageSize * (pageNumber - 1);
-            var articleCasts = _articleCastQuery.OrderByDescending(c => c.CreatedDate).Skip((pageNumber - 1) * _pageSize).Take(_pageSize)
-                .Include(ac => ac.Article).Include(ac => ac.Cast).Include(ac => ac.Role)
-                .AsNoTracking().AsEnumerable();
-
             articleCastsDataGridView.Rows.Clear();
 
             foreach (var articleCast in articleCasts)
@@ -43,92 +39,24 @@ namespace VideoClubManagement.UI.ArticleCasts
                     articleCast.Role.Name,
                     articleCast.IsActive);
             }
-
-            if (articleCasts.Count() > 0)
-                currentPageTextBox.Text = pageNumber.ToString();
-            else
-                currentPageTextBox.Text = "";
-
-            lastPageTextBox.Text = TotalNumberOfPages().ToString();
-        }
-
-        private void firstButton_Click(object sender, EventArgs e)
-        {
-            if (_currentPage == 1)
-            {
-                MessageBox.Show("Ya se encuentra en la primera página.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                _currentPage = 1;
-                FillArticleCastDataGridView(_currentPage);
-            }
-        }
-
-        private void nextButton_Click(object sender, EventArgs e)
-        {
-            int lastPage = TotalNumberOfPages();
-            if (_currentPage == lastPage)
-            {
-                MessageBox.Show("Ya esta en la ultima pagina.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                _currentPage += 1;
-                FillArticleCastDataGridView(_currentPage);
-            }
-        }
-
-        private void previousButton_Click(object sender, EventArgs e)
-        {
-            if (_currentPage == 1)
-            {
-                MessageBox.Show("Ya esta en la primera página.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                _currentPage -= 1;
-                FillArticleCastDataGridView(_currentPage);
-            }
-        }
-
-        private void lastButton_Click(object sender, EventArgs e)
-        {
-            int previousPage = _currentPage;
-            _currentPage = TotalNumberOfPages();
-
-            if (previousPage == _currentPage)
-                MessageBox.Show("Ya se encuentra en la ultima página.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                FillArticleCastDataGridView(_currentPage);
-        }
-
-        private int TotalNumberOfPages()
-        {
-            int totalNumberOfArticleCasts = _articleCastQuery.Count();
-            int totalNumberOfPages = totalNumberOfArticleCasts / _pageSize;
-
-            if (totalNumberOfArticleCasts % _pageSize != 0)
-                totalNumberOfPages++;
-            return totalNumberOfPages;
         }
 
         private void articleCastsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex >= 0)
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
             {
                 int articleCastId = (int)articleCastsDataGridView[0, e.RowIndex].Value;
                 switch (articleCastsDataGridView.Columns[e.ColumnIndex].Name)
                 {
-                    case "deleteButton":
+                    case nameof(deleteButton):
                         DeleteArticleCast(articleCastId);
                         break;
-                    case "detailsButton":
+                    case nameof(detailsButton):
                         Hide();
                         var articleCastDetailsForm = new ArticleCastDetailsForm(this, articleCastId);
                         articleCastDetailsForm.Show();
                         break;
-                    case "editButton":
+                    case nameof(editButton):
                         Hide();
                         var articleCastEditForm = new ArticleCastEditForm(this, articleCastId);
                         articleCastEditForm.Show();
@@ -137,18 +65,6 @@ namespace VideoClubManagement.UI.ArticleCasts
                         break;
                 }
             }
-        }
-
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-            _articleCastQuery = _applicationDbContext.ArticleCasts.Where(c => c.Id.ToString().Contains(searchTextBox.Text)
-                || c.Article.Title.Contains(searchTextBox.Text)
-                || c.Cast.FirstName.Contains(searchTextBox.Text)
-                || c.Cast.LastName.Contains(searchTextBox.Text)
-                || c.Role.Name.Contains(searchTextBox.Text));
-
-            if (onlyShowActivesCheckBox.Checked) _articleCastQuery = _articleCastQuery.Where(c => c.IsActive);
-            FillArticleCastDataGridView(1);
         }
 
         private void DeleteArticleCast(int id)
@@ -164,47 +80,40 @@ namespace VideoClubManagement.UI.ArticleCasts
                 _applicationDbContext.SaveChanges();
                 onlyShowActivesCheckBox.Checked = false;
                 searchTextBox.Text = "";
-                _currentPage = 1;
-                FillArticleCastDataGridView(_currentPage);
+                _paginationHelper.FirstPage(FillArticleCastDataGridView, false);
             }
         }
 
-        private void currentPageTextBox_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-
-        string oldCurrentPage = string.Empty;
-
-        private void currentPageTextBox_Enter(object sender, EventArgs e) =>
-            oldCurrentPage = currentPageTextBox.Text;
-
-        private void currentPageTextBox_TextChanged(object sender, EventArgs e)
+        private void searchButton_Click(object sender, EventArgs e)
         {
-            if (currentPageTextBox.Text != "")
-            {
-                var page = int.Parse(currentPageTextBox.Text);
+            _articleCastQuery = _applicationDbContext.ArticleCasts.Where(c => c.Id.ToString().Contains(searchTextBox.Text)
+                || c.Article.Title.Contains(searchTextBox.Text)
+                || c.Cast.FirstName.Contains(searchTextBox.Text)
+                || c.Cast.LastName.Contains(searchTextBox.Text)
+                || c.Role.Name.Contains(searchTextBox.Text));
 
-                if (page <= 0)
-                {
-                    MessageBox.Show("El número de página solo puede mayor a 0", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    currentPageTextBox.Text = oldCurrentPage;
-                }
-                else if (page > TotalNumberOfPages())
-                {
-                    MessageBox.Show("El número de página no puede ser mayor al número total de páginas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    currentPageTextBox.Text = oldCurrentPage;
-                }
-                else
-                {
-                    FillArticleCastDataGridView(_currentPage = page);
-                }
-            }
+            if (onlyShowActivesCheckBox.Checked) _articleCastQuery = _articleCastQuery.Where(c => c.IsActive);
+            _paginationHelper.Search(FillArticleCastDataGridView, _articleCastQuery);
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var articleCastCreateForm = new ArticleCastCreateForm(this);
+            articleCastCreateForm.Show();
+        }
+
+        private void backToMenuButton_Click(object sender, EventArgs e)
+        {
+            _backToList = true;
+            Close();
         }
 
         protected override void OnVisibleChanged(EventArgs e)
         {
             base.OnVisibleChanged(e);
             if (Visible)
-                FillArticleCastDataGridView(1);
+                _paginationHelper.FirstPage(FillArticleCastDataGridView, false);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -224,17 +133,18 @@ namespace VideoClubManagement.UI.ArticleCasts
             }
         }
 
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            Hide();
-            var articleCastCreateForm = new ArticleCastCreateForm(this);
-            articleCastCreateForm.Show();
-        }
+        private void firstButton_Click(object sender, EventArgs e) => _paginationHelper.FirstPage(FillArticleCastDataGridView);
 
-        private void backToMenuButton_Click(object sender, EventArgs e)
-        {
-            _backToList = true;
-            Close();
-        }
+        private void nextButton_Click(object sender, EventArgs e) => _paginationHelper.NextPage(FillArticleCastDataGridView);
+
+        private void previousButton_Click(object sender, EventArgs e) => _paginationHelper.PreviousPage(FillArticleCastDataGridView);
+
+        private void lastButton_Click(object sender, EventArgs e) => _paginationHelper.LastPage(FillArticleCastDataGridView);
+
+        private void currentPageTextBox_KeyPress(object sender, KeyPressEventArgs e) => _paginationHelper.CurrentPageKeyPressEvent(e);
+
+        private void currentPageTextBox_Enter(object sender, EventArgs e) => _paginationHelper.CurrentPageEnterEvent();
+
+        private void currentPageTextBox_TextChanged(object sender, EventArgs e) => _paginationHelper.CurrentPageChangedEvent(FillArticleCastDataGridView);
     }
 }
