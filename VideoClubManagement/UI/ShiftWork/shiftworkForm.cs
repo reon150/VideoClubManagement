@@ -10,9 +10,12 @@ namespace VideoClubManagement.UI.Shiftwork
     {
         public Data.Entities.ShiftWork Shiftworks { get; set; }
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-        public shiftworkForm()
+        private readonly Form _parent;
+
+        public shiftworkForm(Form parent)
         {
             InitializeComponent();
+            _parent = parent;
         }
 
         private void employeeLabel_Click(object sender, EventArgs e)
@@ -136,7 +139,7 @@ namespace VideoClubManagement.UI.Shiftwork
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new MenuForm().Show();
+            _parent.Show();
         }
     }
 }

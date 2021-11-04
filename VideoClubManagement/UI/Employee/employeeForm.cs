@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Employee
 {
@@ -16,9 +10,12 @@ namespace VideoClubManagement.UI.Employee
     {
         public Data.Entities.Employee Employees { get; set; }
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-        public employeeForm()
+        private readonly Form _parent;
+
+        public employeeForm(Form parent)
         {
             InitializeComponent();
+            _parent = parent;
         }
         private void refreshData()
         {
@@ -147,7 +144,7 @@ namespace VideoClubManagement.UI.Employee
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new MenuForm().Show();
+            _parent.Show();
         }
     }
 }

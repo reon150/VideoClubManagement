@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.ArticleType
 {
@@ -16,10 +10,12 @@ namespace VideoClubManagement.UI.ArticleType
     {
         public Data.Entities.ArticleType articleType { get; set; }
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
+        private readonly Form _parent;
 
-        public ArticleTypeForm()
+        public ArticleTypeForm(Form parent)
         {
             InitializeComponent();
+            _parent = parent;
             refreshData();
         }
 
@@ -115,7 +111,7 @@ namespace VideoClubManagement.UI.ArticleType
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new MenuForm().Show();
+            _parent.Show();
         }
     }
 }

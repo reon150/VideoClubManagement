@@ -169,7 +169,6 @@ namespace VideoClubManagement.UI.Language
             this.langCodeTextBox.Name = "langCodeTextBox";
             this.langCodeTextBox.Size = new System.Drawing.Size(236, 20);
             this.langCodeTextBox.TabIndex = 7;
-            this.langCodeTextBox.TextChanged += new System.EventHandler(this.langCodeTextBox_TextChanged);
             // 
             // lastnameLabel
             // 
@@ -180,7 +179,6 @@ namespace VideoClubManagement.UI.Language
             this.lastnameLabel.Size = new System.Drawing.Size(73, 13);
             this.lastnameLabel.TabIndex = 6;
             this.lastnameLabel.Text = "Código idioma";
-            this.lastnameLabel.Click += new System.EventHandler(this.lastnameLabel_Click);
             // 
             // nameTextBox
             // 

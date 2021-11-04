@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.UI.ArticleCasts;
 using VideoClubManagement.UI.ArticleLendings;
@@ -22,9 +15,12 @@ namespace VideoClubManagement.UI.General
 {
     public partial class MenuForm : Form
     {
-        public MenuForm()
+        private readonly Form _parent;
+
+        public MenuForm(Form parent)
         {
             InitializeComponent();
+            _parent = parent;
         }
 
         private void articleCastButton_Click(object sender, EventArgs e)
@@ -48,43 +44,52 @@ namespace VideoClubManagement.UI.General
         private void languageButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new languageForm().Show();
+            new languageForm(this).Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Hide();
-            new castForm().Show();
+            new castForm(this).Show();
         }
 
         private void shiftworkButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new shiftworkForm().Show();
+            new shiftworkForm(this).Show();
         }
 
         private void employeeButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new employeeForm().Show();
+            new employeeForm(this).Show();
         }
 
         private void articleButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new ArticleForm().Show();
+            new ArticleForm(this).Show();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             Hide();
-            new GenreForm().Show();
+            new GenreForm(this).Show();
         }
 
         private void articleTypeButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new ArticleTypeForm().Show();
+            new ArticleTypeForm(this).Show();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+            _parent.Close();
         }
     }
 }

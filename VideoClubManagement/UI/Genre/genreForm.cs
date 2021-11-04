@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Genre
 {
@@ -16,9 +10,12 @@ namespace VideoClubManagement.UI.Genre
     {
         public Data.Entities.Genre Genre { get; set; }
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
-        public GenreForm()
+        private readonly Form _parent;
+
+        public GenreForm(Form parent)
         {
             InitializeComponent();
+            _parent = parent;
         }
         private void refreshData()
         {
@@ -69,7 +66,6 @@ namespace VideoClubManagement.UI.Genre
             lastUpdateDateLabel.Text = genreDataGridView.CurrentRow.Cells[7].Value.ToString();
         }
 
-
         private void updateButton_Click(object sender, EventArgs e)
         {
             try
@@ -112,7 +108,7 @@ namespace VideoClubManagement.UI.Genre
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new MenuForm().Show();
+            _parent.Show();
         }
     }
 }

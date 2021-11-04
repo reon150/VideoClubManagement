@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Language
 {
@@ -16,9 +10,12 @@ namespace VideoClubManagement.UI.Language
     {
         public Data.Entities.Language Languages { get; set; }
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-        public languageForm()
+        private readonly Form _parent;
+
+        public languageForm(Form parent)
         {
             InitializeComponent();
+            _parent = parent;
         }
         private void refreshData()
         {
@@ -30,6 +27,7 @@ namespace VideoClubManagement.UI.Language
             langCodeTextBox.Clear();
             idTextBox.Clear();
         }
+
         private void generalSearch() {
             var Languages = from sh in applicationDbContext.Languages
                              where (sh.Description.ToString().StartsWith(searchTextBox.Text)
@@ -37,11 +35,6 @@ namespace VideoClubManagement.UI.Language
                              select sh;
            languageDataGridView.DataSource = Languages.ToList();
            languageDataGridView.Refresh();
-        }
-
-    private void lastnameLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void languageForm_Load(object sender, EventArgs e)
@@ -59,18 +52,14 @@ namespace VideoClubManagement.UI.Language
         {
             try
             {
-                
                 applicationDbContext.Languages.Add (new Data.Entities.Language { ISOCode = langCodeTextBox.Text,Description = nameTextBox.Text });
                 applicationDbContext.SaveChanges();
                 MessageBox.Show("El registro se guardo con exito");
                 refreshData();
                 clear();
-
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Ha ocurrido un error" + ex.Message);
             }
 
@@ -81,8 +70,6 @@ namespace VideoClubManagement.UI.Language
             nameTextBox.Text = languageDataGridView.CurrentRow.Cells[1].Value.ToString();
             langCodeTextBox.Text = languageDataGridView.CurrentRow.Cells[0].Value.ToString();
             idTextBox.Text = languageDataGridView.CurrentRow.Cells[2].Value.ToString();
-
-
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -104,8 +91,7 @@ namespace VideoClubManagement.UI.Language
 
                 MessageBox.Show("Ha ocurrido un error al actualizar " + ex);
             }
-        
-    }
+        }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
@@ -116,7 +102,6 @@ namespace VideoClubManagement.UI.Language
                 {
                     applicationDbContext.Languages.Remove(language);
                     applicationDbContext.SaveChanges();
-
                 }
                 MessageBox.Show("Registro eliminado con exito.");
                 refreshData();
@@ -124,7 +109,6 @@ namespace VideoClubManagement.UI.Language
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Ha ocurrido un error al eliminar " + ex);
             }
         }
@@ -132,12 +116,7 @@ namespace VideoClubManagement.UI.Language
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new MenuForm().Show();
-        }
-
-        private void langCodeTextBox_TextChanged(object sender, EventArgs e)
-        {
-
+            _parent.Show();
         }
     }
 }

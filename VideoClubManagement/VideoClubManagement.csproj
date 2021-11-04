@@ -109,6 +109,12 @@
     <Compile Include="UI\Article\articleForm.Designer.cs">
       <DependentUpon>articleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\General\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\General\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Genre\genreForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Article\articleForm.resx">
       <DependentUpon>articleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\General\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Genre\genreForm.resx">
       <DependentUpon>genreForm.cs</DependentUpon>

@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Cast
 {
@@ -16,9 +10,12 @@ namespace VideoClubManagement.UI.Cast
     {
         public Data.Entities.Cast Casts { get; set; }
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-        public castForm()
+        private readonly Form _parent;
+
+        public castForm(Form parent)
         {
             InitializeComponent();
+            _parent = parent;
         }
         private void refreshData()
         {
@@ -124,7 +121,7 @@ namespace VideoClubManagement.UI.Cast
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new MenuForm().Show();
+            _parent.Show();
         }
     }
     
