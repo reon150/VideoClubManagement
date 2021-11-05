@@ -13,7 +13,7 @@ namespace VideoClubManagement.Data.Config
 
             Property(al => al.AmountPerDay).IsRequired().HasPrecision(10, 4);
 
-            Property(al => al.Comment).IsRequired().HasMaxLength(1000);
+            Property(al => al.Comment).HasMaxLength(1000);
         }
     }
 }

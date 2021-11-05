@@ -97,6 +97,10 @@
     <Compile Include="Data\Migrations\202111050014066_AddUserEntity.designer.cs">
       <DependentUpon>202111050014066_AddUserEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Migrations\202111052255272_SetArticleLendingCommentToNulleableType.cs" />
+    <Compile Include="Data\Migrations\202111052255272_SetArticleLendingCommentToNulleableType.designer.cs">
+      <DependentUpon>202111052255272_SetArticleLendingCommentToNulleableType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Helpers\FormPaginationHelper.cs" />
     <Compile Include="Program.cs" />
@@ -237,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Data\Migrations\202111050014066_AddUserEntity.resx">
       <DependentUpon>202111050014066_AddUserEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Migrations\202111052255272_SetArticleLendingCommentToNulleableType.resx">
+      <DependentUpon>202111052255272_SetArticleLendingCommentToNulleableType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
