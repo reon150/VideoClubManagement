@@ -69,6 +69,8 @@
     <Compile Include="Data\Config\ArticleCastConfiguration.cs" />
     <Compile Include="Data\Config\ArticleConfiguration.cs" />
     <Compile Include="Data\Config\ShiftWorkConfiguration.cs" />
+    <Compile Include="Data\Config\UserConfiguration.cs" />
+    <Compile Include="Data\Config\UserRoleConfiguration.cs" />
     <Compile Include="Data\Entities\Article.cs" />
     <Compile Include="Data\Entities\ArticleCast.cs" />
     <Compile Include="Data\Entities\ArticleLending.cs" />
@@ -83,10 +85,17 @@
     <Compile Include="Data\Entities\LegalPersonType.cs" />
     <Compile Include="Data\Entities\Role.cs" />
     <Compile Include="Data\Entities\ShiftWork.cs" />
+    <Compile Include="Data\Entities\User.cs" />
+    <Compile Include="Data\Entities\UserRole.cs" />
     <Compile Include="Data\Enums\LegalPersonTypeId.cs" />
+    <Compile Include="Data\Enums\UserRoleId.cs" />
     <Compile Include="Data\Migrations\202110140048423_Initial-Migration.cs" />
     <Compile Include="Data\Migrations\202110140048423_Initial-Migration.Designer.cs">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Migrations\202111050014066_AddUserEntity.cs" />
+    <Compile Include="Data\Migrations\202111050014066_AddUserEntity.designer.cs">
+      <DependentUpon>202111050014066_AddUserEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Helpers\FormPaginationHelper.cs" />
@@ -225,6 +234,9 @@
     </Compile>
     <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Migrations\202111050014066_AddUserEntity.resx">
+      <DependentUpon>202111050014066_AddUserEntity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
