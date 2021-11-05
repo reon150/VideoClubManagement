@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoClubManagement.Data;
 
 namespace VideoClubManagement.UI.General
 {
     public partial class LoginForm : Form
     {
+        private readonly ApplicationDbContext _applicationDbContext = new ApplicationDbContext();
+        private List<string> _errorMessages = new List<string>();
+
         public LoginForm()
         {
             InitializeComponent();
@@ -19,12 +18,52 @@ namespace VideoClubManagement.UI.General
 
         private void logInButton_Click(object sender, EventArgs e)
         {
-            if (true)
+            if (ValidateLogIn())
             {
                 MenuForm menuForm = new MenuForm(this);
                 Hide();
                 menuForm.Show();
             }
+            else
+            {
+                string errors = "";
+                foreach (var errorMessage in _errorMessages)
+                {
+                    errors += $"{ errorMessage }{ Environment.NewLine }";
+                }
+                MessageBox.Show(errors, "Ërror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool ValidateLogIn()
+        {
+            _errorMessages.Clear();
+            bool result = true;
+            string username = usernameTextBox.Text;
+            string password = passwordTextBox.Text;
+
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                _errorMessages.Add("El usuario no puede estar en blanco.");
+                result = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                _errorMessages.Add("La contraseña no puede estar en blanco.");
+                result = false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+            {
+                if (_applicationDbContext.Users.FirstOrDefault(x => x.UserName == username && x.Password == password) == null)
+                {
+                    _errorMessages.Add("Usuario o contraseña invalido.");
+                    result = false;
+                }
+            }
+
+            return result;
         }
     }
 }

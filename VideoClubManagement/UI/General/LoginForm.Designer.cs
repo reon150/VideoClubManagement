@@ -32,9 +32,9 @@ namespace VideoClubManagement.UI.General
             this.logInButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // logInButton
@@ -68,13 +68,13 @@ namespace VideoClubManagement.UI.General
             this.usernameLabel.TabIndex = 2;
             this.usernameLabel.Text = "Usuario";
             // 
-            // textBox1
+            // usernameTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F);
-            this.textBox1.Location = new System.Drawing.Point(191, 132);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(309, 35);
-            this.textBox1.TabIndex = 3;
+            this.usernameTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.usernameTextBox.Location = new System.Drawing.Point(191, 132);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(309, 35);
+            this.usernameTextBox.TabIndex = 3;
             // 
             // label2
             // 
@@ -86,22 +86,22 @@ namespace VideoClubManagement.UI.General
             this.label2.TabIndex = 4;
             this.label2.Text = "Contraseña";
             // 
-            // textBox2
+            // passwordTextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F);
-            this.textBox2.Location = new System.Drawing.Point(191, 220);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(309, 35);
-            this.textBox2.TabIndex = 5;
+            this.passwordTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.passwordTextBox.Location = new System.Drawing.Point(191, 220);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(309, 35);
+            this.passwordTextBox.TabIndex = 5;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 402);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logInButton);
@@ -120,8 +120,8 @@ namespace VideoClubManagement.UI.General
         private System.Windows.Forms.Button logInButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label usernameLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox passwordTextBox;
     }
 }
