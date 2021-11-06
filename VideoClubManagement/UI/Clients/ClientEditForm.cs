@@ -5,7 +5,9 @@ using System.Linq;
 using System.Timers;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Data.Entities;
 using VideoClubManagement.Data.Enums;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Clients
 {
@@ -16,11 +18,13 @@ namespace VideoClubManagement.UI.Clients
         private System.Timers.Timer _timer = new System.Timers.Timer(1000);
         private bool _backToList = false;
         private bool _changesSaved = false;
-        
-        public ClientEditForm(Form paren, int clientId)
+        private IValidator<Client> _validator;
+
+        public ClientEditForm(Form parent, int clientId, IValidator<Client> validator)
         {
             InitializeComponent();
-            _parent = paren;
+            _parent = parent;
+            _validator = validator;
             _timer.Elapsed += UpdateCurrentDateTimeLabel;
             SetLegalPersonTypeComboBox();
             FillClientData(clientId);
@@ -67,30 +71,50 @@ namespace VideoClubManagement.UI.Clients
 
         private void editClientButton_Click(object sender, EventArgs e)
         {
-            var legalPersonTypeComboBoxSelectedItem = legalPersonTypeComboBox.SelectedItem;
+            var save = MessageBox.Show($"¿Estás seguro que deseas guardar estos datos?",
+                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
 
-            Enum.TryParse(legalPersonTypeComboBoxSelectedItem
-                .GetType().GetProperty("Id").GetValue(legalPersonTypeComboBoxSelectedItem, null).ToString(),
-                out LegalPersonTypeId legalPersonTypeId);
+            if (save)
+            {
+                var legalPersonTypeComboBoxSelectedItem = legalPersonTypeComboBox.SelectedItem;
 
-            var clientId = int.Parse(idValueLabel.Text);
-            var client = _applicationDbContext.Clients.Where(c => c.Id == clientId).FirstOrDefault();
+                Enum.TryParse(legalPersonTypeComboBoxSelectedItem
+                    .GetType().GetProperty("Id").GetValue(legalPersonTypeComboBoxSelectedItem, null).ToString(),
+                    out LegalPersonTypeId legalPersonTypeId);
 
+                var clientId = int.Parse(idValueLabel.Text);
+                var client = _applicationDbContext.Clients.Where(c => c.Id == clientId).FirstOrDefault();
 
-            client.Id = clientId;
-            client.FirstName = firstNameTextBox.Text;
-            client.LastName = lastNameTextBox.Text;
-            client.TaxpayerIdentificationNumber = taxpayerIdentificationNumberTextBox.Text;
-            client.CreditCardNumber = creditCardNumberTextBox.Text;
-            client.CreditLimit = decimal.Parse(creditLimitTextBox.Text);
-            client.LegalPersonTypeId = legalPersonTypeId;
-            client.IsActive = isActiveCheckBox.Checked;
+                decimal.TryParse(creditLimitTextBox.Text, out decimal creditLimit);
+
+                client.Id = clientId;
+                client.FirstName = firstNameTextBox.Text;
+                client.LastName = lastNameTextBox.Text;
+                client.TaxpayerIdentificationNumber = taxpayerIdentificationNumberTextBox.Text;
+                client.CreditCardNumber = creditCardNumberTextBox.Text;
+                client.CreditLimit = creditLimit;
+                client.LegalPersonTypeId = legalPersonTypeId;
+                client.IsActive = isActiveCheckBox.Checked;
+
+                var validationErrors = _validator.GetValidationErrors(client);
             
-            _applicationDbContext.SaveChanges();
+                if (validationErrors != null && validationErrors.Count > 0)
+                {
+                    string errors = "";
+                    foreach (var validationError in validationErrors)
+                        errors += $"{ validationError }{ Environment.NewLine }";
 
-            _changesSaved = true;
-            _backToList = true;
-            Close();
+                    MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    _applicationDbContext.SaveChanges();
+
+                    _changesSaved = true;
+                    _backToList = true;
+                    Close();
+                }
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -130,5 +154,8 @@ namespace VideoClubManagement.UI.Clients
             _backToList = true;
             Close();
         }
+
+        private void creditLimitTextBox_KeyPress(object sender, KeyPressEventArgs e) =>
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
     }
 }

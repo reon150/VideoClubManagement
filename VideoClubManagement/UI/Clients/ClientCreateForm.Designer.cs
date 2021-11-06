@@ -185,6 +185,7 @@ namespace VideoClubManagement.UI.Clients
             this.creditLimitTextBox.Name = "creditLimitTextBox";
             this.creditLimitTextBox.Size = new System.Drawing.Size(186, 33);
             this.creditLimitTextBox.TabIndex = 43;
+            this.creditLimitTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.creditLimitTextBox_KeyPress);
             // 
             // currentDateTimeLabel
             // 

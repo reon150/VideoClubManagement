@@ -31,7 +31,7 @@ namespace VideoClubManagement.UI.General
                 {
                     errors += $"{ errorMessage }{ Environment.NewLine }";
                 }
-                MessageBox.Show(errors, "Ërror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

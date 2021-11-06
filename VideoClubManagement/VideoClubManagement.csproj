@@ -237,6 +237,9 @@
     <Compile Include="UI\General\MenuForm.Designer.cs">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validations\ArticleLendingValidator.cs" />
+    <Compile Include="Validations\ClientValidator.cs" />
+    <Compile Include="Validations\IValidator.cs" />
     <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
     </EmbeddedResource>

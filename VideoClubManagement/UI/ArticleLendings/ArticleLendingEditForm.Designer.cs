@@ -102,6 +102,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.amountPerDayTextBox.Name = "amountPerDayTextBox";
             this.amountPerDayTextBox.Size = new System.Drawing.Size(224, 33);
             this.amountPerDayTextBox.TabIndex = 79;
+            this.amountPerDayTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.amountPerDayTextBox_KeyPress);
             // 
             // amountPerDayLabel
             // 

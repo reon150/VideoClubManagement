@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using VideoClubManagement.Data;
 using VideoClubManagement.Data.Entities;
 using VideoClubManagement.Helpers;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.ArticleLendings
 {
@@ -57,7 +58,7 @@ namespace VideoClubManagement.UI.ArticleLendings
                         break;
                     case nameof(editButton):
                         Hide();
-                        var articleLendingEditForm = new ArticleLendingEditForm(this, articleLendingId);
+                        var articleLendingEditForm = new ArticleLendingEditForm(this, articleLendingId, new ArticleLendingValidator());
                         articleLendingEditForm.Show();
                         break;
                     default:
@@ -99,7 +100,7 @@ namespace VideoClubManagement.UI.ArticleLendings
         private void addButton_Click(object sender, EventArgs e)
         {
             Hide();
-            var articleLendingCreateForm = new ArticleLendingCreateForm(this);
+            var articleLendingCreateForm = new ArticleLendingCreateForm(this, new ArticleLendingValidator());
             articleLendingCreateForm.Show();
         }
 

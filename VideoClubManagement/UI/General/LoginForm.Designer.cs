@@ -91,6 +91,7 @@ namespace VideoClubManagement.UI.General
             this.passwordTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F);
             this.passwordTextBox.Location = new System.Drawing.Point(191, 220);
             this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(309, 35);
             this.passwordTextBox.TabIndex = 5;
             // 

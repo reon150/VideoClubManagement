@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using VideoClubManagement.Data;
 using VideoClubManagement.Data.Entities;
 using VideoClubManagement.Helpers;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Clients
 {
@@ -57,7 +58,7 @@ namespace VideoClubManagement.UI.Clients
                         break;
                     case nameof(editButton):
                         Hide();
-                        var clientEditForm = new ClientEditForm(this, clientId);
+                        var clientEditForm = new ClientEditForm(this, clientId, new ClientValidator(_applicationDbContext.Clients));
                         clientEditForm.Show();
                         break;
                     default:
@@ -96,7 +97,7 @@ namespace VideoClubManagement.UI.Clients
         private void addButton_Click(object sender, EventArgs e)
         {
             Hide();
-            var clientCreateForm = new ClientCreateForm(this);
+            var clientCreateForm = new ClientCreateForm(this, new ClientValidator(_applicationDbContext.Clients));
             clientCreateForm.Show();
         }
 
