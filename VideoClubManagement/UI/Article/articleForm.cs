@@ -3,7 +3,6 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.UI.General;
 
 namespace VideoClubManagement.UI.Article
 {
@@ -21,6 +20,7 @@ namespace VideoClubManagement.UI.Article
 
         private void refreshData()
         {
+            articleDataGridView.AutoGenerateColumns = false;
             articleDataGridView.DataSource = applicatioDbContext.Articles.ToList();
         }
 
@@ -57,12 +57,13 @@ namespace VideoClubManagement.UI.Article
 
         private void articleDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            titleTextBox.Text = articleDataGridView.CurrentRow.Cells[0].Value.ToString();
-            rentPerDayTextBox.Text = articleDataGridView.CurrentRow.Cells[1].Value.ToString();
-            lateReturnFeeTextBox.Text = articleDataGridView.CurrentRow.Cells[3].Value.ToString();
-            idLabel.Text = articleDataGridView.CurrentRow.Cells[8].Value.ToString();
-            createdDateLabel.Text = articleDataGridView.CurrentRow.Cells[10].Value.ToString();
-            lastUpdateDateLabel.Text = articleDataGridView.CurrentRow.Cells[11].Value.ToString();
+            titleTextBox.Text = articleDataGridView.CurrentRow.Cells[1].Value.ToString();
+            rentPerDayTextBox.Text = articleDataGridView.CurrentRow.Cells[4].Value.ToString();
+            rentalDaysTextBox.Text = articleDataGridView.CurrentRow.Cells[5].Value.ToString();
+            lateReturnFeeTextBox.Text = articleDataGridView.CurrentRow.Cells[6].Value.ToString();
+            idLabel.Text = articleDataGridView.CurrentRow.Cells[0].Value.ToString();
+            createdDateLabel.Text = articleDataGridView.CurrentRow.Cells[8].Value.ToString();
+            lastUpdateDateLabel.Text = articleDataGridView.CurrentRow.Cells[9].Value.ToString();
         }
 
         private void searchTxt_TextChanged(object sender, EventArgs e)
@@ -79,7 +80,8 @@ namespace VideoClubManagement.UI.Article
                     Title = titleTextBox.Text,
                     RentPerDay = decimal.Parse(rentPerDayTextBox.Text),
                     LateReturnFee = decimal.Parse(lateReturnFeeTextBox.Text),
-                    RentalDays = int.Parse(rentPerDayTextBox.Text),
+                    IsActive = statusCheckBox.Checked,
+                    RentalDays = int.Parse(rentalDaysTextBox.Text),
                     ArticleTypeId = int.Parse(typeComboBox.SelectedValue.ToString()),
                     LanguageId = int.Parse(langaugeComboBox.SelectedValue.ToString())
                 });
@@ -110,7 +112,9 @@ namespace VideoClubManagement.UI.Article
                 {
                     article.Title = titleTextBox.Text;
                     article.RentPerDay = decimal.Parse(rentPerDayTextBox.Text);
+                    article.RentalDays = int.Parse(rentalDaysTextBox.Text);
                     article.LateReturnFee = decimal.Parse(lateReturnFeeTextBox.Text);
+                    article.IsActive = statusCheckBox.Checked;
                     applicatioDbContext.SaveChanges();
 
                 }

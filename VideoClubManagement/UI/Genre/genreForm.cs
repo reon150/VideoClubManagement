@@ -19,6 +19,7 @@ namespace VideoClubManagement.UI.Genre
         }
         private void refreshData()
         {
+            genreDataGridView.AutoGenerateColumns = false;
             genreDataGridView.DataSource = applicatioDbContext.Genres.ToList();
         }
 
@@ -34,6 +35,9 @@ namespace VideoClubManagement.UI.Genre
 
         private void genreForm_Load(object sender, EventArgs e)
         {
+            //parentGenreComboBox.DataSource = applicatioDbContext.Genres.ToList();
+            //parentGenreComboBox.DisplayMember = "Name";
+            //parentGenreComboBox.ValueMember = "Id";
             refreshData();
         }
 
@@ -46,7 +50,7 @@ namespace VideoClubManagement.UI.Genre
         {
             try
             {
-                applicatioDbContext.Genres.Add(new Data.Entities.Genre { Name = nameTextBox.Text, Description = descriptionTextBox.Text });
+                applicatioDbContext.Genres.Add(new Data.Entities.Genre { Name = nameTextBox.Text, Description = descriptionTextBox.Text, IsActive = statusCheckbox.Checked });
                 applicatioDbContext.SaveChanges();
                 MessageBox.Show("El registro se guardo con éxito");
                 refreshData();
@@ -59,11 +63,11 @@ namespace VideoClubManagement.UI.Genre
 
         private void genreDataGridView_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            nameTextBox.Text = genreDataGridView.CurrentRow.Cells[0].Value.ToString();
-            descriptionTextBox.Text = genreDataGridView.CurrentRow.Cells[1].Value.ToString();
-            idLabel.Text = genreDataGridView.CurrentRow.Cells[4].Value.ToString();
-            createdDateLabel.Text = genreDataGridView.CurrentRow.Cells[6].Value.ToString();
-            lastUpdateDateLabel.Text = genreDataGridView.CurrentRow.Cells[7].Value.ToString();
+            nameTextBox.Text = genreDataGridView.CurrentRow.Cells[1].Value.ToString();
+            descriptionTextBox.Text = genreDataGridView.CurrentRow.Cells[2].Value.ToString();
+            idLabel.Text = genreDataGridView.CurrentRow.Cells[0].Value.ToString();
+            createdDateLabel.Text = genreDataGridView.CurrentRow.Cells[5].Value.ToString();
+            lastUpdateDateLabel.Text = genreDataGridView.CurrentRow.Cells[6].Value.ToString();
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -75,6 +79,7 @@ namespace VideoClubManagement.UI.Genre
                 {
                     genre.Name = nameTextBox.Text;
                     genre.Description = descriptionTextBox.Text;
+                    genre.IsActive = statusCheckbox.Checked;
                     applicatioDbContext.SaveChanges();
                 }
                 MessageBox.Show("Registro actualizado con exito.");

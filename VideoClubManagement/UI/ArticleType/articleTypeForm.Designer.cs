@@ -29,11 +29,18 @@ namespace VideoClubManagement.UI.ArticleType
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.articleTypeDataGridView = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.createDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.articleTypeManagementPanel = new System.Windows.Forms.Panel();
             this.lastUpdateDateLabel = new System.Windows.Forms.Label();
             this.createdDateLabel = new System.Windows.Forms.Label();
@@ -52,6 +59,14 @@ namespace VideoClubManagement.UI.ArticleType
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.firstButton = new System.Windows.Forms.Button();
+            this.previousButton = new System.Windows.Forms.Button();
+            this.lastButton = new System.Windows.Forms.Button();
+            this.nextButton = new System.Windows.Forms.Button();
+            this.currentPageTextBox = new System.Windows.Forms.TextBox();
+            this.lastPageTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleTypeDataGridView)).BeginInit();
             this.articleTypeManagementPanel.SuspendLayout();
@@ -63,7 +78,7 @@ namespace VideoClubManagement.UI.ArticleType
             this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.searchPanel.Controls.Add(this.searchTextBox);
             this.searchPanel.Controls.Add(this.searchButton);
-            this.searchPanel.Location = new System.Drawing.Point(12, 12);
+            this.searchPanel.Location = new System.Drawing.Point(239, 12);
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.Size = new System.Drawing.Size(414, 82);
             this.searchPanel.TabIndex = 1;
@@ -100,13 +115,74 @@ namespace VideoClubManagement.UI.ArticleType
             // 
             this.articleTypeDataGridView.AllowUserToAddRows = false;
             this.articleTypeDataGridView.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.articleTypeDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.articleTypeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.articleTypeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.name,
+            this.description,
+            this.isActive,
+            this.createDate,
+            this.lastUpdatedDate});
             this.articleTypeDataGridView.Location = new System.Drawing.Point(12, 100);
             this.articleTypeDataGridView.Name = "articleTypeDataGridView";
             this.articleTypeDataGridView.ReadOnly = true;
-            this.articleTypeDataGridView.Size = new System.Drawing.Size(414, 200);
+            this.articleTypeDataGridView.Size = new System.Drawing.Size(641, 200);
             this.articleTypeDataGridView.TabIndex = 2;
             this.articleTypeDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.articleTypeDataGridView_CellMouseClick_1);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "Name";
+            this.name.HeaderText = "Nombre";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 99;
+            // 
+            // description
+            // 
+            this.description.DataPropertyName = "Description";
+            this.description.HeaderText = "Descripción";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // isActive
+            // 
+            this.isActive.DataPropertyName = "IsActive";
+            this.isActive.HeaderText = "Activo";
+            this.isActive.Name = "isActive";
+            this.isActive.ReadOnly = true;
+            this.isActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.isActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // createDate
+            // 
+            this.createDate.DataPropertyName = "CreatedDate";
+            this.createDate.HeaderText = "Fecha De Creación";
+            this.createDate.Name = "createDate";
+            this.createDate.ReadOnly = true;
+            this.createDate.Width = 99;
+            // 
+            // lastUpdatedDate
+            // 
+            this.lastUpdatedDate.DataPropertyName = "LastUpdatedDate";
+            this.lastUpdatedDate.HeaderText = "Ultima Fecha De Actualización";
+            this.lastUpdatedDate.Name = "lastUpdatedDate";
+            this.lastUpdatedDate.ReadOnly = true;
             // 
             // articleTypeManagementPanel
             // 
@@ -124,7 +200,7 @@ namespace VideoClubManagement.UI.ArticleType
             this.articleTypeManagementPanel.Controls.Add(this.nameTextBox);
             this.articleTypeManagementPanel.Controls.Add(this.nameLabel);
             this.articleTypeManagementPanel.Controls.Add(this.articleTypeManagementLabel);
-            this.articleTypeManagementPanel.Location = new System.Drawing.Point(12, 306);
+            this.articleTypeManagementPanel.Location = new System.Drawing.Point(126, 345);
             this.articleTypeManagementPanel.Name = "articleTypeManagementPanel";
             this.articleTypeManagementPanel.Size = new System.Drawing.Size(414, 346);
             this.articleTypeManagementPanel.TabIndex = 3;
@@ -168,6 +244,8 @@ namespace VideoClubManagement.UI.ArticleType
             // statusCheckBox
             // 
             this.statusCheckBox.AutoSize = true;
+            this.statusCheckBox.Checked = true;
+            this.statusCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusCheckBox.Location = new System.Drawing.Point(89, 198);
             this.statusCheckBox.Name = "statusCheckBox";
             this.statusCheckBox.Size = new System.Drawing.Size(80, 17);
@@ -187,7 +265,7 @@ namespace VideoClubManagement.UI.ArticleType
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(86, 154);
+            this.idLabel.Location = new System.Drawing.Point(83, 59);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(10, 13);
             this.idLabel.TabIndex = 6;
@@ -196,7 +274,7 @@ namespace VideoClubManagement.UI.ArticleType
             // articleTypeIdLabel
             // 
             this.articleTypeIdLabel.AutoSize = true;
-            this.articleTypeIdLabel.Location = new System.Drawing.Point(21, 154);
+            this.articleTypeIdLabel.Location = new System.Drawing.Point(18, 59);
             this.articleTypeIdLabel.Name = "articleTypeIdLabel";
             this.articleTypeIdLabel.Size = new System.Drawing.Size(16, 13);
             this.articleTypeIdLabel.TabIndex = 5;
@@ -204,7 +282,7 @@ namespace VideoClubManagement.UI.ArticleType
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Location = new System.Drawing.Point(89, 103);
+            this.descriptionTextBox.Location = new System.Drawing.Point(86, 148);
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(219, 20);
             this.descriptionTextBox.TabIndex = 4;
@@ -212,7 +290,7 @@ namespace VideoClubManagement.UI.ArticleType
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Location = new System.Drawing.Point(17, 106);
+            this.descriptionLabel.Location = new System.Drawing.Point(14, 151);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(63, 13);
             this.descriptionLabel.TabIndex = 3;
@@ -220,7 +298,7 @@ namespace VideoClubManagement.UI.ArticleType
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(89, 55);
+            this.nameTextBox.Location = new System.Drawing.Point(86, 105);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(133, 20);
             this.nameTextBox.TabIndex = 2;
@@ -228,7 +306,7 @@ namespace VideoClubManagement.UI.ArticleType
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(17, 58);
+            this.nameLabel.Location = new System.Drawing.Point(14, 108);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(44, 13);
             this.nameLabel.TabIndex = 1;
@@ -250,7 +328,7 @@ namespace VideoClubManagement.UI.ArticleType
             this.actionPanel.Controls.Add(this.deleteButton);
             this.actionPanel.Controls.Add(this.updateButton);
             this.actionPanel.Controls.Add(this.addButton);
-            this.actionPanel.Location = new System.Drawing.Point(12, 658);
+            this.actionPanel.Location = new System.Drawing.Point(126, 697);
             this.actionPanel.Name = "actionPanel";
             this.actionPanel.Size = new System.Drawing.Size(414, 82);
             this.actionPanel.TabIndex = 5;
@@ -288,18 +366,95 @@ namespace VideoClubManagement.UI.ArticleType
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 25);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Tipo de artículo:";
+            // 
+            // firstButton
+            // 
+            this.firstButton.Location = new System.Drawing.Point(87, 306);
+            this.firstButton.Name = "firstButton";
+            this.firstButton.Size = new System.Drawing.Size(75, 23);
+            this.firstButton.TabIndex = 7;
+            this.firstButton.Text = "Primero";
+            this.firstButton.UseVisualStyleBackColor = true;
+            // 
+            // previousButton
+            // 
+            this.previousButton.Location = new System.Drawing.Point(185, 306);
+            this.previousButton.Name = "previousButton";
+            this.previousButton.Size = new System.Drawing.Size(75, 23);
+            this.previousButton.TabIndex = 8;
+            this.previousButton.Text = "Anterior";
+            this.previousButton.UseVisualStyleBackColor = true;
+            // 
+            // lastButton
+            // 
+            this.lastButton.Location = new System.Drawing.Point(498, 306);
+            this.lastButton.Name = "lastButton";
+            this.lastButton.Size = new System.Drawing.Size(75, 23);
+            this.lastButton.TabIndex = 9;
+            this.lastButton.Text = "Ultimo";
+            this.lastButton.UseVisualStyleBackColor = true;
+            // 
+            // nextButton
+            // 
+            this.nextButton.Location = new System.Drawing.Point(402, 306);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(75, 23);
+            this.nextButton.TabIndex = 10;
+            this.nextButton.Text = "Próximo";
+            this.nextButton.UseVisualStyleBackColor = true;
+            // 
+            // currentPageTextBox
+            // 
+            this.currentPageTextBox.Location = new System.Drawing.Point(285, 309);
+            this.currentPageTextBox.Name = "currentPageTextBox";
+            this.currentPageTextBox.Size = new System.Drawing.Size(31, 20);
+            this.currentPageTextBox.TabIndex = 11;
+            // 
+            // lastPageTextBox
+            // 
+            this.lastPageTextBox.Location = new System.Drawing.Point(349, 308);
+            this.lastPageTextBox.Name = "lastPageTextBox";
+            this.lastPageTextBox.Size = new System.Drawing.Size(31, 20);
+            this.lastPageTextBox.TabIndex = 12;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(323, 306);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 25);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "/";
+            // 
             // ArticleTypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 745);
+            this.ClientSize = new System.Drawing.Size(661, 791);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lastPageTextBox);
+            this.Controls.Add(this.currentPageTextBox);
+            this.Controls.Add(this.nextButton);
+            this.Controls.Add(this.lastButton);
+            this.Controls.Add(this.previousButton);
+            this.Controls.Add(this.firstButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.actionPanel);
             this.Controls.Add(this.articleTypeManagementPanel);
             this.Controls.Add(this.articleTypeDataGridView);
             this.Controls.Add(this.searchPanel);
             this.Name = "ArticleTypeForm";
             this.Text = "Vista y mantenimiento del tipo de artículo";
-
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleTypeDataGridView)).EndInit();
@@ -307,6 +462,7 @@ namespace VideoClubManagement.UI.ArticleType
             this.articleTypeManagementPanel.PerformLayout();
             this.actionPanel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -335,5 +491,19 @@ namespace VideoClubManagement.UI.ArticleType
         private System.Windows.Forms.Label lastUpdateDateLabel;
         private System.Windows.Forms.Label createdDateLabel;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isActive;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedDate;
+        private System.Windows.Forms.Button firstButton;
+        private System.Windows.Forms.Button previousButton;
+        private System.Windows.Forms.Button lastButton;
+        private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.TextBox currentPageTextBox;
+        private System.Windows.Forms.TextBox lastPageTextBox;
+        private System.Windows.Forms.Label label2;
     }
 }

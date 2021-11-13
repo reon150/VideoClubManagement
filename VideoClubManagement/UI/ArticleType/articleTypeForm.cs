@@ -21,6 +21,7 @@ namespace VideoClubManagement.UI.ArticleType
 
         private void refreshData()
         {
+            articleTypeDataGridView.AutoGenerateColumns = false;
             articleTypeDataGridView.DataSource = applicatioDbContext.ArticleTypes.ToList();
         }
 
@@ -48,7 +49,7 @@ namespace VideoClubManagement.UI.ArticleType
         {
             try
             {
-                applicatioDbContext.ArticleTypes.Add(new Data.Entities.ArticleType { Name = nameTextBox.Text, Description = descriptionTextBox.Text });
+                applicatioDbContext.ArticleTypes.Add(new Data.Entities.ArticleType { Name = nameTextBox.Text, Description = descriptionTextBox.Text, IsActive = statusCheckBox.Checked});
                 applicatioDbContext.SaveChanges();
                 MessageBox.Show("El registro se guardo con éxito");
                 refreshData();
@@ -61,9 +62,9 @@ namespace VideoClubManagement.UI.ArticleType
 
         private void articleTypeDataGridView_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            nameTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[0].Value.ToString();
-            descriptionTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[1].Value.ToString();
-            idLabel.Text = articleTypeDataGridView.CurrentRow.Cells[2].Value.ToString();
+            nameTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[1].Value.ToString();
+            descriptionTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[2].Value.ToString();
+            idLabel.Text = articleTypeDataGridView.CurrentRow.Cells[0].Value.ToString();
             createdDateLabel.Text = articleTypeDataGridView.CurrentRow.Cells[4].Value.ToString();
             lastUpdateDateLabel.Text = articleTypeDataGridView.CurrentRow.Cells[5].Value.ToString();
         }
@@ -77,6 +78,7 @@ namespace VideoClubManagement.UI.ArticleType
                 {
                     articleType.Name = nameTextBox.Text;
                     articleType.Description = descriptionTextBox.Text;
+                    articleType.IsActive = statusCheckBox.Checked;
                     applicatioDbContext.SaveChanges();
                 }
                 MessageBox.Show("Registro actualizado con exito.");
