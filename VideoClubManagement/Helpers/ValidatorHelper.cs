@@ -1,4 +1,6 @@
-﻿namespace VideoClubManagement.Helpers
+﻿using System.Text.RegularExpressions;
+
+namespace VideoClubManagement.Helpers
 {
     /// <summary>
     /// Code made by professor Juan Valdez Reyes
@@ -55,5 +57,9 @@
             else
                 return false;
         }
+
+        public static bool IsValidEmail(string email) =>
+            Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", 
+                RegexOptions.IgnoreCase);
     }
 }
