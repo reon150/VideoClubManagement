@@ -94,11 +94,11 @@
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Migrations\202111050014066_AddUserEntity.cs" />
-    <Compile Include="Data\Migrations\202111050014066_AddUserEntity.designer.cs">
+    <Compile Include="Data\Migrations\202111050014066_AddUserEntity.Designer.cs">
       <DependentUpon>202111050014066_AddUserEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Migrations\202111052255272_SetArticleLendingCommentToNulleableType.cs" />
-    <Compile Include="Data\Migrations\202111052255272_SetArticleLendingCommentToNulleableType.designer.cs">
+    <Compile Include="Data\Migrations\202111052255272_SetArticleLendingCommentToNulleableType.Designer.cs">
       <DependentUpon>202111052255272_SetArticleLendingCommentToNulleableType.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
