@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.UI.General;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Genre
 {
@@ -16,12 +11,17 @@ namespace VideoClubManagement.UI.Genre
     {
         public Data.Entities.Genre Genre { get; set; }
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
-        public GenreForm()
+        private readonly Form _parent;
+        private IValidator<Data.Entities.Genre> _validator;
+        public GenreForm(Form parent)
         {
             InitializeComponent();
+            _parent = parent;
+            _validator = new GenreValidator(applicatioDbContext.Genres);
         }
         private void refreshData()
         {
+            genreDataGridView.AutoGenerateColumns = false;
             genreDataGridView.DataSource = applicatioDbContext.Genres.ToList();
         }
 
@@ -49,10 +49,36 @@ namespace VideoClubManagement.UI.Genre
         {
             try
             {
-                applicatioDbContext.Genres.Add(new Data.Entities.Genre { Name = nameTextBox.Text, Description = descriptionTextBox.Text });
-                applicatioDbContext.SaveChanges();
-                MessageBox.Show("El registro se guardo con éxito");
-                refreshData();
+                var save = MessageBox.Show($"Estás seguro que deseas guardar estos datos?",
+                    "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (save)
+                {
+                    Data.Entities.Genre genre = new Data.Entities.Genre
+                    {
+                        Name = nameTextBox.Text,
+                        Description = descriptionTextBox.Text,
+                        IsActive = statusCheckbox.Checked
+                    };
+
+                    var validationErrors = _validator.GetValidationErrors(genre);
+
+                    if (validationErrors != null && validationErrors.Count > 0)
+                    {
+                        string errors = "";
+                        foreach (var validationError in validationErrors)
+                            errors += $"{ validationError }{ Environment.NewLine }";
+
+                        MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    else
+                    {
+                        applicatioDbContext.Genres.Add(genre);
+                        applicatioDbContext.SaveChanges();
+                        MessageBox.Show("El registro se guardo con éxito");
+                        refreshData();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -62,27 +88,48 @@ namespace VideoClubManagement.UI.Genre
 
         private void genreDataGridView_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            nameTextBox.Text = genreDataGridView.CurrentRow.Cells[0].Value.ToString();
-            descriptionTextBox.Text = genreDataGridView.CurrentRow.Cells[1].Value.ToString();
-            idLabel.Text = genreDataGridView.CurrentRow.Cells[4].Value.ToString();
-            createdDateLabel.Text = genreDataGridView.CurrentRow.Cells[6].Value.ToString();
-            lastUpdateDateLabel.Text = genreDataGridView.CurrentRow.Cells[7].Value.ToString();
+            nameTextBox.Text = genreDataGridView.CurrentRow.Cells[1].Value.ToString();
+            descriptionTextBox.Text = genreDataGridView.CurrentRow.Cells[2].Value.ToString();
+            idLabel.Text = genreDataGridView.CurrentRow.Cells[0].Value.ToString();
+            createdDateLabel.Text = genreDataGridView.CurrentRow.Cells[4].Value.ToString();
+            lastUpdateDateLabel.Text = genreDataGridView.CurrentRow.Cells[5].Value.ToString();
         }
-
 
         private void updateButton_Click(object sender, EventArgs e)
         {
             try
             {
-                Data.Entities.Genre genre = applicatioDbContext.Genres.Find(Int32.Parse(idLabel.Text));
-                if (genre != null)
+                var update = MessageBox.Show($"Estás seguro que deseas guardar estos datos?",
+                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+
+
+                if (update)
                 {
+                    Data.Entities.Genre genre = applicatioDbContext.Genres.Find(Int32.Parse(idLabel.Text));
+
                     genre.Name = nameTextBox.Text;
                     genre.Description = descriptionTextBox.Text;
-                    applicatioDbContext.SaveChanges();
+                    genre.IsActive = statusCheckbox.Checked;
+
+                    if (genre != null)
+                    {
+                        var validationErrors = _validator.GetValidationErrors(genre);
+                        if (validationErrors != null && validationErrors.Count > 0)
+                        {
+                            string errors = "";
+                            foreach (var validationError in validationErrors)
+                                errors += $"{ validationError }{ Environment.NewLine }";
+
+                            MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            applicatioDbContext.SaveChanges();
+                            MessageBox.Show("Registro actualizado con exito.");
+                            refreshData();
+                        }
+                    }
                 }
-                MessageBox.Show("Registro actualizado con exito.");
-                refreshData();
             }
             catch (Exception ex)
             {
@@ -94,14 +141,20 @@ namespace VideoClubManagement.UI.Genre
         {
             try
             {
-                Data.Entities.Genre genre = applicatioDbContext.Genres.Find(Int32.Parse(idLabel.Text));
-                if (genre != null)
+                var delete = MessageBox.Show($"¿Estás seguro que deseas eliminar estos datos?",
+                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (delete)
                 {
-                    applicatioDbContext.Genres.Remove(genre);
-                    applicatioDbContext.SaveChanges();
+                    Data.Entities.Genre genre = applicatioDbContext.Genres.Find(Int32.Parse(idLabel.Text));
+
+                    if (genre != null)
+                    {
+                        applicatioDbContext.Genres.Remove(genre);
+                        applicatioDbContext.SaveChanges();
+                        MessageBox.Show("Registro eliminado con exito.");
+                        refreshData();
+                    }
                 }
-                MessageBox.Show("Registro eliminado con exito.");
-                refreshData();
             }
             catch (Exception ex)
             {
@@ -112,7 +165,7 @@ namespace VideoClubManagement.UI.Genre
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new MenuForm().Show();
+            _parent.Show();
         }
     }
 }

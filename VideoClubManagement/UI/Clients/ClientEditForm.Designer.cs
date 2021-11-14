@@ -82,6 +82,7 @@ namespace VideoClubManagement.UI.Clients
             this.creditLimitTextBox.Name = "creditLimitTextBox";
             this.creditLimitTextBox.Size = new System.Drawing.Size(186, 33);
             this.creditLimitTextBox.TabIndex = 61;
+            this.creditLimitTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.creditLimitTextBox_KeyPress);
             // 
             // creditCardNumberTextBox
             // 
@@ -165,7 +166,7 @@ namespace VideoClubManagement.UI.Clients
             // 
             this.legalPersonTypeLabel.AutoSize = true;
             this.legalPersonTypeLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.legalPersonTypeLabel.Location = new System.Drawing.Point(410, 282);
+            this.legalPersonTypeLabel.Location = new System.Drawing.Point(406, 282);
             this.legalPersonTypeLabel.Name = "legalPersonTypeLabel";
             this.legalPersonTypeLabel.Size = new System.Drawing.Size(155, 25);
             this.legalPersonTypeLabel.TabIndex = 52;

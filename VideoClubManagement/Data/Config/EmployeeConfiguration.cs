@@ -12,10 +12,11 @@ namespace VideoClubManagement.Data.Config
             Property(e => e.LastName).IsRequired().HasMaxLength(100);
 
             Property(e => e.IdentificationNumber).IsRequired().HasMaxLength(11).IsFixedLength();
+            HasIndex(e => e.IdentificationNumber).IsUnique();
 
             Property(e => e.CommissionPercentage).IsRequired().HasPrecision(10, 4);
 
-            Property(e => e.EnteringDate).HasColumnType("date");
+            Property(e => e.EnteringDate).HasColumnType("date"); 
         }
     }
 }

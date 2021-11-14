@@ -23,7 +23,9 @@ namespace VideoClubManagement.Data
         public DbSet<LegalPersonType> LegalPersonTypes { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<ShiftWork> ShiftWorks { get; set; }
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+   
         protected override void OnModelCreating(DbModelBuilder builder)
         {
             base.OnModelCreating(builder);

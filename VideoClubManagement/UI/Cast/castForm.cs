@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.UI.General;
+using VideoClubManagement.Data.Entities;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Cast
 {
@@ -16,15 +12,27 @@ namespace VideoClubManagement.UI.Cast
     {
         public Data.Entities.Cast Casts { get; set; }
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-        public castForm()
+        private readonly Form _parent;
+        private IValidator<Data.Entities.Cast> _validator;
+
+        public castForm(Form parent)
         {
             InitializeComponent();
+            _parent = parent;
+            _validator = new CastValidator(applicationDbContext.Casts);
+
         }
         private void refreshData()
         {
            castDataGridView.DataSource = applicationDbContext.Casts.ToList();
         }
 
+        private void clearData()
+        {
+            nameTextBox.Clear();
+            lastnameTextBox.Clear();
+            idTextBox.Clear();
+        }
         private void generalSearch()
         {
             var Casts = from sh in applicationDbContext.Casts
@@ -50,12 +58,34 @@ namespace VideoClubManagement.UI.Cast
         {
             try
             {
+                var save = MessageBox.Show($"¿Estás seguro que deseas guardar estos datos?",
+               "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (save)
+                {
+                    Data.Entities.Cast cast = new Data.Entities.Cast
+                    {
+                        FirstName = nameTextBox.Text,
+                        LastName = lastnameTextBox.Text
+                    };
+                    var validationErrors = _validator.GetValidationErrors(cast);
+                    if (validationErrors != null && validationErrors.Count > 0)
+                    {
+                        string errors = "";
+                        foreach (var validationError in validationErrors)
+                            errors += $"{ validationError }{ Environment.NewLine }";
 
-                applicationDbContext.Casts.Add(new Data.Entities.Cast { FirstName = nameTextBox.Text, LastName = lastnameTextBox.Text });
-                applicationDbContext.SaveChanges();
-                MessageBox.Show("El registro se guardo con exito");
-                refreshData();
+                        MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        applicationDbContext.Casts.Add(cast);
+                        applicationDbContext.SaveChanges();
+                        MessageBox.Show("El registro se guardo con exito");
+                        refreshData();
+                        clearData();
 
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -69,17 +99,35 @@ namespace VideoClubManagement.UI.Cast
         {
             try
             {
+                var update = MessageBox.Show($"¿Estás seguro que deseas actualizar estos datos?",
+               "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
                 Data.Entities.Cast cast = applicationDbContext.Casts.Find(Int32.Parse(idTextBox.Text));
-                if (cast != null)
+                cast.FirstName = nameTextBox.Text;
+                cast.LastName = lastnameTextBox.Text;
+                if (update)
                 {
+                    if (cast != null)
+                    {
+                        var validationErrors = _validator.GetValidationErrors(cast);
+                        if (validationErrors != null && validationErrors.Count > 0)
+                        {
+                            string errors = "";
+                            foreach (var validationError in validationErrors)
+                                errors += $"{ validationError }{ Environment.NewLine }";
 
-                    cast.FirstName = nameTextBox.Text;
-                    cast.LastName = lastnameTextBox.Text;
-
-
+                            MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            applicationDbContext.SaveChanges();
+                            MessageBox.Show("Registro actualizado con exito.");
+                            refreshData();
+                            clearData();
+                        }
+                       
+                    }
+                   
                 }
-                MessageBox.Show("Registro actualizado con exito.");
-                refreshData();
             }
             catch (Exception ex)
             {
@@ -124,7 +172,7 @@ namespace VideoClubManagement.UI.Cast
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
-            new MenuForm().Show();
+            _parent.Show();
         }
     }
     

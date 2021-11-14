@@ -4,6 +4,8 @@ using System.Linq;
 using System.Timers;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Data.Entities;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.ArticleLendings
 {
@@ -14,14 +16,16 @@ namespace VideoClubManagement.UI.ArticleLendings
         private System.Timers.Timer _timer = new System.Timers.Timer(1000);
         private bool _backToList = false;
         private bool _changesSaved = false;
+        private IValidator<ArticleLending> _validator;
 
-        public ArticleLendingEditForm(Form paren, int id)
+        public ArticleLendingEditForm(Form paren, int id, IValidator<ArticleLending> validator)
         {
             InitializeComponent();
             _parent = paren;
+            _validator = validator;
             _timer.Elapsed += UpdateCurrentDateTimeLabel;
             FillData(id);
-
+            var a = _applicationDbContext.Clients;
             _timer.Start();
         }
 
@@ -97,26 +101,44 @@ namespace VideoClubManagement.UI.ArticleLendings
 
         private void editClientButton_Click(object sender, EventArgs e)
         {
-            var employeeComboBoxSelectedItem = employeeComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(employeeComboBox.SelectedItem, null);
-            var clientComboBoxSelectedItem = clientComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(clientComboBox.SelectedItem, null);
-            var articleComboBoxSelectedItem = articleComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(articleComboBox.SelectedItem, null);
+            var save = MessageBox.Show($"¿Estás seguro que deseas guardar estos datos?",
+                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+            if (save)
+            {
+                var employeeComboBoxSelectedItem = employeeComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(employeeComboBox.SelectedItem, null);
+                var clientComboBoxSelectedItem = clientComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(clientComboBox.SelectedItem, null);
+                var articleComboBoxSelectedItem = articleComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(articleComboBox.SelectedItem, null);
 
-            var id = int.Parse(idValueLabel.Text);
-            var articleLending = _applicationDbContext.ArticleLendings.Where(c => c.Id == id).FirstOrDefault();
-            articleLending.EmployeeId = int.Parse(employeeComboBoxSelectedItem.ToString());
-            articleLending.ClientId = int.Parse(clientComboBoxSelectedItem.ToString());
-            articleLending.ArticleId = int.Parse(articleComboBoxSelectedItem.ToString());
-            articleLending.AmountPerDay = decimal.Parse(amountPerDayTextBox.Text);
-            articleLending.DueDate = dueDateDateTimePicker.Value.Date;
-            articleLending.Comment = commentTextBox.Text;
-            articleLending.IsActive = isActiveCheckBox.Checked;
-            articleLending.ReturnDate = returnDateDateTimePicker.Value.Date;
+                var id = int.Parse(idValueLabel.Text);
+                var articleLending = _applicationDbContext.ArticleLendings.Where(c => c.Id == id).FirstOrDefault();
+                articleLending.EmployeeId = int.Parse(employeeComboBoxSelectedItem.ToString());
+                articleLending.ClientId = int.Parse(clientComboBoxSelectedItem.ToString());
+                articleLending.ArticleId = int.Parse(articleComboBoxSelectedItem.ToString());
+                articleLending.AmountPerDay = decimal.Parse(amountPerDayTextBox.Text);
+                articleLending.DueDate = dueDateDateTimePicker.Value.Date;
+                articleLending.Comment = commentTextBox.Text;
+                articleLending.IsActive = isActiveCheckBox.Checked;
+                articleLending.ReturnDate = returnDateDateTimePicker.Value.Date;
 
-            _applicationDbContext.SaveChanges();
+                var validationErrors = _validator.GetValidationErrors(articleLending);
 
-            _changesSaved = true;
-            _backToList = true;
-            Close();
+                if (validationErrors != null && validationErrors.Count > 0)
+                {
+                    string errors = "";
+                    foreach (var validationError in validationErrors)
+                        errors += $"{ validationError }{ Environment.NewLine }";
+
+                    MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    _applicationDbContext.SaveChanges();
+
+                    _changesSaved = true;
+                    _backToList = true;
+                    Close();
+                }
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -156,5 +178,8 @@ namespace VideoClubManagement.UI.ArticleLendings
             _backToList = true;
             Close();
         }
+
+        private void amountPerDayTextBox_KeyPress(object sender, KeyPressEventArgs e) =>
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);   
     }
 }

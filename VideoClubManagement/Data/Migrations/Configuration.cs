@@ -34,6 +34,36 @@
                     IsActive = true
                 });
 
+            context.UserRoles.AddOrUpdate(
+                ur => ur.Id,
+                new UserRole
+                {
+                    Id = UserRoleId.Admin,
+                    Name = nameof(UserRoleId.Admin),
+                    Description = "It is the user with the highest level of authorization, this user manages the system configuration and also " +
+                                  "can do everything that all users do.",
+                    IsActive = true
+                },
+                new UserRole
+                {
+                    Id = UserRoleId.Employee,
+                    Name = nameof(UserRoleId.Employee),
+                    Description = "It is the user corresponding to an employee.",
+                    IsActive = true
+                });
+
+            context.Users.AddOrUpdate(
+                u => u.UserName,
+                new User
+                {
+                    UserRoleId = UserRoleId.Admin,
+                    UserName = "admin",
+                    Email = "admin@unapec.edu.do",
+                    Password = "123456",
+                    IdentificationNumber = "01234567890",
+                    IsActive = true
+                });
+
              context.SaveChanges();
         }
     }

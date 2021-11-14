@@ -381,7 +381,6 @@ namespace VideoClubManagement.UI.Clients
             this.Name = "ClientIndexForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
-            this.Load += new System.EventHandler(this.ClientIndexForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.clientListDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

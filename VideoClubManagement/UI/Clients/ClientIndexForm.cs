@@ -1,19 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
 using VideoClubManagement.Data.Entities;
+using VideoClubManagement.Helpers;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Clients
 {
     public partial class ClientIndexForm : Form
     {
         private readonly ApplicationDbContext _applicationDbContext = new ApplicationDbContext();
-        private IQueryable<Client> _clientsQuery; 
+        private IQueryable<Client> _clientsQuery;
         private const int _pageSize = 15;
-        private int _currentPage = 1;
+        private readonly FormPaginationHelper<Client, int> _paginationHelper;
         private readonly Form _parent;
         private bool _backToList = false;
 
@@ -21,17 +23,12 @@ namespace VideoClubManagement.UI.Clients
         {
             InitializeComponent();
             _parent = parent;
+            _clientsQuery = _applicationDbContext.Clients.AsQueryable();
+            _paginationHelper = new FormPaginationHelper<Client, int>(_clientsQuery, _pageSize, currentPageTextBox, lastPageTextBox);
         }
 
-        private void ClientIndexForm_Load(object sender, EventArgs e) =>
-            _clientsQuery = _applicationDbContext.Clients.AsQueryable();
-        
-        private void FillClientListDataGridView(int pageNumber)
+        private void FillClientListDataGridView(IEnumerable<Client> clients)
         {
-            int startIndex = _pageSize * (pageNumber - 1);
-            var clients = _clientsQuery.OrderByDescending(c => c.CreatedDate).Skip((pageNumber - 1) * _pageSize)
-                .Take(_pageSize).AsNoTracking().AsEnumerable();
-
             clientListDataGridView.Rows.Clear();
 
             foreach (var client in clients)
@@ -42,99 +39,47 @@ namespace VideoClubManagement.UI.Clients
                     client.TaxpayerIdentificationNumber,
                     client.IsActive);
             }
-
-            if (clients.Count() > 0)
-                currentPageTextBox.Text = pageNumber.ToString();
-            else
-                currentPageTextBox.Text = "";
-
-            lastPageTextBox.Text = TotalNumberOfPages().ToString();
-        }
-
-        private void firstButton_Click(object sender, EventArgs e)
-        {
-            if (_currentPage == 1)
-            {
-                MessageBox.Show("Ya se encuentra en la primera página.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                _currentPage = 1;
-                FillClientListDataGridView(_currentPage);
-            }
-        }
-
-        private void nextButton_Click(object sender, EventArgs e)
-        {
-            int lastPage = TotalNumberOfPages();
-            if (_currentPage == lastPage)
-            {
-                MessageBox.Show("Ya esta en la ultima pagina.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                _currentPage += 1;
-                FillClientListDataGridView(_currentPage);
-            }
-        }
-
-        private void previousButton_Click(object sender, EventArgs e)
-        {
-            if (_currentPage == 1)
-            {
-                MessageBox.Show("Ya esta en la primera página.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                _currentPage -= 1;
-                FillClientListDataGridView(_currentPage);
-            }
-        }
-
-        private void lastButton_Click(object sender, EventArgs e)
-        {
-            int previousPage = _currentPage;
-            _currentPage = TotalNumberOfPages();
-
-            if (previousPage == _currentPage)
-                MessageBox.Show("Ya se encuentra en la ultima página.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                FillClientListDataGridView(_currentPage);
-        }
-
-        private int TotalNumberOfPages()
-        {
-            int totalNumberOfClients = _clientsQuery.Count();
-            int totalNumberOfPages = totalNumberOfClients / _pageSize;
-
-            if (totalNumberOfClients % _pageSize != 0)
-                totalNumberOfPages++;
-            return totalNumberOfPages;
         }
 
         private void clientListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex >= 0)
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
             {
                 int clientId = (int)clientListDataGridView[0, e.RowIndex].Value;
                 switch (clientListDataGridView.Columns[e.ColumnIndex].Name)
                 {
-                    case "deleteButton":
+                    case nameof(deleteButton):
                         DeleteClient(clientId);
                         break;
-                    case "detailsButton":
+                    case nameof(detailsButton):
                         Hide();
                         var clientDetailsForm = new ClientDetailsForm(this, clientId);
                         clientDetailsForm.Show();
                         break;
-                    case "editButton":
+                    case nameof(editButton):
                         Hide();
-                        var clientEditForm = new ClientEditForm(this, clientId);
+                        var clientEditForm = new ClientEditForm(this, clientId, new ClientValidator(_applicationDbContext.Clients));
                         clientEditForm.Show();
                         break;
                     default:
                         break;
                 }
+            }
+        }
+
+        private void DeleteClient(int id)
+        {
+            var client = _applicationDbContext.Clients.SingleOrDefault(x => x.Id == id);
+            var delete = MessageBox.Show($"¿Estas seguro que deseas eliminar cliente { client.FirstName } { client.LastName }?",
+                "Adventencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+
+            if (delete)
+            {
+                _applicationDbContext.Clients.Remove(client);
+                _applicationDbContext.SaveChanges();
+                onlyShowActivesCheckBox.Checked = false;
+                searchTextBox.Text = "";
+                _paginationHelper.FirstPage(FillClientListDataGridView, false);
             }
         }
 
@@ -146,69 +91,27 @@ namespace VideoClubManagement.UI.Clients
                 || c.TaxpayerIdentificationNumber.Contains(searchTextBox.Text));
 
             if (onlyShowActivesCheckBox.Checked) _clientsQuery = _clientsQuery.Where(c => c.IsActive);
-            FillClientListDataGridView(1);
-        }
-
-        private void DeleteClient(int id)
-        {
-            var client = _applicationDbContext.Clients.SingleOrDefault(x => x.Id == id);
-            var delete = MessageBox.Show($"¿Estas seguro que deseas eliminar cliente { client.FirstName } { client.LastName }?", 
-                "Adventencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
-
-            if (delete)
-            {
-                _applicationDbContext.Clients.Remove(client);
-                _applicationDbContext.SaveChanges();
-                onlyShowActivesCheckBox.Checked = false;
-                searchTextBox.Text = "";
-                _currentPage = 1;
-                FillClientListDataGridView(_currentPage);
-            }
-        }
-
-        private void currentPageTextBox_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-
-        string oldCurrentPage = string.Empty;
-
-        private void currentPageTextBox_Enter(object sender, EventArgs e) =>
-            oldCurrentPage = currentPageTextBox.Text;
-
-        private void currentPageTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (currentPageTextBox.Text != "")
-            {
-                var page = int.Parse(currentPageTextBox.Text);
-
-                if (page <= 0)
-                {
-                    MessageBox.Show("El número de página solo puede mayor a 0", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    currentPageTextBox.Text = oldCurrentPage;
-                }
-                else if (page > TotalNumberOfPages())
-                {
-                    MessageBox.Show("El número de página no puede ser mayor al número total de páginas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    currentPageTextBox.Text = oldCurrentPage;
-                }
-                else
-                {
-                    FillClientListDataGridView(_currentPage = page);
-                }  
-            }
+            _paginationHelper.Search(FillClientListDataGridView, _clientsQuery);
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
             Hide();
-            var clientCreateForm = new ClientCreateForm(this);
+            var clientCreateForm = new ClientCreateForm(this, new ClientValidator(_applicationDbContext.Clients));
             clientCreateForm.Show();
+        }
+
+        private void backToMenuButton_Click(object sender, EventArgs e)
+        {
+            _backToList = true;
+            Close();
         }
 
         protected override void OnVisibleChanged(EventArgs e)
         {
             base.OnVisibleChanged(e);
             if (Visible)
-                FillClientListDataGridView(1);
+                _paginationHelper.FirstPage(FillClientListDataGridView, false);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -217,21 +120,24 @@ namespace VideoClubManagement.UI.Clients
 
             if (e.CloseReason == CloseReason.WindowsShutDown) return;
 
-
             if (_backToList)
-            {
                 _parent.Show();
-            }
             else
-            {
                 _parent.Close();
-            }
         }
 
-        private void backToMenuButton_Click(object sender, EventArgs e)
-        {
-            _backToList = true;
-            Close();
-        }
+        private void firstButton_Click(object sender, EventArgs e) => _paginationHelper.FirstPage(FillClientListDataGridView);
+
+        private void nextButton_Click(object sender, EventArgs e) => _paginationHelper.NextPage(FillClientListDataGridView);
+
+        private void previousButton_Click(object sender, EventArgs e) => _paginationHelper.PreviousPage(FillClientListDataGridView);
+
+        private void lastButton_Click(object sender, EventArgs e) => _paginationHelper.LastPage(FillClientListDataGridView);
+
+        private void currentPageTextBox_KeyPress(object sender, KeyPressEventArgs e) => _paginationHelper.CurrentPageKeyPressEvent(e);
+
+        private void currentPageTextBox_Enter(object sender, EventArgs e) => _paginationHelper.CurrentPageEnterEvent();
+
+        private void currentPageTextBox_TextChanged(object sender, EventArgs e) => _paginationHelper.CurrentPageChangedEvent(FillClientListDataGridView);
     }
 }

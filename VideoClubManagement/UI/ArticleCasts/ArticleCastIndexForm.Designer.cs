@@ -45,20 +45,20 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.previousButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.backToMenuButton = new System.Windows.Forms.Button();
-            this.clientsLabel = new System.Windows.Forms.Label();
+            this.articleCastsLabel = new System.Windows.Forms.Label();
             this.articleCastsDataGridView = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.article = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.editButton = new System.Windows.Forms.DataGridViewImageColumn();
-            this.detailsButton = new System.Windows.Forms.DataGridViewImageColumn();
-            this.deleteButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.searchButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.DataGridViewImageColumn();
+            this.detailsButton = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deleteButton = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.articleCastsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,15 +207,15 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.backToMenuButton.UseVisualStyleBackColor = true;
             this.backToMenuButton.Click += new System.EventHandler(this.backToMenuButton_Click);
             // 
-            // clientsLabel
+            // articleCastsLabel
             // 
-            this.clientsLabel.AutoSize = true;
-            this.clientsLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clientsLabel.Location = new System.Drawing.Point(58, 95);
-            this.clientsLabel.Name = "clientsLabel";
-            this.clientsLabel.Size = new System.Drawing.Size(204, 30);
-            this.clientsLabel.TabIndex = 19;
-            this.clientsLabel.Text = "Artículos y elencos:";
+            this.articleCastsLabel.AutoSize = true;
+            this.articleCastsLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.articleCastsLabel.Location = new System.Drawing.Point(58, 95);
+            this.articleCastsLabel.Name = "articleCastsLabel";
+            this.articleCastsLabel.Size = new System.Drawing.Size(204, 30);
+            this.articleCastsLabel.TabIndex = 19;
+            this.articleCastsLabel.Text = "Artículos y elencos:";
             // 
             // articleCastsDataGridView
             // 
@@ -297,35 +297,6 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.isActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.isActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // editButton
-            // 
-            this.editButton.FillWeight = 34.43562F;
-            this.editButton.HeaderText = "";
-            this.editButton.Image = global::VideoClubManagement.Properties.Resources.edit_black_24dp;
-            this.editButton.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.editButton.Name = "editButton";
-            this.editButton.ReadOnly = true;
-            // 
-            // detailsButton
-            // 
-            this.detailsButton.FillWeight = 38.07484F;
-            this.detailsButton.HeaderText = "";
-            this.detailsButton.Image = global::VideoClubManagement.Properties.Resources.view_black_24dp;
-            this.detailsButton.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.detailsButton.Name = "detailsButton";
-            this.detailsButton.ReadOnly = true;
-            this.detailsButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.FillWeight = 33.2892F;
-            this.deleteButton.HeaderText = "";
-            this.deleteButton.Image = global::VideoClubManagement.Properties.Resources.delete_black_24dp;
-            this.deleteButton.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.ReadOnly = true;
-            this.deleteButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.FillWeight = 34.43562F;
@@ -369,6 +340,35 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // editButton
+            // 
+            this.editButton.FillWeight = 34.43562F;
+            this.editButton.HeaderText = "";
+            this.editButton.Image = global::VideoClubManagement.Properties.Resources.edit_black_24dp;
+            this.editButton.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.editButton.Name = "editButton";
+            this.editButton.ReadOnly = true;
+            // 
+            // detailsButton
+            // 
+            this.detailsButton.FillWeight = 38.07484F;
+            this.detailsButton.HeaderText = "";
+            this.detailsButton.Image = global::VideoClubManagement.Properties.Resources.view_black_24dp;
+            this.detailsButton.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.detailsButton.Name = "detailsButton";
+            this.detailsButton.ReadOnly = true;
+            this.detailsButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.FillWeight = 33.2892F;
+            this.deleteButton.HeaderText = "";
+            this.deleteButton.Image = global::VideoClubManagement.Properties.Resources.delete_black_24dp;
+            this.deleteButton.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.ReadOnly = true;
+            this.deleteButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // ArticleCastIndexForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,14 +389,13 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.Controls.Add(this.previousButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.backToMenuButton);
-            this.Controls.Add(this.clientsLabel);
+            this.Controls.Add(this.articleCastsLabel);
             this.Controls.Add(this.articleCastsDataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ArticleCastIndexForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Artículos y elenco:";
-            this.Load += new System.EventHandler(this.ArticleCastIndexForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.articleCastsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -420,7 +419,7 @@ namespace VideoClubManagement.UI.ArticleCasts
         private System.Windows.Forms.Button previousButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button backToMenuButton;
-        private System.Windows.Forms.Label clientsLabel;
+        private System.Windows.Forms.Label articleCastsLabel;
         private System.Windows.Forms.DataGridView articleCastsDataGridView;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;

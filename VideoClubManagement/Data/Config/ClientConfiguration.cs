@@ -12,8 +12,10 @@ namespace VideoClubManagement.Data.Config
             Property(c => c.LastName).IsRequired().HasMaxLength(100);
 
             Property(c => c.TaxpayerIdentificationNumber).IsRequired().HasMaxLength(11).IsFixedLength();
+            HasIndex(c => c.TaxpayerIdentificationNumber).IsUnique();
 
             Property(c => c.CreditCardNumber).IsRequired().HasMaxLength(16).IsFixedLength();
+            HasIndex(c => c.CreditCardNumber).IsUnique();
 
             Property(c => c.CreditLimit).IsRequired().HasPrecision(10, 4);
         }

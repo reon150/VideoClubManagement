@@ -55,7 +55,7 @@ namespace VideoClubManagement.UI.Clients
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(54, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(237, 32);
+            this.label1.Size = new System.Drawing.Size(236, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Crear nuevo cliente";
             // 
@@ -185,6 +185,7 @@ namespace VideoClubManagement.UI.Clients
             this.creditLimitTextBox.Name = "creditLimitTextBox";
             this.creditLimitTextBox.Size = new System.Drawing.Size(186, 33);
             this.creditLimitTextBox.TabIndex = 43;
+            this.creditLimitTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.creditLimitTextBox_KeyPress);
             // 
             // currentDateTimeLabel
             // 

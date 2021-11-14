@@ -69,6 +69,8 @@
     <Compile Include="Data\Config\ArticleCastConfiguration.cs" />
     <Compile Include="Data\Config\ArticleConfiguration.cs" />
     <Compile Include="Data\Config\ShiftWorkConfiguration.cs" />
+    <Compile Include="Data\Config\UserConfiguration.cs" />
+    <Compile Include="Data\Config\UserRoleConfiguration.cs" />
     <Compile Include="Data\Entities\Article.cs" />
     <Compile Include="Data\Entities\ArticleCast.cs" />
     <Compile Include="Data\Entities\ArticleLending.cs" />
@@ -83,12 +85,26 @@
     <Compile Include="Data\Entities\LegalPersonType.cs" />
     <Compile Include="Data\Entities\Role.cs" />
     <Compile Include="Data\Entities\ShiftWork.cs" />
+    <Compile Include="Data\Entities\User.cs" />
+    <Compile Include="Data\Entities\UserRole.cs" />
     <Compile Include="Data\Enums\LegalPersonTypeId.cs" />
+    <Compile Include="Data\Enums\UserRoleId.cs" />
     <Compile Include="Data\Migrations\202110140048423_Initial-Migration.cs" />
     <Compile Include="Data\Migrations\202110140048423_Initial-Migration.Designer.cs">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Migrations\202111050014066_AddUserEntity.cs" />
+    <Compile Include="Data\Migrations\202111050014066_AddUserEntity.Designer.cs">
+      <DependentUpon>202111050014066_AddUserEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Migrations\202111052255272_SetArticleLendingCommentToNulleableType.cs" />
+    <Compile Include="Data\Migrations\202111052255272_SetArticleLendingCommentToNulleableType.Designer.cs">
+      <DependentUpon>202111052255272_SetArticleLendingCommentToNulleableType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
+    <Compile Include="Helpers\FormPaginationHelper.cs" />
+    <Compile Include="Helpers\LoggedInUserHelper.cs" />
+    <Compile Include="Helpers\ValidatorHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -107,6 +123,12 @@
     </Compile>
     <Compile Include="UI\Article\articleForm.Designer.cs">
       <DependentUpon>articleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\General\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\General\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Genre\genreForm.cs">
       <SubType>Form</SubType>
@@ -216,8 +238,49 @@
     <Compile Include="UI\General\MenuForm.Designer.cs">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Users\UserCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Users\UserCreateForm.Designer.cs">
+      <DependentUpon>UserCreateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Users\UserDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Users\UserDetailsForm.Designer.cs">
+      <DependentUpon>UserDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Users\UserEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Users\UserEditForm.Designer.cs">
+      <DependentUpon>UserEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Users\UserIndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Users\UserIndexForm.Designer.cs">
+      <DependentUpon>UserIndexForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\ArticleLendingValidator.cs" />
+    <Compile Include="Validations\ArticleTypeValidator.cs" />
+    <Compile Include="Validations\ArticleValidator.cs" />
+    <Compile Include="Validations\CastValidator.cs" />
+    <Compile Include="Validations\ClientValidator.cs" />
+    <Compile Include="Validations\EmployeeValidator.cs" />
+    <Compile Include="Validations\GenreValidator.cs" />
+    <Compile Include="Validations\IValidator.cs" />
+    <Compile Include="Validations\LanguageValidator.cs" />
+    <Compile Include="Validations\ShiftworkValidator.cs" />
+    <Compile Include="Validations\UserValidator.cs" />
     <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Migrations\202111050014066_AddUserEntity.resx">
+      <DependentUpon>202111050014066_AddUserEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Migrations\202111052255272_SetArticleLendingCommentToNulleableType.resx">
+      <DependentUpon>202111052255272_SetArticleLendingCommentToNulleableType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -229,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Article\articleForm.resx">
       <DependentUpon>articleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\General\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Genre\genreForm.resx">
       <DependentUpon>genreForm.cs</DependentUpon>
@@ -284,6 +350,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\General\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Users\UserCreateForm.resx">
+      <DependentUpon>UserCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Users\UserDetailsForm.resx">
+      <DependentUpon>UserDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Users\UserEditForm.resx">
+      <DependentUpon>UserEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Users\UserIndexForm.resx">
+      <DependentUpon>UserIndexForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
