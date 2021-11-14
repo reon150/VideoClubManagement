@@ -37,12 +37,12 @@ namespace VideoClubManagement.Validations
             {
                 if (!_dbContext.FirstOrDefault(x => x.Id == entity.Id).IdentificationNumber.Equals(entity.IdentificationNumber)
                     && _dbContext.FirstOrDefault(x => x.IdentificationNumber == entity.IdentificationNumber) != null)
-                    errors.Add("La cedula ya se encuentra registradA en el sistema.");
+                    errors.Add("La cedula ya se encuentra registrada en el sistema.");
             }
             else if (!string.IsNullOrWhiteSpace(entity.IdentificationNumber))
             {
                 if (_dbContext.FirstOrDefault(x => x.IdentificationNumber == entity.IdentificationNumber) != null)
-                    errors.Add("La cedula ya se encuentra registradA en el sistema.");
+                    errors.Add("La cedula ya se encuentra registrada en el sistema.");
             }
 
 
