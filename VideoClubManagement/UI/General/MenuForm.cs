@@ -10,6 +10,9 @@ using VideoClubManagement.UI.Shiftwork;
 using VideoClubManagement.UI.Article;
 using VideoClubManagement.UI.Genre;
 using VideoClubManagement.UI.ArticleType;
+using VideoClubManagement.UI.Users;
+using VideoClubManagement.Helpers;
+using VideoClubManagement.Data.Enums;
 
 namespace VideoClubManagement.UI.General
 {
@@ -20,6 +23,7 @@ namespace VideoClubManagement.UI.General
         public MenuForm(Form parent)
         {
             InitializeComponent();
+            ManageOptionsAccordingToRole();
             _parent = parent;
         }
 
@@ -81,6 +85,21 @@ namespace VideoClubManagement.UI.General
         {
             Hide();
             new ArticleTypeForm(this).Show();
+        }
+
+        private void userButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new UserIndexForm(this).Show();
+        }
+
+        private void ManageOptionsAccordingToRole()
+        {
+            if (LoggedInUserHelper.GetLoggedUser().UserRoleId != UserRoleId.Admin)
+            {
+                userButton.Visible = false;
+                employeeButton.Visible = false;
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

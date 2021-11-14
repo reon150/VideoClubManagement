@@ -40,6 +40,7 @@ namespace VideoClubManagement.UI.General
             this.button8 = new System.Windows.Forms.Button();
             this.languageButton = new System.Windows.Forms.Button();
             this.shiftworkButton = new System.Windows.Forms.Button();
+            this.userButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // articleButton
@@ -162,11 +163,23 @@ namespace VideoClubManagement.UI.General
             this.shiftworkButton.UseVisualStyleBackColor = true;
             this.shiftworkButton.Click += new System.EventHandler(this.shiftworkButton_Click);
             // 
+            // userButton
+            // 
+            this.userButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userButton.Location = new System.Drawing.Point(311, 450);
+            this.userButton.Name = "userButton";
+            this.userButton.Size = new System.Drawing.Size(241, 50);
+            this.userButton.TabIndex = 11;
+            this.userButton.Text = "Usuario";
+            this.userButton.UseVisualStyleBackColor = true;
+            this.userButton.Click += new System.EventHandler(this.userButton_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 583);
+            this.Controls.Add(this.userButton);
             this.Controls.Add(this.shiftworkButton);
             this.Controls.Add(this.languageButton);
             this.Controls.Add(this.button8);
@@ -201,5 +214,6 @@ namespace VideoClubManagement.UI.General
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button languageButton;
         private System.Windows.Forms.Button shiftworkButton;
+        private System.Windows.Forms.Button userButton;
     }
 }
