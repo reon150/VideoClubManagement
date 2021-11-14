@@ -30,6 +30,17 @@ namespace VideoClubManagement.Validations
                 if (_dbContext.FirstOrDefault(x => x.ISOCode == entity.ISOCode) != null)
                     errors.Add("El codigo de idioma se encuentra registrado en el sistema.");
             }
+            if (!string.IsNullOrWhiteSpace(entity.ISOCode) && entity.Id > 0)
+            {
+                if (!_dbContext.FirstOrDefault(x => x.Id == entity.Id).ISOCode.Equals(entity.ISOCode)
+                    && _dbContext.FirstOrDefault(x => x.ISOCode == entity.ISOCode) != null)
+                    errors.Add("El codigo de idioma se encuentra registrado en el sistema.");
+            }
+            else if (!string.IsNullOrWhiteSpace(entity.ISOCode))
+            {
+                if (_dbContext.FirstOrDefault(x => x.ISOCode == entity.ISOCode) != null)
+                    errors.Add("El codigo de idioma se encuentra registrado en el sistema.");
+            }
             return errors;
 
 
