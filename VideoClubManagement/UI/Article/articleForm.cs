@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
-using VideoClubManagement.UI.General;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Article
 {
@@ -12,16 +12,27 @@ namespace VideoClubManagement.UI.Article
         public Data.Entities.Article Article { get; set; }
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
         private readonly Form _parent;
+        private IValidator<Data.Entities.Article> _validator;
 
         public ArticleForm(Form parent)
         {
             InitializeComponent();
             _parent = parent;
+            _validator = new ArticleValidator(applicatioDbContext.Articles);
         }
 
         private void refreshData()
         {
+            articleDataGridView.AutoGenerateColumns = false;
             articleDataGridView.DataSource = applicatioDbContext.Articles.ToList();
+        }
+
+        private void clearData()
+        {
+            titleTextBox.Clear();
+            rentalDaysTextBox.Clear();
+            rentPerDayTextBox.Clear();
+            lateReturnFeeTextBox.Clear();
         }
 
         private void generalSearch()
@@ -57,12 +68,13 @@ namespace VideoClubManagement.UI.Article
 
         private void articleDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            titleTextBox.Text = articleDataGridView.CurrentRow.Cells[0].Value.ToString();
-            rentPerDayTextBox.Text = articleDataGridView.CurrentRow.Cells[1].Value.ToString();
-            lateReturnFeeTextBox.Text = articleDataGridView.CurrentRow.Cells[3].Value.ToString();
-            idLabel.Text = articleDataGridView.CurrentRow.Cells[8].Value.ToString();
-            createdDateLabel.Text = articleDataGridView.CurrentRow.Cells[10].Value.ToString();
-            lastUpdateDateLabel.Text = articleDataGridView.CurrentRow.Cells[11].Value.ToString();
+            titleTextBox.Text = articleDataGridView.CurrentRow.Cells[1].Value.ToString();
+            rentPerDayTextBox.Text = articleDataGridView.CurrentRow.Cells[4].Value.ToString();
+            rentalDaysTextBox.Text = articleDataGridView.CurrentRow.Cells[5].Value.ToString();
+            lateReturnFeeTextBox.Text = articleDataGridView.CurrentRow.Cells[6].Value.ToString();
+            idLabel.Text = articleDataGridView.CurrentRow.Cells[0].Value.ToString();
+            createdDateLabel.Text = articleDataGridView.CurrentRow.Cells[8].Value.ToString();
+            lastUpdateDateLabel.Text = articleDataGridView.CurrentRow.Cells[9].Value.ToString();
         }
 
         private void searchTxt_TextChanged(object sender, EventArgs e)
@@ -74,48 +86,90 @@ namespace VideoClubManagement.UI.Article
         {
             try
             {
-                applicatioDbContext.Articles.Add(new Data.Entities.Article
+                var save = MessageBox.Show($"Estás seguro que deseas guardar estos datos?",
+                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (save)
                 {
-                    Title = titleTextBox.Text,
-                    RentPerDay = decimal.Parse(rentPerDayTextBox.Text),
-                    LateReturnFee = decimal.Parse(lateReturnFeeTextBox.Text),
-                    RentalDays = int.Parse(rentPerDayTextBox.Text),
-                    ArticleTypeId = int.Parse(typeComboBox.SelectedValue.ToString()),
-                    LanguageId = int.Parse(langaugeComboBox.SelectedValue.ToString())
-                });
+                    Data.Entities.Article article = new Data.Entities.Article
+                    {
+                        Title = titleTextBox.Text,
+                        RentPerDay = decimal.Parse(rentPerDayTextBox.Text),
+                        LateReturnFee = decimal.Parse(lateReturnFeeTextBox.Text),
+                        IsActive = statusCheckBox.Checked,
+                        RentalDays = int.Parse(rentalDaysTextBox.Text),
+                        ArticleTypeId = int.Parse(typeComboBox.SelectedValue.ToString()),
+                        LanguageId = int.Parse(langaugeComboBox.SelectedValue.ToString())
+                    };
 
-                applicatioDbContext.SaveChanges();
-                MessageBox.Show("El registro se guardo con exito");
+                    var validationErrors = _validator.GetValidationErrors(article);
+
+                    if (validationErrors != null && validationErrors.Count > 0)
+                    {
+                        string errors = "";
+                        foreach (var validationError in validationErrors)
+                            errors += $"{ validationError }{ Environment.NewLine }";
+
+                        MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        applicatioDbContext.Articles.Add(article);
+                        applicatioDbContext.SaveChanges();
+                        MessageBox.Show("El registro se guardo con exito");
+                        refreshData();
+                        clearData();
+                    }
+                }
+
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Ha ocurrido un error" + ex.Message);
             }
         }
-
 
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
             _parent.Show();
         }
-
         private void updateButton_Click_1(object sender, EventArgs e)
         {
             try
             {
-                Data.Entities.Article article = applicatioDbContext.Articles.Find(Int32.Parse(idLabel.Text));
-                if (article != null)
+                var update = MessageBox.Show($"Estás seguro que deseas actualizar estos datos?",
+                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+
+                if (update)
                 {
+                    Data.Entities.Article article = applicatioDbContext.Articles.Find(Int32.Parse(idLabel.Text));
                     article.Title = titleTextBox.Text;
                     article.RentPerDay = decimal.Parse(rentPerDayTextBox.Text);
+                    article.RentalDays = int.Parse(rentalDaysTextBox.Text);
                     article.LateReturnFee = decimal.Parse(lateReturnFeeTextBox.Text);
-                    applicatioDbContext.SaveChanges();
+                    article.IsActive = statusCheckBox.Checked;
 
+                    if (article != null)
+                    {
+                        var validationErrors = _validator.GetValidationErrors(article);
+
+                        if (validationErrors != null && validationErrors.Count > 0)
+                        {
+                            string errors = "";
+                            foreach (var validationError in validationErrors)
+                                errors += $"{ validationError }{ Environment.NewLine }";
+
+                            MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            applicatioDbContext.SaveChanges();
+                            MessageBox.Show("Registro actualizado con exito.");
+                            refreshData();
+                            clearData();
+                        }
+                    }
                 }
-                MessageBox.Show("Registro actualizado con exito.");
-                refreshData();
             }
             catch (Exception ex)
             {
@@ -127,19 +181,24 @@ namespace VideoClubManagement.UI.Article
         {
             try
             {
-                Data.Entities.Article article = applicatioDbContext.Articles.Find(Int32.Parse(idLabel.Text));
-                if (article != null)
+                var delete = MessageBox.Show($"¿Estás seguro que deseas eliminar estos datos?",
+                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (delete)
                 {
-                    applicatioDbContext.Articles.Remove(article);
-                    applicatioDbContext.SaveChanges();
-
+                    Data.Entities.Article article = applicatioDbContext.Articles.Find(Int32.Parse(idLabel.Text));
+                    if (article != null)
+                    {
+                        applicatioDbContext.Articles.Remove(article);
+                        applicatioDbContext.SaveChanges();
+                        MessageBox.Show("Registro eliminado con exito.");
+                        refreshData();
+                        clearData();
+                    }
                 }
-                MessageBox.Show("Registro eliminado con exito.");
-                refreshData();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ha ocurrido un error al actualizar " + ex);
+                MessageBox.Show("Ha ocurrido un error al eliminar " + ex);
             }
         }
     }

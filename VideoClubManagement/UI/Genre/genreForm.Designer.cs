@@ -29,12 +29,23 @@ namespace VideoClubManagement.UI.Genre
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.genreDataGridViewPanel = new System.Windows.Forms.Panel();
             this.genreDataGridView = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.parentGenre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genreManagementPanel = new System.Windows.Forms.Panel();
+            this.parentGenreComboBox = new System.Windows.Forms.ComboBox();
+            this.parentGenreLabel = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
             this.statusCheckbox = new System.Windows.Forms.CheckBox();
             this.statusLabel = new System.Windows.Forms.Label();
@@ -53,6 +64,14 @@ namespace VideoClubManagement.UI.Genre
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.firstButton = new System.Windows.Forms.Button();
+            this.previousButton = new System.Windows.Forms.Button();
+            this.nextButton = new System.Windows.Forms.Button();
+            this.lastButton = new System.Windows.Forms.Button();
+            this.currentPageTextBox = new System.Windows.Forms.TextBox();
+            this.lastPageTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.searchPanel.SuspendLayout();
             this.genreDataGridViewPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.genreDataGridView)).BeginInit();
@@ -65,7 +84,7 @@ namespace VideoClubManagement.UI.Genre
             this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.searchPanel.Controls.Add(this.searchTextBox);
             this.searchPanel.Controls.Add(this.searchButton);
-            this.searchPanel.Location = new System.Drawing.Point(12, 12);
+            this.searchPanel.Location = new System.Drawing.Point(211, 12);
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.Size = new System.Drawing.Size(464, 82);
             this.searchPanel.TabIndex = 0;
@@ -94,24 +113,105 @@ namespace VideoClubManagement.UI.Genre
             this.genreDataGridViewPanel.Controls.Add(this.genreDataGridView);
             this.genreDataGridViewPanel.Location = new System.Drawing.Point(12, 115);
             this.genreDataGridViewPanel.Name = "genreDataGridViewPanel";
-            this.genreDataGridViewPanel.Size = new System.Drawing.Size(464, 233);
+            this.genreDataGridViewPanel.Size = new System.Drawing.Size(824, 233);
             this.genreDataGridViewPanel.TabIndex = 1;
             // 
             // genreDataGridView
             // 
             this.genreDataGridView.AllowUserToAddRows = false;
             this.genreDataGridView.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.genreDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.genreDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.genreDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.genreDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.name,
+            this.description,
+            this.isActive,
+            this.parentGenre,
+            this.createdDate,
+            this.lastUpdateDate});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.genreDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.genreDataGridView.Location = new System.Drawing.Point(3, -2);
             this.genreDataGridView.Name = "genreDataGridView";
             this.genreDataGridView.ReadOnly = true;
-            this.genreDataGridView.Size = new System.Drawing.Size(454, 223);
+            this.genreDataGridView.Size = new System.Drawing.Size(814, 223);
             this.genreDataGridView.TabIndex = 0;
             this.genreDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.genreDataGridView_CellMouseClick_1);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 110;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "Name";
+            this.name.HeaderText = "Nombre";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 110;
+            // 
+            // description
+            // 
+            this.description.DataPropertyName = "Description";
+            this.description.HeaderText = "Descripción";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            this.description.Width = 110;
+            // 
+            // isActive
+            // 
+            this.isActive.DataPropertyName = "IsActive";
+            this.isActive.HeaderText = "Activo";
+            this.isActive.Name = "isActive";
+            this.isActive.ReadOnly = true;
+            this.isActive.Width = 111;
+            // 
+            // parentGenre
+            // 
+            this.parentGenre.HeaderText = "Género Padre";
+            this.parentGenre.Name = "parentGenre";
+            this.parentGenre.ReadOnly = true;
+            this.parentGenre.Width = 110;
+            // 
+            // createdDate
+            // 
+            this.createdDate.DataPropertyName = "CreatedDate";
+            this.createdDate.HeaderText = "Fecha De Creación";
+            this.createdDate.Name = "createdDate";
+            this.createdDate.ReadOnly = true;
+            this.createdDate.Width = 110;
+            // 
+            // lastUpdateDate
+            // 
+            this.lastUpdateDate.DataPropertyName = "LastUpdatedDate";
+            this.lastUpdateDate.HeaderText = "Ultima Fecha De Actualización";
+            this.lastUpdateDate.Name = "lastUpdateDate";
+            this.lastUpdateDate.ReadOnly = true;
+            this.lastUpdateDate.Width = 110;
             // 
             // genreManagementPanel
             // 
             this.genreManagementPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.genreManagementPanel.Controls.Add(this.parentGenreComboBox);
+            this.genreManagementPanel.Controls.Add(this.parentGenreLabel);
             this.genreManagementPanel.Controls.Add(this.idLabel);
             this.genreManagementPanel.Controls.Add(this.statusCheckbox);
             this.genreManagementPanel.Controls.Add(this.statusLabel);
@@ -125,15 +225,34 @@ namespace VideoClubManagement.UI.Genre
             this.genreManagementPanel.Controls.Add(this.nameTextBox);
             this.genreManagementPanel.Controls.Add(this.genreNameLabel);
             this.genreManagementPanel.Controls.Add(this.genreManagementLabel);
-            this.genreManagementPanel.Location = new System.Drawing.Point(13, 366);
+            this.genreManagementPanel.Location = new System.Drawing.Point(202, 404);
             this.genreManagementPanel.Name = "genreManagementPanel";
             this.genreManagementPanel.Size = new System.Drawing.Size(458, 326);
             this.genreManagementPanel.TabIndex = 2;
             // 
+            // parentGenreComboBox
+            // 
+            this.parentGenreComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.parentGenreComboBox.FormattingEnabled = true;
+            this.parentGenreComboBox.Location = new System.Drawing.Point(158, 220);
+            this.parentGenreComboBox.Name = "parentGenreComboBox";
+            this.parentGenreComboBox.Size = new System.Drawing.Size(121, 21);
+            this.parentGenreComboBox.Sorted = true;
+            this.parentGenreComboBox.TabIndex = 17;
+            // 
+            // parentGenreLabel
+            // 
+            this.parentGenreLabel.AutoSize = true;
+            this.parentGenreLabel.Location = new System.Drawing.Point(17, 223);
+            this.parentGenreLabel.Name = "parentGenreLabel";
+            this.parentGenreLabel.Size = new System.Drawing.Size(73, 13);
+            this.parentGenreLabel.TabIndex = 16;
+            this.parentGenreLabel.Text = "Género Padre";
+            // 
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(158, 160);
+            this.idLabel.Location = new System.Drawing.Point(158, 62);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(10, 13);
             this.idLabel.TabIndex = 15;
@@ -142,7 +261,9 @@ namespace VideoClubManagement.UI.Genre
             // statusCheckbox
             // 
             this.statusCheckbox.AutoSize = true;
-            this.statusCheckbox.Location = new System.Drawing.Point(158, 201);
+            this.statusCheckbox.Checked = true;
+            this.statusCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.statusCheckbox.Location = new System.Drawing.Point(158, 181);
             this.statusCheckbox.Name = "statusCheckbox";
             this.statusCheckbox.Size = new System.Drawing.Size(80, 17);
             this.statusCheckbox.TabIndex = 14;
@@ -152,7 +273,7 @@ namespace VideoClubManagement.UI.Genre
             // statusLabel
             // 
             this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(17, 205);
+            this.statusLabel.Location = new System.Drawing.Point(17, 185);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(40, 13);
             this.statusLabel.TabIndex = 12;
@@ -161,7 +282,7 @@ namespace VideoClubManagement.UI.Genre
             // lastUpdateDateLabel
             // 
             this.lastUpdateDateLabel.AutoSize = true;
-            this.lastUpdateDateLabel.Location = new System.Drawing.Point(158, 298);
+            this.lastUpdateDateLabel.Location = new System.Drawing.Point(158, 287);
             this.lastUpdateDateLabel.Name = "lastUpdateDateLabel";
             this.lastUpdateDateLabel.Size = new System.Drawing.Size(10, 13);
             this.lastUpdateDateLabel.TabIndex = 11;
@@ -170,7 +291,7 @@ namespace VideoClubManagement.UI.Genre
             // createdDateLabel
             // 
             this.createdDateLabel.AutoSize = true;
-            this.createdDateLabel.Location = new System.Drawing.Point(158, 250);
+            this.createdDateLabel.Location = new System.Drawing.Point(158, 259);
             this.createdDateLabel.Name = "createdDateLabel";
             this.createdDateLabel.Size = new System.Drawing.Size(10, 13);
             this.createdDateLabel.TabIndex = 10;
@@ -179,7 +300,7 @@ namespace VideoClubManagement.UI.Genre
             // genreLastUpdateDate
             // 
             this.genreLastUpdateDate.AutoSize = true;
-            this.genreLastUpdateDate.Location = new System.Drawing.Point(17, 298);
+            this.genreLastUpdateDate.Location = new System.Drawing.Point(17, 287);
             this.genreLastUpdateDate.Name = "genreLastUpdateDate";
             this.genreLastUpdateDate.Size = new System.Drawing.Size(98, 13);
             this.genreLastUpdateDate.TabIndex = 9;
@@ -188,7 +309,7 @@ namespace VideoClubManagement.UI.Genre
             // genreCreatedDateLabel
             // 
             this.genreCreatedDateLabel.AutoSize = true;
-            this.genreCreatedDateLabel.Location = new System.Drawing.Point(17, 250);
+            this.genreCreatedDateLabel.Location = new System.Drawing.Point(17, 259);
             this.genreCreatedDateLabel.Name = "genreCreatedDateLabel";
             this.genreCreatedDateLabel.Size = new System.Drawing.Size(96, 13);
             this.genreCreatedDateLabel.TabIndex = 7;
@@ -197,7 +318,7 @@ namespace VideoClubManagement.UI.Genre
             // genreIdLabel
             // 
             this.genreIdLabel.AutoSize = true;
-            this.genreIdLabel.Location = new System.Drawing.Point(17, 160);
+            this.genreIdLabel.Location = new System.Drawing.Point(17, 62);
             this.genreIdLabel.Name = "genreIdLabel";
             this.genreIdLabel.Size = new System.Drawing.Size(16, 13);
             this.genreIdLabel.TabIndex = 5;
@@ -205,7 +326,7 @@ namespace VideoClubManagement.UI.Genre
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Location = new System.Drawing.Point(158, 109);
+            this.descriptionTextBox.Location = new System.Drawing.Point(158, 134);
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(219, 20);
             this.descriptionTextBox.TabIndex = 4;
@@ -213,7 +334,7 @@ namespace VideoClubManagement.UI.Genre
             // genreDescriptionLabel
             // 
             this.genreDescriptionLabel.AutoSize = true;
-            this.genreDescriptionLabel.Location = new System.Drawing.Point(17, 109);
+            this.genreDescriptionLabel.Location = new System.Drawing.Point(17, 141);
             this.genreDescriptionLabel.Name = "genreDescriptionLabel";
             this.genreDescriptionLabel.Size = new System.Drawing.Size(63, 13);
             this.genreDescriptionLabel.TabIndex = 3;
@@ -221,7 +342,7 @@ namespace VideoClubManagement.UI.Genre
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(158, 55);
+            this.nameTextBox.Location = new System.Drawing.Point(158, 93);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(133, 20);
             this.nameTextBox.TabIndex = 2;
@@ -229,7 +350,7 @@ namespace VideoClubManagement.UI.Genre
             // genreNameLabel
             // 
             this.genreNameLabel.AutoSize = true;
-            this.genreNameLabel.Location = new System.Drawing.Point(17, 58);
+            this.genreNameLabel.Location = new System.Drawing.Point(17, 100);
             this.genreNameLabel.Name = "genreNameLabel";
             this.genreNameLabel.Size = new System.Drawing.Size(44, 13);
             this.genreNameLabel.TabIndex = 1;
@@ -251,7 +372,7 @@ namespace VideoClubManagement.UI.Genre
             this.actionPanel.Controls.Add(this.deleteButton);
             this.actionPanel.Controls.Add(this.updateButton);
             this.actionPanel.Controls.Add(this.addButton);
-            this.actionPanel.Location = new System.Drawing.Point(12, 712);
+            this.actionPanel.Location = new System.Drawing.Point(202, 736);
             this.actionPanel.Name = "actionPanel";
             this.actionPanel.Size = new System.Drawing.Size(459, 82);
             this.actionPanel.TabIndex = 2;
@@ -299,11 +420,93 @@ namespace VideoClubManagement.UI.Genre
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(25, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 25);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Géneros:";
+            // 
+            // firstButton
+            // 
+            this.firstButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstButton.Location = new System.Drawing.Point(186, 354);
+            this.firstButton.Name = "firstButton";
+            this.firstButton.Size = new System.Drawing.Size(75, 23);
+            this.firstButton.TabIndex = 4;
+            this.firstButton.Text = "Primero";
+            this.firstButton.UseVisualStyleBackColor = true;
+            // 
+            // previousButton
+            // 
+            this.previousButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previousButton.Location = new System.Drawing.Point(287, 354);
+            this.previousButton.Name = "previousButton";
+            this.previousButton.Size = new System.Drawing.Size(75, 23);
+            this.previousButton.TabIndex = 5;
+            this.previousButton.Text = "Anterior";
+            this.previousButton.UseVisualStyleBackColor = true;
+            // 
+            // nextButton
+            // 
+            this.nextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nextButton.Location = new System.Drawing.Point(515, 354);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(75, 23);
+            this.nextButton.TabIndex = 6;
+            this.nextButton.Text = "Próximo";
+            this.nextButton.UseVisualStyleBackColor = true;
+            // 
+            // lastButton
+            // 
+            this.lastButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastButton.Location = new System.Drawing.Point(613, 354);
+            this.lastButton.Name = "lastButton";
+            this.lastButton.Size = new System.Drawing.Size(75, 23);
+            this.lastButton.TabIndex = 7;
+            this.lastButton.Text = "Ultimo";
+            this.lastButton.UseVisualStyleBackColor = true;
+            // 
+            // currentPageTextBox
+            // 
+            this.currentPageTextBox.Location = new System.Drawing.Point(392, 357);
+            this.currentPageTextBox.Name = "currentPageTextBox";
+            this.currentPageTextBox.Size = new System.Drawing.Size(27, 20);
+            this.currentPageTextBox.TabIndex = 8;
+            // 
+            // lastPageTextBox
+            // 
+            this.lastPageTextBox.Location = new System.Drawing.Point(456, 357);
+            this.lastPageTextBox.Name = "lastPageTextBox";
+            this.lastPageTextBox.Size = new System.Drawing.Size(27, 20);
+            this.lastPageTextBox.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(428, 355);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 25);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "/";
+            // 
             // GenreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 820);
+            this.ClientSize = new System.Drawing.Size(848, 820);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lastPageTextBox);
+            this.Controls.Add(this.currentPageTextBox);
+            this.Controls.Add(this.lastButton);
+            this.Controls.Add(this.nextButton);
+            this.Controls.Add(this.previousButton);
+            this.Controls.Add(this.firstButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.actionPanel);
             this.Controls.Add(this.genreManagementPanel);
             this.Controls.Add(this.genreDataGridViewPanel);
@@ -319,6 +522,7 @@ namespace VideoClubManagement.UI.Genre
             this.genreManagementPanel.PerformLayout();
             this.actionPanel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -348,5 +552,22 @@ namespace VideoClubManagement.UI.Genre
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.CheckBox statusCheckbox;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.ComboBox parentGenreComboBox;
+        private System.Windows.Forms.Label parentGenreLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isActive;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parentGenre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdateDate;
+        private System.Windows.Forms.Button firstButton;
+        private System.Windows.Forms.Button previousButton;
+        private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.Button lastButton;
+        private System.Windows.Forms.TextBox currentPageTextBox;
+        private System.Windows.Forms.TextBox lastPageTextBox;
+        private System.Windows.Forms.Label label2;
     }
 }

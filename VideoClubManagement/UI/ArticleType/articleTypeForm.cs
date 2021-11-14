@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.ArticleType
 {
@@ -11,17 +12,26 @@ namespace VideoClubManagement.UI.ArticleType
         public Data.Entities.ArticleType articleType { get; set; }
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
         private readonly Form _parent;
+        private IValidator<Data.Entities.ArticleType> _validator;
 
         public ArticleTypeForm(Form parent)
         {
             InitializeComponent();
             _parent = parent;
+            _validator = new ArticleTypeValidator(applicatioDbContext.ArticleTypes);
             refreshData();
         }
 
         private void refreshData()
         {
+            articleTypeDataGridView.AutoGenerateColumns = false;
             articleTypeDataGridView.DataSource = applicatioDbContext.ArticleTypes.ToList();
+        }
+
+        private void clearData()
+        {
+            nameTextBox.Clear();
+            descriptionTextBox.Clear();
         }
 
         private void generalSearch()
@@ -48,10 +58,38 @@ namespace VideoClubManagement.UI.ArticleType
         {
             try
             {
-                applicatioDbContext.ArticleTypes.Add(new Data.Entities.ArticleType { Name = nameTextBox.Text, Description = descriptionTextBox.Text });
-                applicatioDbContext.SaveChanges();
-                MessageBox.Show("El registro se guardo con éxito");
-                refreshData();
+                var save = MessageBox.Show($"Estás seguro que deseas guardar estos datos?",
+                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (save)
+                {
+                    Data.Entities.ArticleType articleType = new Data.Entities.ArticleType
+                    {
+                        Name = nameTextBox.Text,
+                        Description = descriptionTextBox.Text,
+                        IsActive = statusCheckBox.Checked
+                    };
+
+                    var validationErrors = _validator.GetValidationErrors(articleType);
+
+                    if (validationErrors != null && validationErrors.Count > 0)
+                    {
+                        string errors = "";
+                        foreach (var validationError in validationErrors)
+                            errors += $"{ validationError }{ Environment.NewLine }";
+
+                        MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    else
+                    {
+                        applicatioDbContext.ArticleTypes.Add(articleType);
+                        applicatioDbContext.SaveChanges();
+                        MessageBox.Show("El registro se guardo con éxito");
+                        refreshData();
+                        clearData();
+                    }
+                }
+
             }
             catch (Exception ex)
             {
@@ -61,9 +99,9 @@ namespace VideoClubManagement.UI.ArticleType
 
         private void articleTypeDataGridView_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            nameTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[0].Value.ToString();
-            descriptionTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[1].Value.ToString();
-            idLabel.Text = articleTypeDataGridView.CurrentRow.Cells[2].Value.ToString();
+            nameTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[1].Value.ToString();
+            descriptionTextBox.Text = articleTypeDataGridView.CurrentRow.Cells[2].Value.ToString();
+            idLabel.Text = articleTypeDataGridView.CurrentRow.Cells[0].Value.ToString();
             createdDateLabel.Text = articleTypeDataGridView.CurrentRow.Cells[4].Value.ToString();
             lastUpdateDateLabel.Text = articleTypeDataGridView.CurrentRow.Cells[5].Value.ToString();
         }
@@ -72,15 +110,39 @@ namespace VideoClubManagement.UI.ArticleType
         {
             try
             {
-                Data.Entities.ArticleType articleType= applicatioDbContext.ArticleTypes.Find(Int32.Parse(idLabel.Text));
-                if (articleType != null)
+                var update = MessageBox.Show($"Estás seguro que deseas guardar estos datos?",
+                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+
+
+                if (update)
                 {
+                    Data.Entities.ArticleType articleType = applicatioDbContext.ArticleTypes.Find(Int32.Parse(idLabel.Text));
                     articleType.Name = nameTextBox.Text;
                     articleType.Description = descriptionTextBox.Text;
-                    applicatioDbContext.SaveChanges();
+                    articleType.IsActive = statusCheckBox.Checked;
+
+                    if (articleType != null)
+                    {
+                        var validationErrors = _validator.GetValidationErrors(articleType);
+
+                        if (validationErrors != null && validationErrors.Count > 0)
+                        {
+                            string errors = "";
+                            foreach (var validationError in validationErrors)
+                                errors += $"{ validationError }{ Environment.NewLine }";
+
+                            MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Registro actualizado con exito.");
+                            applicatioDbContext.SaveChanges();
+                            refreshData();
+                            clearData();
+                        }
+                    }
                 }
-                MessageBox.Show("Registro actualizado con exito.");
-                refreshData();
+
             }
             catch (Exception ex)
             {
@@ -92,19 +154,25 @@ namespace VideoClubManagement.UI.ArticleType
         {
             try
             {
-                Data.Entities.ArticleType articleType = applicatioDbContext.ArticleTypes.Find(Int32.Parse(idLabel.Text));
-                if (articleType != null)
+                var delete = MessageBox.Show($"¿Estás seguro que deseas eliminar estos datos?",
+               "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (delete)
                 {
-                    applicatioDbContext.ArticleTypes.Remove(articleType);
-                    applicatioDbContext.SaveChanges();
+                    Data.Entities.ArticleType articleType = applicatioDbContext.ArticleTypes.Find(Int32.Parse(idLabel.Text));
 
+                    if (articleType != null)
+                    {
+                        applicatioDbContext.ArticleTypes.Remove(articleType);
+                        applicatioDbContext.SaveChanges();
+                        MessageBox.Show("Registro eliminado con exito.");
+                        refreshData();
+                        clearData();
+                    }
                 }
-                MessageBox.Show("Registro eliminado con exito.");
-                refreshData();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ha ocurrido un error al actualizar " + ex);
+                MessageBox.Show("Ha ocurrido un error al eliminar " + ex);
             }
         }
 
