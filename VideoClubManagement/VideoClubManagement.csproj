@@ -263,9 +263,12 @@
       <DependentUpon>UserIndexForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Validations\ArticleLendingValidator.cs" />
+    <Compile Include="Validations\ArticleTypeValidator.cs" />
+    <Compile Include="Validations\ArticleValidator.cs" />
     <Compile Include="Validations\CastValidator.cs" />
     <Compile Include="Validations\ClientValidator.cs" />
     <Compile Include="Validations\EmployeeValidator.cs" />
+    <Compile Include="Validations\GenreValidator.cs" />
     <Compile Include="Validations\IValidator.cs" />
     <Compile Include="Validations\LanguageValidator.cs" />
     <Compile Include="Validations\ShiftworkValidator.cs" />
