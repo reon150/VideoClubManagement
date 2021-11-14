@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Language
 {
@@ -10,12 +11,15 @@ namespace VideoClubManagement.UI.Language
     {
         public Data.Entities.Language Languages { get; set; }
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
+        private IValidator<Data.Entities.Language> _validator;
         private readonly Form _parent;
 
         public languageForm(Form parent)
         {
             InitializeComponent();
             _parent = parent;
+            _validator = new LanguageValidator(applicationDbContext.Languages);
+
         }
         private void refreshData()
         {
@@ -52,11 +56,35 @@ namespace VideoClubManagement.UI.Language
         {
             try
             {
-                applicationDbContext.Languages.Add (new Data.Entities.Language { ISOCode = langCodeTextBox.Text,Description = nameTextBox.Text });
-                applicationDbContext.SaveChanges();
-                MessageBox.Show("El registro se guardo con exito");
-                refreshData();
-                clear();
+                var save = MessageBox.Show($"¿Estás seguro que deseas guardar estos datos?",
+               "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (save)
+                {
+                    Data.Entities.Language language = new Data.Entities.Language
+                    {
+                        Description = nameTextBox.Text,
+                        ISOCode = langCodeTextBox.Text.ToUpper()
+                    };
+                    
+                    var validationErrors = _validator.GetValidationErrors(language);
+                    if (validationErrors != null && validationErrors.Count > 0)
+                    {
+                        string errors = "";
+                        foreach (var validationError in validationErrors)
+                            errors += $"{ validationError }{ Environment.NewLine }";
+
+                        MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    else
+                    {
+                        applicationDbContext.Languages.Add(language);
+                        applicationDbContext.SaveChanges();
+                        MessageBox.Show("El registro se guardo con exito");
+                        refreshData();
+                        clear();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -67,6 +95,7 @@ namespace VideoClubManagement.UI.Language
 
         private void languageDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            clear();
             nameTextBox.Text = languageDataGridView.CurrentRow.Cells[1].Value.ToString();
             langCodeTextBox.Text = languageDataGridView.CurrentRow.Cells[0].Value.ToString();
             idTextBox.Text = languageDataGridView.CurrentRow.Cells[2].Value.ToString();
@@ -76,15 +105,34 @@ namespace VideoClubManagement.UI.Language
         {
             try
             {
-                Data.Entities.Language language = applicationDbContext.Languages.Find(Int32.Parse(idTextBox.Text));
-                if (language != null)
-                {
+                var update = MessageBox.Show($"¿Estás seguro que deseas actualizar estos datos?",
+              "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (update)
+                {    
+                    Data.Entities.Language language = applicationDbContext.Languages.Find(Int32.Parse(idTextBox.Text));
+                    String newLang = langCodeTextBox.Text.ToUpper();
                     language.Description = nameTextBox.Text;
-                    language.ISOCode = langCodeTextBox.Text;
+                    language.ISOCode = newLang;
+                    if (language != null)
+                    {
+                        var validationErrors = _validator.GetValidationErrors(language);
+                        if (validationErrors != null && validationErrors.Count > 0)
+                        {
+                            string errors = "";
+                            foreach (var validationError in validationErrors)
+                                errors += $"{ validationError }{ Environment.NewLine }";
+
+                            MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            applicationDbContext.SaveChanges();
+                            MessageBox.Show("Registro actualizado con exito.");
+                            refreshData();
+                            clear();
+                        }
+                    }
                 }
-                MessageBox.Show("Registro actualizado con exito.");
-                refreshData();
-                clear();
             }
             catch (Exception ex)
             {

@@ -263,8 +263,12 @@
       <DependentUpon>UserIndexForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Validations\ArticleLendingValidator.cs" />
+    <Compile Include="Validations\CastValidator.cs" />
     <Compile Include="Validations\ClientValidator.cs" />
+    <Compile Include="Validations\EmployeeValidator.cs" />
     <Compile Include="Validations\IValidator.cs" />
+    <Compile Include="Validations\LanguageValidator.cs" />
+    <Compile Include="Validations\ShiftworkValidator.cs" />
     <Compile Include="Validations\UserValidator.cs" />
     <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>

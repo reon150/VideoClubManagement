@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
 using VideoClubManagement.UI.General;
+using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Shiftwork
 {
@@ -10,12 +11,16 @@ namespace VideoClubManagement.UI.Shiftwork
     {
         public Data.Entities.ShiftWork Shiftworks { get; set; }
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
+        private IValidator<Data.Entities.ShiftWork> _validator;
+
         private readonly Form _parent;
 
         public shiftworkForm(Form parent)
         {
             InitializeComponent();
             _parent = parent;
+            _validator = new ShiftworkValidator(applicationDbContext.ShiftWorks);
+
         }
 
         private void employeeLabel_Click(object sender, EventArgs e)
@@ -35,10 +40,31 @@ namespace VideoClubManagement.UI.Shiftwork
                 DateTime startHour = startHourDateTimePicker.Value, finishHour = finishHourDateTimePicker.Value;
                 TimeSpan startHourTime = new TimeSpan(startHour.Hour, startHour.Minute, startHour.Second);
                 TimeSpan finishHourTime = new TimeSpan(finishHour.Hour, finishHour.Minute, finishHour.Second);
-                applicationDbContext.ShiftWorks.Add(new Data.Entities.ShiftWork { Description = descriptionTextBox.Text, StartHour = startHourTime, FinishHour = finishHourTime });
-                applicationDbContext.SaveChanges();
-                MessageBox.Show("El registro se guardo con exito");
-                refreshData();
+                var save = MessageBox.Show($"¿Estás seguro que deseas guardar estos datos?",
+              "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (save)
+                {
+                    Data.Entities.ShiftWork shiftwork = new Data.Entities.ShiftWork {
+                        Description = descriptionTextBox.Text,
+                        StartHour = startHourTime,
+                        FinishHour = finishHourTime };
+                    var validationErrors = _validator.GetValidationErrors(shiftwork);
+                    if (validationErrors != null && validationErrors.Count > 0)
+                    {
+                        string errors = "";
+                        foreach (var validationError in validationErrors)
+                            errors += $"{ validationError }{ Environment.NewLine }";
+
+                        MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        applicationDbContext.ShiftWorks.Add(shiftwork);
+                        applicationDbContext.SaveChanges();
+                        MessageBox.Show("El registro se guardo con exito");
+                        refreshData();
+                    }
+                }
 
             }
             catch (Exception ex)
@@ -87,19 +113,38 @@ namespace VideoClubManagement.UI.Shiftwork
             try
             {
                 Data.Entities.ShiftWork shiftwork = applicationDbContext.ShiftWorks.Find(Int32.Parse(idTextBox.Text));
-                if (shiftwork != null)
+                var update = MessageBox.Show($"¿Estás seguro que deseas actualizar estos datos?",
+             "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                Data.Entities.Cast cast = applicationDbContext.Casts.Find(Int32.Parse(idTextBox.Text));
+                
+                if (update)
                 {
-                    DateTime startHour = startHourDateTimePicker.Value, finishHour = finishHourDateTimePicker.Value;
-                    TimeSpan startHourTime = new TimeSpan(startHour.Hour, startHour.Minute, startHour.Second);
-                    TimeSpan finishHourTime = new TimeSpan(finishHour.Hour, finishHour.Minute, finishHour.Second);
-                    shiftwork.Description = descriptionTextBox.Text;
-                    shiftwork.StartHour = startHourTime;
-                    shiftwork.FinishHour = finishHourTime;
-                    applicationDbContext.SaveChanges();
-                    
+                    if (shiftwork != null)
+                    {
+                        DateTime startHour = startHourDateTimePicker.Value, finishHour = finishHourDateTimePicker.Value;
+                        TimeSpan startHourTime = new TimeSpan(startHour.Hour, startHour.Minute, startHour.Second);
+                        TimeSpan finishHourTime = new TimeSpan(finishHour.Hour, finishHour.Minute, finishHour.Second);
+                        shiftwork.Description = descriptionTextBox.Text;
+                        shiftwork.StartHour = startHourTime;
+                        shiftwork.FinishHour = finishHourTime;
+                        var validationErrors = _validator.GetValidationErrors(shiftwork);
+                        if (validationErrors != null && validationErrors.Count > 0)
+                        {
+                            string errors = "";
+                            foreach (var validationError in validationErrors)
+                                errors += $"{ validationError }{ Environment.NewLine }";
+
+                            MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+
+                            applicationDbContext.SaveChanges();
+                            MessageBox.Show("Registro actualizado con exito.");
+                            refreshData();
+                        }
+                    }
                 }
-                MessageBox.Show("Registro actualizado con exito.");
-                refreshData();
             }
             catch (Exception ex)
             {
