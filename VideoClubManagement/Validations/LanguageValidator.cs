@@ -25,7 +25,13 @@ namespace VideoClubManagement.Validations
                 errors.Add("El nombre no puede estar vacio.");
             else if (entity.ISOCode.Length > 3)
                 errors.Add("La longitud del codigo de idioma no puede ser mayor a 3.");
-            if (!string.IsNullOrWhiteSpace(entity.ISOCode))
+            if (!string.IsNullOrWhiteSpace(entity.ISOCode) && entity.Id > 0)
+            {
+                if (!_dbContext.FirstOrDefault(x => x.Id == entity.Id).ISOCode.Equals(entity.ISOCode)
+                    && _dbContext.FirstOrDefault(x => x.ISOCode == entity.ISOCode) != null)
+                    errors.Add("El codigo de idioma se encuentra registrado en el sistema.");
+            }
+            else if (!string.IsNullOrWhiteSpace(entity.ISOCode))
             {
                 if (_dbContext.FirstOrDefault(x => x.ISOCode == entity.ISOCode) != null)
                     errors.Add("El codigo de idioma se encuentra registrado en el sistema.");
