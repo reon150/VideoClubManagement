@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Helpers;
 
 namespace VideoClubManagement.UI.General
 {
@@ -56,12 +58,20 @@ namespace VideoClubManagement.UI.General
 
             if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
-                if (_applicationDbContext.Users.FirstOrDefault(x => x.UserName == username && x.Password == password) == null)
+                var user = _applicationDbContext.Users.Where(x => x.UserName == username && x.Password == password)
+                    .Include(x => x.UserRole)
+                    .FirstOrDefault();
+
+                if (user == null)
                 {
                     _errorMessages.Add("Usuario o contraseña invalido.");
                     result = false;
                 }
-            }
+                else
+                {
+                    LoggedInUserHelper.SetLoggedUser(user);
+                }
+            }                
 
             return result;
         }

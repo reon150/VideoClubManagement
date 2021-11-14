@@ -42,13 +42,26 @@ namespace VideoClubManagement.Validations
             if (entity.CreditLimit <= 0)
                 errors.Add("El límite de credito debe ser mayor a 0");
 
-            if (!string.IsNullOrWhiteSpace(entity.TaxpayerIdentificationNumber))
+
+            if (!string.IsNullOrWhiteSpace(entity.TaxpayerIdentificationNumber) && entity.Id > 0)
+            {
+                if (!_dbContext.FirstOrDefault(x => x.Id == entity.Id).TaxpayerIdentificationNumber.Equals(entity.TaxpayerIdentificationNumber)
+                    && _dbContext.FirstOrDefault(x => x.TaxpayerIdentificationNumber == entity.TaxpayerIdentificationNumber) != null )
+                    errors.Add("La cedula o el RNC ya se encuentra registrado en el sistema.");
+            }
+            else if (!string.IsNullOrWhiteSpace(entity.TaxpayerIdentificationNumber))
             {
                 if (_dbContext.FirstOrDefault(x => x.TaxpayerIdentificationNumber == entity.TaxpayerIdentificationNumber) != null)
                     errors.Add("La cedula o el RNC ya se encuentra registrado en el sistema.");
             }
 
-            if (!string.IsNullOrWhiteSpace(entity.CreditCardNumber))
+            if (!string.IsNullOrWhiteSpace(entity.CreditCardNumber) && entity.Id > 0)
+            {
+                if (!_dbContext.FirstOrDefault(x => x.Id == entity.Id).TaxpayerIdentificationNumber.Equals(entity.TaxpayerIdentificationNumber)
+                    && _dbContext.FirstOrDefault(x => x.CreditCardNumber == entity.CreditCardNumber) != null)
+                    errors.Add("El No. Tarjeta CR ya se encuentra registrado en el sistema.");
+            }
+            else if (!string.IsNullOrWhiteSpace(entity.CreditCardNumber))
             {
                 if (_dbContext.FirstOrDefault(x => x.CreditCardNumber == entity.CreditCardNumber) != null)
                     errors.Add("El No. Tarjeta CR ya se encuentra registrado en el sistema.");
