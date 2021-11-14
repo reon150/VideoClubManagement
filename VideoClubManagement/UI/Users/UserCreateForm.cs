@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
 using System.Timers;
 using System.Windows.Forms;
@@ -7,25 +8,25 @@ using VideoClubManagement.Data.Entities;
 using VideoClubManagement.Data.Enums;
 using VideoClubManagement.Validations;
 
-namespace VideoClubManagement.UI.Clients
+namespace VideoClubManagement.UI.Users
 {
-    public partial class ClientCreateForm : Form
+    public partial class UserCreateForm : Form
     {
         private readonly ApplicationDbContext _applicationDbContext = new ApplicationDbContext();
         private System.Timers.Timer _timer = new System.Timers.Timer(1000);
         private readonly Form _parent;
         private bool _backToList = false;
         private bool _changesSaved = false;
-        private readonly IValidator<Client> _validator;
+        private readonly IValidator<User> _validator;
 
-        public ClientCreateForm(Form parent, IValidator<Client> validator)
+        public UserCreateForm(Form parent, IValidator<User> validator)
         {
             _parent = parent;
             _validator = validator;
             InitializeComponent();
             _timer.Elapsed += UpdateCurrentDateTimeLabel;
 
-            SetLegalPersonTypeComboBox();
+            SetUserRoleComboBox();
 
             _timer.Start();
         }
@@ -36,14 +37,14 @@ namespace VideoClubManagement.UI.Clients
                 currentDateTimeLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
             });
 
-        private void SetLegalPersonTypeComboBox()
+        private void SetUserRoleComboBox()
         {
-            var legalPersonTypes = _applicationDbContext.LegalPersonTypes.AsEnumerable();
-            legalPersonTypeComboBox.DisplayMember = "Name";
-            legalPersonTypeComboBox.ValueMember = "Id";
-            foreach (var legalPersonType in legalPersonTypes)
-                legalPersonTypeComboBox.Items.Add(new { legalPersonType.Id, legalPersonType.Name });
-            legalPersonTypeComboBox.SelectedIndex = 0;
+            var userRoles = _applicationDbContext.UserRoles.AsEnumerable();
+            userRoleComboBox.DisplayMember = "Name";
+            userRoleComboBox.ValueMember = "Id";
+            foreach (var userRole in userRoles)
+                userRoleComboBox.Items.Add(new { userRole.Id, userRole.Name });
+            userRoleComboBox.SelectedIndex = 1;
         }
 
         private void createClientButton_Click(object sender, EventArgs e)
@@ -53,38 +54,35 @@ namespace VideoClubManagement.UI.Clients
 
             if (save)
             {
-                var legalPersonTypeComboBoxSelectedItem = legalPersonTypeComboBox.SelectedItem;
+                var legalPersonTypeComboBoxSelectedItem = userRoleComboBox.SelectedItem;
 
                 Enum.TryParse(legalPersonTypeComboBoxSelectedItem
                     .GetType().GetProperty("Id").GetValue(legalPersonTypeComboBoxSelectedItem, null).ToString(),
-                    out LegalPersonTypeId legalPersonTypeId);
+                    out UserRoleId userRoleId);
 
-                decimal.TryParse(creditLimitTextBox.Text, out decimal creditLimit);
-
-                Client client = new Client
+                User user = new User
                 {
-                    FirstName = firstNameTextBox.Text,
-                    LastName = lastNameTextBox.Text,
-                    TaxpayerIdentificationNumber = taxpayerIdentificationNumberTextBox.Text,
-                    CreditCardNumber = creditCardNumberTextBox.Text,
-                    CreditLimit = creditLimit,
-                    LegalPersonTypeId = legalPersonTypeId,
+                    IdentificationNumber = identificationNumberTextBox.Text,
+                    UserName = usernameTextBox.Text,
+                    Password = passwordTextBox.Text,
+                    Email = emailTextBox.Text,
+                    UserRoleId = userRoleId,
                     IsActive = isActiveCheckBox.Checked
                 };
 
-                var validationErrors = _validator.GetValidationErrors(client);
+                var validationErrors = _validator.GetValidationErrors(user);
 
                 if (validationErrors != null && validationErrors.Count > 0)
                 {
                     string errors = "";
                     foreach (var validationError in validationErrors)
                         errors += $"{ validationError }{ Environment.NewLine }";
-                    
+
                     MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    _applicationDbContext.Clients.Add(client);
+                    _applicationDbContext.Users.Add(user);
                     _applicationDbContext.SaveChanges();
 
                     _changesSaved = true;
@@ -114,11 +112,11 @@ namespace VideoClubManagement.UI.Clients
                 {
                     _timer.Close();
                     _parent.Show();
-                }  
+                }
                 else
                 {
                     _parent.Close();
-                } 
+                }
             }
             else
             {
@@ -133,6 +131,6 @@ namespace VideoClubManagement.UI.Clients
         }
 
         private void creditLimitTextBox_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);   
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
     }
 }
