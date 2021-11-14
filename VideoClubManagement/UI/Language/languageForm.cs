@@ -97,7 +97,7 @@ namespace VideoClubManagement.UI.Language
         {
             clear();
             nameTextBox.Text = languageDataGridView.CurrentRow.Cells[1].Value.ToString();
-            langCodeTextBox.Text = languageDataGridView.CurrentRow.Cells[0].Value.ToString();
+            langCodeTextBox.Text = languageDataGridView.CurrentRow.Cells[0].Value.ToString().Replace(" ", String.Empty);
             idTextBox.Text = languageDataGridView.CurrentRow.Cells[2].Value.ToString();
         }
 
