@@ -51,7 +51,7 @@ namespace VideoClubManagement.UI.General
             new languageForm(this).Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void castButton_Click(object sender, EventArgs e)
         {
             Hide();
             new castForm(this).Show();
@@ -75,7 +75,7 @@ namespace VideoClubManagement.UI.General
             new ArticleForm(this).Show();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void genreButton_Click(object sender, EventArgs e)
         {
             Hide();
             new GenreForm(this).Show();

@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Data.Enums;
+using VideoClubManagement.Helpers;
 using VideoClubManagement.UI.General;
 using VideoClubManagement.Validations;
 
@@ -18,6 +20,7 @@ namespace VideoClubManagement.UI.Shiftwork
         public shiftworkForm(Form parent)
         {
             InitializeComponent();
+            ManageOptionsAccordingToRole();
             _parent = parent;
             _validator = new ShiftworkValidator(applicationDbContext.ShiftWorks);
 
@@ -185,6 +188,16 @@ namespace VideoClubManagement.UI.Shiftwork
         {
             Hide();
             _parent.Show();
+        }
+
+        private void ManageOptionsAccordingToRole()
+        {
+            if (LoggedInUserHelper.GetLoggedUser().UserRoleId != UserRoleId.Admin)
+            {
+                addButton.Visible = false;
+                updateButton.Visible = false;
+                deleteButton.Visible = false;
+            }
         }
     }
 }
