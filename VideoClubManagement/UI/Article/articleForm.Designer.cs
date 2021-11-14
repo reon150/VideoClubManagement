@@ -302,9 +302,9 @@ namespace VideoClubManagement.UI.Article
             this.languageLabel.AutoSize = true;
             this.languageLabel.Location = new System.Drawing.Point(747, 373);
             this.languageLabel.Name = "languageLabel";
-            this.languageLabel.Size = new System.Drawing.Size(37, 13);
+            this.languageLabel.Size = new System.Drawing.Size(38, 13);
             this.languageLabel.TabIndex = 5;
-            this.languageLabel.Text = "idioma";
+            this.languageLabel.Text = "Idioma";
             // 
             // rentPerDayLabel
             // 

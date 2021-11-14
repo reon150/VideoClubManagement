@@ -238,7 +238,10 @@
       <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Validations\ArticleLendingValidator.cs" />
+    <Compile Include="Validations\ArticleTypeValidator.cs" />
+    <Compile Include="Validations\ArticleValidator.cs" />
     <Compile Include="Validations\ClientValidator.cs" />
+    <Compile Include="Validations\GenreValidator.cs" />
     <Compile Include="Validations\IValidator.cs" />
     <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
       <DependentUpon>202110140048423_Initial-Migration.cs</DependentUpon>
