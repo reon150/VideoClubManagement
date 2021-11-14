@@ -13,13 +13,11 @@ namespace VideoClubManagement.UI.Language
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
         private IValidator<Data.Entities.Language> _validator;
         private readonly Form _parent;
-
         public languageForm(Form parent)
         {
             InitializeComponent();
             _parent = parent;
             _validator = new LanguageValidator(applicationDbContext.Languages);
-
         }
         private void refreshData()
         {
@@ -31,7 +29,6 @@ namespace VideoClubManagement.UI.Language
             langCodeTextBox.Clear();
             idTextBox.Clear();
         }
-
         private void generalSearch() {
             var Languages = from sh in applicationDbContext.Languages
                              where (sh.Description.ToString().StartsWith(searchTextBox.Text)
@@ -40,42 +37,36 @@ namespace VideoClubManagement.UI.Language
            languageDataGridView.DataSource = Languages.ToList();
            languageDataGridView.Refresh();
         }
-
         private void languageForm_Load(object sender, EventArgs e)
         {
             clear();
             refreshData();
         }
-
         private void searchButton_Click(object sender, EventArgs e)
         {
             generalSearch();
         }
-
         private void addButton_Click(object sender, EventArgs e)
         {
             try
             {
                 var save = MessageBox.Show($"¿Estás seguro que deseas guardar estos datos?",
-               "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                    "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
                 if (save)
                 {
                     Data.Entities.Language language = new Data.Entities.Language
                     {
                         Description = nameTextBox.Text,
                         ISOCode = langCodeTextBox.Text.ToUpper()
-                    };
-                    
+                    };                    
                     var validationErrors = _validator.GetValidationErrors(language);
                     if (validationErrors != null && validationErrors.Count > 0)
                     {
                         string errors = "";
                         foreach (var validationError in validationErrors)
                             errors += $"{ validationError }{ Environment.NewLine }";
-
                         MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                     else
                     {
                         applicationDbContext.Languages.Add(language);
@@ -106,7 +97,7 @@ namespace VideoClubManagement.UI.Language
             try
             {
                 var update = MessageBox.Show($"¿Estás seguro que deseas actualizar estos datos?",
-              "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                    "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
                 if (update)
                 {    
                     Data.Entities.Language language = applicationDbContext.Languages.Find(Int32.Parse(idTextBox.Text));
@@ -145,15 +136,20 @@ namespace VideoClubManagement.UI.Language
         {
             try
             {
-                Data.Entities.Language language = applicationDbContext.Languages.Find(Int32.Parse(idTextBox.Text));
-                if (language != null)
+                var delete = MessageBox.Show($"¿Estás seguro que deseas eliminar estos datos?",
+                    "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                if (delete)
                 {
-                    applicationDbContext.Languages.Remove(language);
-                    applicationDbContext.SaveChanges();
+                    Data.Entities.Language language = applicationDbContext.Languages.Find(Int32.Parse(idTextBox.Text));
+                    if (language != null)
+                    {
+                        applicationDbContext.Languages.Remove(language);
+                        applicationDbContext.SaveChanges();
+                    }
+                    MessageBox.Show("Registro eliminado con exito.");
+                    refreshData();
+                    clear();
                 }
-                MessageBox.Show("Registro eliminado con exito.");
-                refreshData();
-                clear();
             }
             catch (Exception ex)
             {

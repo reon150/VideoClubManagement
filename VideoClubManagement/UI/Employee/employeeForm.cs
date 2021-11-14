@@ -13,7 +13,6 @@ namespace VideoClubManagement.UI.Employee
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
         private readonly Form _parent;
         private IValidator<Data.Entities.Employee> _validator;
-
         public employeeForm(Form parent)
         {
             InitializeComponent();
@@ -24,7 +23,6 @@ namespace VideoClubManagement.UI.Employee
         {
             employeeDataGridView.DataSource = applicationDbContext.Employees.ToList();
         }
-
         private void generalSearch()
         {
             var employees = from sh in applicationDbContext.Employees
@@ -39,7 +37,6 @@ namespace VideoClubManagement.UI.Employee
             employeeDataGridView.DataSource = employees.ToList();
             employeeDataGridView.Refresh();
         }
-
         private void clearData()
         {
             nameTextBox.Clear();
@@ -50,13 +47,12 @@ namespace VideoClubManagement.UI.Employee
             shiftworkComboBox.Refresh();
             idTextBox.Clear();
         }
-
         private void addButton_Click(object sender, EventArgs e)
         {
             try
             {
                 var save = MessageBox.Show($"¿Estás seguro que deseas guardar estos datos?",
-               "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                    "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
 
                 if (save)
                 {
@@ -76,7 +72,6 @@ namespace VideoClubManagement.UI.Employee
                         string errors = "";
                         foreach (var validationError in validationErrors)
                             errors += $"{ validationError }{ Environment.NewLine }";
-
                         MessageBox.Show(errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
@@ -91,11 +86,8 @@ namespace VideoClubManagement.UI.Employee
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Ha ocurrido un error" + ex.Message);
             }
-
-
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -103,7 +95,7 @@ namespace VideoClubManagement.UI.Employee
             try
             {
                 var update = MessageBox.Show($"¿Estás seguro que deseas actualizar estos datos?",
-             "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                    "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
                 if (update)
                 {
                     Data.Entities.Employee employee = applicationDbContext.Employees.Find(Int32.Parse(idTextBox.Text));
@@ -129,17 +121,15 @@ namespace VideoClubManagement.UI.Employee
                             applicationDbContext.SaveChanges();
                             MessageBox.Show("Registro actualizado con exito.");
                             refreshData();
+                            clearData();
                         }
-                    }
-                    
+                    }    
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Ha ocurrido un error al actualizar " + ex);
             }
-
 }
 
     private void deleteButton_Click(object sender, EventArgs e)
@@ -147,7 +137,7 @@ namespace VideoClubManagement.UI.Employee
             try
             {
                 var delete = MessageBox.Show($"¿Estás seguro que deseas eliminar estos datos?",
-              "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+                    "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
                 if (delete)
                 {
                     Data.Entities.Employee employee = applicationDbContext.Employees.Find(Int32.Parse(idTextBox.Text));
@@ -157,7 +147,7 @@ namespace VideoClubManagement.UI.Employee
                         applicationDbContext.SaveChanges();
                         MessageBox.Show("Registro eliminado con exito.");
                         refreshData();
-
+                        clearData();
                     }
                 }
             }
@@ -167,7 +157,6 @@ namespace VideoClubManagement.UI.Employee
                 MessageBox.Show("Ha ocurrido un error al eliminar " + ex);
             }
         }
-
         private void employeeForm_Load(object sender, EventArgs e)
         {
             refreshData();
@@ -175,14 +164,13 @@ namespace VideoClubManagement.UI.Employee
             shiftworkComboBox.DisplayMember = "Description";
             shiftworkComboBox.ValueMember = "Id";
         }
-
         private void searchButton_Click(object sender, EventArgs e)
         {
             generalSearch();
         }
-
         private void employeeDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+                   clearData();
                    nameTextBox.Text=employeeDataGridView.CurrentRow.Cells[0].Value.ToString();
                    lastnameTextBox.Text= employeeDataGridView.CurrentRow.Cells[1].Value.ToString();
                    identificationTextBox.Text= employeeDataGridView.CurrentRow.Cells[2].Value.ToString();
@@ -191,7 +179,6 @@ namespace VideoClubManagement.UI.Employee
                    shiftworkComboBox.SelectedValue = Int32.Parse(employeeDataGridView.CurrentRow.Cells[5].Value.ToString());
                    idTextBox.Text = employeeDataGridView.CurrentRow.Cells[7].Value.ToString();
         }
-
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();

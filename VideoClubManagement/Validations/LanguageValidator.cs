@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VideoClubManagement.Data.Entities;
 
 namespace VideoClubManagement.Validations
@@ -11,9 +9,7 @@ namespace VideoClubManagement.Validations
     class LanguageValidator : IValidator<Language>
     {
         private readonly IDbSet<Language> _dbContext;
-
         public LanguageValidator(IDbSet<Language> dbContext) => _dbContext = dbContext;
-
         public List<string> GetValidationErrors(Language entity)
         {
             List<string> errors = new List<string>();
@@ -31,10 +27,7 @@ namespace VideoClubManagement.Validations
                     errors.Add("El codigo de idioma se encuentra registrado en el sistema.");
             }
             return errors;
-
-
         }
-
         public object GetValidationErrors(object cast)
         {
             throw new NotImplementedException();
