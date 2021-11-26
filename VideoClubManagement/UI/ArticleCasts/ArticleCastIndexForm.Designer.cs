@@ -55,6 +55,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.exportToCSVButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.detailsButton = new System.Windows.Forms.DataGridViewImageColumn();
@@ -118,7 +119,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchTextBox.Location = new System.Drawing.Point(134, 47);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(554, 29);
+            this.searchTextBox.Size = new System.Drawing.Size(527, 29);
             this.searchTextBox.TabIndex = 28;
             // 
             // searchLabel
@@ -329,11 +330,22 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn3.Width = 34;
             // 
+            // exportToCSVButton
+            // 
+            this.exportToCSVButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.csv;
+            this.exportToCSVButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exportToCSVButton.Location = new System.Drawing.Point(713, 48);
+            this.exportToCSVButton.Name = "exportToCSVButton";
+            this.exportToCSVButton.Size = new System.Drawing.Size(40, 29);
+            this.exportToCSVButton.TabIndex = 35;
+            this.exportToCSVButton.UseVisualStyleBackColor = true;
+            this.exportToCSVButton.Click += new System.EventHandler(this.exportToCSVButton_Click);
+            // 
             // searchButton
             // 
             this.searchButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_search_black_24dp;
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.searchButton.Location = new System.Drawing.Point(694, 48);
+            this.searchButton.Location = new System.Drawing.Point(667, 48);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(40, 29);
             this.searchButton.TabIndex = 29;
@@ -374,6 +386,7 @@ namespace VideoClubManagement.UI.ArticleCasts
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 587);
+            this.Controls.Add(this.exportToCSVButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lastPageTextBox);
             this.Controls.Add(this.currentPageTextBox);
@@ -432,5 +445,6 @@ namespace VideoClubManagement.UI.ArticleCasts
         private System.Windows.Forms.DataGridViewImageColumn editButton;
         private System.Windows.Forms.DataGridViewImageColumn detailsButton;
         private System.Windows.Forms.DataGridViewImageColumn deleteButton;
+        private System.Windows.Forms.Button exportToCSVButton;
     }
 }
