@@ -105,12 +105,13 @@ namespace VideoClubManagement.UI.ArticleCasts
 
             var lines = new List<string>
             {
-                "Artículo,Elenco,Rol,Fecha de Creación,Última fecha de actualización,Esta Activo"
+                "Identificador,Artículo,Elenco,Rol,Fecha de Creación,Última fecha de actualización,Esta Activo"
             };
 
             foreach (var articleCast in articleCasts)
             {
-                lines.Add($"{ articleCast.Article.Title }," +
+                lines.Add($"{ articleCast.Id }," +
+                    $"{ articleCast.Article.Title }," +
                     $"{ articleCast.Cast.FirstName } { articleCast.Cast.LastName }," +
                     $"{ articleCast.Role.Name }," +
                     $"{ articleCast.CreatedDate }," +
