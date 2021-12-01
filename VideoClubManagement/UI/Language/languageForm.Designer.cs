@@ -33,6 +33,7 @@ namespace VideoClubManagement.UI.Language
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.actionPanel = new System.Windows.Forms.Panel();
+            this.backButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -45,7 +46,6 @@ namespace VideoClubManagement.UI.Language
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
-            this.backButton = new System.Windows.Forms.Button();
             this.searchPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -89,6 +89,18 @@ namespace VideoClubManagement.UI.Language
             this.actionPanel.Name = "actionPanel";
             this.actionPanel.Size = new System.Drawing.Size(366, 66);
             this.actionPanel.TabIndex = 6;
+            // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.backButton.Location = new System.Drawing.Point(145, 29);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 3;
+            this.backButton.Text = "Regresar";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // deleteButton
             // 
@@ -204,18 +216,6 @@ namespace VideoClubManagement.UI.Language
             this.idTextBox.TabIndex = 19;
             this.idTextBox.Visible = false;
             // 
-            // backButton
-            // 
-            this.backButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.backButton.Location = new System.Drawing.Point(145, 29);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
-            this.backButton.TabIndex = 3;
-            this.backButton.Text = "Regresar";
-            this.backButton.UseVisualStyleBackColor = false;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
             // languageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,7 +226,10 @@ namespace VideoClubManagement.UI.Language
             this.Controls.Add(this.actionPanel);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.insertPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "languageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de idiomas";
             this.Load += new System.EventHandler(this.languageForm_Load);
             this.searchPanel.ResumeLayout(false);

@@ -33,6 +33,7 @@ namespace VideoClubManagement.UI.Shiftwork
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.actionPanel = new System.Windows.Forms.Panel();
+            this.backButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@ namespace VideoClubManagement.UI.Shiftwork
             this.lastnameLabel = new System.Windows.Forms.Label();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.backButton = new System.Windows.Forms.Button();
             this.searchPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -91,6 +91,18 @@ namespace VideoClubManagement.UI.Shiftwork
             this.actionPanel.Name = "actionPanel";
             this.actionPanel.Size = new System.Drawing.Size(366, 66);
             this.actionPanel.TabIndex = 6;
+            // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.backButton.Location = new System.Drawing.Point(145, 29);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 4;
+            this.backButton.Text = "Regresar";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // deleteButton
             // 
@@ -227,18 +239,6 @@ namespace VideoClubManagement.UI.Shiftwork
             this.nameLabel.TabIndex = 4;
             this.nameLabel.Text = "Nombre: ";
             // 
-            // backButton
-            // 
-            this.backButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.backButton.Location = new System.Drawing.Point(145, 29);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
-            this.backButton.TabIndex = 4;
-            this.backButton.Text = "Regresar";
-            this.backButton.UseVisualStyleBackColor = false;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
             // shiftworkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,7 +248,10 @@ namespace VideoClubManagement.UI.Shiftwork
             this.Controls.Add(this.actionPanel);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.insertPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "shiftworkForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de tandas laborales";
             this.Load += new System.EventHandler(this.shiftworkForm_Load);
             this.searchPanel.ResumeLayout(false);

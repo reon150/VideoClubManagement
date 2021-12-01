@@ -29,12 +29,18 @@ namespace VideoClubManagement.UI.Genre
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.genreDataGridViewPanel = new System.Windows.Forms.Panel();
             this.genreDataGridView = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genreManagementPanel = new System.Windows.Forms.Panel();
             this.idLabel = new System.Windows.Forms.Label();
             this.statusCheckbox = new System.Windows.Forms.CheckBox();
@@ -55,12 +61,6 @@ namespace VideoClubManagement.UI.Genre
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchPanel.SuspendLayout();
             this.genreDataGridViewPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.genreDataGridView)).BeginInit();
@@ -111,14 +111,14 @@ namespace VideoClubManagement.UI.Genre
             this.genreDataGridView.AllowUserToDeleteRows = false;
             this.genreDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.genreDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.genreDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.genreDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.genreDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.genreDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -133,6 +133,48 @@ namespace VideoClubManagement.UI.Genre
             this.genreDataGridView.Size = new System.Drawing.Size(788, 223);
             this.genreDataGridView.TabIndex = 0;
             this.genreDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.genreDataGridView_CellMouseClick_1);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "Name";
+            this.name.HeaderText = "Nombre";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // description
+            // 
+            this.description.DataPropertyName = "Description";
+            this.description.HeaderText = "Descripción";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // isActive
+            // 
+            this.isActive.DataPropertyName = "IsActive";
+            this.isActive.HeaderText = "Está Activo";
+            this.isActive.Name = "isActive";
+            this.isActive.ReadOnly = true;
+            // 
+            // createdDate
+            // 
+            this.createdDate.DataPropertyName = "CreatedDate";
+            this.createdDate.HeaderText = "Fecha de creación";
+            this.createdDate.Name = "createdDate";
+            this.createdDate.ReadOnly = true;
+            // 
+            // lastUpdatedDate
+            // 
+            this.lastUpdatedDate.DataPropertyName = "LastUpdatedDate";
+            this.lastUpdatedDate.HeaderText = "Fecha de actualización";
+            this.lastUpdatedDate.Name = "lastUpdatedDate";
+            this.lastUpdatedDate.ReadOnly = true;
             // 
             // genreManagementPanel
             // 
@@ -334,48 +376,6 @@ namespace VideoClubManagement.UI.Genre
             this.label1.TabIndex = 3;
             this.label1.Text = "Géneros:";
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "Id";
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "Name";
-            this.name.HeaderText = "Nombre";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // description
-            // 
-            this.description.DataPropertyName = "Description";
-            this.description.HeaderText = "Descripción";
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            // 
-            // isActive
-            // 
-            this.isActive.DataPropertyName = "IsActive";
-            this.isActive.HeaderText = "Está Activo";
-            this.isActive.Name = "isActive";
-            this.isActive.ReadOnly = true;
-            // 
-            // createdDate
-            // 
-            this.createdDate.DataPropertyName = "CreatedDate";
-            this.createdDate.HeaderText = "Fecha de creación";
-            this.createdDate.Name = "createdDate";
-            this.createdDate.ReadOnly = true;
-            // 
-            // lastUpdatedDate
-            // 
-            this.lastUpdatedDate.DataPropertyName = "LastUpdatedDate";
-            this.lastUpdatedDate.HeaderText = "Fecha de actualización";
-            this.lastUpdatedDate.Name = "lastUpdatedDate";
-            this.lastUpdatedDate.ReadOnly = true;
-            // 
             // GenreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,7 +386,10 @@ namespace VideoClubManagement.UI.Genre
             this.Controls.Add(this.genreManagementPanel);
             this.Controls.Add(this.genreDataGridViewPanel);
             this.Controls.Add(this.searchPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "GenreForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vista y mantenimiento de género";
             this.Load += new System.EventHandler(this.genreForm_Load);
             this.searchPanel.ResumeLayout(false);
