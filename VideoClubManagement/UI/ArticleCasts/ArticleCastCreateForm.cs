@@ -62,7 +62,7 @@ namespace VideoClubManagement.UI.ArticleCasts
 
         private void SetArticleComboBox()
         {
-            var articles = _applicationDbContext.Articles.AsEnumerable();
+            var articles = _applicationDbContext.Articles.Where(a => a.IsActive).AsEnumerable();
             articleComboBox.DisplayMember = "Name";
             articleComboBox.ValueMember = "Id";
             foreach (var article in articles)

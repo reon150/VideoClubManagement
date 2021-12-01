@@ -228,6 +228,12 @@
     <Compile Include="UI\Language\languageForm.Designer.cs">
       <DependentUpon>languageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Roles\RoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Roles\RoleForm.Designer.cs">
+      <DependentUpon>RoleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ShiftWork\shiftworkForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +279,7 @@
     <Compile Include="Validations\GenreValidator.cs" />
     <Compile Include="Validations\IValidator.cs" />
     <Compile Include="Validations\LanguageValidator.cs" />
+    <Compile Include="Validations\RoleValidator.cs" />
     <Compile Include="Validations\ShiftworkValidator.cs" />
     <Compile Include="Validations\UserValidator.cs" />
     <EmbeddedResource Include="Data\Migrations\202110140048423_Initial-Migration.resx">
@@ -346,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Language\languageForm.resx">
       <DependentUpon>languageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Roles\RoleForm.resx">
+      <DependentUpon>RoleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ShiftWork\shiftworkForm.resx">
       <DependentUpon>shiftworkForm.cs</DependentUpon>
