@@ -53,6 +53,8 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.createdDateLabel = new System.Windows.Forms.Label();
             this.returnDateLabel = new System.Windows.Forms.Label();
             this.returnDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.setReturnDateButton = new System.Windows.Forms.Button();
+            this.resetReturnDateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // commentTextBox
@@ -68,7 +70,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             // 
             this.commentLabel.AutoSize = true;
             this.commentLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.commentLabel.Location = new System.Drawing.Point(26, 371);
+            this.commentLabel.Location = new System.Drawing.Point(7, 372);
             this.commentLabel.Name = "commentLabel";
             this.commentLabel.Size = new System.Drawing.Size(117, 25);
             this.commentLabel.TabIndex = 82;
@@ -78,7 +80,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             // 
             this.dueDateLabel.AutoSize = true;
             this.dueDateLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dueDateLabel.Location = new System.Drawing.Point(22, 161);
+            this.dueDateLabel.Location = new System.Drawing.Point(7, 161);
             this.dueDateLabel.Name = "dueDateLabel";
             this.dueDateLabel.Size = new System.Drawing.Size(203, 25);
             this.dueDateLabel.TabIndex = 81;
@@ -88,7 +90,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             // 
             this.dueDateDateTimePicker.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.dueDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dueDateDateTimePicker.Location = new System.Drawing.Point(231, 155);
+            this.dueDateDateTimePicker.Location = new System.Drawing.Point(212, 155);
             this.dueDateDateTimePicker.Name = "dueDateDateTimePicker";
             this.dueDateDateTimePicker.Size = new System.Drawing.Size(172, 33);
             this.dueDateDateTimePicker.TabIndex = 80;
@@ -119,7 +121,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.articleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.articleComboBox.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.articleComboBox.FormattingEnabled = true;
-            this.articleComboBox.Location = new System.Drawing.Point(116, 298);
+            this.articleComboBox.Location = new System.Drawing.Point(97, 298);
             this.articleComboBox.Name = "articleComboBox";
             this.articleComboBox.Size = new System.Drawing.Size(287, 33);
             this.articleComboBox.TabIndex = 77;
@@ -128,7 +130,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             // 
             this.articleLabel.AutoSize = true;
             this.articleLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.articleLabel.Location = new System.Drawing.Point(26, 301);
+            this.articleLabel.Location = new System.Drawing.Point(7, 301);
             this.articleLabel.Name = "articleLabel";
             this.articleLabel.Size = new System.Drawing.Size(84, 25);
             this.articleLabel.TabIndex = 76;
@@ -159,7 +161,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.employeeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.employeeComboBox.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.employeeComboBox.FormattingEnabled = true;
-            this.employeeComboBox.Location = new System.Drawing.Point(128, 228);
+            this.employeeComboBox.Location = new System.Drawing.Point(109, 228);
             this.employeeComboBox.Name = "employeeComboBox";
             this.employeeComboBox.Size = new System.Drawing.Size(275, 33);
             this.employeeComboBox.TabIndex = 73;
@@ -168,7 +170,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             // 
             this.employeeLabel.AutoSize = true;
             this.employeeLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeLabel.Location = new System.Drawing.Point(26, 231);
+            this.employeeLabel.Location = new System.Drawing.Point(7, 231);
             this.employeeLabel.Name = "employeeLabel";
             this.employeeLabel.Size = new System.Drawing.Size(100, 25);
             this.employeeLabel.TabIndex = 72;
@@ -179,7 +181,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.editClientButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editClientButton.Image = global::VideoClubManagement.Properties.Resources.baseline_add_black_24dp;
             this.editClientButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.editClientButton.Location = new System.Drawing.Point(514, 630);
+            this.editClientButton.Location = new System.Drawing.Point(511, 694);
             this.editClientButton.Name = "editClientButton";
             this.editClientButton.Size = new System.Drawing.Size(277, 58);
             this.editClientButton.TabIndex = 71;
@@ -193,13 +195,14 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.backToListButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backToListButton.Image = global::VideoClubManagement.Properties.Resources.baseline_list_black_24dp;
             this.backToListButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.backToListButton.Location = new System.Drawing.Point(12, 630);
+            this.backToListButton.Location = new System.Drawing.Point(12, 694);
             this.backToListButton.Name = "backToListButton";
             this.backToListButton.Size = new System.Drawing.Size(192, 58);
             this.backToListButton.TabIndex = 70;
             this.backToListButton.Text = "Volver a la lista";
             this.backToListButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.backToListButton.UseVisualStyleBackColor = true;
+            this.backToListButton.Click += new System.EventHandler(this.backToListButton_Click);
             // 
             // isActiveCheckBox
             // 
@@ -236,9 +239,9 @@ namespace VideoClubManagement.UI.ArticleLendings
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 16);
+            this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(303, 32);
+            this.label1.Size = new System.Drawing.Size(302, 32);
             this.label1.TabIndex = 66;
             this.label1.Text = "Editar renta - Devolución";
             // 
@@ -246,7 +249,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             // 
             this.idLabel.AutoSize = true;
             this.idLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idLabel.Location = new System.Drawing.Point(26, 91);
+            this.idLabel.Location = new System.Drawing.Point(7, 91);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(100, 25);
             this.idLabel.TabIndex = 91;
@@ -256,7 +259,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             // 
             this.idValueLabel.AutoSize = true;
             this.idValueLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idValueLabel.Location = new System.Drawing.Point(126, 91);
+            this.idValueLabel.Location = new System.Drawing.Point(107, 91);
             this.idValueLabel.Name = "idValueLabel";
             this.idValueLabel.Size = new System.Drawing.Size(0, 25);
             this.idValueLabel.TabIndex = 90;
@@ -292,19 +295,44 @@ namespace VideoClubManagement.UI.ArticleLendings
             // 
             // returnDateDateTimePicker
             // 
+            this.returnDateDateTimePicker.CustomFormat = " ";
             this.returnDateDateTimePicker.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.returnDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.returnDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.returnDateDateTimePicker.Location = new System.Drawing.Point(623, 155);
             this.returnDateDateTimePicker.Name = "returnDateDateTimePicker";
             this.returnDateDateTimePicker.Size = new System.Drawing.Size(165, 33);
             this.returnDateDateTimePicker.TabIndex = 94;
             this.returnDateDateTimePicker.Value = new System.DateTime(2021, 10, 16, 0, 0, 0, 0);
             // 
+            // setReturnDateButton
+            // 
+            this.setReturnDateButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setReturnDateButton.Location = new System.Drawing.Point(613, 627);
+            this.setReturnDateButton.Name = "setReturnDateButton";
+            this.setReturnDateButton.Size = new System.Drawing.Size(175, 35);
+            this.setReturnDateButton.TabIndex = 96;
+            this.setReturnDateButton.Text = "Poner fecha de devolución";
+            this.setReturnDateButton.UseVisualStyleBackColor = true;
+            this.setReturnDateButton.Click += new System.EventHandler(this.setReturnDateButton_Click);
+            // 
+            // resetReturnDateButton
+            // 
+            this.resetReturnDateButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetReturnDateButton.Location = new System.Drawing.Point(12, 627);
+            this.resetReturnDateButton.Name = "resetReturnDateButton";
+            this.resetReturnDateButton.Size = new System.Drawing.Size(192, 35);
+            this.resetReturnDateButton.TabIndex = 97;
+            this.resetReturnDateButton.Text = "Resetar fecha de devolución";
+            this.resetReturnDateButton.UseVisualStyleBackColor = true;
+            this.resetReturnDateButton.Click += new System.EventHandler(this.resetReturnDateButton_Click);
+            // 
             // ArticleLendingEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 711);
+            this.ClientSize = new System.Drawing.Size(800, 764);
+            this.Controls.Add(this.resetReturnDateButton);
+            this.Controls.Add(this.setReturnDateButton);
             this.Controls.Add(this.returnDateLabel);
             this.Controls.Add(this.returnDateDateTimePicker);
             this.Controls.Add(this.createdDateValueLabel);
@@ -365,5 +393,7 @@ namespace VideoClubManagement.UI.ArticleLendings
         private System.Windows.Forms.Label createdDateLabel;
         private System.Windows.Forms.Label returnDateLabel;
         private System.Windows.Forms.DateTimePicker returnDateDateTimePicker;
+        private System.Windows.Forms.Button setReturnDateButton;
+        private System.Windows.Forms.Button resetReturnDateButton;
     }
 }

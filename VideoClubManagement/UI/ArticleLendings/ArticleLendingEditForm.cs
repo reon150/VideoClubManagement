@@ -93,16 +93,29 @@ namespace VideoClubManagement.UI.ArticleLendings
             idValueLabel.Text = articleLending.Id.ToString();
             createdDateValueLabel.Text = articleLending.CreatedDate.ToString("dd/MM/yyyy hh:mm:ss tt");
             dueDateDateTimePicker.Value = articleLending.DueDate;
-            returnDateDateTimePicker.Value = articleLending.ReturnDate ?? DateTime.Now;
             amountPerDayTextBox.Text = articleLending.AmountPerDay.ToString("0.##");
             commentTextBox.Text = articleLending.Comment;
             isActiveCheckBox.Checked = articleLending.IsActive;
+
+            if (articleLending.ReturnDate != null)
+            {
+                returnDateDateTimePicker.Format = DateTimePickerFormat.Custom;
+                returnDateDateTimePicker.CustomFormat = "dd-MM-yyyy";
+                returnDateDateTimePicker.Value = (DateTime)articleLending.ReturnDate;
+            }
+            else
+            {
+                returnDateDateTimePicker.Value = DateTime.FromOADate(0);
+                returnDateDateTimePicker.Format = DateTimePickerFormat.Custom;
+                returnDateDateTimePicker.CustomFormat = " ";  
+            }
         }
 
         private void editClientButton_Click(object sender, EventArgs e)
         {
             var save = MessageBox.Show($"¿Estás seguro que deseas guardar estos datos?",
                 "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+
             if (save)
             {
                 var employeeComboBoxSelectedItem = employeeComboBox.SelectedItem.GetType().GetProperty("Id").GetValue(employeeComboBox.SelectedItem, null);
@@ -118,7 +131,10 @@ namespace VideoClubManagement.UI.ArticleLendings
                 articleLending.DueDate = dueDateDateTimePicker.Value.Date;
                 articleLending.Comment = commentTextBox.Text;
                 articleLending.IsActive = isActiveCheckBox.Checked;
-                articleLending.ReturnDate = returnDateDateTimePicker.Value.Date;
+                if (returnDateDateTimePicker.Value.Date > DateTime.FromOADate(0).Date)
+                    articleLending.ReturnDate = returnDateDateTimePicker.Value.Date;
+                else
+                    articleLending.ReturnDate = null;
 
                 var validationErrors = _validator.GetValidationErrors(articleLending);
 
@@ -132,6 +148,9 @@ namespace VideoClubManagement.UI.ArticleLendings
                 }
                 else
                 {
+                    if (articleLending.ReturnDate != null)
+                        articleLending.Article.IsActive = true;
+
                     _applicationDbContext.SaveChanges();
 
                     _changesSaved = true;
@@ -180,6 +199,19 @@ namespace VideoClubManagement.UI.ArticleLendings
         }
 
         private void amountPerDayTextBox_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);   
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
+        private void setReturnDateButton_Click(object sender, EventArgs e)
+        {
+            returnDateDateTimePicker.Value = DateTime.Now;
+            returnDateDateTimePicker.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void resetReturnDateButton_Click(object sender, EventArgs e)
+        {
+            returnDateDateTimePicker.Value = DateTime.FromOADate(0);
+            returnDateDateTimePicker.Format = DateTimePickerFormat.Custom;
+            returnDateDateTimePicker.CustomFormat = " ";
+        }
     }
 }
