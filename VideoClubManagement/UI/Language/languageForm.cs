@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Helpers;
 using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Language
@@ -12,6 +14,7 @@ namespace VideoClubManagement.UI.Language
         public Data.Entities.Language Languages { get; set; }
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
         private IValidator<Data.Entities.Language> _validator;
+        private IQueryable<Data.Entities.Language> languageQuery;
         private readonly Form _parent;
 
         public languageForm(Form parent)
@@ -24,20 +27,27 @@ namespace VideoClubManagement.UI.Language
         private void refreshData()
         {
             languageDataGridView.DataSource = applicationDbContext.Languages.ToList();
+            languageDataGridView.Columns[0].HeaderText = "Codigo idioma";
+            languageDataGridView.Columns[1].HeaderText = "Descripcion";
+            languageDataGridView.Columns[2].HeaderText = "Identificador";
+            languageDataGridView.Columns[3].HeaderText = "Esta activo";
+            languageDataGridView.Columns[4].HeaderText = "Fecha creacion";
+            languageDataGridView.Columns[5].HeaderText = "Ultima fecha actualizacion";
         }
         private void clear()
         {
             nameTextBox.Clear();
             langCodeTextBox.Clear();
             idTextBox.Clear();
+            statusCheck.Checked = false;
         }
 
         private void generalSearch() {
-            var Languages = from sh in applicationDbContext.Languages
+            languageQuery = from sh in applicationDbContext.Languages
                              where (sh.Description.ToString().StartsWith(searchTextBox.Text)
                                  || sh.ISOCode.ToString().StartsWith(searchTextBox.Text))
                              select sh;
-           languageDataGridView.DataSource = Languages.ToList();
+           languageDataGridView.DataSource = languageQuery.ToList();
            languageDataGridView.Refresh();
         }
 
@@ -45,6 +55,7 @@ namespace VideoClubManagement.UI.Language
         {
             clear();
             refreshData();
+            languageQuery = applicationDbContext.Languages;
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -63,7 +74,8 @@ namespace VideoClubManagement.UI.Language
                     Data.Entities.Language language = new Data.Entities.Language
                     {
                         Description = nameTextBox.Text,
-                        ISOCode = langCodeTextBox.Text.ToUpper()
+                        ISOCode = langCodeTextBox.Text.ToUpper(),
+                        IsActive = statusCheck.Checked
                     };
                     
                     var validationErrors = _validator.GetValidationErrors(language);
@@ -99,6 +111,8 @@ namespace VideoClubManagement.UI.Language
             nameTextBox.Text = languageDataGridView.CurrentRow.Cells[1].Value.ToString();
             langCodeTextBox.Text = languageDataGridView.CurrentRow.Cells[0].Value.ToString().Replace(" ", String.Empty);
             idTextBox.Text = languageDataGridView.CurrentRow.Cells[2].Value.ToString();
+            statusCheck.Checked = (bool)languageDataGridView.CurrentRow.Cells[3].Value;
+
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -113,6 +127,7 @@ namespace VideoClubManagement.UI.Language
                     String newLang = langCodeTextBox.Text.ToUpper();
                     language.Description = nameTextBox.Text;
                     language.ISOCode = newLang;
+                    language.IsActive = statusCheck.Checked;
                     if (language != null)
                     {
                         var validationErrors = _validator.GetValidationErrors(language);
@@ -165,6 +180,28 @@ namespace VideoClubManagement.UI.Language
         {
             Hide();
             _parent.Show();
+        }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            var language = languageQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "Identificador, Codigo idioma,Descripcion, Esta activo,  Última fecha de actualizacion"
+            };
+
+            foreach (var i in language)
+            {
+                lines.Add($"{ i.Id }," +
+                    $"{ i.ISOCode }," +
+                    $"{ i.Description }," +
+                    $"{ i.IsActive }," +
+                    $"{ i.LastUpdatedDate }"
+                    );
+            }
+
+            FileHelper.ExportToCSV("language.csv", lines);
         }
     }
 }
