@@ -46,6 +46,8 @@ namespace VideoClubManagement.UI.Cast
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
+            this.exportButton = new System.Windows.Forms.Button();
+            this.statusCheck = new System.Windows.Forms.CheckBox();
             this.searchPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -57,23 +59,26 @@ namespace VideoClubManagement.UI.Cast
             // 
             this.searchPanel.Controls.Add(this.searchTextBox);
             this.searchPanel.Controls.Add(this.searchButton);
-            this.searchPanel.Location = new System.Drawing.Point(388, 12);
+            this.searchPanel.Location = new System.Drawing.Point(582, 18);
+            this.searchPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(372, 66);
+            this.searchPanel.Size = new System.Drawing.Size(558, 102);
             this.searchPanel.TabIndex = 11;
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(5, 28);
+            this.searchTextBox.Location = new System.Drawing.Point(8, 43);
+            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(236, 20);
+            this.searchTextBox.Size = new System.Drawing.Size(352, 26);
             this.searchTextBox.TabIndex = 19;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(247, 26);
+            this.searchButton.Location = new System.Drawing.Point(370, 40);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.Size = new System.Drawing.Size(112, 35);
             this.searchButton.TabIndex = 3;
             this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -85,18 +90,20 @@ namespace VideoClubManagement.UI.Cast
             this.actionPanel.Controls.Add(this.deleteButton);
             this.actionPanel.Controls.Add(this.updateButton);
             this.actionPanel.Controls.Add(this.addButton);
-            this.actionPanel.Location = new System.Drawing.Point(9, 169);
+            this.actionPanel.Location = new System.Drawing.Point(14, 260);
+            this.actionPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.actionPanel.Name = "actionPanel";
-            this.actionPanel.Size = new System.Drawing.Size(366, 66);
+            this.actionPanel.Size = new System.Drawing.Size(549, 102);
             this.actionPanel.TabIndex = 10;
             // 
             // backButton
             // 
             this.backButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.backButton.Location = new System.Drawing.Point(145, 29);
+            this.backButton.Location = new System.Drawing.Point(218, 45);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.Size = new System.Drawing.Size(112, 35);
             this.backButton.TabIndex = 4;
             this.backButton.Text = "Regresar";
             this.backButton.UseVisualStyleBackColor = false;
@@ -104,9 +111,10 @@ namespace VideoClubManagement.UI.Cast
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(226, 0);
+            this.deleteButton.Location = new System.Drawing.Point(339, 0);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.Size = new System.Drawing.Size(112, 35);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Eliminar";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -114,9 +122,10 @@ namespace VideoClubManagement.UI.Cast
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(145, 0);
+            this.updateButton.Location = new System.Drawing.Point(218, 0);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.Size = new System.Drawing.Size(112, 35);
             this.updateButton.TabIndex = 1;
             this.updateButton.Text = "Actualizar";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -125,9 +134,10 @@ namespace VideoClubManagement.UI.Cast
             // addButton
             // 
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addButton.Location = new System.Drawing.Point(64, 0);
+            this.addButton.Location = new System.Drawing.Point(96, 0);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.Size = new System.Drawing.Size(112, 35);
             this.addButton.TabIndex = 0;
             this.addButton.Text = "Agregar";
             this.addButton.UseVisualStyleBackColor = true;
@@ -136,96 +146,132 @@ namespace VideoClubManagement.UI.Cast
             // dataPanel
             // 
             this.dataPanel.Controls.Add(this.castDataGridView);
-            this.dataPanel.Location = new System.Drawing.Point(388, 84);
+            this.dataPanel.Location = new System.Drawing.Point(582, 123);
+            this.dataPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(372, 155);
+            this.dataPanel.Size = new System.Drawing.Size(558, 244);
             this.dataPanel.TabIndex = 9;
             // 
             // castDataGridView
             // 
             this.castDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.castDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.castDataGridView.ColumnHeadersVisible = false;
-            this.castDataGridView.Location = new System.Drawing.Point(5, 3);
+            this.castDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.castDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.castDataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.castDataGridView.Name = "castDataGridView";
-            this.castDataGridView.Size = new System.Drawing.Size(360, 149);
+            this.castDataGridView.RowHeadersWidth = 62;
+            this.castDataGridView.Size = new System.Drawing.Size(558, 244);
             this.castDataGridView.TabIndex = 0;
             this.castDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.castDataGridView_CellContentClick);
             this.castDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.castDataGridView_CellMouseClick);
             // 
             // insertPanel
             // 
+            this.insertPanel.Controls.Add(this.statusCheck);
             this.insertPanel.Controls.Add(this.languageLabel);
             this.insertPanel.Controls.Add(this.lastnameTextBox);
             this.insertPanel.Controls.Add(this.lastnameLabel);
             this.insertPanel.Controls.Add(this.nameTextBox);
             this.insertPanel.Controls.Add(this.nameLabel);
-            this.insertPanel.Location = new System.Drawing.Point(9, 25);
+            this.insertPanel.Location = new System.Drawing.Point(14, 38);
+            this.insertPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.insertPanel.Name = "insertPanel";
-            this.insertPanel.Size = new System.Drawing.Size(366, 138);
+            this.insertPanel.Size = new System.Drawing.Size(549, 212);
             this.insertPanel.TabIndex = 8;
             // 
             // languageLabel
             // 
             this.languageLabel.AutoSize = true;
-            this.languageLabel.Location = new System.Drawing.Point(118, 14);
+            this.languageLabel.Location = new System.Drawing.Point(177, 22);
+            this.languageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.languageLabel.Name = "languageLabel";
-            this.languageLabel.Size = new System.Drawing.Size(93, 13);
+            this.languageLabel.Size = new System.Drawing.Size(138, 20);
             this.languageLabel.TabIndex = 18;
             this.languageLabel.Text = "Gestión de elenco";
             // 
             // lastnameTextBox
             // 
-            this.lastnameTextBox.Location = new System.Drawing.Point(99, 90);
+            this.lastnameTextBox.Location = new System.Drawing.Point(148, 138);
+            this.lastnameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lastnameTextBox.Name = "lastnameTextBox";
-            this.lastnameTextBox.Size = new System.Drawing.Size(236, 20);
+            this.lastnameTextBox.Size = new System.Drawing.Size(352, 26);
             this.lastnameTextBox.TabIndex = 7;
             // 
             // lastnameLabel
             // 
             this.lastnameLabel.AutoSize = true;
-            this.lastnameLabel.Location = new System.Drawing.Point(43, 93);
+            this.lastnameLabel.Location = new System.Drawing.Point(64, 143);
+            this.lastnameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lastnameLabel.Name = "lastnameLabel";
             this.lastnameLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lastnameLabel.Size = new System.Drawing.Size(50, 13);
+            this.lastnameLabel.Size = new System.Drawing.Size(73, 20);
             this.lastnameLabel.TabIndex = 6;
             this.lastnameLabel.Text = "Apellido: ";
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(99, 55);
+            this.nameTextBox.Location = new System.Drawing.Point(148, 85);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(236, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(352, 26);
             this.nameTextBox.TabIndex = 5;
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(43, 58);
+            this.nameLabel.Location = new System.Drawing.Point(64, 89);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(50, 13);
+            this.nameLabel.Size = new System.Drawing.Size(73, 20);
             this.nameLabel.TabIndex = 4;
             this.nameLabel.Text = "Nombre: ";
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(9, -1);
+            this.idTextBox.Location = new System.Drawing.Point(14, -2);
+            this.idTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(35, 20);
+            this.idTextBox.Size = new System.Drawing.Size(50, 26);
             this.idTextBox.TabIndex = 19;
             this.idTextBox.Visible = false;
             // 
+            // exportButton
+            // 
+            this.exportButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.exportButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.csv;
+            this.exportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exportButton.Location = new System.Drawing.Point(1072, 57);
+            this.exportButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(36, 35);
+            this.exportButton.TabIndex = 20;
+            this.exportButton.UseVisualStyleBackColor = false;
+            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
+            // 
+            // statusCheck
+            // 
+            this.statusCheck.AutoSize = true;
+            this.statusCheck.Location = new System.Drawing.Point(148, 185);
+            this.statusCheck.Name = "statusCheck";
+            this.statusCheck.Size = new System.Drawing.Size(78, 24);
+            this.statusCheck.TabIndex = 19;
+            this.statusCheck.Text = "Activo";
+            this.statusCheck.UseVisualStyleBackColor = true;
+            // 
             // castForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 256);
+            this.ClientSize = new System.Drawing.Size(1166, 394);
+            this.Controls.Add(this.exportButton);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.searchPanel);
             this.Controls.Add(this.actionPanel);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.insertPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "castForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -262,5 +308,7 @@ namespace VideoClubManagement.UI.Cast
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button exportButton;
+        private System.Windows.Forms.CheckBox statusCheck;
     }
 }
