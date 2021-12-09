@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
@@ -14,6 +15,7 @@ namespace VideoClubManagement.UI.Shiftwork
         public Data.Entities.ShiftWork Shiftworks { get; set; }
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
         private IValidator<Data.Entities.ShiftWork> _validator;
+        private IQueryable<Data.Entities.ShiftWork> shiftworkQuery;
 
         private readonly Form _parent;
 
@@ -35,7 +37,13 @@ namespace VideoClubManagement.UI.Shiftwork
         {
 
         }
-
+        private void clearData()
+        {
+            descriptionTextBox.Clear();
+            startHourDateTimePicker.ResetText();
+            finishHourDateTimePicker.ResetText();
+            statusCheck.Checked = false;
+        }
         private void addButton_Click(object sender, EventArgs e)
         {
             try
@@ -50,7 +58,9 @@ namespace VideoClubManagement.UI.Shiftwork
                     Data.Entities.ShiftWork shiftwork = new Data.Entities.ShiftWork {
                         Description = descriptionTextBox.Text,
                         StartHour = startHourTime,
-                        FinishHour = finishHourTime };
+                        FinishHour = finishHourTime,
+                        IsActive = statusCheck.Checked
+                        };
                     var validationErrors = _validator.GetValidationErrors(shiftwork);
                     if (validationErrors != null && validationErrors.Count > 0)
                     {
@@ -66,6 +76,7 @@ namespace VideoClubManagement.UI.Shiftwork
                         applicationDbContext.SaveChanges();
                         MessageBox.Show("El registro se guardo con exito");
                         refreshData();
+                        clearData();
                     }
                 }
 
@@ -82,10 +93,19 @@ namespace VideoClubManagement.UI.Shiftwork
         private void refreshData()
         {
             shiftworkDataGridView.DataSource = applicationDbContext.ShiftWorks.ToList();
+            shiftworkDataGridView.Columns[0].HeaderText = "Descripcion";
+            shiftworkDataGridView.Columns[1].HeaderText = "Hora inicio";
+            shiftworkDataGridView.Columns[2].HeaderText = "Hora fin";
+            shiftworkDataGridView.Columns[3].HeaderText = "Identificador";
+            shiftworkDataGridView.Columns[4].HeaderText = "Esta activo";
+            shiftworkDataGridView.Columns[5].HeaderText = "Fecha creacion";
+            shiftworkDataGridView.Columns[6].HeaderText = "Ultima fecha actualizacion";
+
+
         }
         private void shiftworkForm_Load(object sender, EventArgs e)
         {
-
+            shiftworkQuery = applicationDbContext.ShiftWorks;
             refreshData();
         }
 
@@ -100,15 +120,16 @@ namespace VideoClubManagement.UI.Shiftwork
             startHourDateTimePicker.Text = shiftworkDataGridView.CurrentRow.Cells[1].Value.ToString();
             finishHourDateTimePicker.Text = shiftworkDataGridView.CurrentRow.Cells[2].Value.ToString();
             idTextBox.Text = shiftworkDataGridView.CurrentRow.Cells[3].Value.ToString();
+            statusCheck.Checked = (bool)shiftworkDataGridView.CurrentRow.Cells[4].Value;
         }
         private void generalSearch()
         {
-            var Shiftworks = from sh in applicationDbContext.ShiftWorks
+            shiftworkQuery = from sh in applicationDbContext.ShiftWorks
                               where (sh.Description.ToString().StartsWith(searchTextBox.Text)
                                                                         ||sh.StartHour.ToString().StartsWith(searchTextBox.Text)
                                                                         ||sh.FinishHour.ToString().StartsWith(searchTextBox.Text))
                                                                         select sh;
-            shiftworkDataGridView.DataSource = Shiftworks.ToList();
+            shiftworkDataGridView.DataSource = shiftworkQuery.ToList();
             shiftworkDataGridView.Refresh();
         }
         private void updateButton_Click(object sender, EventArgs e)
@@ -130,6 +151,7 @@ namespace VideoClubManagement.UI.Shiftwork
                         shiftwork.Description = descriptionTextBox.Text;
                         shiftwork.StartHour = startHourTime;
                         shiftwork.FinishHour = finishHourTime;
+                        shiftwork.IsActive = statusCheck.Checked;
                         var validationErrors = _validator.GetValidationErrors(shiftwork);
                         if (validationErrors != null && validationErrors.Count > 0)
                         {
@@ -145,6 +167,7 @@ namespace VideoClubManagement.UI.Shiftwork
                             applicationDbContext.SaveChanges();
                             MessageBox.Show("Registro actualizado con exito.");
                             refreshData();
+                            clearData();
                         }
                     }
                 }
@@ -175,6 +198,7 @@ namespace VideoClubManagement.UI.Shiftwork
                 }
                 MessageBox.Show("Registro eliminado con exito.");
                 refreshData();
+                clearData();
             }
             catch (Exception ex)
             {
@@ -199,5 +223,29 @@ namespace VideoClubManagement.UI.Shiftwork
                 deleteButton.Visible = false;
             }
         }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            var shiftwork = shiftworkQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "Identificador,Descripcion, Hora ingreso, Hora salida, Esta activo,  Última fecha de actualizacion"
+            };
+
+            foreach (var i in shiftwork)
+            {
+                lines.Add($"{ i.Id }," +
+                    $"{ i.Description }," +
+                    $"{ i.StartHour }," +
+                    $"{ i.FinishHour }," +
+                    $"{ i.IsActive }," +
+                    $"{ i.LastUpdatedDate }" 
+                    );
+            }
+
+            FileHelper.ExportToCSV("shiftwork.csv", lines);
+        
+    }
     }
 }

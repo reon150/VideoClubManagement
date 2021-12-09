@@ -164,10 +164,11 @@ namespace VideoClubManagement.UI.Cast
                 {
                     applicationDbContext.Casts.Remove(cast);
                     applicationDbContext.SaveChanges();
-
+                    
                 }
                 MessageBox.Show("Registro eliminado con exito.");
                 refreshData();
+                clearData();
             }
             catch (Exception ex)
             {
