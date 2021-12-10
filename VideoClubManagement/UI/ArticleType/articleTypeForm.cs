@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Helpers;
 using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.ArticleType
@@ -13,12 +15,14 @@ namespace VideoClubManagement.UI.ArticleType
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
         private readonly Form _parent;
         private IValidator<Data.Entities.ArticleType> _validator;
+        private IQueryable<Data.Entities.ArticleType> _articleTypesQuery;
 
         public ArticleTypeForm(Form parent)
         {
             InitializeComponent();
             _parent = parent;
             _validator = new ArticleTypeValidator(applicatioDbContext.ArticleTypes);
+            _articleTypesQuery = applicatioDbContext.ArticleTypes.AsQueryable();
             refreshData();
         }
 
@@ -28,6 +32,14 @@ namespace VideoClubManagement.UI.ArticleType
             articleTypeDataGridView.DataSource = applicatioDbContext.ArticleTypes.ToList();
         }
 
+        private void clearData()
+        {
+            idLabel.Text = "";
+            lastUpdateDateLabel.Text = "";
+            createdDateLabel.Text = "";
+            nameTextBox.Clear();
+            descriptionTextBox.Clear();
+        }
         private void generalSearch()
         {
             var ArticleTypes = from sh in applicatioDbContext.ArticleTypes
@@ -79,6 +91,7 @@ namespace VideoClubManagement.UI.ArticleType
                         applicatioDbContext.ArticleTypes.Add(articleType);
                         applicatioDbContext.SaveChanges();
                         MessageBox.Show("El registro se guardo con éxito");
+                        clearData();
                         refreshData();
                     }
                 }
@@ -155,6 +168,7 @@ namespace VideoClubManagement.UI.ArticleType
                         applicatioDbContext.ArticleTypes.Remove(articleType);
                         applicatioDbContext.SaveChanges();
                         MessageBox.Show("Registro eliminado con exito.");
+                        clearData();
                         refreshData();
                     }
                 }
@@ -169,6 +183,28 @@ namespace VideoClubManagement.UI.ArticleType
         {
             Hide();
             _parent.Show();
+        }
+
+        private void exportToCVSButton_Click(object sender, EventArgs e)
+        {
+            var articletypes = _articleTypesQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "Identificador, Nombre, Descripción, Fecha de creación, Ultima fecha de modificación, Esta Activo"
+            };
+
+            foreach (var articletype in articletypes)
+            {
+                lines.Add($"{articletype.Id}," +
+                    $"{articletype.Name},"+
+                    $"{articletype.Description}," +
+                    $"{articletype.CreatedDate}," +
+                    $"{articletype.LastUpdatedDate}," +
+                    $"{ BoolHelper.BoolToYesNoString(articletype.IsActive) }");
+            }
+
+            FileHelper.ExportToCSV("Tipos de articulos.csv", lines);
         }
     }
 }
