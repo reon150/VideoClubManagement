@@ -30,6 +30,7 @@ namespace VideoClubManagement.UI.Employee
         private void InitializeComponent()
         {
             this.insertPanel = new System.Windows.Forms.Panel();
+            this.statusCheck = new System.Windows.Forms.CheckBox();
             this.employeeLabel = new System.Windows.Forms.Label();
             this.shiftworkComboBox = new System.Windows.Forms.ComboBox();
             this.enteringDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -51,6 +52,7 @@ namespace VideoClubManagement.UI.Employee
             this.updateButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.searchPanel = new System.Windows.Forms.Panel();
+            this.exportButton = new System.Windows.Forms.Button();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.idTextBox = new System.Windows.Forms.TextBox();
@@ -64,6 +66,7 @@ namespace VideoClubManagement.UI.Employee
             // 
             // insertPanel
             // 
+            this.insertPanel.Controls.Add(this.statusCheck);
             this.insertPanel.Controls.Add(this.employeeLabel);
             this.insertPanel.Controls.Add(this.shiftworkComboBox);
             this.insertPanel.Controls.Add(this.enteringDateTimePicker);
@@ -81,6 +84,17 @@ namespace VideoClubManagement.UI.Employee
             this.insertPanel.Name = "insertPanel";
             this.insertPanel.Size = new System.Drawing.Size(366, 296);
             this.insertPanel.TabIndex = 0;
+            // 
+            // statusCheck
+            // 
+            this.statusCheck.AutoSize = true;
+            this.statusCheck.Location = new System.Drawing.Point(99, 270);
+            this.statusCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusCheck.Name = "statusCheck";
+            this.statusCheck.Size = new System.Drawing.Size(79, 17);
+            this.statusCheck.TabIndex = 19;
+            this.statusCheck.Text = "Esta activo";
+            this.statusCheck.UseVisualStyleBackColor = true;
             // 
             // employeeLabel
             // 
@@ -194,16 +208,17 @@ namespace VideoClubManagement.UI.Employee
             this.dataPanel.Controls.Add(this.employeeDataGridView);
             this.dataPanel.Location = new System.Drawing.Point(392, 109);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(546, 296);
+            this.dataPanel.Size = new System.Drawing.Size(569, 296);
             this.dataPanel.TabIndex = 1;
             // 
             // employeeDataGridView
             // 
             this.employeeDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.employeeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.employeeDataGridView.Location = new System.Drawing.Point(5, 0);
+            this.employeeDataGridView.Location = new System.Drawing.Point(5, 3);
             this.employeeDataGridView.Name = "employeeDataGridView";
-            this.employeeDataGridView.Size = new System.Drawing.Size(538, 293);
+            this.employeeDataGridView.RowHeadersWidth = 62;
+            this.employeeDataGridView.Size = new System.Drawing.Size(532, 290);
             this.employeeDataGridView.TabIndex = 0;
             this.employeeDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.employeeDataGridView_CellMouseClick);
             // 
@@ -263,12 +278,25 @@ namespace VideoClubManagement.UI.Employee
             // 
             // searchPanel
             // 
+            this.searchPanel.Controls.Add(this.exportButton);
             this.searchPanel.Controls.Add(this.searchTextBox);
             this.searchPanel.Controls.Add(this.searchButton);
             this.searchPanel.Location = new System.Drawing.Point(392, 37);
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.Size = new System.Drawing.Size(546, 66);
             this.searchPanel.TabIndex = 3;
+            // 
+            // exportButton
+            // 
+            this.exportButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.exportButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.csv;
+            this.exportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exportButton.Location = new System.Drawing.Point(399, 25);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(24, 23);
+            this.exportButton.TabIndex = 23;
+            this.exportButton.UseVisualStyleBackColor = false;
+            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
             // searchTextBox
             // 
@@ -299,7 +327,7 @@ namespace VideoClubManagement.UI.Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 450);
+            this.ClientSize = new System.Drawing.Size(992, 450);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.searchPanel);
             this.Controls.Add(this.actionPanel);
@@ -351,5 +379,7 @@ namespace VideoClubManagement.UI.Employee
         private System.Windows.Forms.Label employeeLabel;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.CheckBox statusCheck;
+        private System.Windows.Forms.Button exportButton;
     }
 }
