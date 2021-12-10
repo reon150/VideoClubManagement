@@ -16,7 +16,7 @@ namespace VideoClubManagement.UI.ArticleLendings
         private readonly Form _parent;
         private bool _backToList = false;
         private bool _changesSaved = false;
-        private IValidator<ArticleLending> _validator;
+        private readonly IValidator<ArticleLending> _validator;
 
         public ArticleLendingCreateForm(Form parent, IValidator<ArticleLending> validator)
         {
@@ -24,6 +24,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             _validator = validator;
             InitializeComponent();
             _timer.Elapsed += UpdateCurrentDateTimeLabel;
+            dueDateDateTimePicker.Value = DateTime.Now;
 
             SetComboBoxes();
 
@@ -109,6 +110,8 @@ namespace VideoClubManagement.UI.ArticleLendings
                 else
                 {
                     _applicationDbContext.ArticleLendings.Add(articleLending);
+                    articleLending.Article.IsActive = false;
+
                     _applicationDbContext.SaveChanges();
 
                     _changesSaved = true;

@@ -390,7 +390,10 @@ namespace VideoClubManagement.UI.ArticleType
             this.Controls.Add(this.articleTypeManagementPanel);
             this.Controls.Add(this.articleTypeDataGridView);
             this.Controls.Add(this.searchPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ArticleTypeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vista y mantenimiento del tipo de artículo";
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();

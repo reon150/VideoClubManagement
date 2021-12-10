@@ -38,6 +38,16 @@ namespace VideoClubManagement.UI.Article
             this.backButton = new System.Windows.Forms.Button();
             this.articleDataGridViewPanel = new System.Windows.Forms.Panel();
             this.articleDataGridView = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentPerDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lateReturnFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.articleTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.languageId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.genreLabel = new System.Windows.Forms.Label();
@@ -185,6 +195,78 @@ namespace VideoClubManagement.UI.Article
             this.articleDataGridView.Size = new System.Drawing.Size(1035, 468);
             this.articleDataGridView.TabIndex = 0;
             this.articleDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.articleDataGridView_CellMouseClick);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // title
+            // 
+            this.title.DataPropertyName = "Title";
+            this.title.HeaderText = "Título";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // rentPerDay
+            // 
+            this.rentPerDay.DataPropertyName = "RentPerDay";
+            this.rentPerDay.HeaderText = "Renta por día";
+            this.rentPerDay.Name = "rentPerDay";
+            this.rentPerDay.ReadOnly = true;
+            // 
+            // rentalDays
+            // 
+            this.rentalDays.DataPropertyName = "RentalDays";
+            this.rentalDays.HeaderText = "Días de renta";
+            this.rentalDays.Name = "rentalDays";
+            this.rentalDays.ReadOnly = true;
+            // 
+            // lateReturnFee
+            // 
+            this.lateReturnFee.DataPropertyName = "LateReturnFee";
+            this.lateReturnFee.HeaderText = "Penalidad";
+            this.lateReturnFee.Name = "lateReturnFee";
+            this.lateReturnFee.ReadOnly = true;
+            // 
+            // articleTypeId
+            // 
+            this.articleTypeId.DataPropertyName = "ArticleTypeId";
+            this.articleTypeId.HeaderText = "Tipo de artículo";
+            this.articleTypeId.Name = "articleTypeId";
+            this.articleTypeId.ReadOnly = true;
+            // 
+            // languageId
+            // 
+            this.languageId.DataPropertyName = "LanguageId";
+            this.languageId.HeaderText = "Idioma";
+            this.languageId.Name = "languageId";
+            this.languageId.ReadOnly = true;
+            // 
+            // isActive
+            // 
+            this.isActive.DataPropertyName = "IsActive";
+            this.isActive.HeaderText = "Está Activo";
+            this.isActive.Name = "isActive";
+            this.isActive.ReadOnly = true;
+            this.isActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.isActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // createdDate
+            // 
+            this.createdDate.DataPropertyName = "CreatedDate";
+            this.createdDate.HeaderText = "Fecha de creación";
+            this.createdDate.Name = "createdDate";
+            this.createdDate.ReadOnly = true;
+            // 
+            // lastUpdatedDate
+            // 
+            this.lastUpdatedDate.DataPropertyName = "LastUpdatedDate";
+            this.lastUpdatedDate.HeaderText = "Fecha de modificación";
+            this.lastUpdatedDate.Name = "lastUpdatedDate";
+            this.lastUpdatedDate.ReadOnly = true;
             // 
             // label1
             // 
@@ -547,7 +629,10 @@ namespace VideoClubManagement.UI.Article
             this.Controls.Add(this.label1);
             this.Controls.Add(this.articleDataGridViewPanel);
             this.Controls.Add(this.actionPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ArticleForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ver articulos";
             this.Load += new System.EventHandler(this.articleForm_Load);
             this.actionPanel.ResumeLayout(false);

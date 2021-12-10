@@ -41,6 +41,7 @@ namespace VideoClubManagement.UI.General
             this.languageButton = new System.Windows.Forms.Button();
             this.shiftworkButton = new System.Windows.Forms.Button();
             this.userButton = new System.Windows.Forms.Button();
+            this.roleButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // articleButton
@@ -89,7 +90,7 @@ namespace VideoClubManagement.UI.General
             // employeeButton
             // 
             this.employeeButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeButton.Location = new System.Drawing.Point(64, 450);
+            this.employeeButton.Location = new System.Drawing.Point(558, 450);
             this.employeeButton.Name = "employeeButton";
             this.employeeButton.Size = new System.Drawing.Size(241, 50);
             this.employeeButton.TabIndex = 4;
@@ -174,11 +175,23 @@ namespace VideoClubManagement.UI.General
             this.userButton.UseVisualStyleBackColor = true;
             this.userButton.Click += new System.EventHandler(this.userButton_Click);
             // 
+            // roleButton
+            // 
+            this.roleButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roleButton.Location = new System.Drawing.Point(64, 450);
+            this.roleButton.Name = "roleButton";
+            this.roleButton.Size = new System.Drawing.Size(241, 50);
+            this.roleButton.TabIndex = 12;
+            this.roleButton.Text = "Rol";
+            this.roleButton.UseVisualStyleBackColor = true;
+            this.roleButton.Click += new System.EventHandler(this.roleButton_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 583);
+            this.Controls.Add(this.roleButton);
             this.Controls.Add(this.userButton);
             this.Controls.Add(this.shiftworkButton);
             this.Controls.Add(this.languageButton);
@@ -215,5 +228,6 @@ namespace VideoClubManagement.UI.General
         private System.Windows.Forms.Button languageButton;
         private System.Windows.Forms.Button shiftworkButton;
         private System.Windows.Forms.Button userButton;
+        private System.Windows.Forms.Button roleButton;
     }
 }

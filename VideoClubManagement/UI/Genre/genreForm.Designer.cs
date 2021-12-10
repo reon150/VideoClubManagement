@@ -401,7 +401,10 @@ namespace VideoClubManagement.UI.Genre
             this.Controls.Add(this.genreManagementPanel);
             this.Controls.Add(this.genreDataGridViewPanel);
             this.Controls.Add(this.searchPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "GenreForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vista y mantenimiento de género";
             this.Load += new System.EventHandler(this.genreForm_Load);
             this.searchPanel.ResumeLayout(false);

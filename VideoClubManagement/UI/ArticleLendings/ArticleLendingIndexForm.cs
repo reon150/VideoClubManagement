@@ -94,7 +94,34 @@ namespace VideoClubManagement.UI.ArticleLendings
 
             if (onlyShowActivesCheckBox.Checked) _articleLendingQuery = _articleLendingQuery.Where(c => c.IsActive);
             _paginationHelper.Search(FillArticleLendingDataGridView, _articleLendingQuery);
+        }
 
+        private void exportToCSVButton_Click(object sender, EventArgs e)
+        {
+            var articleLendings = _articleLendingQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "No. Renta,Empleado,Articulo,Cliente,Fecha Renta,Fecha de vencimiento,Fecha de retorno,Monto x Día,Cantidad de días,Comentario,Última fecha de actualización,Esta Activo"
+            };
+
+            foreach (var articleLending in articleLendings)
+            {
+                lines.Add($"{ articleLending.Id }," +
+                    $"{ articleLending.Employee.FirstName } { articleLending.Employee.LastName }," +
+                    $"{ articleLending.Article.Title }," +
+                    $"{ articleLending.Client.FirstName } { articleLending.Client.LastName }," +
+                    $"{ articleLending.CreatedDate }," +
+                    $"{ articleLending.DueDate }," +
+                    $"{ articleLending.ReturnDate }," +
+                    $"{ articleLending.AmountPerDay }," +
+                    $"{ (articleLending.DueDate - articleLending.CreatedDate).TotalDays }," +
+                    $"{ articleLending.Comment }," +
+                    $"{ articleLending.LastUpdatedDate }," +
+                    $"{ BoolHelper.BoolToYesNoString(articleLending.IsActive) }");
+            }
+
+            FileHelper.ExportToCSV("Renta-Y-Devolución.csv", lines);
         }
 
         private void addButton_Click(object sender, EventArgs e)
