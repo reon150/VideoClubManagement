@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Helpers;
 using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Article
@@ -13,18 +15,33 @@ namespace VideoClubManagement.UI.Article
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
         private readonly Form _parent;
         private IValidator<Data.Entities.Article> _validator;
+        private IQueryable<Data.Entities.Article> _articleQuery;
 
         public ArticleForm(Form parent)
         {
             InitializeComponent();
             _parent = parent;
             _validator = new ArticleValidator(applicatioDbContext.Articles);
+            _articleQuery = applicatioDbContext.Articles.AsQueryable();
+            refreshData();
+
         }
 
         private void refreshData()
         {
             articleDataGridView.AutoGenerateColumns = false;
             articleDataGridView.DataSource = applicatioDbContext.Articles.ToList();
+        }
+
+        private void clearData()
+        {
+            titleTextBox.Clear();
+            rentPerDayTextBox.Clear();
+            rentalDaystextBox.Clear();
+            lateReturnFeeTextBox.Clear();
+            idLabel.Text = "";
+            createdDateLabel.Text = "";
+            lastUpdateDateLabel.Text = "";
         }
 
         private void generalSearch()
@@ -82,15 +99,19 @@ namespace VideoClubManagement.UI.Article
                "Pregunta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
                 if (save)
                 {
+                    int.TryParse(rentalDaystextBox.Text, out int rentalDays);
+                    decimal.TryParse(rentPerDayTextBox.Text, out decimal rentPerDay);
+                    decimal.TryParse(lateReturnFeeTextBox.Text, out decimal lateReturnFee);
+
                     Data.Entities.Article article = new Data.Entities.Article
                     {
                         Title = titleTextBox.Text,
-                        RentPerDay = decimal.Parse(rentPerDayTextBox.Text),
-                        LateReturnFee = decimal.Parse(lateReturnFeeTextBox.Text),
+                        RentPerDay = rentPerDay,
+                        LateReturnFee = lateReturnFee,
                         IsActive = statusCheckBox.Checked,
-                        RentalDays = int.Parse(rentalDaystextBox.Text),
+                        RentalDays = rentalDays,
                         ArticleTypeId = int.Parse(typeComboBox.SelectedValue.ToString()),
-                        LanguageId = int.Parse(langaugeComboBox.SelectedValue.ToString())
+                        LanguageId = int.Parse(langaugeComboBox.SelectedValue.ToString()),
                     };
 
                     var validationErrors = _validator.GetValidationErrors(article);
@@ -109,6 +130,7 @@ namespace VideoClubManagement.UI.Article
                         applicatioDbContext.Articles.Add(article);
                         applicatioDbContext.SaveChanges();
                         MessageBox.Show("El registro se guardo con exito");
+                        clearData();
                         refreshData();
                     }
                 }
@@ -136,11 +158,15 @@ namespace VideoClubManagement.UI.Article
 
                 if (update)
                 {
+                    int.TryParse(rentalDaystextBox.Text, out int rentalDays);
+                    decimal.TryParse(rentPerDayTextBox.Text, out decimal rentPerDay);
+                    decimal.TryParse(lateReturnFeeTextBox.Text, out decimal lateReturnFee);
+
                     Data.Entities.Article article = applicatioDbContext.Articles.Find(Int32.Parse(idLabel.Text));
                     article.Title = titleTextBox.Text;
-                    article.RentPerDay = decimal.Parse(rentPerDayTextBox.Text);
-                    article.RentalDays = int.Parse(rentalDaystextBox.Text);
-                    article.LateReturnFee = decimal.Parse(lateReturnFeeTextBox.Text);
+                    article.RentPerDay = rentPerDay;
+                    article.RentalDays = rentalDays;
+                    article.LateReturnFee = lateReturnFee;
                     article.IsActive = statusCheckBox.Checked;
 
                     if (article != null)
@@ -185,6 +211,7 @@ namespace VideoClubManagement.UI.Article
                         applicatioDbContext.Articles.Remove(article);
                         applicatioDbContext.SaveChanges();
                         MessageBox.Show("Registro eliminado con exito.");
+                        clearData();
                         refreshData();
                     }
                 }
@@ -193,6 +220,33 @@ namespace VideoClubManagement.UI.Article
             {
                 MessageBox.Show("Ha ocurrido un error al actualizar " + ex);
             }
+        } 
+
+        private void exportToCSVButton_Click(object sender, EventArgs e)
+        {
+            var articles = _articleQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "Identificador,Título,Renta por día,Días de renta,Penalidad,Tipo de artículo,Idioma,Fecha de creación,Última fecha de actualización,Esta Activo"
+            };
+
+            foreach (var article in articles)
+            {
+                lines.Add($"{ article.Id }," +
+                    $"{ article.Title }," +
+                    $"{ article.RentPerDay }," +
+                    $"{ article.RentalDays}," +
+                    $"{ article.LateReturnFee}," +
+                    $"{ article.ArticleType.Name}," +
+                    $"{ article.Language.Description}," +
+                    $"{ article.CreatedDate }," +
+                    $"{ article.LastUpdatedDate }," +
+                    $"{ BoolHelper.BoolToYesNoString(article.IsActive) }");
+            }
+
+            FileHelper.ExportToCSV("Articulos.csv", lines);
         }
     }
+    
 }

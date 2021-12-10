@@ -18,15 +18,15 @@ namespace VideoClubManagement.Validations
                 errors.Add("El título no puede estar vacio.");
             else if (entity.Title.Length > 100)
                 errors.Add("La longitud del nombre no puede ser mayor a 100.");
-
+         
             if (entity.RentPerDay <= 0)
-                errors.Add("El monto por día no puede ser 0.");
+                errors.Add("El monto por día no puede estar vacío ni ser 0.");
 
             if (entity.RentalDays <= 0)
-                errors.Add("Los días de renta no pueden ser 0");
+                errors.Add("Los días de renta no pueden estar vacíos ni ser 0");
 
             if (entity.LateReturnFee <= 0)
-                errors.Add("La penalidad por retorno tardio no puede ser 0");
+                errors.Add("La penalidad por retorno tardío no puede estar vacía ni ser 0");
 
             return errors;
         }

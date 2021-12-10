@@ -31,11 +31,11 @@ namespace VideoClubManagement.UI.Article
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.actionPanel = new System.Windows.Forms.Panel();
-            this.backButton = new System.Windows.Forms.Button();
+            this.exportToCSVButton = new System.Windows.Forms.Button();
             this.articleToSearchLabel = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.addButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.articleDataGridViewPanel = new System.Windows.Forms.Panel();
             this.articleDataGridView = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,10 +71,21 @@ namespace VideoClubManagement.UI.Article
             this.panel1 = new System.Windows.Forms.Panel();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.articleManagementLabel = new System.Windows.Forms.Label();
             this.rentalDaysLabel = new System.Windows.Forms.Label();
             this.rentalDaystextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.articleTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.languageId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentPerDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lateReturnFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actionPanel.SuspendLayout();
             this.articleDataGridViewPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.articleDataGridView)).BeginInit();
@@ -84,24 +95,26 @@ namespace VideoClubManagement.UI.Article
             // actionPanel
             // 
             this.actionPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.actionPanel.Controls.Add(this.backButton);
+            this.actionPanel.Controls.Add(this.exportToCSVButton);
             this.actionPanel.Controls.Add(this.articleToSearchLabel);
             this.actionPanel.Controls.Add(this.searchButton);
             this.actionPanel.Controls.Add(this.searchTextBox);
-            this.actionPanel.Location = new System.Drawing.Point(324, 12);
+            this.actionPanel.Location = new System.Drawing.Point(201, 12);
             this.actionPanel.Name = "actionPanel";
             this.actionPanel.Size = new System.Drawing.Size(642, 103);
             this.actionPanel.TabIndex = 0;
             // 
-            // backButton
+            // exportToCSVButton
             // 
-            this.backButton.Location = new System.Drawing.Point(548, 20);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(63, 56);
-            this.backButton.TabIndex = 4;
-            this.backButton.Text = "Retornar";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            this.exportToCSVButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.csv;
+            this.exportToCSVButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exportToCSVButton.Location = new System.Drawing.Point(531, 20);
+            this.exportToCSVButton.Name = "exportToCSVButton";
+            this.exportToCSVButton.Size = new System.Drawing.Size(63, 55);
+            this.exportToCSVButton.TabIndex = 27;
+            this.exportToCSVButton.UseVisualStyleBackColor = false;
+            this.exportToCSVButton.UseWaitCursor = true;
+            this.exportToCSVButton.Click += new System.EventHandler(this.exportToCSVButton_Click);
             // 
             // articleToSearchLabel
             // 
@@ -114,12 +127,12 @@ namespace VideoClubManagement.UI.Article
             // 
             // searchButton
             // 
+            this.searchButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_search_black_24dp;
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.searchButton.Location = new System.Drawing.Point(421, 20);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(63, 56);
             this.searchButton.TabIndex = 2;
-            this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
@@ -131,16 +144,15 @@ namespace VideoClubManagement.UI.Article
             this.searchTextBox.TabIndex = 1;
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
-            // addButton
+            // backButton
             // 
-            this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addButton.Location = new System.Drawing.Point(25, 21);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(63, 56);
-            this.addButton.TabIndex = 3;
-            this.addButton.Text = "Agregar";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            this.backButton.Location = new System.Drawing.Point(313, 20);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(63, 56);
+            this.backButton.TabIndex = 4;
+            this.backButton.Text = "Retornar";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // articleDataGridViewPanel
             // 
@@ -156,9 +168,10 @@ namespace VideoClubManagement.UI.Article
             this.articleDataGridView.AllowUserToAddRows = false;
             this.articleDataGridView.AllowUserToDeleteRows = false;
             this.articleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.articleDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -168,11 +181,11 @@ namespace VideoClubManagement.UI.Article
             this.articleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.title,
+            this.articleTypeId,
+            this.languageId,
             this.rentPerDay,
             this.rentalDays,
             this.lateReturnFee,
-            this.articleTypeId,
-            this.languageId,
             this.isActive,
             this.createdDate,
             this.lastUpdatedDate});
@@ -347,6 +360,7 @@ namespace VideoClubManagement.UI.Article
             // 
             // typeComboBox
             // 
+            this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeComboBox.FormattingEnabled = true;
             this.typeComboBox.Location = new System.Drawing.Point(1287, 250);
             this.typeComboBox.Name = "typeComboBox";
@@ -356,6 +370,8 @@ namespace VideoClubManagement.UI.Article
             // statusCheckBox
             // 
             this.statusCheckBox.AutoSize = true;
+            this.statusCheckBox.Checked = true;
+            this.statusCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusCheckBox.Location = new System.Drawing.Point(1287, 392);
             this.statusCheckBox.Name = "statusCheckBox";
             this.statusCheckBox.Size = new System.Drawing.Size(80, 17);
@@ -365,6 +381,7 @@ namespace VideoClubManagement.UI.Article
             // 
             // genreComboBox
             // 
+            this.genreComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genreComboBox.FormattingEnabled = true;
             this.genreComboBox.Location = new System.Drawing.Point(1287, 296);
             this.genreComboBox.Name = "genreComboBox";
@@ -373,6 +390,7 @@ namespace VideoClubManagement.UI.Article
             // 
             // langaugeComboBox
             // 
+            this.langaugeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.langaugeComboBox.FormattingEnabled = true;
             this.langaugeComboBox.Location = new System.Drawing.Point(1287, 344);
             this.langaugeComboBox.Name = "langaugeComboBox";
@@ -430,6 +448,7 @@ namespace VideoClubManagement.UI.Article
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.backButton);
             this.panel1.Controls.Add(this.deleteButton);
             this.panel1.Controls.Add(this.updateButton);
             this.panel1.Controls.Add(this.addButton);
@@ -440,23 +459,36 @@ namespace VideoClubManagement.UI.Article
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(302, 21);
+            this.deleteButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.delete_black_24dp;
+            this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.deleteButton.Location = new System.Drawing.Point(220, 21);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(63, 56);
             this.deleteButton.TabIndex = 5;
-            this.deleteButton.Text = "Eliminar";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(169, 21);
+            this.updateButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.edit_black_24dp;
+            this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.updateButton.Location = new System.Drawing.Point(126, 21);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(63, 56);
             this.updateButton.TabIndex = 4;
-            this.updateButton.Text = "Actualizar";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click_1);
+            // 
+            // addButton
+            // 
+            this.addButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.add_black_24dp;
+            this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addButton.Location = new System.Drawing.Point(25, 21);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(63, 56);
+            this.addButton.TabIndex = 3;
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // articleManagementLabel
             // 
@@ -492,6 +524,78 @@ namespace VideoClubManagement.UI.Article
             this.label3.Size = new System.Drawing.Size(111, 25);
             this.label3.TabIndex = 26;
             this.label3.Text = "Artículos:";
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // title
+            // 
+            this.title.DataPropertyName = "Title";
+            this.title.HeaderText = "Título";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // articleTypeId
+            // 
+            this.articleTypeId.DataPropertyName = "ArticleTypeId";
+            this.articleTypeId.HeaderText = "Tipo de artículo";
+            this.articleTypeId.Name = "articleTypeId";
+            this.articleTypeId.ReadOnly = true;
+            // 
+            // languageId
+            // 
+            this.languageId.DataPropertyName = "LanguageId";
+            this.languageId.HeaderText = "Idioma";
+            this.languageId.Name = "languageId";
+            this.languageId.ReadOnly = true;
+            // 
+            // rentPerDay
+            // 
+            this.rentPerDay.DataPropertyName = "RentPerDay";
+            this.rentPerDay.HeaderText = "Renta por día";
+            this.rentPerDay.Name = "rentPerDay";
+            this.rentPerDay.ReadOnly = true;
+            // 
+            // rentalDays
+            // 
+            this.rentalDays.DataPropertyName = "RentalDays";
+            this.rentalDays.HeaderText = "Días de renta";
+            this.rentalDays.Name = "rentalDays";
+            this.rentalDays.ReadOnly = true;
+            // 
+            // lateReturnFee
+            // 
+            this.lateReturnFee.DataPropertyName = "LateReturnFee";
+            this.lateReturnFee.HeaderText = "Penalidad";
+            this.lateReturnFee.Name = "lateReturnFee";
+            this.lateReturnFee.ReadOnly = true;
+            // 
+            // isActive
+            // 
+            this.isActive.DataPropertyName = "IsActive";
+            this.isActive.HeaderText = "Está Activo";
+            this.isActive.Name = "isActive";
+            this.isActive.ReadOnly = true;
+            this.isActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.isActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // createdDate
+            // 
+            this.createdDate.DataPropertyName = "CreatedDate";
+            this.createdDate.HeaderText = "Fecha de creación";
+            this.createdDate.Name = "createdDate";
+            this.createdDate.ReadOnly = true;
+            // 
+            // lastUpdatedDate
+            // 
+            this.lastUpdatedDate.DataPropertyName = "LastUpdatedDate";
+            this.lastUpdatedDate.HeaderText = "Fecha de modificación";
+            this.lastUpdatedDate.Name = "lastUpdatedDate";
+            this.lastUpdatedDate.ReadOnly = true;
             // 
             // ArticleForm
             // 
@@ -577,16 +681,17 @@ namespace VideoClubManagement.UI.Article
         private System.Windows.Forms.Label rentPerDayLabel;
         private System.Windows.Forms.Label rentalDaysLabel;
         private System.Windows.Forms.TextBox rentalDaystextBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button exportToCSVButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn articleTypeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn languageId;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentPerDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalDays;
         private System.Windows.Forms.DataGridViewTextBoxColumn lateReturnFee;
-        private System.Windows.Forms.DataGridViewTextBoxColumn articleTypeId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn languageId;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isActive;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedDate;
-        private System.Windows.Forms.Label label3;
     }
 }

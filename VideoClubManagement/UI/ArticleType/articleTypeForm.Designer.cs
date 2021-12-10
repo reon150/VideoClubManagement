@@ -31,6 +31,7 @@ namespace VideoClubManagement.UI.ArticleType
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchPanel = new System.Windows.Forms.Panel();
+            this.exportToCVSButton = new System.Windows.Forms.Button();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
@@ -69,12 +70,24 @@ namespace VideoClubManagement.UI.ArticleType
             // searchPanel
             // 
             this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.searchPanel.Controls.Add(this.exportToCVSButton);
             this.searchPanel.Controls.Add(this.searchTextBox);
             this.searchPanel.Controls.Add(this.searchButton);
-            this.searchPanel.Location = new System.Drawing.Point(361, 12);
+            this.searchPanel.Location = new System.Drawing.Point(299, 12);
             this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(414, 82);
+            this.searchPanel.Size = new System.Drawing.Size(459, 82);
             this.searchPanel.TabIndex = 1;
+            // 
+            // exportToCVSButton
+            // 
+            this.exportToCVSButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.csv;
+            this.exportToCVSButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exportToCVSButton.Location = new System.Drawing.Point(400, 11);
+            this.exportToCVSButton.Name = "exportToCVSButton";
+            this.exportToCVSButton.Size = new System.Drawing.Size(52, 50);
+            this.exportToCVSButton.TabIndex = 2;
+            this.exportToCVSButton.UseVisualStyleBackColor = true;
+            this.exportToCVSButton.Click += new System.EventHandler(this.exportToCVSButton_Click);
             // 
             // searchTextBox
             // 
@@ -85,12 +98,12 @@ namespace VideoClubManagement.UI.ArticleType
             // 
             // searchButton
             // 
+            this.searchButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_search_black_24dp;
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.searchButton.Location = new System.Drawing.Point(332, 11);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(52, 50);
             this.searchButton.TabIndex = 0;
-            this.searchButton.Text = "Buscar";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
@@ -109,6 +122,7 @@ namespace VideoClubManagement.UI.ArticleType
             this.articleTypeDataGridView.AllowUserToAddRows = false;
             this.articleTypeDataGridView.AllowUserToDeleteRows = false;
             this.articleTypeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.articleTypeDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -234,6 +248,8 @@ namespace VideoClubManagement.UI.ArticleType
             // statusCheckBox
             // 
             this.statusCheckBox.AutoSize = true;
+            this.statusCheckBox.Checked = true;
+            this.statusCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusCheckBox.Location = new System.Drawing.Point(89, 198);
             this.statusCheckBox.Name = "statusCheckBox";
             this.statusCheckBox.Size = new System.Drawing.Size(80, 17);
@@ -323,34 +339,34 @@ namespace VideoClubManagement.UI.ArticleType
             // 
             // deleteButton
             // 
+            this.deleteButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.delete_black_24dp;
             this.deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.deleteButton.Location = new System.Drawing.Point(230, 14);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(66, 50);
             this.deleteButton.TabIndex = 2;
-            this.deleteButton.Text = "Eliminar";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // updateButton
             // 
+            this.updateButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.edit_black_24dp;
             this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.updateButton.Location = new System.Drawing.Point(122, 14);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(66, 50);
             this.updateButton.TabIndex = 1;
-            this.updateButton.Text = "Actualizar";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // addButton
             // 
+            this.addButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_add_black_24dp;
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addButton.Location = new System.Drawing.Point(14, 14);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(66, 50);
             this.addButton.TabIndex = 0;
-            this.addButton.Text = "Agregar";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -422,5 +438,6 @@ namespace VideoClubManagement.UI.ArticleType
         private System.Windows.Forms.DataGridViewCheckBoxColumn isActive;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedDate;
+        private System.Windows.Forms.Button exportToCVSButton;
     }
 }
