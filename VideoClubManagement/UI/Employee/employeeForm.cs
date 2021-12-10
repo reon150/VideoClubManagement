@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Helpers;
 using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Employee
@@ -13,6 +15,7 @@ namespace VideoClubManagement.UI.Employee
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
         private readonly Form _parent;
         private IValidator<Data.Entities.Employee> _validator;
+        private IQueryable<Data.Entities.Employee> employeeQuery;
 
         public employeeForm(Form parent)
         {
@@ -23,11 +26,23 @@ namespace VideoClubManagement.UI.Employee
         private void refreshData()
         {
             employeeDataGridView.DataSource = applicationDbContext.Employees.ToList();
+            employeeDataGridView.Columns[0].HeaderText = "Nombre";
+            employeeDataGridView.Columns[1].HeaderText = "Apellido";
+            employeeDataGridView.Columns[2].HeaderText = "Cedula";
+            employeeDataGridView.Columns[3].HeaderText = "Comision";
+            employeeDataGridView.Columns[4].HeaderText = "Fecha ingreso";
+            employeeDataGridView.Columns[5].HeaderText = "Id Tanda de trabajo";
+            employeeDataGridView.Columns[6].Visible=false;
+            employeeDataGridView.Columns[7].HeaderText = "Identificador";
+            employeeDataGridView.Columns[8].HeaderText = "Esta activo";
+            employeeDataGridView.Columns[9].HeaderText = "Fecha creacion";
+            employeeDataGridView.Columns[10].HeaderText = "Ultima fecha actualizacion";
+         
         }
 
         private void generalSearch()
         {
-            var employees = from sh in applicationDbContext.Employees
+            employeeQuery = from sh in applicationDbContext.Employees
                             where (sh.FirstName.ToString().StartsWith(searchTextBox.Text)
                                 || sh.LastName.ToString().StartsWith(searchTextBox.Text)
                                 || sh.IdentificationNumber.ToString().StartsWith(searchTextBox.Text)
@@ -36,7 +51,7 @@ namespace VideoClubManagement.UI.Employee
                                 || sh.ShiftWorkId.ToString().StartsWith(searchTextBox.Text)
                                 )
                             select sh;
-            employeeDataGridView.DataSource = employees.ToList();
+            employeeDataGridView.DataSource = employeeQuery.ToList();
             employeeDataGridView.Refresh();
         }
 
@@ -49,6 +64,7 @@ namespace VideoClubManagement.UI.Employee
             enteringDateTimePicker.Refresh();
             shiftworkComboBox.Refresh();
             idTextBox.Clear();
+            statusCheck.Checked = (bool)false;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -67,7 +83,8 @@ namespace VideoClubManagement.UI.Employee
                         IdentificationNumber = identificationTextBox.Text,
                         CommissionPercentage = commissionNumericUpDown.Value,
                         EnteringDate = enteringDateTimePicker.Value,
-                        ShiftWorkId = (int)shiftworkComboBox.SelectedValue
+                        ShiftWorkId = (int)shiftworkComboBox.SelectedValue,
+                        IsActive=(bool)statusCheck.Checked
                     };
                     var validationErrors = _validator.GetValidationErrors(employee);
 
@@ -94,8 +111,6 @@ namespace VideoClubManagement.UI.Employee
 
                 MessageBox.Show("Ha ocurrido un error" + ex.Message);
             }
-
-
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -113,6 +128,7 @@ namespace VideoClubManagement.UI.Employee
                     employee.CommissionPercentage = commissionNumericUpDown.Value;
                     employee.EnteringDate = DateTime.Parse(enteringDateTimePicker.Text);
                     employee.ShiftWorkId = int.Parse(shiftworkComboBox.SelectedValue.ToString());
+                    employee.IsActive = (bool)statusCheck.Checked;
                     if (employee != null)
                     {
                         var validationErrors = _validator.GetValidationErrors(employee);
@@ -139,11 +155,12 @@ namespace VideoClubManagement.UI.Employee
 
                 MessageBox.Show("Ha ocurrido un error al actualizar " + ex);
             }
-
+           
 }
 
     private void deleteButton_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 var delete = MessageBox.Show($"¿Estás seguro que deseas eliminar estos datos?",
@@ -172,8 +189,11 @@ namespace VideoClubManagement.UI.Employee
         {
             refreshData();
             shiftworkComboBox.DataSource = applicationDbContext.ShiftWorks.ToList();
+            employeeQuery = applicationDbContext.Employees;
             shiftworkComboBox.DisplayMember = "Description";
             shiftworkComboBox.ValueMember = "Id";
+
+
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -190,12 +210,41 @@ namespace VideoClubManagement.UI.Employee
                    enteringDateTimePicker.Text= employeeDataGridView.CurrentRow.Cells[4].Value.ToString();
                    shiftworkComboBox.SelectedValue = Int32.Parse(employeeDataGridView.CurrentRow.Cells[5].Value.ToString());
                    idTextBox.Text = employeeDataGridView.CurrentRow.Cells[7].Value.ToString();
+                   statusCheck.Checked = (bool) employeeDataGridView.CurrentRow.Cells[8].Value;
+                  
+
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
             _parent.Show();
+        }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            var employee = employeeQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "Identificador, Nombre, Apellido, Cedula,Comision, Tanda Id, Fecha inicio, Esta activo, Última fecha de actualizacion"
+            };
+
+            foreach (var i in employee)
+            {
+                lines.Add($"{ i.Id }," +
+                    $"{ i.FirstName }," +
+                    $"{ i.LastName }," +
+                    $"{ i.IdentificationNumber }," +
+                    $"{ i.CommissionPercentage }," +
+                    $"{ i.ShiftWorkId }," +
+                    $"{ i.EnteringDate }," +
+                    $"{ i.IsActive }," +
+                    $"{ i.LastUpdatedDate }"
+                    );
+            }
+
+            FileHelper.ExportToCSV("employee.csv", lines);
         }
     }
 }
