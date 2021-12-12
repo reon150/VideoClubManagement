@@ -84,6 +84,7 @@ namespace VideoClubManagement.UI.Article
             idLabel.Text = articleDataGridView.CurrentRow.Cells[0].Value.ToString();
             createdDateLabel.Text = articleDataGridView.CurrentRow.Cells[8].Value.ToString();
             lastUpdateDateLabel.Text = articleDataGridView.CurrentRow.Cells[9].Value.ToString();
+            statusCheckBox.Checked = (bool)articleDataGridView.CurrentRow.Cells[7].Value;
         }
 
         private void searchTxt_TextChanged(object sender, EventArgs e)

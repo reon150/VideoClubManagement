@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
@@ -23,7 +24,7 @@ namespace VideoClubManagement.UI.Users
         {
             InitializeComponent();
             _parent = parent;
-            _usersQuery = _applicationDbContext.Users.AsQueryable();
+            _usersQuery = _applicationDbContext.Users.AsQueryable().Include(u => u.UserRole);
             _paginationHelper = new FormPaginationHelper<User, int>(_usersQuery, _pageSize, currentPageTextBox, lastPageTextBox);
         }
 
@@ -93,6 +94,29 @@ namespace VideoClubManagement.UI.Users
 
             if (onlyShowActivesCheckBox.Checked) _usersQuery = _usersQuery.Where(c => c.IsActive);
             _paginationHelper.Search(FillUsersListDataGridView, _usersQuery);
+        }
+
+        private void exportToCSVButton_Click(object sender, EventArgs e)
+        {
+            var users = _usersQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "Id,Usuario,Email,Rol,Fecha de Creación,Última fecha de actualización,Esta Activo"
+            };
+
+            foreach (var user in users)
+            {
+                lines.Add($"{ user.Id }," +
+                    $"{ user.UserName }," +
+                    $"{ user.Email }," +
+                    $"{ user.UserRole.Name }," +
+                    $"{ user.CreatedDate }," +
+                    $"{ user.LastUpdatedDate }," +
+                    $"{ BoolHelper.BoolToYesNoString(user.IsActive) }");
+            }
+
+            FileHelper.ExportToCSV("Uusarios.csv", lines);
         }
 
         private void addButton_Click(object sender, EventArgs e)

@@ -58,7 +58,7 @@ namespace VideoClubManagement.UI.ArticleLendings
         {
             var clients = _applicationDbContext.Clients.AsEnumerable();
             clientComboBox.DisplayMember = "Name";
-            employeeComboBox.ValueMember = "Id";
+            clientComboBox.ValueMember = "Id";
             foreach (var client in clients)
                 clientComboBox.Items.Add(new { Id = client.Id, Name = $"{ client.FirstName } { client.LastName }" });
             clientComboBox.SelectedIndex = 0;
@@ -66,7 +66,7 @@ namespace VideoClubManagement.UI.ArticleLendings
 
         private void SetArticleComboBox()
         {
-            var articles = _applicationDbContext.Articles.AsEnumerable();
+            var articles = _applicationDbContext.Articles.Where(a => a.IsActive).AsEnumerable();
             articleComboBox.DisplayMember = "Name";
             articleComboBox.ValueMember = "Id";
             foreach (var article in articles)
@@ -110,7 +110,7 @@ namespace VideoClubManagement.UI.ArticleLendings
                 else
                 {
                     _applicationDbContext.ArticleLendings.Add(articleLending);
-                    articleLending.Article.IsActive = false;
+                    articleLending.Article.IsActive = false;        
 
                     _applicationDbContext.SaveChanges();
 
