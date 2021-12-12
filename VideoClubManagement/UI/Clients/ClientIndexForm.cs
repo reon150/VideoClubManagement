@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
 using VideoClubManagement.Data.Entities;
+using VideoClubManagement.Data.Enums;
 using VideoClubManagement.Helpers;
 using VideoClubManagement.Validations;
 
@@ -92,6 +93,31 @@ namespace VideoClubManagement.UI.Clients
 
             if (onlyShowActivesCheckBox.Checked) _clientsQuery = _clientsQuery.Where(c => c.IsActive);
             _paginationHelper.Search(FillClientListDataGridView, _clientsQuery);
+        }
+
+        private void exportToCSVButton_Click(object sender, EventArgs e)
+        {
+            var clients = _clientsQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "Identificador,Nombre,Número de Identificación del Contribuyente,No. Tarjeta CR,Límite de Credito,Tipo Persona,Fecha de Creación,Última fecha de actualización,Esta Activo"
+            };
+
+            foreach (var client in clients)
+            {
+                lines.Add($"{ client.Id }," +
+                    $"{ client.FirstName } { client.LastName }," +
+                    $"{ client.TaxpayerIdentificationNumber }," +
+                    $"{ client.CreditCardNumber }," +
+                    $"{ client.CreditLimit }," +
+                    $"{ (client.LegalPersonTypeId == LegalPersonTypeId.Physical ? "Física" : "Jurídica") }," +
+                    $"{ client.CreatedDate }," +
+                    $"{ client.LastUpdatedDate }," +
+                    $"{ BoolHelper.BoolToYesNoString(client.IsActive) }");
+            }
+
+            FileHelper.ExportToCSV("Clientes.csv", lines);
         }
 
         private void addButton_Click(object sender, EventArgs e)

@@ -13,6 +13,7 @@ using VideoClubManagement.UI.ArticleType;
 using VideoClubManagement.UI.Users;
 using VideoClubManagement.Helpers;
 using VideoClubManagement.Data.Enums;
+using VideoClubManagement.UI.Roles;
 
 namespace VideoClubManagement.UI.General
 {
@@ -85,6 +86,12 @@ namespace VideoClubManagement.UI.General
         {
             Hide();
             new ArticleTypeForm(this).Show();
+        }
+
+        private void roleButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new RoleForm(this).Show();
         }
 
         private void userButton_Click(object sender, EventArgs e)

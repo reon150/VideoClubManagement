@@ -29,8 +29,8 @@ namespace VideoClubManagement.UI.Clients
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.clientListDataGridView = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +58,7 @@ namespace VideoClubManagement.UI.Clients
             this.currentPageTextBox = new System.Windows.Forms.TextBox();
             this.lastPageTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.exportToCSVButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.clientListDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,14 +70,14 @@ namespace VideoClubManagement.UI.Clients
             this.clientListDataGridView.AllowUserToResizeRows = false;
             this.clientListDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.clientListDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.clientListDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.clientListDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.clientListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clientListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -90,14 +91,14 @@ namespace VideoClubManagement.UI.Clients
             this.clientListDataGridView.Location = new System.Drawing.Point(41, 122);
             this.clientListDataGridView.Name = "clientListDataGridView";
             this.clientListDataGridView.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.clientListDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.clientListDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.clientListDataGridView.RowHeadersWidth = 50;
             this.clientListDataGridView.RowTemplate.Height = 19;
             this.clientListDataGridView.Size = new System.Drawing.Size(874, 315);
@@ -261,7 +262,7 @@ namespace VideoClubManagement.UI.Clients
             this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchTextBox.Location = new System.Drawing.Point(112, 41);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(554, 29);
+            this.searchTextBox.Size = new System.Drawing.Size(528, 29);
             this.searchTextBox.TabIndex = 10;
             // 
             // dataGridViewImageColumn1
@@ -297,7 +298,7 @@ namespace VideoClubManagement.UI.Clients
             // 
             this.searchButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.baseline_search_black_24dp;
             this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.searchButton.Location = new System.Drawing.Point(672, 42);
+            this.searchButton.Location = new System.Drawing.Point(646, 42);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(40, 29);
             this.searchButton.TabIndex = 11;
@@ -307,7 +308,7 @@ namespace VideoClubManagement.UI.Clients
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(737, 56);
+            this.label1.Location = new System.Drawing.Point(738, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 12;
@@ -316,7 +317,7 @@ namespace VideoClubManagement.UI.Clients
             // 
             this.onlyShowActivesCheckBox.AutoSize = true;
             this.onlyShowActivesCheckBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlyShowActivesCheckBox.Location = new System.Drawing.Point(743, 43);
+            this.onlyShowActivesCheckBox.Location = new System.Drawing.Point(744, 44);
             this.onlyShowActivesCheckBox.Name = "onlyShowActivesCheckBox";
             this.onlyShowActivesCheckBox.Size = new System.Drawing.Size(171, 25);
             this.onlyShowActivesCheckBox.TabIndex = 14;
@@ -355,11 +356,23 @@ namespace VideoClubManagement.UI.Clients
             this.label2.TabIndex = 17;
             this.label2.Text = "/";
             // 
+            // exportToCSVButton
+            // 
+            this.exportToCSVButton.BackgroundImage = global::VideoClubManagement.Properties.Resources.csv;
+            this.exportToCSVButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exportToCSVButton.Location = new System.Drawing.Point(692, 42);
+            this.exportToCSVButton.Name = "exportToCSVButton";
+            this.exportToCSVButton.Size = new System.Drawing.Size(40, 29);
+            this.exportToCSVButton.TabIndex = 36;
+            this.exportToCSVButton.UseVisualStyleBackColor = true;
+            this.exportToCSVButton.Click += new System.EventHandler(this.exportToCSVButton_Click);
+            // 
             // ClientIndexForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(957, 566);
+            this.Controls.Add(this.exportToCSVButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lastPageTextBox);
             this.Controls.Add(this.currentPageTextBox);
@@ -416,5 +429,6 @@ namespace VideoClubManagement.UI.Clients
         private System.Windows.Forms.TextBox currentPageTextBox;
         private System.Windows.Forms.TextBox lastPageTextBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button exportToCSVButton;
     }
 }

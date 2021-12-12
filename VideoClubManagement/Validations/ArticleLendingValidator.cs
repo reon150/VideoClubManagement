@@ -14,9 +14,9 @@ namespace VideoClubManagement.Validations
                 errors.Add("El monto por dia no puede ser menor a 0.");
 
             if (entity.DueDate < DateTime.Now.Date)
-                errors.Add("La fecha de devolución no puede ser menor a la fecha actual.");
+                errors.Add("La fecha de vencimiento no puede ser menor a la fecha actual.");
 
-            if (entity.Comment.Length > 1000)
+            if (entity.Comment?.Length > 1000)
                 errors.Add("La longitud del comentario no puede ser mayor a 1000.");
 
             return errors;

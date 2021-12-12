@@ -69,7 +69,6 @@ namespace VideoClubManagement.UI.ArticleCasts
 
         private void DeleteArticleCast(int id)
         {
-            
             var delete = MessageBox.Show($"¿Estas seguro que deseas eliminar este registro?",
                 "Adventencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
 
@@ -86,14 +85,41 @@ namespace VideoClubManagement.UI.ArticleCasts
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            _articleCastQuery = _applicationDbContext.ArticleCasts.Where(c => c.Id.ToString().Contains(searchTextBox.Text)
-                || c.Article.Title.Contains(searchTextBox.Text)
-                || c.Cast.FirstName.Contains(searchTextBox.Text)
-                || c.Cast.LastName.Contains(searchTextBox.Text)
-                || c.Role.Name.Contains(searchTextBox.Text));
+            _articleCastQuery = _applicationDbContext.ArticleCasts
+                .Where(c => c.Id.ToString().Contains(searchTextBox.Text)
+                    || c.Article.Title.Contains(searchTextBox.Text)
+                    || c.Cast.FirstName.Contains(searchTextBox.Text)
+                    || c.Cast.LastName.Contains(searchTextBox.Text)
+                    || c.Role.Name.Contains(searchTextBox.Text))
+                .Include(ac => ac.Article)
+                .Include(ac => ac.Cast)
+                .Include(ac => ac.Role);
 
             if (onlyShowActivesCheckBox.Checked) _articleCastQuery = _articleCastQuery.Where(c => c.IsActive);
             _paginationHelper.Search(FillArticleCastDataGridView, _articleCastQuery);
+        }
+
+        private void exportToCSVButton_Click(object sender, EventArgs e)
+        {
+            var articleCasts = _articleCastQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "Identificador,Artículo,Elenco,Rol,Fecha de Creación,Última fecha de actualización,Esta Activo"
+            };
+
+            foreach (var articleCast in articleCasts)
+            {
+                lines.Add($"{ articleCast.Id }," +
+                    $"{ articleCast.Article.Title }," +
+                    $"{ articleCast.Cast.FirstName } { articleCast.Cast.LastName }," +
+                    $"{ articleCast.Role.Name }," +
+                    $"{ articleCast.CreatedDate }," +
+                    $"{ articleCast.LastUpdatedDate }," +
+                    $"{ BoolHelper.BoolToYesNoString(articleCast.IsActive) }");
+            }
+
+            FileHelper.ExportToCSV("Elenco-Articulo.csv", lines);
         }
 
         private void addButton_Click(object sender, EventArgs e)

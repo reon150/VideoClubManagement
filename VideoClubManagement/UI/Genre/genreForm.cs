@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VideoClubManagement.Data;
+using VideoClubManagement.Helpers;
 using VideoClubManagement.Validations;
 
 namespace VideoClubManagement.UI.Genre
@@ -13,16 +15,28 @@ namespace VideoClubManagement.UI.Genre
         ApplicationDbContext applicatioDbContext = new ApplicationDbContext();
         private readonly Form _parent;
         private IValidator<Data.Entities.Genre> _validator;
+        private IQueryable<Data.Entities.Genre> _genresQuery;
         public GenreForm(Form parent)
         {
             InitializeComponent();
             _parent = parent;
             _validator = new GenreValidator(applicatioDbContext.Genres);
+            _genresQuery = applicatioDbContext.Genres.AsQueryable();
+            refreshData();
         }
         private void refreshData()
         {
             genreDataGridView.AutoGenerateColumns = false;
             genreDataGridView.DataSource = applicatioDbContext.Genres.ToList();
+        }
+
+        private void clearData()
+        {
+            idLabel.Text = "";
+            createdDateLabel.Text = "";
+            lastUpdateDateLabel.Text = "";
+            nameTextBox.Clear();
+            descriptionTextBox.Clear();
         }
 
         private void generalSearch()
@@ -76,6 +90,7 @@ namespace VideoClubManagement.UI.Genre
                         applicatioDbContext.Genres.Add(genre);
                         applicatioDbContext.SaveChanges();
                         MessageBox.Show("El registro se guardo con éxito");
+                        clearData();
                         refreshData();
                     }
                 }
@@ -152,6 +167,7 @@ namespace VideoClubManagement.UI.Genre
                         applicatioDbContext.Genres.Remove(genre);
                         applicatioDbContext.SaveChanges();
                         MessageBox.Show("Registro eliminado con exito.");
+                        clearData();
                         refreshData();
                     }
                 }
@@ -166,6 +182,28 @@ namespace VideoClubManagement.UI.Genre
         {
             Hide();
             _parent.Show();
+        }
+
+        private void exportToCVSButton_Click(object sender, EventArgs e)
+        {
+            var genres = _genresQuery.ToList();
+
+            var lines = new List<string>
+            {
+                "Identificador, Nombre, Descripción, Fecha de creación, Ultima fecha de actualización, Esta Activo"
+            };
+
+            foreach (var genre in genres)
+            {
+                lines.Add($"{genre.Id}," +
+                    $"{genre.Name}," +
+                    $"{genre.Description}," +
+                    $"{genre.CreatedDate}," +
+                    $"{genre.LastUpdatedDate}," +
+                    $"{ BoolHelper.BoolToYesNoString(genre.IsActive) }");
+            }
+
+            FileHelper.ExportToCSV("generos.csv", lines);
         }
     }
 }

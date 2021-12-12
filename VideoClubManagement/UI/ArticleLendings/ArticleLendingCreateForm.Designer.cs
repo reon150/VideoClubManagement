@@ -64,7 +64,7 @@ namespace VideoClubManagement.UI.ArticleLendings
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(251, 32);
+            this.label1.Size = new System.Drawing.Size(250, 32);
             this.label1.TabIndex = 47;
             this.label1.Text = "Agregar nueva renta";
             // 
